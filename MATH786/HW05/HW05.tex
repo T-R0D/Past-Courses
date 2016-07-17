@@ -1,0 +1,380 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+% \usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+    \DeclareGraphicsExtensions{.png, .jpeg}
+\usepackage{caption}
+
+% custom macros
+\newcommand*{\doublebar}[1]{\overline{\overline{#1}}}
+\newcommand*{\unknown}[0]{\;?\;}
+\DeclareMathOperator*{\argmax}{argmax}
+
+% main document
+\title{MATH 786: Cooperative Game Theory \\ HW05}
+\author{Terence Henriod}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Shapley Value, Shapley-Shubik Power Index, Banzhaf Index, Simple Games, Simple Majority Games. 
+\end{abstract}
+
+
+\newpage
+\begin{enumerate}
+\item Find the Shapley Value of the following games:
+  \begin{enumerate}
+  \item $N = \{1, 2, 3\}$, $V(\emptyset) = 0$, $V(\overline{1}) = 3$, $V(\overline{2}) = 2$, $V(\overline{3}) = 0$, $V(\overline{1,2}) = 4$, $V(\overline{1,3}) = 6$, $V(\overline{2,3}) = 8$, $V(\overline{N}) = 10$. \\
+
+  Recall that the Shapley Value is computed by:
+  \[ \varphi_{i} = \frac{1}{n!} * \sum_{\text{All Orderings } R}{V(P_{R}(i) \cup \{i\}) - V(P_{R}(i))} \]
+
+  \textit{Solution}:\\
+
+  $ \varphi = (\frac{6}{2},\, \frac{7}{2},\, \frac{7}{2}) $ \\
+
+  \begin{tabular}{| c || c | c | c |}
+  \hline
+           & \multicolumn{3}{c|}{$V(P_{R}(i) \cup \{i\}) - V(P_{R}(i))$} \\[0.3em]
+  \hline
+  Ordering               & $\;\quad i = 1 \;\quad$  & $\;\quad i = 2 \;\quad$  & $\;\quad i = 3 \;\quad$  \\[0.3em]
+  \hline\hline
+  $R_{1} = \{1, 2, 3\}$  & $3  - 0 = 3$  & $4  - 3 = 1$  & $10 - 4 = 6$  \\[0.3em]
+  $R_{2} = \{1, 3, 2\}$  & $3  - 0 = 3$  & $10 - 6 = 4$  & $6  - 3 = 3$  \\[0.3em]
+  $R_{3} = \{2, 1, 3\}$  & $4  - 2 = 2$  & $2  - 0 = 2$  & $10 - 4 = 6$  \\[0.3em]
+  $R_{4} = \{2, 3, 1\}$  & $10 - 8 = 2$  & $2  - 0 = 2$  & $8  - 2 = 6$  \\[0.3em]
+  $R_{5} = \{3, 1, 2\}$  & $6  - 0 = 6$  & $10 - 6 = 4$  & $0  - 0 = 0$  \\[0.3em]
+  $R_{6} = \{3, 2, 1\}$  & $10 - 8 = 2$  & $8  - 0 = 8$  & $0  - 0 = 0$  \\[0.3em]
+  \hline
+  $\sum$                 & $18$          & $21$          & $21$          \\[0.3em]
+  \hline
+  $\varphi$              & $18 / 6 = \frac{6}{2}$ & $21 / 6 = \frac{7}{2}$ & $21 / 6 = \frac{7}{2}$ \\[0.3em]
+  \hline
+  \end{tabular} \\
+  \newline
+
+  %
+  \item The weighted majority game $ [\frac{1}{2};\; \frac{1}{5},\; \frac{1}{5},\; \frac{1}{5},\; \frac{2}{15},\; \frac{2}{15},\; \frac{2}{15}] $. \\
+
+  \textit{Solution}:\\
+
+  $ \varphi
+      = (\frac{168}{720}, \frac{168}{720}, \frac{168}{720}, \frac{72}{720}, \frac{72}{720}, \frac{72}{720})
+      = (\frac{7}{30}, \frac{7}{30}, \frac{7}{30}, \frac{3}{30}, \frac{3}{30}, \frac{3}{30})$ \\
+
+  The mathematically inclined will observe that there are only two types of players in the game, those with a weight of $\frac{1}{5}$ and those with a weight of $\frac{2}{15}$. Using the ``substitute axiom", we can find the value for one player with a given weight and know the value for the rest of the players with the same weight. \\
+
+  Consider that there are $6! = 720$ orderings. For a player with weight $\frac{1}{5}$, call them $p$, consider orderings with that player at a given position: \\
+
+  With $p$ in position $1$ in the ordering, there are $120$ such orderings. In none of these is $p$ a swing player. \\
+
+  With $p$ in position $2$ in the ordering, there are $120$ such orderings. Again, in none of these is $p$ a swing player. \\
+  
+
+  With $p$ in position $3$ in the ordering, there are $120$ such orderings. There are $4$ cases: the $p$ can be preceded by players with weights $\frac{2}{15}$ and $\frac{2}{15}$; $\frac{2}{15}$ and $\frac{1}{5}$; $\frac{1}{5}$ and $\frac{2}{15}$; and $\frac{1}{5}$ and $\frac{1}{5}$. In only the first of these cases ($\frac{2}{15}$ and $\frac{2}{15}$) is $p$ not a swing player, and there are $3 * 2 * 3 * 2 = 36$ of these orderings. This leaves $120 - 36 = 84$ orderings. \\
+
+  With $p$ in position $4$ in the ordering, there are $120$ such orderings. In only the case where there are $2$ $\frac{1}{5}$ players and $1$ $\frac{2}{15}$ player preceding $p$ is $p$ not a swing player; there are $2 * 1 * 3$ of these orderings. Thus, in  $120 - 36 = 84$ of these $p$ is a swing player. \\
+
+  With $p$ in position $5$ in the ordering, there are $120$ such orderings. In none of these is $p$ a swing player. \\
+
+  With $p$ in position $6$ in the ordering, there are $120$ such orderings. In none of these is $p$ a swing player. \\
+
+  This gives us $84 + 84 = 168$ orderings where $p$ is a swing player, so $\varphi_{1} = \frac{168}{720}$, and by the ``substitute axiom", $\varphi_{2} = \varphi_{3} = \varphi_{1} = \frac{168}{720}$. \\
+
+  Now, since the Shapley value satisfies efficiency, we know that the remaining players will share a value of $\frac{720}{720} - 3 * (\frac{168}{720}) = \frac{216}{720}$. Since the remaining players are the $\frac{2}{15}$ type and there are $3$ of them, we know that $\varphi_{4} = \varphi_{5} = \varphi_{6} = frac{216}{720} / 3 = frac{72}{720}$. \\
+
+  For those who would just \emph{brute force} the problem, the following program written in the Rust programming language was used to produce the unreduced answer:
+  \begin{verbatim}
+    extern crate permutohedron;
+
+    fn main() {
+        let weights = &[1.0/5.0, 1.0/5.0, 1.0/5.0, 2.0/15.0, 2.0/15.0, 2.0/15.0];
+        let quota = 1.0 / 2.0; 
+        let (shapley_totals, n_orderings) = compute_shapley_totals(quota, weights);
+        println!("The Shapley value is {:?} / {}", shapley_totals, n_orderings);
+    }
+
+    fn compute_shapley_totals(quota: f64, weights: &[f64]) -> (Vec<f64>, usize) { 
+    let n = weights.len();
+        let n_orderings = permutohedron::factorial(n);
+
+        let players = (0..n).collect::<Vec<usize>>();
+
+        let mut other = players.clone();
+        let orderings = permutohedron::Heap::new(&mut other);
+
+        let mut shapley_value = vec![0.0; n];
+
+        for ordering in orderings {
+            let mut predecessor_coalition_value = 0.0;
+
+            for i in 1..(n + 1) {
+                let (coalition, _) = ordering.split_at(i);
+                let new_coalition_value = coalition_value(quota, coalition, weights);
+                let difference = new_coalition_value - predecessor_coalition_value;
+
+                let player = ordering[i - 1];
+                shapley_value[player] += difference;
+
+                predecessor_coalition_value = new_coalition_value;
+            }
+        }
+
+        (shapley_value, n_orderings)
+    }
+
+    fn coalition_value(quota: f64, players: &[usize], weights: &[f64]) -> f64 { 
+        let mut total_weight = 0.0;
+        for weight in weights {
+            total_weight = total_weight + weight;
+        }
+
+        let mut weight_sum = 0.0;
+        for player in players { 
+            weight_sum = weight_sum + weights[*player];
+        }
+
+        if weight_sum > quota { 
+            1.0
+        } else { 
+            0.0
+        }
+    }
+  \end{verbatim}
+  %
+  \end{enumerate}
+
+%
+\item The \emph{Banzhaf Index} is another power index used to evaluate players' power in simple games. It is defined as the $n$-vector $\beta$ where
+\[ \beta_{i} = \frac{\sum_{S: i \not\in S}{V(S \cup \{i\}) - V(S)}}
+                    {\sum_{i = 1}^{n}{[\sum_{S: i \not\in S}{V(S \cup \{i\}) - V(S)}}]} \]
+
+  \begin{enumerate}
+  \item Compare the formula for the Banzhaf Index with that for the Shapley-Shubik power index. [Here I simply wish for you to compare the above definition with the ``alternative formula for the Shapley Value" presented in class.] \\
+
+  \textit{Solution}:\\
+
+  Recall the the ``alternative formula for the Shapley Value":
+  \[ \varphi_{i} = \frac{1}{n!} \sum_{S: i \not\in S}{|S|!\;(n - |S| - 1)!\;[V(S \cup \{i\}) - V(S)]} \]
+
+  Common to both formulae is the expression $[V(S \cup \{i\}) - V(S)]$, which counts whether or not a player $i$ is a ``swing player" in coalition $S \in 2^{N}$. \\
+
+  In the Banzhaf Index, we count the number of times each player is a swing player for every unique coalition (but not ordering), and then divide that by the total number of times all players were swing players. It measures the value/power of a player normalized relative to the other players that have value/power. \\
+
+  In the Shapley-Shubik power Index, we count the number of times a player is a swing player in every permutation of every coalition, and then divide that by the overall number of permutations of the grand coalition. It measures the value/power of a player normalized relative to all possible coalitions. \\
+
+  %
+  \item Find the Banzhaf Index for the weighted majority game given in problem 1-b above. \\
+
+  \textit{Solution}:\\
+
+  $ \beta
+      = (\frac{14}{60}, \frac{14}{60}, \frac{14}{60}, \frac{6}{60}, \frac{6}{60}, \frac{6}{60})
+      = (\frac{7}{30}, \frac{7}{30}, \frac{7}{30}, \frac{3}{30}, \frac{3}{30}, \frac{3}{30})$ \\
+
+  Since the Banzhaf Index produces the same value for players with the same role, and there are only two roles in the game (a $\frac{1}{5}$ player or a $\frac{2}{15}$ player), we can evaluate the swing player instances for players $1$ and $4$, use those values for their respective substitutes, and then compute the index vector as a whole. \\
+
+  The following tables display the form of only the coalitions where there a player might be a swing player. The multiplicities indicate the number of ways to form a coalition of a given archetype (composition of players with the specified weights) from the players other than the ``would-be swing player". \\
+
+  First, consider one of the players whose value is $\frac{1}{5}$, arbitrarily, we can use player $1$. \\
+
+  \begin{tabular}{| l | r || c | c | c |}
+  \hline
+  $S$-archetype                                             & Multiplicity     & $1$ is swing & Count Towards Index \\
+  \hline\hline
+  $\frac{1}{5}, \frac{2}{15}, [\frac{1}{5}]$                & $6$              & yes          & $6$                 \\
+  \hline
+  $\frac{1}{5}, \frac{1}{5}, [\frac{1}{5}]$                 & $1$              & yes          & $1$                 \\
+  \hline
+  $\frac{2}{15}, \frac{2}{15}, \frac{2}{15}, [\frac{1}{5}]$ & $1$              & yes          & $1$                 \\
+  \hline
+  $\frac{1}{5}, \frac{2}{15}, \frac{2}{15}, [\frac{1}{5}]$  & $6$              & yes          & $6$                 \\
+  \hline
+  \end{tabular} \\
+
+  Now consider a player whose value is $\frac{2}{15}$, arbitrarily we use player $4$. \\
+
+  \begin{tabular}{| l | r || c | c | c |}
+  \hline
+  $S$-archetype                                              & Multiplicity    & $4$ is swing & Count Towards Index \\
+  \hline\hline
+  $\frac{1}{5}, \frac{2}{15}, [\frac{2}{15}]$                & $6$             & no           & $0$                 \\
+  \hline
+  $\frac{1}{5}, \frac{1}{5}, [\frac{2}{15}]$                 & $1$             & yes          & $3$                 \\
+  \hline
+  $\frac{2}{15}, \frac{2}{15}, \frac{2}{15}, [\frac{2}{15}]$ & $0$             & no           & $0$                 \\
+  \hline
+  $\frac{1}{5}, \frac{2}{15}, \frac{2}{15}, [\frac{2}{15}]$  & $3$             & yes          & $3$                 \\
+  \hline
+  \end{tabular} \\
+
+  Thus, players $1$, $2$, $3$ have $[V(S \cup \{i\}) - V(S)] = 14$. Players $4$, $5$, $6$ have $[V(S \cup \{i\}) - V(S)] = 6$.
+
+  Also, we have for the denominator of the formula:
+  \[\sum_{i = 1}^{n}{[\sum_{S: i \not\in S}{V(S \cup \{i\}) - V(S)}}] = 3  * (14) + 3 * (6) = 60 \]
+
+  Finally, we have the Banzhaf Index:
+  $ \beta
+      = (\frac{14}{60}, \frac{14}{60}, \frac{14}{60}, \frac{6}{60}, \frac{6}{60}, \frac{6}{60})
+      = (\frac{7}{30}, \frac{7}{30}, \frac{7}{30}, \frac{3}{30}, \frac{3}{30}, \frac{3}{30})$ \\
+  %
+  \end{enumerate}
+
+%
+\newpage
+\item Find an example of a monotonic simple game, with four players, which is not a weighted majority game for ANY of the values of $[q; w_{1},\; w_{2},\; w_{3},\; w_{4}]$. [Note: a \emph{monotonic} TU game is a game in which $S \subseteq T \rightarrow V(S) \le V(T)$.] \\
+
+\textit{Solution}:\\
+
+The game is defined by its characteristic function: \\
+
+\begin{tabular}{| l | r || l | r || l | r || l | r |}
+\hline
+$S$            & $V(S)$ & $S$              & $V(S)$ & $S$                & $V(S)$ & $S$                  & $V(S)$ \\
+\hline\hline
+$\emptyset$    & $0$    & $\overline{4}$   & $0$    & $\overline{2,3}$   & $0$    & $\overline{1,2,4}$   & $1$    \\
+\hline
+$\overline{1}$ & $0$    & $\overline{1,2}$ & $1$    & $\overline{2,4}$   & $0$    & $\overline{1,3,4}$   & $1$    \\
+\hline
+$\overline{2}$ & $0$    & $\overline{1,3}$ & $0$    & $\overline{3,4}$   & $1$    & $\overline{2,3,4}$   & $1$    \\
+\hline
+$\overline{3}$ & $0$    & $\overline{1,4}$ & $0$    & $\overline{1,2,3}$ & $1$    & $\overline{1,2,3,4}$ & $1$    \\
+\hline
+\end{tabular} \\
+
+This game is simple because all payoffs are $0$ or $1$. This game is monotonic since $V(S) \le V(T)$ if $S \subseteq T$ for any $S, T$. The game cannot be a weighted majority game; if the game were a wighted majority game, a contradiction would arise. \\
+
+Suppose the game is a weighted majority game with a non-negative quota $q$ and non-negative weight $w_{i}$ for each player $i$. Based on the characteristic function, then the following statements must hold (not a complete list):
+\begin{align*}
+w_{1} + w_{2} &\ge q \\
+w_{1} + w_{3} &<   q \\
+w_{2} + w_{4} &<   q \\
+w_{3} + w_{4} &\ge q
+\end{align*}
+Further, we can deduce:
+\begin{align*}
+w_{1} + w_{2} \ge q, \; w_{1} + w_{3} < q \quad &\implies \quad w_{2} > w_{3} \\
+w_{3} + w_{4} \ge q, \; w_{2} + w_{4} < q \quad &\implies \quad w_{3} > w_{2}
+\end{align*}
+However, $w_{2} > w_{3}$ and $w_{3} > w_{2}$ cannot both be true, thus we have a contradiction - the game cannot be a weighted majority game. \\
+
+%
+\newpage
+\item If one considers the concept of Shapley Value limited to the universe of simple games (i.e., the Shapley-Shubik power index), the 4 axioms - in particular the additivity axiom - characterizing it are somewhat unsatisfactory. This is because the sum of two simple games is not necessarily a simple game.
+
+Dubey (IJGT, 1975) suggested the following axiom as a replacement for additivity, in the case where $\mathcal{G}^{n}$ is replaced by $\mathcal{S}^{n}$ (the set of all n-player monotonic simple games). First, for any simple games $S_{1} = (N, V_{1})$ and $S_{2} = (N, V_{2})$ define
+\[ S_{1} \vee S_{2}   = (N, V^{*}) \text{ where } V^{*}(T) = \max(V_{1}(T), V_{2}(T)) \text{ and} \]
+\[ S_{1} \wedge S_{2} = (N, V_{*}) \text{ where } V_{*}(T) = \min(V_{1}(T), V_{2}(T)) \]
+
+Dubey's axiom is then
+\[ F(S_{1}) + F(S_{2}) = F(S_{1} \vee S_{2}) + F(S_{1} \wedge S_{2}) \]
+
+Show that the Shapley-Shubik power index actually satisfies this axiom.
+
+HINT: Consider any ordering $R$, and any player $i$. Then consider the nine cases
+  \renewcommand{\labelenumii}{\roman{enumii})}
+  \begin{enumerate}
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 1, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 1$
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 1, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 0$ \\
+  \dots
+  \setcounter{enumii}{8}
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 0, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 0, \quad V_{2}(P_{R}(i)) = 0$
+  \end{enumerate}
+
+In each case, show that
+\begin{multline*}
+V_{1}(P_{R}(i) \cup \{i\}) - V_{1}(P_{R}(i)) + V_{2}(P_{R}(i) \cup \{i\}) - V_{2}(P_{R}(i)) = \\
+    V^{*}(P_{R}(i) \cup \{i\}) - V^{*}(P_{R}(i)) + V_{*}(P_{R}(i) \cup \{i\}) - V_{*}(P_{R}(i))
+\end{multline*}
+
+\textit{Solution}:\\
+
+Note that
+\begin{multline*}
+V_{1}(P_{R}(i) \cup \{i\}) - V_{1}(P_{R}(i)) + V_{2}(P_{R}(i) \cup \{i\}) - V_{2}(P_{R}(i)) = \\
+    V^{*}(P_{R}(i) \cup \{i\}) - V^{*}(P_{R}(i)) + V_{*}(P_{R}(i) \cup \{i\}) - V_{*}(P_{R}(i))
+\end{multline*}
+is equivalent to 
+\begin{multline*}
+V_{1}(P_{R}(i) \cup \{i\}) - V_{1}(P_{R}(i)) + V_{2}(P_{R}(i) \cup \{i\}) - V_{2}(P_{R}(i)) = \\
+    \max(V_{1}(P_{R}(i) \cup \{i\}), V_{2}(P_{R}(i) \cup \{i\})) - \max(V_{1}(P_{R}(i)), V_{2}(P_{R}(i))) \; + \\
+    \min(V_{1}(P_{R}(i) \cup \{i\}), V_{2}(P_{R}(i) \cup \{i\})) - \min(V_{1}(P_{R}(i)), V_{2}(P_{R}(i)))
+\end{multline*} \\
+
+  \renewcommand{\labelenumii}{\roman{enumii})}
+  \begin{enumerate}
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 1, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 1$
+  \begin{align*}
+  (1) - (1) + (1) - (1)  &=  \max((1), (1)) - \max((1), (1)) + \min((1), (1)) - \min((1), (1)) \\
+  0                      &=  1 - 1 + 1 - 1 \\
+  0                      &=  0 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 1, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 0$
+  \begin{align*}
+  (1) - (1) + (1) - (0)  &=  \max((1), (1)) - \max((1), (0)) + \min((1), (1)) - \min((1), (0)) \\
+  1                      &=  1 - 1 + 1 - 0 \\
+  1                      &=  1 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 1$
+  \begin{align*}
+  (1) - (0) + (1) - (1)  &=  \max((1), (1)) - \max((0), (1)) + \min((1), (1)) - \min((0), (1)) \\
+  1                      &=  1 - 1 + 1 - 0 \\
+  1                      &=  1 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 1, \quad V_{2}(P_{R}(i) \cup \{i\}) = 0, \quad V_{2}(P_{R}(i)) = 0$
+  \begin{align*}
+  (1) - (1) + (0) - (0)  &=  \max((1), (0)) - \max((1), (0)) + \min((1), (0)) - \min((1), (0)) \\
+  0                      &=  1 - 1 + 0 - 0 \\
+  0                      &=  0 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 0$
+  \begin{align*}
+  (1) - (0) + (1) - (0)  &=  \max((1), (1)) - \max((0), (0)) + \min((1), (1)) - \min((0), (0)) \\
+  2                      &=  1 - 0 + 1 - 0 \\
+  2                      &=  2 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 0, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 1$
+  \begin{align*}
+  (0) - (0) + (1) - (1)  &=  \max((0), (1)) - \max((0), (1)) + \min((0), (1)) - \min((1), (1)) \\
+  0                      &=  1 - 1 + 0 - 0 \\
+  0                      &=  0 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 1, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 0, \quad V_{2}(P_{R}(i)) = 0$
+  \begin{align*}
+  (1) - (0) + (0) - (0)  &=  \max((1), (0)) - \max((0), (0)) + \min((1), (0)) - \min((0), (0)) \\
+  1                      &=  1 - 0 + 0 - 0 \\
+  1                      &=  1 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 0, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 1, \quad V_{2}(P_{R}(i)) = 0$
+  \begin{align*}
+  (0) - (0) + (1) - (0)  &=  \max((0), (1)) - \max((0), (0)) + \min((0), (1)) - \min((0), (0)) \\
+  1                      &=  1 - 0 + 0 - 0 \\
+  1                      &=  1 \\
+  \end{align*}
+
+  \item $V_{1}(P_{R}(i) \cup \{i\}) = 0, \quad V_{1}(P_{R}(i)) = 0, \quad V_{2}(P_{R}(i) \cup \{i\}) = 0, \quad V_{2}(P_{R}(i)) = 0$
+  \begin{align*}
+  (0) - (0) + (0) - (0)  &=  \max((0), (0)) - \max((0), (0)) + \min((0), (0)) - \min((0), (0)) \\
+  0                      &=  0 - 0 + 0 - 0 \\
+  0                      &=  0 \\
+  \end{align*}
+  \end{enumerate}
+%
+\end{enumerate}
+%
+\end{document}

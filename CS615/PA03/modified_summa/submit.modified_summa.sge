@@ -1,0 +1,27 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 4
+#$ -N Modified_SUMMA
+#$ -q Common.q
+#$ -o summa_runs.txt
+#$ -e summa_errors.txt
+
+num_processors=4
+file_path="" #/home/thenriod/CS615/PA03/modified_summa/"
+matrix_A_file="identity.txt"
+matrix_B_file="identity.txt"
+matrix_C_file="output.txt"
+
+file1="$file_path$matrix_A_file"
+file2="$file_path$matrix_B_file"
+file3="$file_path$matrix_C_file"
+
+# do the image creation runs
+mpirun -np $num_processors ./Modified_SUMMA "Y" "test_matrix_3.txt" "test_matrix_3.txt" "output.txt"
+mpirun -np $num_processors ./Modified_SUMMA "100" "test_matrix_3.txt" "test_matrix_3.txt" "output.txt"
+mpirun -np $num_processors ./Modified_SUMMA "4" "test_matrix_3.txt" "test_matrix_3.txt" "output.txt"
+
+
+#MPI_Datatype dtype;
+#MPI_Type_contiguous( 2, MPI_INT, &dtype );
+#MPI_Commit( &dtype )

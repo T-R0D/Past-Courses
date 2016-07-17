@@ -1,0 +1,602 @@
+                             ---------------------
+                                    CS  202
+
+                                 FINAL PROJECT
+                             ---------------------
+
+
+-----------------
+Table of Contents
+-----------------
+
+Section  1:  Summary
+Section  2:  Description of "21"
+Section  3:  General Requirements
+Section  4:  Number of Players per Game
+Section  5:  Command Line
+Section  6:  Command Line Examples
+Section  7:  Seeding the RNG
+Section  8:  Necessary Classes
+Section  9:  Output File Format
+Section 10:  Output File Timestamp
+Section 11:  Output File Dealer and Player Data
+Section 12:  Open Source Code
+Section 13:  Testing
+Section 14:  Naming
+Section 15:  Turn In
+
+
+--------------------
+Section  1:  Summary
+--------------------
+
+
+This project involves the design and implementation of a C++ program to play the
+game of "21" [or "Blackjack" as it is also known].
+
+The C++ program you write must be an object-oriented program, not a procedural
+C++ program.
+
+The program must involve a dealer [also known as "the house"] and one, two or
+three players.
+
+The program must incorporate certain language features, as described below.
+
+
+--------------------------------
+Section  2:  Description of "21"
+--------------------------------
+
+For this project, we will be using a simplified version of "21", described by
+the rules below.
+
+The description of the game of "21" given below is roughly based on the
+information found at this URL:
+
+    http://www.learnpoker21.com/21_rules.html
+
+"21" is a card game with the objective of getting the highest total without
+exceeding 21.
+
+Each player plays independently against the dealer and tries to beat the
+dealer.
+
+Players do not compete against one another.
+
+If the player's cards total is higher than 21, it is called a "bust" and the
+dealer wins, even if the dealer also has a bust.
+
+If the player and the dealer have the same point value it counts as a draw [a
+tie] and is called a "push."
+
+A hand of "21" is calculated as follows:
+
+    --- Cards of 2 - 10 are worth their face value
+
+    --- Jack, Queen and King are also worth 10 each
+
+    --- The Ace card is worth 11, unless it causes
+        the player to bust his hand and in this case
+        the Ace card can be counted as 1, if that is
+        better for the player
+
+    --- A 2-card hand with an ace and a 10 value card
+        is called a "blackjack" and it is a winning
+        hand unless the dealer also has a 2-card hand
+        consisting of an ace and a 10 value card, in
+        this case it is a draw ["push"]
+
+For the purposes of your program, each new game shall proceed as follows.
+
+A game is played between a dealer and one, two or three players.
+
+Player 1 is always present, Players 2 and 3 come and go.
+
+Use the random number generator to determine the number of players for each
+hand of "21".
+
+Each participant (the dealer and the players are all considered participants)
+plays one hand.
+
+The dealer deals two cards to herself/himself.
+
+The dealer then deals two cards to each player that is present.
+
+Player 1 is always present.
+
+If Player 2 is in the game, the dealer then deals two cards for her/him.
+
+If Player 3 is in the game, the dealer then deals two cards for her/him.
+
+The first card dealt to the dealer is known to all players, the other is hidden
+from them.
+
+Play then moves from player to player, in sequence.  For example, if there are
+three players, Player 1 goes first, then Player 2 goes next, and finally Player
+3 goes last.
+
+Each player has these options:
+
+    Hit   - Get another card
+    Stand - Stay with the current hand
+
+The player finishes their hand when s/he decides to stand or if s/he busts.
+
+After all players have played their hand, the dealer reveals her/his card that
+was kept "face down" and starts to play the hand.
+
+House rules say that the dealer must continue to hit until s/he has at least 17.
+
+Players have no preprogrammed strategy, as they are controlled by the human
+operator of the program.
+
+
+---------------------------------
+Section  3:  General Requirements
+---------------------------------
+
+
+The program you write must be an object-oriented program, using classes designed
+by you.
+
+The program must use three of the following data structure classes:
+
+    linked list [Chapter 17]
+    queue       [Chapter 18]
+    stack       [Chapter 18]
+    vector      [Chapter 7, Section 7.11 and Chapter 16, Section 16.5]
+
+You have three choices:
+
+    (1)  You may use the "linked list", "queue" and "stack" code
+         provided by the author from our textbook, if you wish.
+         Some modification to that code will probably be needed
+         before you can use it in your program.
+
+    (2)  You may use the "linked list", "queue" and "stack" code
+         provided by the compiler through the C++ Standard Template
+         Library (STL).
+
+    (3)  You may write your own "linked list", "queue" and "stack"
+         classes and use those.
+
+The program shall play "21" games and save the results of each game in one of
+the following data structures:
+
+    linked list [Chapter 17]
+    queue       [Chapter 18]
+    stack       [Chapter 18]
+
+The choice of which data structure you use is left to you.
+
+Upon exiting the program, and without prompting the user, the data structure
+containing the history of games played shall be dumped to an output file, the
+name of which shall be passed to the program through the command line.
+
+Error detection and error recovery shall be a part of the program.  For example,
+division by zero should be detected and avoided.
+
+As another example, if an output file cannot be opened, the user should be
+notified as early as possible.
+
+You are required to use the try-catch error handling method of Chapter 16 in
+your program.
+
+
+---------------------------------------
+Section  4:  Number of Players per Game
+---------------------------------------
+
+
+For each game, Player 1 is always present.
+
+However, Players 2 and 3 may not always be present.
+
+Use the random number generator to determine if Players 2 and 3 will participate
+in next game, and note that Player 3 cannot participate in a game if Player 2
+does not.
+
+
+-------------------------
+Section  5:  Command Line
+-------------------------
+
+The user interface for your program shall consist of everything we have used
+this semester:
+
+    (1) the command line
+    (2) menus
+    (3) prompting the user for input
+
+The name of your program shall be "blackjack."
+
+The program shall have the following command line interface:
+
+    blackjack historyfile rngseed
+
+where,
+
+    blackjack   = the name of the program
+
+    historyfile = name of the output text file
+                  that holds the history of all
+                  games played
+
+    rngseed     = integer value for seeding the
+                  random number generator
+
+If "rngseed" is a negative number, use the current time from the computer as the
+seed for the RNG.
+
+If "rngseed" is a non-negative number, use that number as the seed for the RNG.
+
+----------------------------------
+Section  6:  Command Line Examples
+----------------------------------
+
+Examples:
+
+    blackjack   games.txt     -1
+    blackjack   21games.txt   0
+    blackjack   mygames.txt   13457
+    blackjack   /?
+
+The first command line dumps the output to a file named "games.txt".  The value
+-1 indicates the random number generator should be seeded with the current time
+from the computer.
+
+The second command line dumps the output to a file named "21games.txt".  The
+value 0 indicates the random number generator should be seeded with the value 0.
+
+The third command line dumps the output to a file named "mygames.txt".  The
+value 13457 indicates the random number generator should be seeded with the
+value 13457.
+
+The fourth command line displays the help screen and does not put the program
+into the game play state.
+
+----------------------------
+Section  7:  Seeding the RNG
+----------------------------
+
+To seed the RNG means to make a call to this function:
+
+    void srand ( unsigned int seed );
+
+URL:  http://www.cplusplus.com/reference/clibrary/cstdlib/srand
+
+The parameter that is passed to the srand() function is called the "seed."
+
+You only have to call the srand() function one time in your program, this
+usually occurs when the program begins execution.
+
+The logic might go like this.
+
+If the value of the "rngseed" command line parameter is less than zero, then
+call
+
+    srand ( static_cast<unsigned int> ( time(NULL) ) );
+
+Otherwise, call srand() using with the integer passed on the command line.
+
+Use the atoi() function to convert the command line parameter to an integer and
+note that srand() requires that an "unsigned int" be passed to it.
+
+
+------------------------------
+Section  8:  Necessary Classes
+------------------------------
+
+
+Write and use the following classes:
+
+    Card class
+    Dealer class
+    Deck class
+    Hand class
+    DisplayHand class
+    Participant class [this must be an abstract class]
+    Player class
+
+You may design and use more classes, but the list above must be implemented and
+used as a minimum.
+
+Your program shall implement a "Card class" that keeps track of the information
+about a card.
+
+Each card shall be part of a standard deck of 52 cards [there is no joker in the
+deck].
+
+Each card has a suit:
+
+    Clubs
+    Diamonds
+    Hearts
+    Spades
+
+and a value:
+
+    Ace
+    Two
+    Three
+    Four
+    Five
+    Six
+    Seven
+    Eight
+    Nine
+    Ten
+    Jack
+    Queen
+    King
+
+Your program shall implement a "Hand class" that keeps track of the information
+about a hand of cards.  A hand of "21" must contain a minimum of two cards, but
+may contain more.  The number of cards in a hand is indeterminate; that is,
+it varies.
+
+The dealer and all players always have exactly one hand.  [This is a departure
+from the game of "21" played in casinos where players are allowed to play
+multiple hands.]
+
+Your program shall implement a "DisplayHand class" that graphically displays a
+hand of cards.
+
+The "DisplayHand class" can either be written by you, or supplied by some
+student in the class as an "open source" piece of code that everyone is allowed
+to use.
+
+Your program shall use a random number generator to select the cards that are
+dealt.  Duplication of cards is not allowed during a game, unless the deck is
+restocked due to being exhausted.
+
+Each game shall start with a fresh deck of 52 cards that has been shuffled.
+
+Your program shall implement a "Deck class" to manage the deck of 52 cards.
+
+Functionality of the Deck class shall include, but is not limited to:
+
+    --- shuffling the deck [using a random number generator]
+    --- dealing cards [to the dealer and to the player(s)]
+    --- keeping track of which cards have been dealt and which have not
+    --- restocking the deck when all cards have been dealt
+        [an unlikely event, but one that must be handled]
+
+Your program shall implement a mandatory abstract class called the "Participant
+class", to manage the dealer's and players' hands of cards.
+
+Your program shall implement two mandatory classes:  the "Dealer class" and the
+"Player class".
+
+The Dealer class shall keep track of, and manage, the dealer's hand for a single
+game.
+
+The Player class shall keep track of, and manage, a player's hand for a single
+game.
+
+The Dealer and Player classes shall be derived from the Participant class.
+
+Here is some of the information contained in a Participant class:
+
+    --- how many hands this participant has [you would need this
+        information to extend the program to allow a player to
+        play multiple hands]
+
+    --- outcome associated with each hand [points, win/lose]
+
+You may choose to, or find it necessary to, implement other information in the
+Participant class.
+
+
+-------------------------------
+Section  9:  Output File Format
+-------------------------------
+
+
+The output file shall have the following format.
+
+There shall be five [5] records for each game.
+
+For each game,
+
+    Record 1:  Timestamp
+
+    Record 2:  Dealer data
+
+    Record 3:  Player 1 data
+
+    Record 4:  Player 2 data
+
+    Record 5:  Player 3 data
+
+Games should be dumped to the output file in the order in which they were
+played.
+
+Thus, the timestamps should be in increasing order, with the earliest time at
+the start of the output file and the timestamp for the last game played at the
+end.
+
+Each record should be written to its own line.
+
+There shall be a blank line separating the records.
+
+There shall be two blank lines separating the games.
+
+Here is what the output file will look like:
+
+
+Game 1:
+    Timestamp
+
+    Dealer data
+
+    Player 1 data
+
+    Player 2 data
+
+    Player 3 data
+
+
+Game 2:
+    Timestamp
+
+    Dealer data
+
+    Player 1 data
+
+    Player 2 data
+
+    Player 3 data
+
+
+Game 3:
+    Timestamp
+
+    Dealer data
+
+    Player 1 data
+
+    Player 2 data
+
+    Player 3 data
+
+
+and so on.
+
+----------------------------------
+Section 10:  Output File Timestamp
+----------------------------------
+
+
+Below is some example code that shows how to generate a timestamp.
+
+URL:  http://www.cplusplus.com/reference/clibrary/ctime/localtime
+
+    #include <stdio.h>
+    #include <time.h>
+
+    int main ()
+    {
+      time_t rawtime;
+      struct tm * timeinfo;
+
+      time ( &rawtime );
+      timeinfo = localtime ( &rawtime );
+      printf ( "Current local time and date: %s", asctime (timeinfo) );
+
+      return 0;
+    }
+
+
+-----------------------------------------------
+Section 11:  Output File Dealer and Player Data
+-----------------------------------------------
+
+
+The dealer always plays a single hand per game.
+
+For that hand, show:
+
+    --- number of cards
+    --- suit and rank for each card
+    --- total of cards
+
+Player 1 always exists and plays a single hand per game.
+
+For that hand, show:
+
+    --- number of cards
+    --- suit and rank for each card
+    --- total of cards
+    --- outcome of hand:  won or lost
+
+For the current game, Player 2 may not exist.
+
+If Player 2 exists, s/he plays a single hand per game.
+
+For that hand, show:
+
+    --- number of cards
+    --- suit and rank for each card
+    --- total of cards
+    --- outcome of hand:  won or lost
+
+If Player 2 does not exist, print the following to the output file:
+
+    PLAYER 2 DID NOT PARTICIPATE IN THIS GAME.
+
+For the current game, Player 3 may not exist.
+
+If Player 3 exists, s/he plays a single hand per game.
+
+For that hand, show:
+
+    --- number of cards
+    --- suit and rank for each card
+    --- total of cards
+    --- outcome of hand:  won or lost
+
+If Player 3 does not exist, print the following to the output file:
+
+    PLAYER 3 DID NOT PARTICIPATE IN THIS GAME.
+
+
+-----------------------------
+Section 12:  Open Source Code
+-----------------------------
+
+You are required to write all the code in your program.
+
+The exception to this rule is the use of "open source code" provided by someone
+in our class.
+
+At least one student [in our class] has created a "menu class" and you are
+allowed to use it.
+
+At least one student [in our class] is currently creating a "DisplayHand class"
+and you are allowed to use it.
+
+Other such utility classes may be developed and put into the public domain [of
+our classroom] that you will be able to use in your program.
+
+CAVEAT:  If you choose to use open source code in your program and that code
+         turns out to contain bugs, it is not the fault of the provider of the
+         open source solution.
+
+         You, as the developer of your program, are solely responsible for the
+         correctness of your program.
+
+
+--------------------
+Section 13:  Testing
+--------------------
+
+Thoroughly test your program.
+
+
+-------------------
+Section 14:  Naming
+-------------------
+
+The name of the output file is passed to the program as the first argument on
+the command line.
+
+Name the program "blackjack."
+
+--------------------
+Section 15:  Turn In
+--------------------
+
+Submit to the drop box a .zip file that contains your MS Visual Studio project.
+
+Before zipping, you may shrink the size of the directory structure by deleting
+certain subdirectories.  You may delete the IPCH subdirectory.
+
+If you built in Debug mode, you may delete the Debug subdirectories (you will
+find two in the project).
+
+If you built in Release mode, you may delete the Release subdirectories (you
+will find two in the project).
+
+The MS Visual Studio project must build without warnings and without errors to
+receive credit.

@@ -1,0 +1,52 @@
+#ifndef __LIGHTSENSING_NXC__
+#define __LIGHTSENSING_NXC__
+
+#define RIGHT_LIGHT IN_4
+#define LEFT_LIGHT IN_2
+
+typedef struct {
+  int rightSensorValue;
+  int leftSensorValue;
+  mutex ownership;
+  bool readingIsValid;
+} LightReading;
+
+
+bool gUseLightSensing = true;
+LightReading gLightReading;
+
+
+task TASK_LightSensing();
+void debugOutputLight(const int pRightLightVal, const int pLeftLightVal);
+
+
+task TASK_LightSensing() {
+  SetSensorLight(RIGHT_LIGHT);
+  SetSensorLight(LEFT_LIGHT);
+
+  gLightReading.readingIsValid = false;
+
+  while (gUseLightSensing) {
+    gLightReading.rightSensorValue = Sensor(RIGHT_LIGHT);
+    Wait(MS_20);
+    gLightReading.leftSensorValue = Sensor(LEFT_LIGHT);
+    Wait(MS_20);
+    gLightReading.readingIsValid = true;
+    
+//    debugOutputLight(gLightReading.rightSensorValue, gLightReading.leftSensorValue);
+  }
+
+  gLightReading.readingIsValid = false;
+}
+
+
+void debugOutputLight(const int pRightLightVal, const int pLeftLightVal) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Light Reading:");
+  NumOut(4, LCD_LINE2, pRightLightVal);
+  NumOut(4, LCD_LINE3, pLeftLightVal);
+  Wait(MS_100);
+}
+
+
+#endif //__LIGHTSENSING_NXC__

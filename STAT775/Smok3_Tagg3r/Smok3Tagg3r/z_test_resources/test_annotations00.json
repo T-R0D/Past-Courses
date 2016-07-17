@@ -1,0 +1,23 @@
+{
+  "image_file" : "image-2019.jpeg",
+  "annotations" : [
+    {
+      "x" : 1850,
+      "y" : 265,
+      "width" : 25,
+      "height" : 30
+    },
+    {
+      "x" : 800,
+      "y" : 300,
+      "width" : 25,
+      "height" : 30
+    },
+    {
+      "x" : 10,
+      "y" : 300,
+      "width" : 40,
+      "height" : 30
+    }
+  ]
+}

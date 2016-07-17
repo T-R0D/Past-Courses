@@ -1,0 +1,26 @@
+App,Participant,Mode,Condition,Block,Phrase,Text,Reduced_text,Correct_guesses,Incorrect_guesses,KSPC,Time
+LetterGuessingExperiment,P00,One_guess,C00,B01,1,the pen is mightier than the sword,----p-- ---m-g--------------------,30,4,1.0,40500
+LetterGuessingExperiment,P00,One_guess,C00,B01,2,our housekeeper does a thorough job,our-hou--k------d----a t-oro-------,21,14,1.0,52487
+LetterGuessingExperiment,P00,One_guess,C00,B01,3,dormitory doors are locked at midnight,d-r-i---y-doors-----loc-------m-------,25,13,1.0,58004
+LetterGuessingExperiment,P00,One_guess,C00,B01,4,watch out for low flying objects,wat-- o--------ow-fly----obj----,19,13,1.0,55290
+LetterGuessingExperiment,P00,One_guess,C00,B01,5,a yard is almost a meter,a yar-----alm-----------,16,8,1.0,38492
+LetterGuessingExperiment,P01,One_guess,C00,B01,1,please provide your date of birth,pl--s--prov----y----d------------,24,9,1.0,79687
+LetterGuessingExperiment,P01,One_guess,C00,B01,2,an excellent way to communicate,an exc-ll----w-y----com-u------,17,14,1.0,62930
+LetterGuessingExperiment,P01,One_guess,C00,B01,3,a steep learning curve in riding a unicycle,a s-eep-lea------------i--r-d----a-uni-----,27,16,1.0,100980
+LetterGuessingExperiment,P01,One_guess,C00,B01,4,i like to play tennis,i l-------pl-y-te----,13,8,1.0,42360
+LetterGuessingExperiment,P01,One_guess,C00,B01,5,all work and no play,all-wo-k-an---------,12,8,1.0,39080
+LetterGuessingExperiment,P02,One_guess,C00,B01,1,win first prize in the contest,win firs--priz--in---e-c-nt-s-,11,19,1.0,93948
+LetterGuessingExperiment,P02,One_guess,C00,B01,2,coalition governments never work,c-al----- gov-------s-n-v---wor-,19,13,1.0,60285
+LetterGuessingExperiment,P02,One_guess,C00,B01,3,the world is a stage,----wo-l-----a s-a--,13,7,1.0,37635
+LetterGuessingExperiment,P02,One_guess,C00,B01,4,we drive on parkways,we-dr-------p-r-w---,13,7,1.0,41308
+LetterGuessingExperiment,P02,One_guess,C00,B01,5,interesting observation was made,int-re------ob-er------ was-ma--,17,15,1.0,57847
+LetterGuessingExperiment,P03,One_guess,C00,B01,1,every saturday he folds the laundry,ev-ry sa-------he f-ld--t----------,21,14,1.0,153527
+LetterGuessingExperiment,P03,One_guess,C00,B01,2,my bank account is overdrawn,m--bank-ac---------ov-------,19,9,1.0,105752
+LetterGuessingExperiment,P03,One_guess,C00,B01,3,dolphins leap high out of the water,dolph----le-p-h--- ou--------------,23,12,1.0,99861
+LetterGuessingExperiment,P03,One_guess,C00,B01,4,the food at this restaurant,t---fo---a--t-i--r---au----,18,9,1.0,77432
+LetterGuessingExperiment,P03,One_guess,C00,B01,5,raindrops keep falling on my head,rai-dr---------------------------,28,5,1.0,61576
+LetterGuessingExperiment,P04,One_guess,C00,B01,1,three two one zero blast off,t-r---two-----z-r--blas-----,17,11,1.0,129944
+LetterGuessingExperiment,P04,One_guess,C00,B01,2,a dog is the best friend of a man,a do--i--t-----s----------f------,25,8,1.0,81637
+LetterGuessingExperiment,P04,One_guess,C00,B01,3,i am going to a music lesson,- a--g--------a-music le----,16,12,1.0,78321
+LetterGuessingExperiment,P04,One_guess,C00,B01,4,the sun rises in the east,t---su--ri----i--t-------,18,7,1.0,50872
+LetterGuessingExperiment,P04,One_guess,C00,B01,5,everyone wants to win the lottery,e---yo---wan---t--win------------,23,10,1.0,73968

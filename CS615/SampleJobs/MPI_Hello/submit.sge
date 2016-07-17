@@ -1,0 +1,7 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 10
+#$ -N MPI_Hello
+#$ -q Common.q
+
+/usr/lib64/openmpi/bin/mpirun -np $NSLOTS ./hello

@@ -1,0 +1,10 @@
+V3 7
+FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/decoder_2_4.v" 2013/12/08.14:53:34 J.36
+MO work/decoder_2_4 \
+      FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/decoder_2_4.v"
+FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/deecoder2_4_top.v" 2013/12/08.14:56:31 J.36
+MO work/deecoder2_4_top_v \
+      FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/deecoder2_4_top.v" \
+      MI decoder_2_4
+FL $XILINX/verilog/src/glbl.v 2007/05/18.13:22:56 J.36
+MO work/glbl FL $XILINX/verilog/src/glbl.v

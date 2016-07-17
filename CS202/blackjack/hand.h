@@ -1,0 +1,172 @@
+#ifndef ___HAND_H___
+#define ___HAND_H___
+
+////////////////////////////////////////////////////////////////////////////////
+// 
+//  Title:      hand.h
+//  Created By: Terence Henriod
+//  Course:     CS202
+//
+//  Summary:    
+// 
+//  Last Modified: 
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+//============================================================================//
+//= Header Files =============================================================//
+//============================================================================//
+
+// headers/namespaces
+
+#include <iostream>
+#include <fstream>
+#include <conio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <vector>
+#include <list>
+#include "Ttools.h"
+#include "card.h"
+using namespace std;
+
+
+
+#pragma warning (disable : 4996)   // disables strcpy, strcat warnings in Visual
+
+
+
+//============================================================================//
+//= Class Definition =========================================================//
+//============================================================================//
+
+  // Constants /////////////////////////////////////////////////////////////////
+
+
+
+class hand
+   {
+   
+private:
+  // Data Members //////////////////////////////////////////////////////////////
+  vector<int> cardValues;
+
+protected:
+  vector<card> theCards;
+
+public:
+  // Constructor(s) ////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: hand   [0]
+// Summary:       The default constructor. Creates a new instance of a hand
+//                object. Initially empty.
+//
+// Parameters:    none
+// Returns:       none
+//
+////////////////////////////////////////////////////////////////////////////////
+  hand();
+
+
+  // Destructor ////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: ~hand
+// Summary:       The destructor. Currently nothing to destruct.
+//
+// Parameters:    none
+// Returns:       none
+//
+////////////////////////////////////////////////////////////////////////////////
+  ~hand();
+
+private:
+  // Internal/Maintenance //////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: sort
+// Summary:       ***NOT YET IMPLEMENTED***  Orders the hand, first by suit, 
+//                then by rank within suit. Intended to be for convenient
+//                hand display.
+//
+// Parameters:    none
+// Returns:       none
+//
+////////////////////////////////////////////////////////////////////////////////
+  void sort();
+  
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: updateVals
+// Summary:       Updates the point values held by the point value vector. 
+//                Really only necessary for the case that an Ace needs to be 
+//                worth 1 instead of 11.
+//
+// Parameters:    none
+// Returns:       none
+//
+////////////////////////////////////////////////////////////////////////////////
+  void updateVals();
+
+public:
+  // Accessors /////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: score
+// Summary:       Returns the current score value of the hand.
+//
+// Parameters:    none
+// Returns:       unsigned int   The total score of the hand. 
+//
+////////////////////////////////////////////////////////////////////////////////
+  unsigned int score() const;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: numC
+// Summary:       Returns the number of cards held in the hand.
+//
+// Parameters:    none
+// Returns:       int   The number of cards in the hand.
+//
+////////////////////////////////////////////////////////////////////////////////
+  int numC();
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: selectCard
+// Summary:       Returns the card from the hand at the given index position.
+//                Allows for single cards to be viewed.
+//
+// Parameters:    none
+// Returns:       card   The selected card from the hand.
+//
+////////////////////////////////////////////////////////////////////////////////
+  card selectCard( const int ndx );
+
+  // Mutators //////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name: addCard
+// Summary:       Adds the given card to the hand.
+//
+// Parameters:    card &newCard   The card to be added to the hand.
+// Returns:       none
+//
+////////////////////////////////////////////////////////////////////////////////
+  void addCard( const card &newCard );
+
+  // Overloaded Operators //////////////////////////////////////////////////////
+  void operator += ( const card &rhs );
+
+  friend ostream& operator<< ( ostream &out, hand &object );
+   };
+
+#endif

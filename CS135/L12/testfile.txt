@@ -1,0 +1,2 @@
+The integer value is: 45
+This is the next line of text.

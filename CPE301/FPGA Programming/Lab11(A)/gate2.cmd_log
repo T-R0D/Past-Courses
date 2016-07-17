@@ -1,0 +1,7 @@
+xst -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -intstyle ise -ifn gate2.xst -ofn gate2.syr
+xst -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -intstyle ise -ifn gate2.xst -ofn gate2.syr
+ngdbuild -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -intstyle ise -dd _ngo -nt timestamp -uc "gate2.ucf" -p xc3s500e-fg320-5 "gate2.ngc" gate2.ngd
+map -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -intstyle ise -p xc3s500e-fg320-5 -cm area -pr b -k 4 -c 100 -o gate2_map.ncd gate2.ngd gate2.pcf
+par -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -w -intstyle ise -ol std -t 1 gate2_map.ncd gate2.ncd gate2.pcf
+trce -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -intstyle ise -e 3 -s 5 -xml gate2 gate2.ncd -o gate2.twr gate2.pcf -ucf gate2.ucf
+bitgen -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/Lab11(A).ise" -intstyle ise -f gate2.ut gate2.ncd

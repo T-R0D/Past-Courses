@@ -1,0 +1,58 @@
+/*
+  Name: move
+  Process: Moves the player inside the game area
+  Function Input/Parameters: initial x & y positions, and the way the peice is moving
+  Function Output/Parameters: none
+  Function Output/Returned: none
+  Device Input: none
+  Device Output: none
+  Dependencies: none
+  Developer: Nicholas Smith
+*/
+
+bool move( int &xPos, int &yPos, int xVect, int yVect )
+   {
+    // initialize function/variables
+    bool moved = false;
+    int oldX = xPos, oldY = yPos;
+
+    // if x vector is live, test for acceptable movement limits
+    if( ( xVect != 0 ) // is meant to move
+          && ( xPos + xVect >= SCRN_MIN_X ) // won't go off left side of screen 
+               && ( xPos + xVect <= SCRN_MAX_X )  ) // won't go off right side of screen
+       {
+        // cover up the old marker
+	setColor( COLOR_BLACK, COLOR_WHITE, SET_BRIGHT );
+        printCharAt( oldX, oldY, SPACE );
+
+        // reset the x position
+        xPos = xPos + xVect;
+
+        // set moved flag to indicate success
+        moved = true;
+       }
+
+    // if y vector is live, test for acceptable movement limits
+    else if( ( yVect != 0 ) // is meant to move
+               && ( yPos + yVect >= SCRN_MIN_Y ) // won't go off top of screen
+                    && ( yPos + yVect <= SCRN_MAX_Y ) ) // won't go off bottom of screen
+       {
+        // cover up the old marker
+	setColor( COLOR_BLACK, COLOR_WHITE, SET_BRIGHT );
+        printCharAt( oldX, oldY, SPACE );
+
+        // reset the y position
+        yPos = yPos + yVect;
+
+        // set the moved flag to indicate success
+        moved = true;
+       }
+
+    // print the marker at the specified location
+    setColor( COLOR_WHITE, COLOR_BLUE, SET_BRIGHT );
+    printCharAt( xPos, yPos, MARKER_CHAR );
+
+    // return successful move
+    return moved;
+   }
+

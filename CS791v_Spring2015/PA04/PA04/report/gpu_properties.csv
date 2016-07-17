@@ -1,0 +1,12 @@
+ATTRIBUTE,VALUE
+Device Name,GeForce GTX 780
+Cuda Version,3.5
+Multiprocessors,12
+CUDA Cores,2304
+Clock Rate,954 mHz
+Total Global Memory, -1074 MB
+Warp Size,32
+Max Threads/Block,1024
+Max Threads-Dim,1024 x 1024 x 64
+Max Grid Size,2147483647 x 65535 x 65535
+SharedMem/Block,49 KB

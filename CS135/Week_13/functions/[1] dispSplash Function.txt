@@ -1,0 +1,47 @@
+/*
+  Name: dispSplash
+  Process: Displays the splash screen, holds until button is pressed
+  Function Input/Parameters: none
+  Function Output/Parameters:None 
+  Function Output/Returned: None
+  Device Input: none
+  Device Output/Monitor: Displays Title, and developer's names
+  Dependencies: formatted_console_io_v18
+  Developer: Nicholas Smith
+*/
+void dispSplash ();
+
+
+
+void dispSplash ()
+    {
+    // Initialize Variables
+       // Set initial x & y positions
+
+       // Set other Variables
+
+
+    // Set color for Title and Background
+       // Funtion: setColor
+
+
+    // Clear screen
+       // Function: clearScreen
+
+
+    // Display Title
+       // printStringAt || printCharAt
+
+    // Display Developer's Names
+       // Change x & y positions
+
+    // Hold Screen For User
+       // Change x & y postions
+
+       // print string to tell user what to do
+	  // printStringAt
+       
+       // Hold screen
+          // waitForInput
+
+    }

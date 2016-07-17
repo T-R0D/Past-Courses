@@ -1,0 +1,32 @@
+/*
+  Name: isFileThere
+  Process: Checks to see if level file is there
+  Function Input/Parameters: file name, ifstream object
+  Function Output/Parameters: none
+  Function Output/Returned: Bool, whethier or not file is there
+  Device Input: none
+  Device Output: none
+  Dependencies: none
+  Developer: Nicholas Smith
+*/
+bool isFileThere ( const string &fileName );
+
+
+
+
+
+
+
+
+bool isFileThere ( const string &fileName )
+     {
+      // Initalize variables
+      ifstream fin;	
+      fin.clear();
+      fin.open( fileName.c_str() );
+      if ( !fin.good() )
+         {
+         printStringAt ( uprLeftX, uprLeftY, "<<You have fallen into a pit of spikes. YOU ARE DEAD>>", LEFT );
+	 waitForInput(FIXED_WAIT);
+         return 0;
+      }

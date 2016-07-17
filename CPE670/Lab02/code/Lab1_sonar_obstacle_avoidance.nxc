@@ -1,0 +1,75 @@
+int REVTIME = MS_500;
+int TURNTIME = MS_500;
+int NEAR = 8; // cm, sensor can't read as low as 3
+
+void sonarAvoidObstacles();
+
+void accel();
+void decel();
+void smoothBackUp(int pPwr, int pRevTime);
+void smoothTurnLeft(int pPwr, int pTurnTime);
+void smoothTurnRight(int pPwr, int pTurnTime);
+
+task main()
+{
+	SetSensorLowspeed(IN_4);
+
+	while(true)
+	{
+		//Go forward until a sensor is activated
+		accel();
+		OnFwd(OUT_AB, 75);
+		until (SensorUS(IN_4) <= NEAR);
+		
+		int sensorValue = SensorUS(IN_4);
+		
+		PlayTone(sensorValue, MS_500);
+		NumOut(1, LCD_LINE1, sensorValue);
+
+		decel();
+		sonarAvoidObstacles();
+	}
+}
+
+void accel()
+{
+	OnFwd(OUT_AB, 25);
+	Wait(100);
+	OnFwd(OUT_AB, 50);
+	Wait(100);
+}
+
+void decel()
+{
+	OnFwd(OUT_AB, 50);
+	Wait(100);
+	OnFwd(OUT_AB, 25);
+	Wait(100);
+}
+
+void sonarAvoidObstacles()
+{
+		smoothBackUp(75, REVTIME);
+		smoothTurnLeft(75, 2 * TURNTIME);
+}
+
+void smoothBackUp(int pPwr, int pRevTime)
+{
+	OnRev(OUT_AB, pPwr);
+	Wait(pRevTime);
+	Off(OUT_AB);
+}
+
+void smoothTurnLeft(int pPwr, int pTurnTime)
+{
+	OnFwd(OUT_A, pPwr);
+	Wait(pTurnTime);
+	Off(OUT_A);
+}
+
+void smoothTurnRight(int pPwr, int pTurnTime)
+{
+	OnFwd(OUT_B, pPwr);
+	Wait(pTurnTime);
+	Off(OUT_B);
+}

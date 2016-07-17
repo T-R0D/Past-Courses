@@ -1,0 +1,107 @@
+Assignment # 4
+
+Table of Contents
+
+    Section 1:  Background
+    Section 2:  Function Requirements
+    Section 3:  Function Restrictions
+    Section 4:  Function Design
+    Section 5:  Naming
+    Section 6:  Resources
+    Section 7:  Turn In
+
+----------------------
+Section 1:  Background
+----------------------
+
+A positive integer can always be factored.
+
+For example:
+
+    24 = 3 * 8 = 3 * 2 * 4 = 3 * 2 * 2 * 2
+
+2 is a factor and 3 is a factor, and so are 1, 4, 6, 8, 12 and 24.
+
+The factors of 24 are:  1, 2, 3, 4, 6, 8, 12 and 24
+
+Some numbers have a lot of factors, some have only two.
+
+The factors of 11 are:  1 and 11
+
+---------------------------------
+Section 2:  Function Requirements
+---------------------------------
+
+    (a)  The .cpp and .hpp files you submit must build
+         without warnings and without errors in MS Visual
+         Studio 2010 to receive credit.
+
+    (b)  The .cpp file shall contain the definition of a
+         function that uses recursion to generate all the
+         factors of a positive integer.
+
+    (c)  Use the usual file and function header (comments)
+         in your .cpp and .hpp files.
+
+    (d)  The .hpp file shall contain the prototype for the
+         function defined in the .cpp file.  Put an include
+         guard around the .hpp file.
+
+    (e)  The prototype for the recursive function is:
+
+             unsigned int * find_factors_using_recursion ( unsigned int );
+
+    (f)  The function shall have no interactive component.
+         This means  the user shall not have to interact with
+         the function.  There shall be no menus, no data entry
+         and no pauses.
+
+    (g)  The return value from the function shall be a pointer
+         to an array containing all the factors of the input
+         parameter.
+
+---------------------------------
+Section 3:  Function Restrictions
+---------------------------------
+
+The .cpp and .hpp files for this assignment shall declare and define a recursive
+function for generating all factors of a number.
+
+The function you write will be included in an existing project, with a driver
+program that will call the funcion.
+
+Consequently, the function prototype given above must be used exactly as it is
+written.
+
+---------------------------
+Section 4:  Function Design
+---------------------------
+
+Write a high-level pseudocode description of your design, put it in a plain text
+file, submit it with the .cpp and .hpp files.
+
+See the write-up for Assignment 3 for an example.
+
+------------------
+Section 5:  Naming
+------------------
+
+Name the files you submit:  asmt04.cpp - source code
+                            asmt04.hpp - header file
+                            asmt04.txt - design file
+
+---------------------
+Section 6:  Resources
+---------------------
+
+There are no resources for this assignment.
+
+-------------------
+Section 7:  Turn In
+-------------------
+
+Create a .zip file that includes asmt04.cpp, asmt04.hpp and asmt04.txt and
+submit it to the drop box
+
+The .cpp and .hpp files you submit must build without warnings and without
+errors in MS Visual Studio 2010 to receive credit.

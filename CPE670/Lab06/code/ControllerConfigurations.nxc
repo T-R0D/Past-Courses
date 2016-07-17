@@ -1,0 +1,59 @@
+#ifndef __CONTROLLERCONFIGURATIONS_NXC__
+#define __CONTROLLERCONFIGURATIONS_NXC__
+
+/**
+ * All-Around Usefuls
+ */
+#define MUX_PORT IN_1
+
+/**
+ * Distances
+ */
+#define OBSTACLE_RADIUS 15 // cm(ish)
+
+
+/**
+ * Colors 
+ */
+#define HOME_COLOR 0
+#define LINE_COLOR 0
+#define END_OF_LINE_COLOR 5
+#define FIELD_COLOR 13
+#define BLUE_BALL_COLOR 2
+#define RED_BALL_COLOR 7
+
+
+/**
+ * Lights/Reflectances
+ */
+#define WHITE_LIGHT_LOWER_THRESHOLD 40 // units: ??? (0 - 75 apparently)
+#define BLACK_LIGHT_UPPER_THRESHOLD 27 // units: ???(0 - 75 apparently)
+#define MUXED_WHITE_LOWER 28
+#define MUXED_BLACK_UPPER 19
+
+
+/**
+ * Orientations
+ */
+#define ARENA_NORTH 76
+#define ARENA_NE 123
+#define ARENA_EAST 186 // red side
+#define ARENA_SE 248
+#define ARENA_SOUTH 293
+#define ARENA_SW 333
+#define ARENA_WEST 0 // blue side
+#define ARENA_NW 36
+
+
+/**
+ * Sounds
+ */
+#define LOUD_SOUND_PRESENT 60  // units: ??? (0 - 100)
+
+
+/**
+ * RF Tag Values
+ */
+
+
+#endif __CONTROLLERCONFIGURATIONS_NXC__

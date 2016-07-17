@@ -1,0 +1,947 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KOMA-Script Presentation
+% LaTeX Template
+% Version 1.1 (18/10/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Authors:
+% Marius Hofert (marius.hofert@math.ethz.ch)
+% Markus Kohm (komascript@gmx.info)
+% Described in the PracTeX Journal, 2010, No. 2
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+paper=128mm:96mm, % The same paper size as used in the beamer class
+fontsize=11pt, % Font size
+pagesize, % Write page size to dvi or pdf
+parskip=half-, % Paragraphs separated by half a line
+]{scrartcl} % KOMA script (article)
+
+\linespread{1.12} % Increase line spacing for readability
+
+%------------------------------------------------
+% Colors
+\usepackage{xcolor}	 % Required for custom colors
+% Define a few colors for making text stand out within the presentation
+\definecolor{mygreen}{RGB}{44,85,17}
+\definecolor{myblue}{RGB}{34,31,217}
+\definecolor{mybrown}{RGB}{194,164,113}
+\definecolor{myred}{RGB}{255,66,56}
+% Use these colors within the presentation by enclosing text in the commands below
+\newcommand*{\mygreen}[1]{\textcolor{mygreen}{#1}}
+\newcommand*{\myblue}[1]{\textcolor{myblue}{#1}}
+\newcommand*{\mybrown}[1]{\textcolor{mybrown}{#1}}
+\newcommand*{\myred}[1]{\textcolor{myred}{#1}}
+%------------------------------------------------
+
+%------------------------------------------------
+% Margins
+\usepackage[ % Page margins settings
+includeheadfoot,
+top=3.5mm,
+bottom=3.5mm,
+left=5.5mm,
+right=5.5mm,
+headsep=6.5mm,
+footskip=8.5mm
+]{geometry}
+%------------------------------------------------
+
+%------------------------------------------------
+% Fonts
+\usepackage[T1]{fontenc}	 % For correct hyphenation and T1 encoding
+\usepackage{lmodern} % Default font: latin modern font
+%\usepackage{fourier} % Alternative font: utopia
+%\usepackage{charter} % Alternative font: low-resolution roman font
+\renewcommand{\familydefault}{\sfdefault} % Sans serif - this may need to be commented to see the alternative fonts
+%------------------------------------------------
+
+%------------------------------------------------
+% Various required packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} % Required for theorem environments
+\usepackage{bm} % Required for bold math symbols (used in the footer of the slides)
+\usepackage{graphicx} % Required for including images in figures
+\usepackage{tikz} % Required for colored boxes
+\usepackage{booktabs} % Required for horizontal rules in tables
+\usepackage{multicol} % Required for creating multiple columns in slides
+\usepackage{lastpage} % For printing the total number of pages at the bottom of each slide
+\usepackage[english]{babel} % Document language - required for customizing section titles
+\usepackage{microtype} % Better typography
+\usepackage{tocstyle} % Required for customizing the table of contents
+%------------------------------------------------
+
+%------------------------------------------------
+% Slide layout configuration
+\usepackage{scrpage2} % Required for customization of the header and footer
+\pagestyle{scrheadings} % Activates the pagestyle from scrpage2 for custom headers and footers
+\clearscrheadfoot % Remove the default header and footer
+\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily} % Font settings for the header and footer
+
+% Sets vertical centering of slide contents with increased space between paragraphs/lists
+\makeatletter
+\renewcommand*{\@textbottom}{\vskip \z@ \@plus 1fil}
+\newcommand*{\@texttop}{\vskip \z@ \@plus .5fil}
+\addtolength{\parskip}{\z@\@plus .25fil}
+\makeatother
+
+% Remove page numbers and the dots leading to them from the outline slide
+\makeatletter
+\newtocstyle[noonewithdot]{nodotnopagenumber}{\settocfeature{pagenumberbox}{\@gobble}}
+\makeatother
+\usetocstyle{nodotnopagenumber}
+
+\AtBeginDocument{\renewcaptionname{english}{\contentsname}{\Large Outline}} % Change the name of the table of contents
+%------------------------------------------------
+
+%------------------------------------------------
+% Header configuration - if you don't want a header remove this block
+\ihead{
+\hspace{-2mm}
+\begin{tikzpicture}[remember picture,overlay]
+\node [xshift=\paperwidth/2,yshift=-\headheight] (mybar) at (current page.north west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=2\headheight,top color=mygreen!64,bottom color=mygreen]{}; % Colored bar
+\node[below of=mybar,yshift=3.3mm,rectangle,shade,inner sep=0pt,minimum width=128mm,minimum height =1.5mm,top color=black!50,bottom color=white]{}; % Shadow under the colored bar
+shadow
+\end{tikzpicture}
+\color{white}\runninghead} % Header text defined by the \runninghead command below and colored white for contrast
+%------------------------------------------------
+
+%------------------------------------------------
+% Footer configuration
+\setlength{\footheight}{8mm} % Height of the footer
+\addtokomafont{pagefoot}{\footnotesize} % Small font size for the footnote
+
+\ifoot{% Left side
+\hspace{-2mm}
+\begin{tikzpicture}[remember picture,overlay]
+\node [xshift=\paperwidth/2,yshift=\footheight] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=3pt,top color=mygreen,bottom color=mygreen]{}; % Green bar
+\end{tikzpicture}
+\myauthor\ \raisebox{0.2mm}{$\bm{\vert}$}\ \myuni % Left side text
+}
+
+\ofoot[\pagemark/\pageref{LastPage}\hspace{-2mm}]{\pagemark/\pageref{LastPage}\hspace{-2mm}} % Right side
+%------------------------------------------------
+
+%------------------------------------------------
+% Section spacing - deeper section titles are given less space due to lesser importance
+\usepackage{titlesec} % Required for customizing section spacing
+\titlespacing{\section}{0mm}{0mm}{0mm} % Lengths are: left, before, after
+\titlespacing{\subsection}{0mm}{0mm}{-1mm} % Lengths are: left, before, after
+\titlespacing{\subsubsection}{0mm}{0mm}{-2mm} % Lengths are: left, before, after
+\setcounter{secnumdepth}{0} % How deep sections are numbered, set to no numbering by default - change to 1 for numbering sections, 2 for numbering sections and subsections, etc
+%------------------------------------------------
+
+%------------------------------------------------
+% Theorem style
+\newtheoremstyle{mythmstyle} % Defines a new theorem style used in this template
+{0.5em} % Space above
+{0.5em} % Space below
+{} % Body font
+{} % Indent amount
+{\sffamily\bfseries} % Head font
+{} % Punctuation after head
+{\newline} % Space after head
+{\thmname{#1}\ \thmnote{(#3)}} % Head spec
+	
+\theoremstyle{mythmstyle} % Change the default style of the theorem to the one defined above
+\newtheorem{theorem}{Theorem}[section] % Label for theorems
+\newtheorem{remark}[theorem]{Remark} % Label for remarks
+\newtheorem{algorithm}[theorem]{Algorithm} % Label for algorithms
+\makeatletter % Correct qed adjustment
+%------------------------------------------------
+
+%------------------------------------------------
+% The code for the box which can be used to highlight an element of a slide (such as a theorem)
+\newcommand*{\mybox}[2]{ % The box takes two arguments: width and content
+\par\noindent
+\begin{tikzpicture}[mynodestyle/.style={rectangle,draw=mygreen,thick,inner sep=2mm,text justified,top color=white,bottom color=white,above}]\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ % Box formatting
+\begin{minipage}[t]{#1}
+#2
+\end{minipage}
+};
+\end{tikzpicture}
+\par\vspace{-1.3em}}
+%------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\mytitle}{On the Uniqueness of the Shapley Value \\ by P. Dubey\cite{uniqueness-of-shapley-value}} % Title
+\newcommand*{\runninghead}{} % Running head displayed on almost all slides
+\newcommand*{\myauthor}{Terence Henriod} % Presenters name(s)
+\newcommand*{\mydate}{\today} % Presentation date
+\newcommand*{\myuni}{} % University or department
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+% Title slide - you may have to tweak a few of the numbers if you wish to make changes to the layout
+\thispagestyle{empty} % No slide header and footer
+\begin{tikzpicture}[remember picture,overlay] % Background box
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=mygreen,bottom color=mygreen]{}; % Change the height of the box, its colors and position on the page here
+\end{tikzpicture}
+% Text within the box
+\begin{flushright}
+\vspace{0.6cm}
+\color{white}\sffamily
+{\bfseries\Large\mytitle\par} % Title
+\vspace{0.5cm}
+\normalsize
+\myauthor\par % Author name
+\mydate\par % Date
+\vfill
+\end{flushright}
+
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % No slide header and footer
+
+\small\tableofcontents % Change the font size and print the table of contents - it may be useful to shrink the font size further if the presentation is full of sections
+% To exclude sections/subsections from the table of contents, put an asterisk after \(sub)section like so: \section*{Section Name}
+
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%================================================
+%------------------------------------------------
+
+\section{Abstract}
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection*{A Unique Value for Superadditive Games}
+
+Shapley showed that there is a unique value for the class of all superadditive games $D$ that follows certain, intuitive axioms
+
+Shapley raised the question of whether an axiomatic foundation could be found for such a value in the context of the subclass $C$ or simple games alone.
+
+This paper shows that this is possible.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection*{Theorem 1: A proof of Shapley's Theorem for all games}
+
+The paper give a new, simple proof of Shapley's Theorem for the set of all games $G$, not just superadditive ones
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection*{Theorem 2: A unique value using an axiomatic variant}
+
+For the classes of games $C^{\prime}$ and $C^{\prime\prime}$, Shapley's axioms do not specify a unique value.
+
+However, with some modification to one of the axioms (specifically the third), a unique value is obtained, and it happens to be the Shapley Value.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection*{Notation}
+
+N-player games may be referred to by their characteristic function, since that is the differentiating feature.
+
+$\mathbb{R}$ and $\mathbb{Z}$ are the sets of Real and Integer numbers, respectively
+
+Lowercase $s$, $t$, and $n$ might be used in place of $|S|, |T|,$ and $|N|$ respectively. Hopefully it is intuitive where this has occurred.
+
+For a vector $v$, $v_{i}$ is the $i^{th}$ component of $v$.
+
+$i$ is used as both a number and a name for the same player in $N$.
+
+$\vee$ and $\wedge$ are the join and meet operations, respectively.
+
+\clearpage
+%------------------------------------------------
+
+%================================================
+%------------------------------------------------
+
+\section{Introduction}
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{A value for the power of players in $\mathbf{n}$-Player Cooperative Games}
+
+An \textit{n-person cooperative game in characteristic function form} $G$ is defined as a pair
+\[ G = (N, v)\]
+where $N$ is a set of $n$ players
+\[ N = (1, \dots, n) \]
+and $v$ is a function
+\[ v: 2^{N} \rightarrow \mathbb{R} \text{ such that } v(\emptyset) = 0 \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\begin{itemize}
+\item $v(S)$ represents the "worth"/"value"/"power" of coalition $S$
+\item Given a game $G$, or more specifically a characteristic function $v$, it is desirable to know the "value" of each player in the game.
+\end{itemize}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+
+Let the set of all $n$ player games be $G$. We also refer to a game as its characteristic function $v$
+
+Let $\phi$ be a function
+\[ \phi: G \rightarrow \mathbb{R}^{n} \]
+where $\phi_{i}(v)$ is the value of the $i^{th}$ player in the game.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Preliminary Concepts}
+
+\begin{enumerate}
+\item A coalition $S$ is called a \emph{carrier} for the game if
+	\[ v(T) = v(T \cap S) \qquad \forall \qquad T \subset N \]
+    
+\item If $\pi: N \rightarrow N$ is a permutation of $N$, then the game with characteristic function $\pi v$ is defined by
+	\[ \pi_{v}(T) = v(\pi(T)) \qquad \forall \qquad T \subset N \]
+    
+\item Given any two games $v_{1}$, $v_{2}$,  $v_{1} + v_{2}$ is defined by
+	\[ (v_{1} + v_{2})(T) = v_{1}(T) + v_{2}(T) \]
+\end{enumerate}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Three Axioms}
+
+Shapley defined 3 axioms (in class we covered 4) that a $\phi$ should satisfy. 
+\begin{enumerate}
+\item If S is a carrier for $v$, then $\sum_{i \in S}{\phi_{i}(v)} = v(S)$
+    
+\item For any permutation $\pi$ and $i \in N$,
+	\[ \phi_{\pi(i)}(\pi v) = \phi_{i}(v) \]
+    
+\item If $v_{1}$ and $v_{2}$ are any games, then
+	\[ \phi(v_{1} + v_{2}) = \phi(v_{1}) + \phi(v_{2}) \]
+\end{enumerate}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Theorem 1}
+
+\begin{theorem}[Shapley (1953)]
+There is a unique function $\phi$, defined on $G$, which satisfies the axioms S1, S2, S3.
+\end{theorem}
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection*{Proof of Theorem 1}
+
+\begin{proof}
+For each coalition $S$ and a constant $c$, define the game $v_{S, c}$ by
+	\[ v_{S, c} = \begin{cases} 0 \text{ if } S \not\subset T \\
+                                c \text{ if } S \subset T
+                  \end{cases}\]
+                  
+Then $S$ and its supersets must all be carriers for $v_{S, c}$ (since only $S$ and its supersets can have an intersection with $S$ that is $S$, see the definition of a carrier)
+\end{proof}
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+By the First Axiom, we have
+	\[ \sum_{i \in S}{\phi_{i}(v_{S, c})} = c \]
+and
+	\[ \sum_{i \in S \cup \{j\}}{\phi_{i}(v_{S, c})} = c \text{ if } j \not\in S \]
+
+Together, these imply
+	\[ \phi_{j}(v_{S,c}) = 0 \text{ if } j \not\in S \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+By the Second Axiom, if $\pi$ is a permutation that interchanges $i$ and $j$ ($i, j \in S$) and leaves the other players fixed, then $\pi v_{S,c} = v_{S,c}$ (because the makeup of $S$ is unchanged), thus
+	\[ \phi_{i}(v_{S,c}) = \phi_{j} (v_{S,c}) \text{ for any } i,j \in S \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Therefore, $\phi_{v_{S,c}}$ is unique (since every way to "make" $v_{S,c}$ is the same one) if $\phi$ exists, and is given by
+	\[ \phi_{i}(v_{S,c}) = \begin{cases} c / |S| &\text{ if } i \in S \\
+                                         0       &\text{ if } i \not\in S
+                           \end{cases} \]
+because, the players of $S$ are all interchangeable, in a sense, they should have similar value
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+The games $\{v_{S, c} | S \neq \emptyset, S \subset N, c \in \mathbb{R}\}$ form an additive basis for the vector space $G$ (Shapley [1953] proves this).
+
+For our purposes, we can consider the games
+	\[ \{v^{\prime}_{S, c} | S \neq \emptyset, S \subset N, c \in \mathbb{R}\} \]
+which are defined by
+	\[ v^{\prime}_{S, c} = \begin{cases} 0 \text{ if } S \neq T \\
+                                         c \text{ if } S = T
+                  \end{cases}\]
+
+Any game $v$ can be written as a finite sum of games of type $v^{\prime}_{S,c}$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+The uniqueness of $\phi$ follows, using the Third Axiom, if we can show that each $\phi(v^{\prime}_{S,c})$ is unique.
+
+We can prove this by induction.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Assume that $\phi(v^{\prime}_{S,c})$ is unique for $|S| = k + 1, \dots, n$.
+
+If we show that this is true for $|S| = k$ $\rightarrow$ mission accomplished.
+
+Let $S_{1}, \dots S_{l}$ be all of the proper supersets of $S$.
+
+Since $|S_{i}| > k, 1 \le i \le l$, $\phi(v^{\prime}_{S,c})$ is unique by the inductive assumption.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Since any game can be written as a sum of $v^{\prime}$ type games, We have
+	\[ v_{S,c} = v^{\prime}_{S,c} + v^{\prime}_{S_{1},c} + \dots + v^{\prime}_{S_{l},c} \]
+(Recall that the $v^{\prime}_{S,c}$ corresponds to our $k$ case.)
+
+And so, by the Third Axiom, we have
+	\[ \phi(v_{S,c}) = \phi(v^{\prime}_{S,c}) + \phi(v^{\prime}_{S_{1},c}) + \dots + \phi(v^{\prime}_{S_{l},c}) \]
+    
+Since we know that all of the terms in the sum except for $\phi(v^{\prime}_{S,c})$ are unique, then $\phi(v^{\prime}_{S,c})$ must also be unique.
+    
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Thus, $\phi$ satisfies all three axioms and is unique for any game in $G$ if it exists.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Implicit in the proof of uniqueness of $\phi$ is a recipe for constructing $\phi$.
+
+Suppose that for $s = |S| = k + 1, \dots, n$
+	\[ \phi_{i}(v_{S,c}) = \begin{cases}
+                               \frac{(s - 1)!(n - s)!}{n!} * c &\text{ if } i \in S \\
+    				           - \frac{s}{n - s} \frac{(s - 1)!(n - s)!}{n!} * c &\text{ if } i \not\in S
+                  \end{cases} \]
+                  
+Using
+\[ \phi(v_{S,c}) = \phi(v^{\prime}_{S,c}) + \phi(v^{\prime}_{S_{1},c}) + \dots + \phi(v^{\prime}_{S_{l},c}) \]
+
+it follows that for $|S| = k$
+\[ \phi_{i}(v^{\prime}_{S,c}) = \begin{cases}
+                               \frac{(s - 1)!(n - s)!}{n!} * c &\text{ if } i \in S \\
+    				           - \frac{s}{n - s} \frac{(s - 1)!(n - s)!}{n!} * c &\text{ if } i \not\in S
+                  \end{cases} \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Now, it is straightforward to obtain $\phi(v)$ for any $v$.
+
+Since
+	\[ v = \sum_{S \subset N: S \neq \emptyset}{v^{\prime}_{S, v(S)}} \]
+
+then by the Third Axiom
+	\[ \phi{v} = \sum_{S \subset N: S \neq \emptyset}{\phi(v^{\prime}_{S, v(S)})} \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Simplifying the right hand side we have
+	\[ \phi_{i}(v) = \sum_{i \in T, T\subset N}{\frac{(t - 1)!(n - t)!}{n!} [ v(T) - v(T - \{i\})} ] \]
+
+This is the Shapley value (perhaps written differently than we saw in class, but it is the same).
+
+We can verify that this formula satisfies the three axioms (which we did do in class).
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\section{Uniqueness for Subclasses}
+
+(Major takeaways:
+\begin{itemize}
+\item Since the Shapley Value was show to exist on G, we just need to show its uniqueness.
+
+\item Games can be represented by linear combinations of games of type $v_{S,c}$
+\end{itemize}
+
+)
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Subclasses of $G$}
+
+What if we want to apply the Three Axioms to subclasses of $G$, call them $K$.
+
+Then the Second Axiom is only required to hold for $\pi v \in K \text{ if } v \in K$.
+
+The Third Axiom is only required to hold if $v_{1} + v_{2} \in K \text{ if } v_{1}, v_{2} \in K$
+
+But can the Axioms, restricted in this way, specify a unique $\phi$ for $K$?
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Clearly, by looking at the Shapley value on $G$, we can see that there is at least one $\phi$ for these subclasses, but is it the only one?
+
+For any $K$, we can use a procedure similar to the previous proof, we can establish the uniqueness of $\phi$ on $K$.
+
+It is not necessary to do so by starting with $\phi$ defined on $G$ and restricting its domain to $K$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Case: $K = D$}
+
+Consider the case $K = D$, where $D$ is the subclass of $G$ representing all superadditive games in $G$.
+
+Recall that a superadditive game is one for which 
+	\[ v(S \cup T) \ge v(S) + v(T) \text{ for } S \cap T = \emptyset \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Start by demonstrating that a basis for $G$ is formed by
+	\[ \{v_{S,c} | S \neq \emptyset, S \subset N, c \in \mathbb{R} \} \]
+
+Suppose that $v^{\prime}_{S,1}$ is in the linear span of
+	\[ \{v_{T, 1}| T \supset S \} \text{ when } |S| = k + 1, \dots, n \]    
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Let $|S^{*} = k|$.
+
+Since
+	\[ v^{\prime}_{S^{*},1} = v_{S^{*},1} - v^{\prime}_{S^{*}_{1},1} - \dots - v^{\prime}_{S^{*}_{},1} \]
+    
+where $S^{*}_{1}, \dots, S^{*}_{j}$ are all proper supersets of $S^{*}$ and since by our inductive assumption each $v_{S^{*}_{i},1}$ is in the linear span of $\{v_{T, 1}| T \supset S^{*}_{i} \}$, it follows that $v^{\prime}_{S^{*},1}$ is in the linear span of $\{v_{T, 1}| T \supset S^{*}_{i} \}$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Knowing that $\{v^{\prime}_{S,1} | S \neq \emptyset, S \subset N \}$ spans $G$, we can see that $\{v_{S,1} | S \neq \emptyset, S \subset N \}$ also spans $G$.
+
+In fact, $\{v_{S,1} | S \neq \emptyset, S \subset N \}$ also spans $G$ because
+\[ |\{v_{S,1} | S \neq \emptyset, S \subset N \}| =
+	|\{v^{\prime}_{S,1} | S \neq \emptyset, S \subset N \}| \]
+which already was known to be a basis of $G$.
+
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+We can express a game in $D$ uniquely as $v = \sum{c_{S}v_{S,1}}$.
+
+Since some of the $c_{S}$ terms could be negative, this would mean that the game is not in $D$, and we can't apply the Third Axiom.
+
+But if we transpose the terms with a negative $c_{S}$ coefficient to the left, we can see that the new equation contains only games in $D$. We can now apply the Third Axiom and prove the uniqueness of $\phi$ on $D$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+To find $c_{S}$ explicitly, express each $v^{\prime}_{S,1}$ in terms of the basis
+	\[ \{ v_{S,1} | S \neq \emptyset, S \subset N \} \]
+using
+	\[ v^{\prime}_{S^{*},1} = v_{S^{*},1} - v^{\prime}_{S^{*}_{1},1} - \dots - v^{\prime}_{S^{*}_{},1} \]
+and induction, then substitute into
+	\[ v = \sum_{T: T\neq \emptyset, T \subset N}{v^{\prime}_{T, v(T)}} \]
+ 
+This way, it can be shown that $c_{S} = \sum_{T \subset S}{(-1)^{s - t} v(T)}$
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+This result allows us to write out an explicit formula for $\phi(v)$, as did Shapley with his Value.
+
+This is not simple though, and it is easier to show by restricting a $\phi$ found on $G$ to $D$
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Case: $K \neq D$}
+
+The following examples (which are not exhaustive), we can prove the uniqueness of $\phi$ on that each class $K$ the same way we did for $G$ in Theorem 1, and construct $phi$ recursively in a similar manner.
+
+\begin{enumerate}
+\item $K = \{v | v(S) = 0 \text{ or } 1, \quad \forall \quad S \subset N\}$, i.e. \emph{simple games}.
+
+\item $K = \{v | v(S) = 0 \text{ if } |S| \le k \text{ for some } k\}$, as well as all simple games with this restriction.
+
+\item The subclass of games where certain players $i_{1}, \dots, i_{k}$ are distinguished and $v(S) = 0 \text{ if } \{i_{1}, \dots, i_{k}\} \not\subset S$, as well as all simple games with this restriction.
+\end{enumerate}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{\emph{Remarks}}
+
+\begin{enumerate}
+\item The convex cone generated by simple games with veto players (players $i$ such that $v(S) = 0 \text{ if } i \not\in S \quad \forall \quad S \subset N$) is the subclass $L$ of all games with non-empty cores. Therefore, case $C$ shows that the axioms specify the Shapley value on $L$. In fact, this is true for convex cones generated by the class of games in any one of $A, B, C$ or any of their unions.
+
+\item For any $P \subset G, |P| < \inf$, we can determine a finite number of steps whether or not the axioms uniquely specify the Shapley value on $P$; and if they do not, we can construct different $\phi$s on $P$ which do satisfy the axioms. This corresponds to checking if a system of linear equations has a unique solution. The size of the linear system can be reduced with a procedure mimicing the proof of Theorem 1 (not discussed).
+\end{enumerate}
+
+\clearpage
+%------------------------------------------------
+
+%================================================
+%------------------------------------------------
+
+\section{Monotonic Simple Games}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Definitions}
+
+Recall that $C$ is the set of all simple games.
+
+Let $C^{\prime}$ be the subclass of all \emph{monotonic simple games} in $G$, i.e., games for which $v(S) = 1 \implies v(T) = 1, \quad \forall \; S \subset T$.
+
+Let $C^{\prime\prime}$ be the subclass of all \emph{superadditive simple games} in $G$.
+
+Note that $C^{\prime\prime} \subset C^{\prime}$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{An Example of the Insufficiency of the Three Axioms}
+
+The Three Axioms \emph{do not} uniquely specify the Shapley value on $C^{\prime}$ or $C^{\prime\prime}$ if $|N| > 2$.
+
+There are games in $C^{\prime}$ and $C^{\prime\prime}$ for which the Shapley Value is determined by the First and Second Axioms, the games of type $v_{S,1}$.
+
+However, we want to define the Shapley Value for all of these games
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Take a game that is not of type $v_{S,1}$ in $C^{\prime\prime}$ (and thus $C^{\prime}$ also). An example is:
+	\[ v(N - \{i\}) = v(N - \{j\}) = v(N) = 1 \]
+    \[ v(S) = 0 \text{ for all other } S \]
+    \[ i, j \in N, i \neq j, |N| > 2 \]
+
+Let $\phi$ be the following:
+	\[ \phi_{i}(v) = \phi_{j}(v) = p \text{ for } p \in \mathbb{R} \]
+    \[ \phi_{k}(v) = \frac{1 - 2p}{|N - \{i, j\}|} \text{ for } k \neq i, j \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+The game satisfies the First Axiom because 
+	\[ \sum_{i \in N}{\phi_{i}(v)} = v(N) \]
+
+The game satisfies the Second Axiom because players maintain the same value, even if the game is permuted.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+This $\phi$ also satisfies the Third Axiom vacuously. Suppose
+	\[ v + v^{\prime} = v^{\prime\prime} \text{ for } v^{\prime}, v^{\prime\prime} \in C^{\prime} \]
+    
+But
+	\[v(N) = 1 \implies v^{\prime\prime} = 1 \implies v^{\prime}(N) = 0 \implies v^{\prime} = 0 \text{ (because it is monotonic)}\]
+
+Also, if 
+	\[ v - v^{\prime} = v^{\prime\prime} \text{ for } v^{\prime}, v^{\prime\prime} \in C^{\prime} \]
+
+then two cases arise...
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\begin{enumerate}
+\item $v^{\prime\prime}(N) = 1$ \\
+$v^{\prime}(N) \text{ must } = 0 \implies v^{\prime} = 0$
+
+\item $v^{\prime\prime}(N) = 1$ \\
+Therefore $v^{\prime\prime} = 0$ and $v^{\prime\prime} = v^{\prime}$
+\end{enumerate}
+
+The Third Axiom is satisfied for any value of $p$, so $\phi$ is not uniquely specified on $C^{\prime}$ or $C^{\prime\prime}$ by the Three Axioms.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{A Variant of the Third Axiom}
+
+We can replace the Third Axiom with a variant, and  $\phi$ will be uniquely specified on $C^{\prime}$ or $C^{\prime\prime}$, and it will be the Shapley Value (given later).
+
+Note that as we construct the variant, we will do so for $C^{\prime\prime}$. The construction is the same for $C^{\prime}$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Let us start with some definitions. Consider the games $v, v^{\prime} \in C^{\prime\prime}$:
+
+Define the join of the two games ($v \vee v^{\prime}$) to be
+\[(v \vee v^{\prime})(S) = \begin{cases}
+                             1 \text{ if either } v(S) = 1 \text{ or } v^{\prime}(S) = 1 \\
+                             0 \text{ if } v(S) = 0 \text{ and } v^{\prime}(S) = 0
+                             \end{cases} \]
+
+Define the join of the two games ($v \wedge v^{\prime}$) to be
+\[(v \wedge v^{\prime})(S) = \begin{cases}
+                             1 \text{ if } v(S) = 1 \text{ and } v^{\prime}(S) = 1 \\
+                             0 \text{ if either } v(S) = 0 \text{ or } v^{\prime}(S) = 0
+                             \end{cases} \]
+                             
+Note that $v \vee v^{\prime}$ may not always be in $C^{\prime\prime}$, but that $v \wedge v^{\prime}$ is, even for $v, v^{\prime} \in C^{\prime}$.
+                             
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+We can verify that $v \wedge v^{\prime} \in C^{\prime\prime} \text{ for } v, v^{\prime} \in C^{\prime\prime}$.
+
+(By Contradiction) Suppose that $v \wedge v^{\prime} \not\in C^{\prime\prime}$.
+
+Then there are coalitions $S, T \text{ s.t. } S \cap T = \emptyset$ and
+	\[ (v \wedge v^{\prime})(S \cup T) < (v \wedge v^{\prime})(S) + (v \wedge v^{\prime})(T) \]
+    
+But by the definition of $v \wedge v^{\prime}$ this means that either
+	\[ v(S \cup T) < v(S) + v(T) \text{ or} \]
+	\[ v^{\prime}(S \cup T) < v^{\prime}(S) + v^{\prime}(T) \text{ or} \]
+    
+Which is a contradiction. (Consider the possible values for the various terms.)
+    
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+The Variant of the Third Axiom can be stated as:
+
+If $v \vee v^{\prime} \in C^{\prime\prime}$ whenever $v, v^{\prime} \in C^{\prime\prime}$ then
+\[ \phi(v \vee v^{\prime}) + \phi(v \wedge v^{\prime}) = \phi(v) + \phi(v^{\prime}) \]
+
+(For the $C^{\prime}$ version, we may drop the if because $v \vee v^{\prime} \in C^{\prime}$ always.)
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Theorem 2: A Variant of the Third Axiom (Finally)}
+
+\begin{theorem}[Dubey 1975]
+There is a unique function $\phi$, defined on $C^{\prime\prime}$, which satisfies the Three Axioms (the third one being our variant). Moreover, $\phi$ is the Shapley Value.
+\end{theorem}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection*{Proof of Theorem 2}
+
+Every $v \in C^{\prime\prime}$ has a finite number of minimal winning coalitions $S_{1}, \dots S_{k}$, i.e., coalitions $S_{i}$ such that $v(T) = 1$ if $S_{i} \subset T$ for some $i$ and $v(T) = 0$ if $S_{i} \not\subset T \quad \forall \; i$.
+
+Clearly $v = v_{S_{1},1} \vee \dots \vee v_{S_{k},1}$, where the right side is defined associatively.
+
+Let 
+\[ n^{1}(v) = min \{p \in \mathbb{Z}^{+} | \exists \; \text{a minimal winning coalition } T \text{ with } |T| = p \} \text{ and}\]
+\[n^{2}(v) = \text{the number of winning coalitions } T \text{ such that } |T| = n^{1}(v)\]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+The proof of uniqueness of $\phi$ will be on induction of $n^{1}(v)$ and $n^{2}(v)$.
+
+For the case where $n^{1}(v) = n, v = v_{N, 1}$, $\phi$ is obviously unique.
+
+Assume that $\phi(v)$ is unique for all $v$ such that $n^{1}(v) = k + 1, \dots, n$. Then $\phi$ is unique when $n^{1}(v) = k$ and $n^{2}(v) = 1$
+
+Let $S$ be the unique minimal winning coalition with $k$ players. If $S$ is the only minimal winning coalition of $v$, then $v = v_{S,1}$ and $\phi(v)$ is unique. Otherwise, let $S_{1}, \dots S_{m}$ denote all of the minimal winning coalitions that aren't $S$.
+
+Note: $|S_{i}| > k$ for $1 \le i \le m$ since $n^{2}(v) = 1$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Now,
+\[ v = (v_{S_{1},1} \vee \dots \vee v_{S_{m},1}) \vee v_{S,1} \]
+We restate this as
+\[ v = v^{\prime} \vee v_{S,1} \]
+
+It follows that $n^{1}(v^{\prime}) > k$. Therefore $\phi(v^{\prime})$ is unique by the inductive assumption
+
+Further, $n^{1}(v_{S,1} \wedge v^{\prime}) > k$. This is apparent from the definition of $\wedge$. Therefore $\phi(v \vee v^{\prime})$ is also unique by the inductive assumption. Invoke our Third Axiom Variant, then
+\[ \phi(v) = \phi(v^{\prime} \vee v_{S,1}) = \phi(v^{\prime}) + \phi(v_{S,1}) - \phi(v_{S,1} \wedge v^{\prime}) \]
+
+Since all three vectors on the right side are unique, so is $\phi(v)$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Next, suppose that $\phi(v)$ has been shown to be unique for all $v$ such that either
+\[ n^{1}(v) = k + 1, \dots n \text{ or}\]
+\[ n^{1}(v) = k \text{ and } n^{2}(v) = 1, \dots, j \]
+
+Then $\phi(v)$ is unique if we can show that it is so for $n^{1}(v) = k$ and $n^{2}(v) = j + 1$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Let $S_1, \dots, S_{j + 1}$ be the minimal winning coalitions of $v$ with $k$ players each.
+
+Let $T_{1}, \dots, T_{m}$ be all the other minimal winning coalitions of $v$. By the conditions on $n^{1}(v)$ and $n^{2}(v)$ it is clear that $|T_{i}| > k$ for $1 \le i \le m$.
+
+Now,
+\[ v = (v_{T_{1},1} \vee \dots \vee v_{T_{m},1} \vee v_{S_{1},1} \vee \dots \vee v_{S_{j},1}) \vee v_{S_{j+1,1}} \]
+We abbreviate this as
+\[ v = v^{\prime\prime} \vee v_{S_{j+1},1} \]
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+We can now see that $v^{\prime\prime}$ satisfies $n^{1}(v) = k \text{ and } n^{2}(v) = 1, \dots, j$
+
+and $v^{\prime\prime} \wedge v_{S_{j+1,1}}$ satisfies $n^{1}(v) = k + 1, \dots n$. 
+
+Therefore, both $\phi(v^{\prime\prime})$ and $\phi(v^{\prime\prime} \wedge v_{S_{j+1},1})$ are unique by the inductive assumption.
+
+By our Third Axiom Variant, we have
+\[ \phi(v) = \phi(v^{\prime\prime} \vee v_{S_{j+1},1}) = \phi(v_{S_{j+1},1}) - \phi(v^{\prime\prime} \wedge v_{S_{j+1},1}) \]
+
+which proves the uniqueness of $\phi$.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Combining the two results, we see that $\phi(v)$ is unique fr any feasible numbers $n^{1}(v)$ and $n^{2}(v)$, i.e., for all $v \in C^{\prime\prime}$.
+
+It is clear that the Shapley Value $\phi$ on $G$ satisfies the Three Axioms (with our variant) when it is restricted to $C^{\prime\prime}$.
+
+Indeed, $v + v^{\prime} = (v \vee v^{\prime}) + (v \wedge v^{\prime})$ when we consider the $+$ operation to occur in the space of $G$. Hence, by the Third Axiom, $\phi(v) + \phi(v^{\prime}) = \phi(v \vee v^{\prime}) + \phi(v \wedge v^{\prime})$.
+
+Thus, the Shapley Value is \emph{the} unique $\phi$ on $C^{\prime\prime}$ which satisfies the Three Axioms (with our variant).
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+Note that we don't need to depend on the $\phi$ defined on $G$ to establish the existence of $\phi$ on $C^{\prime\prime}$. The implicit proof of uniqueness of $\phi$ on $C^{\prime\prime}$ is a straightforward recursive construction.
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\subsection{Remarks}
+
+\begin{enumerate}
+\item Theorem 2 holds when we replace $c^{\prime\prime}$ with $C^{\prime}$. The proofs are similar and involve stopping the induction at appropriate stages, considering games that take on values in $\{c, 0\}$ instead of $\{1, 0\}$.
+
+Two examples are sub-classes of $C^{\prime}$ (or $C^{\prime\prime}$) for which:
+	\begin{enumerate}
+    \item $v(S) = 0$ if $|S| \le k$ (and $1$ otherwise)
+    \item $v(S) = 0$ if $\{i_{1}, \dots, i_{k}\} \not\subset S$ (and $1$ otherwise)
+	\end{enumerate}
+
+\item By changing the First Axiom, but retaining the Second and our variant of the Third, we can obtain an axiomatic value for the \emph{Banzhaff Value} in its unnormalized form [Lucas, 1973] when it is restricted to $C^{\prime}$ or $C^{\prime\prime}$. This proof is similar to the proof of Theorem 2, and appears in a later paper.
+
+\end{enumerate}
+
+\clearpage
+%------------------------------------------------
+%------------------------------------------------
+
+\thispagestyle{empty} % No slide header and footer
+
+\bibliographystyle{unsrt}
+\bibliography{presentation_2}
+
+\clearpage
+
+%------------------------------------------------
+
+\thispagestyle{empty} % No slide header and footer
+
+\begin{tikzpicture}[remember picture,overlay] % Background box
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=mygreen,bottom color=mygreen]{}; % Change the height of the box, its colors and position on the page here
+\end{tikzpicture}
+% Text within the box
+\begin{flushright}
+\vspace{0.6cm}
+\color{white}\sffamily
+{\bfseries\LARGE Thank you!\par} % Request for questions text
+\vfill
+\end{flushright}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

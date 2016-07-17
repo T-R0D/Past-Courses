@@ -1,0 +1,5 @@
+# begin LFP file C:\Documents and Settings\thenriod\Desktop\FPGA Programming\Lab11(B)\problem3_1.lfp
+designfile problem3_1.v
+parttype xc3s500e-5-fg320
+bus_delimiter 1;
+set_busdelim_onsave 1;

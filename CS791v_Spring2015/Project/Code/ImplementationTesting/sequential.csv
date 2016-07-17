@@ -1,0 +1,13 @@
+Device, Method, Status, |v|, Compute Time, Total Time
+CPU, sequential-FW, complete, 256, 1, 1, 0.146554, 0.146554
+CPU, sequential-FW, complete, 256, 1, 1, 0.146164, 0.146164
+CPU, sequential-FW, complete, 256, 1, 1, 0.146333, 0.146333
+CPU, sequential-FW, complete, 512, 1, 1, 1.16002, 1.16002
+CPU, sequential-FW, complete, 512, 1, 1, 1.1241, 1.1241
+CPU, sequential-FW, complete, 512, 1, 1, 1.16545, 1.16545
+CPU, sequential-FW, complete, 1024, 1, 1, 9.01774, 9.01774
+CPU, sequential-FW, complete, 1024, 1, 1, 8.96119, 8.96119
+CPU, sequential-FW, complete, 1024, 1, 1, 9.1131, 9.1131
+CPU, sequential-FW, complete, 2048, 1, 1, 72.8385, 72.8385
+CPU, sequential-FW, complete, 2048, 1, 1, 72.6779, 72.6779
+CPU, sequential-FW, complete, 2048, 1, 1, 72.6771, 72.6771

@@ -1,0 +1,301 @@
+#ifndef __LAB04_CONTROLLER_NXC__
+#define __LAB04_CONTROLLER_NXC__
+
+#include "HTSMUX-driver.h"
+#include "Team_1_MovementLib.nxc"
+#include "SonarSensing.nxc"
+#include "ColorSensing.nxc"
+#include "LightSensing.nxc"
+#include "SoundSensing.nxc"
+
+
+typedef struct {
+  bool rightLightIsOnLine;
+  bool leftLightIsOnLine;
+  bool colorReadingIsLine;
+} LineFollowingState;
+
+/**
+ * Configuration constants
+ */
+#define OBSTACLE_RADIUS 15 // cm(ish)
+#define LOUD_SOUND_PRESENT 60  // units: ??? (0 - 100)
+#define WHITE_LOWER_LIGHT_THRESHOLD 55 // units: ??? (0 - 75 apparently)
+#define BLACK_UPPER_LIGHT_THRESHOLD 45 // units: ???(0 - 75 apparently)
+
+#define HOME_COLOR 0
+#define LINE_COLOR 0
+#define END_OF_LINE_COLOR 5
+#define FIELD_COLOR 13
+
+
+/**
+ * An enumeration of control strategy values.
+ */
+enum Strategies {
+  PROCEED,
+  ON_THE_LINE,
+  LINE_ON_RIGHT,
+  LINE_ON_LEFT,
+  END_OF_THE_LINE,
+  TURN_AND_WAIT,
+  U_TURN,
+  AT_HOME = 777,  // for funsies!
+  FREAK_OUT
+};
+
+
+task main();
+task TASK_controller();
+void findLine();
+int determineLineFindingStrategy();
+void followLine();
+int determineLineFollowingStrategy(int pTurnCounter);
+void findHome();
+int determineHomeFindingStrategy();
+bool isOnTheLine(int pLightSensorValue);
+bool isNotOnTheLine(int pLightSensorValue);
+LineFollowingState getCurrentLineFollowingState();
+void playVictorySong();
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+  Precedes(
+    TASK_controller,
+    TASK_colorSensing,
+    TASK_LightSensing,
+    TASK_soundSensing
+  );
+
+  gUseSoundSensing = true;
+  gUseLightSensing = true;
+  gUseColorSensing = true;
+}
+
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task TASK_controller() {
+  Wait(SEC_1); // let things like MUX initialize
+
+  findLine();
+
+  followLine();
+
+  findHome();
+
+  StopAllTasks();
+}
+
+
+/**
+ *
+ */
+void findLine() {
+  gUseLightSensing = true;
+  gUseColorSensing = true;
+
+  bool notOnLine = true;
+  setWheelMotion(FORWARD);
+
+  while (notOnLine) {
+    int strategy = determineLineFindingStrategy();
+    
+    switch (strategy) {
+      case  ON_THE_LINE:
+        notOnLine = false;
+        stopWheels();
+        break;
+      case LINE_ON_RIGHT:
+        setSway(RIGHT);
+        break;
+      case LINE_ON_LEFT:
+        setSway(LEFT);
+        break;
+      case PROCEED:
+      default:
+        setWheelMotion(FORWARD);
+        break;
+    }
+  }
+
+  PlayTone(TONE_A3, MS_250);
+  stationaryTurn(LEFT, TURN_30);
+
+  gUseLightSensing = false;
+  gUseColorSensing = false;
+}
+
+
+int determineLineFindingStrategy() {
+  ColorVal colorVal = gColorReading.value;
+  int rightLight = gLightReading.rightSensorValue;
+  int leftLight = gLightReading.leftSensorValue;
+
+  if (colorVal.colorNum == LINE_COLOR) {
+    return ON_THE_LINE;
+  } else /* the line hasn't been found */ {
+    return PROCEED;
+  }
+}
+
+/**
+ *
+ */
+void followLine() {
+
+  /**
+   *  Hopefully, the sensors are not so fidgety that we need
+   *  to track multiple reading states to improve perception
+   *  of the current state.
+   */
+
+  gUseColorSensing = true;
+  gUseLightSensing = true;
+
+  bool onTheLine = true;
+  int turnCounter = 0;
+  
+  while (onTheLine) {
+    int strategy = determineLineFollowingStrategy(turnCounter);
+
+    switch (strategy) {
+      case END_OF_THE_LINE:
+        stopWheels();
+        onTheLine = false;
+        break;
+      case LINE_ON_RIGHT:
+        hardTurn(RIGHT, TURN_30);
+        turnCounter++;
+        break;
+      case LINE_ON_LEFT:
+        hardTurn(LEFT, TURN_30);
+        turnCounter++;
+        break;
+      case FREAK_OUT:
+        turnCounter = 0;
+        moveSetDistance(FORWARD, 1);
+        break;
+      case PROCEED:
+      default:
+        turnCounter = 0;
+        setWheelMotion(FORWARD);
+        break;
+    }
+  }
+
+  PlayTone(TONE_A3, MS_250);
+
+  gUseLightSensing = false;
+  gUseColorSensing = false;
+}
+
+
+int determineLineFollowingStrategy(int pTurnCounter) {
+  LineFollowingState state = getCurrentLineFollowingState();
+  
+  if (gColorReading.value.colorNum == END_OF_LINE_COLOR) {
+    return END_OF_THE_LINE;
+  } else if (pTurnCounter > 10) {
+    return FREAK_OUT;
+  } else if (!state.rightLightIsOnLine && !state.leftLightIsOnLine) {
+    return PROCEED;
+  } else if (state.rightLightIsOnLine) {
+    return LINE_ON_RIGHT;
+  } else if (state.leftLightIsOnLine) {
+    return LINE_ON_LEFT;
+  } else /* An error likely occurred */ {
+    // do nothing until we figure out how to handle this
+    return FREAK_OUT;
+  }
+}
+
+
+/**
+ *
+ */
+void findHome() {
+  // playFileEx(filename (*.rso), volume (0-4), loop (T/F))
+
+  gUseSoundSensing = true;
+
+  bool notHome = true;
+  bool lastTurnDirection = RIGHT;
+  
+  while (notHome) {
+    int strategy = determineHomeFindingStrategy();
+
+    switch (strategy) {
+      case AT_HOME:
+        stopWheels();
+        notHome = false;
+        playVictorySong();
+        break;
+      case PROCEED:
+        setWheelMotion(FORWARD);
+        lastTurnDirection = !lastTurnDirection;
+        break;
+      case TURN_AND_WAIT:
+      default:
+        stationaryTurn(lastTurnDirection, TURN_30);
+        break;
+    }
+  }
+
+  gUseSoundSensing = false;
+}
+
+
+int determineHomeFindingStrategy() {
+  if (gSoundReading.value >= LOUD_SOUND_PRESENT) {
+    return PROCEED;
+  } else {
+    return TURN_AND_WAIT;
+  }
+}
+
+
+bool isOnTheLine(int pLightSensorValue) {
+  return pLightSensorValue < BLACK_UPPER_LIGHT_THRESHOLD;
+}
+
+
+bool isNotOnTheLine(int pLightSensorValue) {
+  return !isOnTheLine(pLightSensorValue);
+}
+
+
+LineFollowingState getCurrentLineFollowingState() {
+  LineFollowingState currentState;
+  currentState.rightLightIsOnLine = isOnTheLine(gLightReading.rightSensorValue);
+  currentState.leftLightIsOnLine = isOnTheLine(gLightReading.leftSensorValue);
+  currentState.colorReadingIsLine = gColorReading.value.colorNum == LINE_COLOR;
+
+  return currentState;
+}
+
+
+/**
+ *  Plays a delightful victory tune.
+ */
+void playVictorySong() {
+  for (int i = 0; i < 5; i++) {
+    PlayTone(TONE_A4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_B4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_C4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_D4, MS_300);
+    Wait(MS_300);
+  }
+}
+
+
+#endif //__LAB04_CONTROLLER_NXC__

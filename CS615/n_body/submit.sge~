@@ -1,0 +1,22 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 2
+#$ -N HelloGrid!
+#$ -q Common.q
+#$ -o output.txt
+#$ -e errors.txt
+
+num_processors=3
+file_path="" #/home/thenriod/CS615/PA03/modified_summa/"
+input_file="init.dat"
+
+# do a practice run
+mpirun -np $num_processors ./stuff -bodies=4 -timestep=1 -steps=5 -datafile=data.txt -outfile=results.txt
+
+echo "$num_processors"
+echo "============================"
+echo ""
+
+#MPI_Datatype dtype;
+#MPI_Type_contiguous( 2, MPI_INT, &dtype );
+#MPI_Commit( &dtype )

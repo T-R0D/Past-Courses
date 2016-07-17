@@ -1,0 +1,6 @@
+App,Participant,Mode,Condition,Block,Phrase,Text,Reduced_text,Correct_guesses,Incorrect_guesses,KSPC,Time
+LetterGuessingExperiment,P04,One_guess,C00,B01,1,three two one zero blast off,t-r---two-----z-r--blas-----,17,11,1.0,129944
+LetterGuessingExperiment,P04,One_guess,C00,B01,2,a dog is the best friend of a man,a do--i--t-----s----------f------,25,8,1.0,81637
+LetterGuessingExperiment,P04,One_guess,C00,B01,3,i am going to a music lesson,- a--g--------a-music le----,16,12,1.0,78321
+LetterGuessingExperiment,P04,One_guess,C00,B01,4,the sun rises in the east,t---su--ri----i--t-------,18,7,1.0,50872
+LetterGuessingExperiment,P04,One_guess,C00,B01,5,everyone wants to win the lottery,e---yo---wan---t--win------------,23,10,1.0,73968

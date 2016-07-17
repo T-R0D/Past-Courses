@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+    \DeclareGraphicsExtensions{.png, .jpeg}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\title{CPE 470: Autonomous Mobile Robots \\ Homework $\#2$}
+\author{Bandith Phommounivong}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\begin{enumerate}
+\item \textbf{[10 points]} Describe the difference between robot control using a horizontal decomposition and a vertical decomposition.\\
+
+\textbf{Solution:} Robot controllers using vertical decomposition are task-oriented. Each task is divided into self-contained modules that can be executed in parallel. These controllers are build bottom-up with each layer exploiting the lower layers to handle more complex task. Vertically decomposed systems may follow the Subsumption Architecture and can be part of both Behavior-Based systems and Hybrid systems.
+Horizontally decomposed controllers decompose operations into functional steps. These step are executed sequentially. These systems usually follow the "SPA" and are often seen in purely Delibrative systems. 
+\newline
+
+\item \textbf{[10 points]} Describe how activities can be sequenced in the Subsumption Architecture, without using explicit communication ``wires" between the task-achieving layers.\\
+
+\textbf{Solution:} In Subsumption Architecture activities can be sequenced without explicit communication between layers because this design "uses the world as its own best model." This means sensory inputs are used to activate task-achieving layers. The layers wait for the appropriate set of inputs before executing. Since each layer maybe using multiple lower layers and run in parallel, a sequence is developed because lower layers require less sensory input than higher layer and as more input is receive those higher layer are activated as their sensory input requirements are met.
+\newline
+
+\item \textbf{[10 points]} Describe at least two principles of good design of a behavior-based control system.\\
+
+\textbf{Solution:}
+    \begin{enumerate}
+        \item{BBC systems should be able to react in real-time.}\\
+        Behaviours should execute concurrently and in parallel in BBC systems
+        \newline
+
+        \item{Behaviours should operate on compatible time scales.}\\
+        BBC systems should have the ability to use uniform structures and representations throughout the system.
+		\newline
+
+        \item{Networks of behaviours can store history of the world, construct world models, and look in to the future of the state of the world.}\\
+        BBC systems should be able to use world models to generate efficient behaviours.  
+        \newline
+    \end{enumerate}
+\newline
+
+\item \textbf{[10 points]} Describe briefly how Toto the robot used a map to navigate from a location to another. Give one advantage of using such a method.\\
+
+\textbf{Solution:} Toto's mapping behavior was to store each landmark as part of a behavior. Each behavior contain some information such as landmark types, compass heading, size, and odometry. When a landmark is detected, behaviours with the matching landmark information becomes active. 
+The advantage of this system is that it can be use effectively in dynamic environment. This is because it is able to update its mapping behavior quickly as it see new landmarks.  
+\newline
+   
+\end{enumerate}
+\end{document}

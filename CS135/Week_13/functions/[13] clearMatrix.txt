@@ -1,0 +1,22 @@
+void clearMatrix( short matrix[PLAY_AR_W][PLAY_AR_H] )
+   {
+   // variables
+
+   // set the background color
+      // function: setColor
+
+   // use loop to fill all positions in matrix with spaces
+   // pick a row and fill it, then move on
+      // operation: for
+ 
+         // iterate through the row
+            // operation: for
+
+               // store a space to the current matrix position
+
+               // loop ends when every position in row is filled
+
+         // loop ends when all columns have been visited 
+
+   // no return - void
+   }

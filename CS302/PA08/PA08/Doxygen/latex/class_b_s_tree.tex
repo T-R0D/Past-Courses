@@ -1,0 +1,1050 @@
+\hypertarget{class_b_s_tree}{\section{\-B\-S\-Tree$<$ \-Data\-Type, \-Key\-Type $>$ \-Class \-Template \-Reference}
+\label{class_b_s_tree}\index{\-B\-S\-Tree$<$ Data\-Type, Key\-Type $>$@{\-B\-S\-Tree$<$ Data\-Type, Key\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$\-B\-S\-Tree.\-h$>$}
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_b_s_tree_a4513fc6697f5e51bff8e7c448b446c9e}{\-B\-S\-Tree} ()
+\item 
+\hyperlink{class_b_s_tree_a6658391c178cb35858c9c465e1839fb0}{\-B\-S\-Tree} (const \hyperlink{class_b_s_tree}{\-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$ \&other)
+\item 
+\hyperlink{class_b_s_tree}{\-B\-S\-Tree} \& \hyperlink{class_b_s_tree_ac36b0b564aa3c411c239d730f506f448}{operator=} (const \hyperlink{class_b_s_tree}{\-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$ \&other)
+\item 
+\hyperlink{class_b_s_tree_a968c51c539f4ae41357c78b6a60fea4c}{$\sim$\-B\-S\-Tree} ()
+\item 
+void \hyperlink{class_b_s_tree_a926822d08f3d0321603f9fafd2254b16}{clear} ()
+\item 
+void \hyperlink{class_b_s_tree_ab86b4cea496ee53076021126423d51fd}{insert} (const \-Data\-Type \&new\-Data\-Item)
+\item 
+bool \hyperlink{class_b_s_tree_a755549f7b88d0178a96ca84afd5e04cf}{remove} (const \-Key\-Type \&delete\-Key)
+\item 
+bool \hyperlink{class_b_s_tree_a43768375369ca8fe641a86451997ad45}{is\-Empty} () const 
+\item 
+int \hyperlink{class_b_s_tree_a3850adc6b8ae965ec11ec0e0567b6f7d}{get\-Height} () const 
+\item 
+int \hyperlink{class_b_s_tree_a880d98553153533d3c29504e8a272c7d}{get\-Count} () const 
+\item 
+bool \hyperlink{class_b_s_tree_a4359bfee390669b5adaf0380ef62b18d}{retrieve} (const \-Key\-Type \&search\-Key, \-Data\-Type \&search\-Data\-Item) const 
+\item 
+void \hyperlink{class_b_s_tree_ac28277cacbf8ab33326473a419abf097}{show\-Structure} () const 
+\item 
+void \hyperlink{class_b_s_tree_a7f08f48e6d1bbe3eb726856a947325e7}{write\-Keys} () const 
+\item 
+void \hyperlink{class_b_s_tree_a92079e5301185f41eebe1c32c2357258}{write\-Less\-Than} (const \-Key\-Type \&search\-Key) const 
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_b_s_tree_afde91fa451ee2bfccb29a83dc73856c5}{clone\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$\&current\-Node, const \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$other\-Node)
+\item 
+void \hyperlink{class_b_s_tree_ac1afa7d8d954f58664c3ad4765ee01d2}{clear\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$\&current\-Node)
+\item 
+void \hyperlink{class_b_s_tree_a9b49fb07e0b7f42ae5e9476356554176}{insert\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$\&current\-Node, const \-Data\-Type \&new\-Data\-Item, const \-Key\-Type \&key)
+\item 
+bool \hyperlink{class_b_s_tree_ad55ac383f8663423ceef8ddb2ea9758b}{remove\-\_\-sub} (const \-Key\-Type \&delete\-Key, \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$\&current\-Node)
+\item 
+int \hyperlink{class_b_s_tree_a3b5acf5303ea40326546b6b14ca3837c}{get\-Height\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$current\-Node) const 
+\item 
+int \hyperlink{class_b_s_tree_a73594cb9555a1ce6d2146f213e654da8}{get\-Count\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$current\-Node) const 
+\item 
+bool \hyperlink{class_b_s_tree_af9cc2368aa083c472ac701fd20dde36e}{retrieve\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$current\-Node, const \-Key\-Type \&search\-Key, \-Data\-Type \&search\-Data\-Item) const 
+\item 
+void \hyperlink{class_b_s_tree_a44b3002e3476eb410468a4b9aaaa73ef}{show\-Helper} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$p, int level) const 
+\item 
+void \hyperlink{class_b_s_tree_a1762a56d5bfc2164566156605cf98f36}{write\-Keys\-\_\-sub} (\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$current\-Node) const 
+\item 
+void \hyperlink{class_b_s_tree_a86e2419aa9bba28935b22d5c94822c29}{write\-Less\-Than\-\_\-sub} (\-Key\-Type \&search\-Key, \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$start, \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$predecessor, bool \&keys\-Were\-Printed) const 
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} $\ast$ \hyperlink{class_b_s_tree_a83534afce9094181ac031f9f596a8625}{root}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\subsubsection*{template$<$typename \-Data\-Type, typename \-Key\-Type$>$class B\-S\-Tree$<$ Data\-Type, Key\-Type $>$}
+
+\-The class implementations of the \-Binary \-Search \-Tree \-A\-D\-T. \-This class offers all basic functionality of the \-Binary \-Search \-Tree. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_b_s_tree_a4513fc6697f5e51bff8e7c448b446c9e}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!\-B\-S\-Tree@{\-B\-S\-Tree}}
+\index{\-B\-S\-Tree@{\-B\-S\-Tree}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{\-B\-S\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf \-B\-S\-Tree} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_a4513fc6697f5e51bff8e7c448b446c9e}
+\hyperlink{class_b_s_tree}{\-B\-S\-Tree}
+
+\-The default constructor for the \-Binary \-Search \-Tree \-A\-D\-T. \-Constructs an empty tree.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a tree with the calling identifier has not yet been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item an empty tree with the calling identifier will have been created
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-B\-S\-Tree\-Node$\ast$ root data member is set to \-N\-U\-L\-L
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a6658391c178cb35858c9c465e1839fb0}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!\-B\-S\-Tree@{\-B\-S\-Tree}}
+\index{\-B\-S\-Tree@{\-B\-S\-Tree}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{\-B\-S\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf \-B\-S\-Tree} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_a6658391c178cb35858c9c465e1839fb0}
+\hyperlink{class_b_s_tree}{\-B\-S\-Tree}
+
+\-The copy constructor for the \-Binary \-Search \-Tree \-A\-D\-T. \-Constructs a clone of the given other tree.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & another binary search tree object of similar types\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a tree with the calling identifier has not yet been created
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item a tree that is a clone of the given other tree has been created
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-B\-S\-Tree$\ast$ root data member is set to \-N\-U\-L\-L
+\item the overloaded operator= is called
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a968c51c539f4ae41357c78b6a60fea4c}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!$\sim$\-B\-S\-Tree@{$\sim$\-B\-S\-Tree}}
+\index{$\sim$\-B\-S\-Tree@{$\sim$\-B\-S\-Tree}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{$\sim$\-B\-S\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::$\sim${\bf \-B\-S\-Tree} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_a968c51c539f4ae41357c78b6a60fea4c}
+$\sim$\-B\-S\-Tree
+
+\-The destructor for the \-Binary \-Search \-Tree \-A\-D\-T. \-Ensures all dynamically allocated memory is returned.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a tree with the calling identifier has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this tree will be destructed properly, returning all dynamically allocated memory
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item calls the clear function to delete all nodes contained in the tree
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_b_s_tree_a926822d08f3d0321603f9fafd2254b16}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!clear@{clear}}
+\index{clear@{clear}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf clear} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_a926822d08f3d0321603f9fafd2254b16}
+clear
+
+\-Clears all data from the \hyperlink{class_b_s_tree}{\-B\-S\-Tree}.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item all data will be removed from the tree
+\item all dynamic memory will be returned
+\item the the value of the \-B\-S\-Tree\-Node$\ast$ root data member will be \-N\-U\-L\-L
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item if the tree has contents the clear\-\_\-sub private helper function is called with the \-B\-S\-Tree\-Node$\ast$ root data member as a parameter in order to clear the entire tree
+\item if the tree is empty, no further action is taken
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_ac1afa7d8d954f58664c3ad4765ee01d2}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!clear\-\_\-sub@{clear\-\_\-sub}}
+\index{clear\-\_\-sub@{clear\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{clear\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf clear\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$\&}]{current\-Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_ac1afa7d8d954f58664c3ad4765ee01d2}
+clear\-\_\-sub
+
+\-The private helper function that carries out the clearing of the tree. \-This fucntion clears a given subtree by clearing the left and right subtrees and then deleting the current node (post-\/order traversal). \-Ensures all dynamic memory is returned for the given tree.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & the node currently being considered by the function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item the clear\-\_\-sub function is called using a pointer that points to valid data
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} subtrees will be empty
+\item the \-B\-S\-Tree\-Node$\ast$ current\-Node will point to \-N\-U\-L\-L
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item each branch pointer is checked to see if it points to data
+\item if the branch pointers point to valid subtrees, these are cleared
+\item once any subtrees are cleared, the current\-Node is deleted
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_afde91fa451ee2bfccb29a83dc73856c5}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!clone\-\_\-sub@{clone\-\_\-sub}}
+\index{clone\-\_\-sub@{clone\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{clone\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf clone\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$\&}]{current\-Node, }
+\item[{const {\bf \-B\-S\-Tree\-Node} $\ast$}]{other\-Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_afde91fa451ee2bfccb29a83dc73856c5}
+clone\-\_\-sub
+
+\-The private helper function that carries out a cloning operation by recursively following the nodes of a given \hyperlink{class_b_s_tree}{\-B\-S\-Tree} of same type and duplicating its nodes using an in-\/order traversal.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & the node currently being considered by the function \\
+\hline
+{\em other\-Node} & the counterpart node in the other tree that is being cloned\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been, or is being, instantiated
+\item the clone\-\_\-sub function has been called using a node pointer within the tree that points to \-N\-U\-L\-L
+\item the \-B\-S\-Tree\-Node$\ast$ other\-Node must point to valid data
+\item other recursive calls previous to this one may have been made
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-B\-S\-Tree\-Node$\ast$ current\-Node will point to an equivalent object to the one poined by \-B\-S\-Tree\-Node$\ast$ other\-Node
+\item recursive calls will be made to continue the process down to the leaves of the tree
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item a new \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} is created with \-B\-S\-Tree\-Node$\ast$ current\-Node and given a copy of the data\-Item held by other, the left and right pointers are set to \-N\-U\-L\-L
+\item checks are made to see if other\-Node's left and right pointers are \-N\-U\-L\-L or not
+\item the function is called again to clone the other tree's left and right subtrees if possible
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a880d98553153533d3c29504e8a272c7d}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!get\-Count@{get\-Count}}
+\index{get\-Count@{get\-Count}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{get\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ int {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf get\-Count} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_a880d98553153533d3c29504e8a272c7d}
+get\-Count
+
+\-Provides public access to find the current count of items stored in the the \hyperlink{class_b_s_tree}{\-B\-S\-Tree}.
+
+\begin{DoxyReturn}{\-Returns}
+int count the count of items in the tree
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the current size of the tree is returned
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the get\-Count\-\_\-sub helper is called, starting at the root, to trace the tree and count the nodes
+\item the value returned by the helper function is the size of the tree
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a73594cb9555a1ce6d2146f213e654da8}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!get\-Count\-\_\-sub@{get\-Count\-\_\-sub}}
+\index{get\-Count\-\_\-sub@{get\-Count\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{get\-Count\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ int {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf get\-Count\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{current\-Node}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a73594cb9555a1ce6d2146f213e654da8}
+get\-Height\-\_\-sub
+
+\-The private helper function that counts all nodes in the current tree.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & the node currently being considered by the function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item this function may have been called previously
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item every valid node in the tree will be visited
+\item the count of nodes in the subtree evaluated by the function is returned
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item 
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a3850adc6b8ae965ec11ec0e0567b6f7d}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ int {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf get\-Height} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_a3850adc6b8ae965ec11ec0e0567b6f7d}
+get\-Height
+
+\-Provides public access to find the current height of the \hyperlink{class_b_s_tree}{\-B\-S\-Tree}.
+
+\begin{DoxyReturn}{\-Returns}
+int height the height of the tree, that is, the number of vertices in the longest chain in the tree
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the current height of the tree is returned
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the get\-Height\-\_\-sub helper is called, starting at the root, to trace the longest chain in the tree
+\item the value returned by the helper function is the height of the tree
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a3b5acf5303ea40326546b6b14ca3837c}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!get\-Height\-\_\-sub@{get\-Height\-\_\-sub}}
+\index{get\-Height\-\_\-sub@{get\-Height\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{get\-Height\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ int {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf get\-Height\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{current\-Node}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a3b5acf5303ea40326546b6b14ca3837c}
+get\-Height\-\_\-sub
+
+\-The private helper function that determines the height of the tree by counting the vertices of the maximum length chain.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & the node currently being considered by the function \\
+\hline
+{\em level} & the level a node pointed by current\-Node would be on\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+int height the height of the subtree including current\-Node
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item this function may have been called previously
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item every chain in the train will have been followed in order to count the maximum length chain
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item if \-B\-S\-Tree\-Node$\ast$ current\-Node points to \-N\-U\-L\-L, the value of level -\/ 1 is returned (base case)
+\item otherwise, the function is called to trace its subtrees to continue counting the tree height
+\item the subtree heights are compared to find the greatest one
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_ab86b4cea496ee53076021126423d51fd}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!insert@{insert}}
+\index{insert@{insert}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf insert} (
+\begin{DoxyParamCaption}
+\item[{const \-Data\-Type \&}]{new\-Data\-Item}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_ab86b4cea496ee53076021126423d51fd}
+insert
+
+\-Inserts new\-Data\-Item into the tree according to the items key. \-If a data item with the same key already exists in the tree, then it is replaced with new\-Data\-Item. \-Otherwise, a node is created in the appropriate place in the tree to accomodate new\-Data\-Item.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em new\-Data\-Item} & an object of type \-Data\-Item to be inserted into the tree.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\item the data type of the templated \hyperlink{class_b_s_tree}{\-B\-S\-Tree} supports a get\-Key() member
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the tree will contain a \hyperlink{class_b_s_tree_1_1_b_s_tree_node}{\-B\-S\-Tree\-Node} containing new\-Data\-Item, appropriately located relative to the pre-\/existing nodes
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the key of the data item is obtained
+\item the insert\-\_\-sub helper is called, starting at the root, to locate the correct insertion location for the new\-Data\-Item
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a9b49fb07e0b7f42ae5e9476356554176}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!insert\-\_\-sub@{insert\-\_\-sub}}
+\index{insert\-\_\-sub@{insert\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{insert\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf insert\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$\&}]{current\-Node, }
+\item[{const \-Data\-Type \&}]{new\-Data\-Item, }
+\item[{const \-Key\-Type \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a9b49fb07e0b7f42ae5e9476356554176}
+insert\-\_\-sub
+
+\-The private helper function that inserts new data into the tree. \-If a node containing a data item with a key equivalent to the given one, then the data is replaced with the given data. \-If no match for the given key exists in the tree, a new node is created to accomodate the data.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & the node currently being considered by the function \\
+\hline
+{\em new\-Data\-Item} & the data item to be inserted in the tree \\
+\hline
+{\em key} & the key of the item to be inserted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item if there is a node with a key equivalent to the given one, then its data is replaced with \-Data\-Type ne\-Data\-Item
+\item if there is no matching key, a new node is created in the appropriate position of the tree to accommodate new\-Data\-Item
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item if the \-B\-S\-Tree\-Node$\ast$ points to \-N\-U\-L\-L, a new node is created and given the data of \-Data\-Type new\-Data\-Item
+\item otherwise, a check is made to see if it contains an equivalent key to the given one, if so, the data replacement operation is conducted
+\item if the keys still don't match, checks to see which subtree the data with the given key belongs in, and the helper function is called to insert the data in the appropriate subtree
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a43768375369ca8fe641a86451997ad45}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ bool {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf is\-Empty} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_a43768375369ca8fe641a86451997ad45}
+is\-Emtpy
+
+\-Reports the state of the tree, specifically, returns true if the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} is empty, and false if the tree has any contents.
+
+\begin{DoxyReturn}{\-Returns}
+bool empty the truth value of the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} containing no nodes
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the state of the tree is indicated via the return of a boolean flag
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the remove\-\_\-sub helper is called, starting at the root, to locate the given key, if possible, and remove the node
+\item if a removal occured true is returned, otherwise false is returned
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_ac36b0b564aa3c411c239d730f506f448}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!operator=@{operator=}}
+\index{operator=@{operator=}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$ \& {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_ac36b0b564aa3c411c239d730f506f448}
+operator=
+
+\-The overloaded assignment operator. \-Assigns a clone of \hyperlink{class_b_s_tree}{\-B\-S\-Tree} other to $\ast$this.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & another binary search tree of similar type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+$\ast$this
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a tree with the calling identifier has been or is being created
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item a tree that is a clone of the given other tree has been created
+\item a reference to the new $\ast$this is returned
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item a check to see if $\ast$this is being assigned to itself is performed
+\item otherwise $\ast$this is cleared
+\item if \hyperlink{class_b_s_tree}{\-B\-S\-Tree} other is not empty, the clone\-\_\-sub private helper function is called to carry out the cloning process
+\item if \hyperlink{class_b_s_tree}{\-B\-S\-Tree} other is empty, no further action is taken
+\item a reference to $\ast$this is returned
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a755549f7b88d0178a96ca84afd5e04cf}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!remove@{remove}}
+\index{remove@{remove}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ bool {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf remove} (
+\begin{DoxyParamCaption}
+\item[{const \-Key\-Type \&}]{delete\-Key}
+\end{DoxyParamCaption}
+)}}\label{class_b_s_tree_a755549f7b88d0178a96ca84afd5e04cf}
+remove
+
+\-Removes a node with the given key from the tree. \-Returns the success of the removal operation.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em delete\-Key} & the key used to locate the item to be removed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\item the data type of the templated \hyperlink{class_b_s_tree}{\-B\-S\-Tree} supports a get\-Key() member
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item if it exists, the node containing the data item with the given key will be removed
+\item the success of the operation is returned to the calling function
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the remove\-\_\-sub helper is called, starting at the root, to locate the given key, if possible, and remove the node
+\item if a removal occured true is returned, otherwise false is returned
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_ad55ac383f8663423ceef8ddb2ea9758b}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!remove\-\_\-sub@{remove\-\_\-sub}}
+\index{remove\-\_\-sub@{remove\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{remove\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ bool {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf remove\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{const \-Key\-Type \&}]{delete\-Key, }
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$\&}]{current\-Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_ad55ac383f8663423ceef8ddb2ea9758b}
+remove\-\_\-sub
+
+\-The private helper function used to delete data from the tree. \-In general, this function performs similar to a remove function in a linked list. \-In the case that a node to be removed has two children, the node is replaced with its \char`\"{}in-\/order predecessor.\char`\"{}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em delete\-Key} & fad \\
+\hline
+{\em current\-Node} & the pointer that points to the node currently being considered. \-Note\-: this parameter is passed by reference, so it is actually the pointer belonging to the node's predecessor (or the root data member).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+bool removed a flag to indicate whether or not a node was located and removed (true for removal, false for failure to remove)
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item \-B\-S\-Tree\-Nod$\ast$ current\-Node points to the current location of the tree being considered currently
+\item recursive calls to this function may have been made previously
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item if a node containing data with a key equivalent to \-Key\-Type search\-Key is found, it is removed in an appropriate manner and true is returned
+\item otherwise, nothing occurs and false is returned
+\item there are no guarantees as to the relative structure of the tree other than the tree will still fit the definition of a binary search tree
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item a search for a key equivalent to \-Key\-Type search\-Key is conducted
+\item if the function is called on a \-N\-U\-L\-L pointer, then the search has failed, no removal can be performed, and false is returned
+\item if the key matches a leaf, then the leaf is simply deleted
+\item if the key matches a node with one child, then the tree is simply re-\/linked and the \-B\-S\-Tree\-Node$\ast$ current\-Node is linked to the appropriate child, and the excluded node is deleted
+\item if the key matches a node with 2 children, then the \char`\"{}in-\/order predecessor\char`\"{} of the node is found, and the original node's data is replaced with that of the predecessor, and the now reduntant predecessor node is then deleted
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a4359bfee390669b5adaf0380ef62b18d}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{retrieve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ bool {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf retrieve} (
+\begin{DoxyParamCaption}
+\item[{const \-Key\-Type \&}]{search\-Key, }
+\item[{\-Data\-Type \&}]{search\-Data\-Item}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_a4359bfee390669b5adaf0380ef62b18d}
+retrieve
+
+\-Provides public access to find the item of the given key stored in the tree. \-The success of the operation is returned, while search\-Data\-Item is modified by reference. \-If the operation fails, search\-Data\-Item is left unchanged.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em search\-Key} & the key corresponding to the sought item \\
+\hline
+{\em search\-Data\-Item} & the reference variable used to store the sought item if found\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+bool found the sucess in finding the sought item with the given key
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the data item with the given key is passed back by reference if found
+\item the truth value of whether or not the sought item was found
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the retrieve\-\_\-sub helper is called to search the tree for the item with the given key
+\item if the given key is found, the \-Data\-Type search\-Data\-Item passed by reference will be given the value of the item with the sought key
+\item if the item with the given key was found, true is returned, otherwise false is returned
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_af9cc2368aa083c472ac701fd20dde36e}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!retrieve\-\_\-sub@{retrieve\-\_\-sub}}
+\index{retrieve\-\_\-sub@{retrieve\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{retrieve\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ bool {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf retrieve\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{current\-Node, }
+\item[{const \-Key\-Type \&}]{search\-Key, }
+\item[{\-Data\-Type \&}]{search\-Data\-Item}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_af9cc2368aa083c472ac701fd20dde36e}
+retrieve\-\_\-sub
+
+\-The private helper function that counts all nodes in the current tree.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & the node currently being considered by the function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item this function may have been called previously
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item if the item with the given key is found, it is passed back by reference in the \-Data\-Type search\-Data\-Item, otherwise it is left unmodified and false is returned
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item if the item with the given key is found, it is passed back by reference and true is returned to indicate that the item was found
+\item if the function is called with a \-N\-U\-L\-L pointer, the item was not found, \-Data\-Type search\-Data\-Item is not modified, and true is returned
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a44b3002e3476eb410468a4b9aaaa73ef}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!show\-Helper@{show\-Helper}}
+\index{show\-Helper@{show\-Helper}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{show\-Helper}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf show\-Helper} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{p, }
+\item[{int}]{level}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a44b3002e3476eb410468a4b9aaaa73ef}
+show\-Helper
+
+\-The private helper function that works to output the contents of the tree to the screen.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p} & a pointer to the node currently being considered \\
+\hline
+{\em level} & the level of the nodes to be output by this function call\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item this function may have been called previously
+\item the \-Data\-Type must support the $<$$<$ operator
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the tree will remain unchanged
+\item the contents of the given subtree will be displayed on the screen
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item 
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_ac28277cacbf8ab33326473a419abf097}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!show\-Structure@{show\-Structure}}
+\index{show\-Structure@{show\-Structure}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{show\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf show\-Structure} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_ac28277cacbf8ab33326473a419abf097}
+show\-Structure
+
+\-Outputs the keys in a binary search tree. \-The tree is output rotated counterclockwise 90 degrees from its conventional orientation using a \char`\"{}reverse\char`\"{} inorder traversal. \-This operation is intended for testing and debugging purposes only.
+
+\-P\-R\-O\-V\-I\-D\-E\-D \-B\-Y \-T\-H\-E \-L\-A\-B \-M\-A\-N\-U\-A\-L \-P\-A\-C\-K\-A\-G\-E
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the structure of the tree is displayed on the screen
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the show\-Helper function is called to display the tree, starting from the root
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a7f08f48e6d1bbe3eb726856a947325e7}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!write\-Keys@{write\-Keys}}
+\index{write\-Keys@{write\-Keys}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{write\-Keys}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf write\-Keys} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_a7f08f48e6d1bbe3eb726856a947325e7}
+write\-Keys
+
+\-Provides public access to have the keys currently contained in the tree listed in increasing order on the screen. \-The \-Data\-Type used must support the $<$$<$ operator.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the keys of the data items will be listed in increasing order on the screen, separated by a space
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the write\-Keys\-\_\-sub helper function is called to carry out the process of displaying the keys, starting from the root
+\item if the tree is empy, it is reported
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a1762a56d5bfc2164566156605cf98f36}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!write\-Keys\-\_\-sub@{write\-Keys\-\_\-sub}}
+\index{write\-Keys\-\_\-sub@{write\-Keys\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{write\-Keys\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf write\-Keys\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{current\-Node}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a1762a56d5bfc2164566156605cf98f36}
+write\-Keys\-Sub
+
+\-The private helper function that works to output all keys in ascending order for a given subtree.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em current\-Node} & a pointer to the node currently being considered\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item \-B\-S\-Tree\-Node$\ast$ current\-Node must point to valid data
+\item this function may have been called previously
+\item the \-Data\-Type must support the $<$$<$ operator
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the tree will remain unchanged
+\item the keys of the given subtree will be listed on the screen
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item a check to ensure the given pointer is not null is performed
+\item all keys in the left subtree of the tree currently being considered are listed first
+\item the key of the current node is listed
+\item all keys of the right subtree of the tree currently being considered are then listed
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a92079e5301185f41eebe1c32c2357258}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!write\-Less\-Than@{write\-Less\-Than}}
+\index{write\-Less\-Than@{write\-Less\-Than}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{write\-Less\-Than}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf write\-Less\-Than} (
+\begin{DoxyParamCaption}
+\item[{const \-Key\-Type \&}]{search\-Key}
+\end{DoxyParamCaption}
+) const}}\label{class_b_s_tree_a92079e5301185f41eebe1c32c2357258}
+write\-Less\-Than
+
+\-Provides public access to have the keys currently contained in the tree listed in increasing order up to the given bound on the screen. \-The \-Data\-Type used must support the $<$$<$ operator.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em search\-Key} & the upper bound of the keys to be listed. \-If this key is in the list, it is listed, otherwise the key nearest the given parameter is the larges key listed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} object has been instantiated
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the \hyperlink{class_b_s_tree}{\-B\-S\-Tree} remains unchanged
+\item the keys of the data items will be listed in increasing order on the screen, up to the upper bound, separated by a space
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the write\-Less\-Than\-\_\-sub helper is called to search the tree for the item with the given key, or the nearest one that is less than the given key, starting at the root
+\item all keys less than and including the given bound \-Key\-Type search\-Key are listed if they are present in the tree
+\item if no such keys exist, this is reported.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_b_s_tree_a86e2419aa9bba28935b22d5c94822c29}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!write\-Less\-Than\-\_\-sub@{write\-Less\-Than\-\_\-sub}}
+\index{write\-Less\-Than\-\_\-sub@{write\-Less\-Than\-\_\-sub}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{write\-Less\-Than\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type $>$ void {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf write\-Less\-Than\-\_\-sub} (
+\begin{DoxyParamCaption}
+\item[{\-Key\-Type \&}]{search\-Key, }
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{start, }
+\item[{{\bf \-B\-S\-Tree\-Node} $\ast$}]{predecessor, }
+\item[{bool \&}]{keys\-Were\-Printed}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a86e2419aa9bba28935b22d5c94822c29}
+write\-Less\-Than\-\_\-sub
+
+\-Lists all keys that are less than or equal to the given key (search\-Key) on the screen.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em search\-Key} & the key given to indicate the upper (inclusive) bound for the keys to be printed \\
+\hline
+{\em start} & a pointer for the node to start at \\
+\hline
+{\em predecessor} & a pointer to the start node's predecessor, call with \-N\-U\-L\-L if such a node does not exist \\
+\hline
+{\em keys\-Were\-Printed} & a flag to be passed through all calls to indicate wether or not keys less than the search key have been found\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item a \hyperlink{class_b_s_tree}{\-B\-S\-Tree} has been instantiated
+\item \-B\-S\-Tree\-Node$\ast$ start must point to valid data
+\item \-B\-S\-Tree\-Node$\ast$ predecessor must point to either a parent of start or contain the value \-N\-U\-L\-L
+\item previous recursive calls may have been made
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item the tree will remain unchanged
+\item once all recursive calls have resolved, all keys less than \-Key\-Type search\-Key will be written in ascending order to the screen
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item the current\-Node \char`\"{}cursor\char`\"{} is moved right as far as possible
+\item with each move, the previous node and all nodes with keys less than it are listed
+\item once the \char`\"{}cursor\char`\"{} has moved too far to the right, it is then moved left in an attempt to find more nodes with keys meeting the search criteria
+\item a recursive call is made to repeat the process
+\item the task completes when a call is made and no keys could be successfully printed (base case)
+\item if no keys can be printed, this is indicated
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_b_s_tree_a83534afce9094181ac031f9f596a8625}{\index{\-B\-S\-Tree@{\-B\-S\-Tree}!root@{root}}
+\index{root@{root}!BSTree@{\-B\-S\-Tree}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename \-Data\-Type, typename \-Key\-Type$>$ {\bf \-B\-S\-Tree\-Node}$\ast$ {\bf \-B\-S\-Tree}$<$ \-Data\-Type, \-Key\-Type $>$\-::{\bf root}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{class_b_s_tree_a83534afce9094181ac031f9f596a8625}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_b_s_tree_8h}{\-B\-S\-Tree.\-h}\item 
+\hyperlink{_b_s_tree_8cpp}{\-B\-S\-Tree.\-cpp}\end{DoxyCompactItemize}

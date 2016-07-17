@@ -1,0 +1,295 @@
+#ifndef __LAB06_CONTROLLER_NXC__
+#define __LAB06_CONTROLLER_NXC__
+
+#include "ControllerConfigurations.nxc"
+
+#include "Utilities.nxc"
+#include "DrivingAPI.nxc"
+//#inlcude "ClawAPI.nxc" // TODO: why won't having a separate file work?
+#include "SonarSensing.nxc"
+#include "ColorSensing.nxc"
+#include "LightSensing.nxc"
+#include "CompassSensing.nxc"
+#include "TouchSensing.nxc"
+
+/**
+ * Some constants specific to this particular controller program. For more
+ * "universal" constant definitions, see 'ControllerConfigurations.nxc'.
+ */
+#define ORIENTATION_TOLERANCE 3 // degrees(ish))
+#define WALL_PROXIMITY 16       // cm(ish)
+
+/**
+ * An enumeration of control strategy values.
+ */
+enum Strategies {
+  PROCEED,
+  U_TURN,
+  GO_TO_WALL,
+  GO_TO_BALL_AREA,
+  TURN_TO_BALL_AREA,
+  ALIGN_FOR_BALL_PICKUP,
+  CREEP_UP_TO_BALL,
+  CAPTURE_BALL,
+  DUMP_RED_BALL,
+  DUMP_BLUE_BALL,
+  GO_TO_MIDDLE,
+  WORM_TOUCHED
+};
+
+
+/**
+ * Spawns the thread responsible for initializing the robot.
+ */
+task main();
+
+/**
+ * The main controlling task. Controls the robot to achieve the goal of
+ * finding colored balls, capturing them, and depositing them over the
+ * correct edge of the arena. 
+ */
+task TASK_controller();
+
+/**
+ * 
+ */
+int determineStrategy(int pLastStrategy);
+
+/**
+ *
+ */
+void moveToPlainWall(const int pHeading);
+void moveToBlackFloor(const int pHeading);
+void alignForBallPickup();
+int creepUpToBall();
+int captureBall();
+void dumpBallInBallArea();
+void dumpBallInFarArea();
+void dumpBall(int pHeading);
+bool ballObserved();
+bool wallObserved();
+bool blackFloorObserved();
+void orientSelf(const int pHeading);
+
+
+task main() {
+  Precedes(
+    TASK_ColorSensing,
+    TASK_CompassSensing,
+    TASK_LightSensing,
+    TASK_SonarSensing,
+    TASK_TouchSensing,
+    TASK_controller
+  );
+
+  initializeMUX(MUX_PORT);
+  initializeClaw();
+  Wait(MS_50);
+}
+
+
+task TASK_controller() {
+  int ballsInStartPositions = true;
+  int strategy = GO_TO_WALL;
+
+  while (ballsInStartPositions) { // we will stop the contest after 2 minutes
+
+    moveToPlainWall(ARENA_NORTH);
+    
+    moveToBlackFloor(ARENA_EAST - 15);
+    
+    alignForBallPickup();
+    strategy = creepUpToBall();
+
+    if (strategy != WORM_TOUCHED) {
+         strategy = captureBall();
+
+         if (strategy == DUMP_RED_BALL) {
+             dumpBallInBallArea();
+         } else if (strategy == DUMP_BLUE_BALL) {
+             dumpBallInFarArea();
+         }
+    } else {
+      moveSetDistance(REVERSE, 3);
+      orientSelf(ARENA_EAST);
+      moveSetDistance(REVERSE, 5);
+      ballsInStartPositions = false;
+    }
+    moveSetDistance(REVERSE, 8);
+  }
+
+  StopAllTasks();
+}
+
+
+void
+moveToPlainWall(const int pHeading) {
+  gUseSonarSensing = true;
+  orientSelf(pHeading);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until(wallObserved());
+  moveSetDistance(REVERSE, 3);
+  gUseSonarSensing = false;
+}
+
+void
+moveToBlackFloor(const int pHeading) {
+  gUseLightSensing = true;
+  Wait(MS_50);
+  orientSelf(pHeading);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until(blackFloorObserved());
+  gUseLightSensing = false;
+}
+
+void
+alignForBallPickup() {
+  moveClawToPosition(CLAW_UP);
+
+  // get up in that corner
+  orientSelf(ARENA_NE);
+  moveSetDistance(FORWARD, 2);
+  orientSelf(ARENA_SE);
+  moveSetDistance(FORWARD, 2);
+  orientSelf(ARENA_SOUTH - 17); // TODO: maybe refine this
+}
+
+int
+creepUpToBall() {
+  gUseColorSensing = true;
+
+  int strategy = CREEP_UP_TO_BALL;
+
+  moveClawToPosition(CLAW_UP);
+  holdClawUp();
+
+  gUseTouchSensing = true;
+  Wait(MS_50);
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until (ballObserved() || gTouchReading.leftValue == 1);
+
+  if (gTouchReading.leftValue == 1) {
+    strategy = WORM_TOUCHED;
+  } else if (wallObserved()) {
+    strategy = GO_TO_MIDDLE;
+  } else {
+    strategy = CAPTURE_BALL;
+  }
+
+  gUseColorSensing = false;
+  gUseTouchSensing = false;
+
+  return strategy;
+}
+
+int
+captureBall() {
+  moveClawToPosition(CLAW_DOWN);
+
+  gUseColorSensing = true;
+  Wait(MS_50);
+
+  orientSelf(ARENA_SE);
+  moveSetDistance(REVERSE, 3);
+
+   
+  int strategy = GO_TO_MIDDLE;
+  if (gColorReading.value.colorNum >= RED_BALL_COLOR) {
+    strategy = DUMP_RED_BALL;
+  } else if (gColorReading.value.colorNum >= BLUE_BALL_COLOR) {
+    strategy = DUMP_BLUE_BALL;
+  }
+
+  gUseColorSensing = false;
+   
+  return strategy;
+}
+
+
+void
+dumpBallInBallArea() {
+  orientSelf(ARENA_EAST);
+  dumpBall(ARENA_EAST);
+}
+
+
+void
+dumpBallInFarArea() {
+  orientSelf(ARENA_WEST);
+
+  gUseSonarSensing = true;
+  gUseLightSensing = true;
+  Wait(MS_50);
+  moveSetDistance(FORWARD, 6);
+  orientSelf(ARENA_WEST);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until (wallObserved() && blackFloorObserved());
+  gUseSonarSensing = false;
+  gUseLightSensing = false;
+
+  dumpBall(ARENA_WEST);
+}
+
+void
+dumpBall(int pHeading) {
+  gUseTouchSensing = true;
+  Wait(MS_50);
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until(gTouchReading.value == 1);
+  gUseTouchSensing = false;
+
+  moveSetDistance(REVERSE, 1);
+  orientSelf(pHeading);
+
+  moveClawToPosition(CLAW_LOW);
+  moveClawToPosition(CLAW_UP);
+  holdClawUp();
+  moveSetDistance(FORWARD, 5);
+  
+  moveSetDistance(REVERSE, 10);
+}
+
+bool
+ballObserved() {
+  return (
+    gColorReading.value.colorNum >= BLUE_BALL_COLOR ||
+    gColorReading.value.colorNum == RED_BALL_COLOR
+  );
+}
+
+bool wallObserved() {
+  return gSonarReading.leftValue <= WALL_PROXIMITY;
+}
+
+bool blackFloorObserved() {
+  return gLightReading.rightValue <= BLACK_LIGHT_UPPER_THRESHOLD;
+}
+
+void
+orientSelf(const int pHeading) {
+  gUseCompassSensing = true;
+  bool aboveThreshold = false;
+  bool belowThreshold = false;
+
+  int currentHeading = gCompassReading.value;
+  if (currentHeading - pHeading > ORIENTATION_TOLERANCE) {
+    startStationarySpin(RIGHT);
+  } else if (currentHeading - pHeading < -1 *ORIENTATION_TOLERANCE) {
+    startStationarySpin(LEFT);
+  }
+
+  // if we are already at the correct heading, the robot won't be moving.
+  // this would honestly be more readable with a do-while, but I am
+  // principally against do-whiles
+  while (!(aboveThreshold && belowThreshold)) {
+    aboveThreshold =
+      (pHeading - ORIENTATION_TOLERANCE) <= gCompassReading.value;
+    belowThreshold =
+      gCompassReading.value <= (pHeading + ORIENTATION_TOLERANCE);
+  }
+  
+  stopWheels();
+  gUseCompassSensing = false;
+}
+
+#endif //__LAB06_CONTROLLER_NXC__

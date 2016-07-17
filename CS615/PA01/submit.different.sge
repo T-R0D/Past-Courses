@@ -1,0 +1,16 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte-rr 2
+#$ -N PA01_pingpong_different
+#$ -q BrainLab.owner
+#$ -o PingPong_different.o
+#$ -e PingPong_different.e
+
+COUNTER=1
+while [ $COUNTER -lt 6 ]
+do
+    echo ""
+    echo "Program run #$COUNTER (different boxes) results: "
+    /usr/lib64/openmpi/bin/mpirun -np $NSLOTS ./PA01_pingpong
+    COUNTER=$(( $COUNTER + 1 ))
+done

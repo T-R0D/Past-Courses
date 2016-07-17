@@ -1,0 +1,5 @@
+summary.glm(model1)
+summary.glm(model2)
+summary.glm(model3)
+summary.glm(model4)
+summary.glm(model5)

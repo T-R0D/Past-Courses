@@ -1,0 +1,21 @@
+Terence Henriod
+CS 202
+asmt03
+Assignment Expansion Proposal
+
+asmt03, as a "rudimentary text processor," might be expanded in the following ways:
+
+1. Implementing menu functionality, allowing a user to perform
+   selected functions, be it through a displayed menu, or 
+   through cmd line arguments
+   - Ex: User could choose to count something, replace something,
+         etc.
+
+2. Add other useful counts, such as a word count
+
+3. For more file I/O practice, different replacement, insertion,
+   deletion, appending, or prepending functionality
+   - Ex: Insert a word or character before or after a target
+         word or character 
+   - Ex: replace entire words/character sequences, as opposed
+         to single characters if desired

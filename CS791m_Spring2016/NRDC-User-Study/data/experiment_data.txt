@@ -1,0 +1,452 @@
+[
+    {
+        "participant_id": 0,
+        "interface_version": "INTERFACE_A",
+        "timings_0": [
+            5313,
+            3612,
+            6198
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            136170,
+            507837,
+            116003,
+            548484,
+            122236,
+            100571,
+            22534
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            75365,
+            127842,
+            44660,
+            90294,
+            67910,
+            26071,
+            8852
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 1,
+        "interface_version": "INTERFACE_A",
+        "timings_0": [
+            3761,
+            4279,
+            1603
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            208508,
+            100598,
+            26475,
+            83357,
+            61052,
+            88040,
+            32628
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            44354,
+            59750,
+            37096,
+            40836,
+            51593,
+            17212,
+            7420
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 2,
+        "interface_version": "INTERFACE_1",
+        "timings_0": [
+            5495,
+            6405,
+            4760
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            110239,
+            110430,
+            31242,
+            211268,
+            62699,
+            45600,
+            11046
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            34374,
+            47691,
+            106330,
+            52445,
+            51197,
+            45277,
+            8450
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 3,
+        "interface_version": "INTERFACE_A",
+        "timings_0": [
+            10141,
+            7202,
+            22786
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            74351,
+            151821,
+            82044,
+            151994,
+            199548,
+            41998,
+            15826
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            37799,
+            74074,
+            37012,
+            54611,
+            42250,
+            14532,
+            19115
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 4,
+        "interface_version": "INTERFACE_1",
+        "timings_0": [
+            4523,
+            5623,
+            11769
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            75285,
+            123150,
+            46315,
+            128624,
+            134138,
+            88952,
+            10995
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            31101,
+            43328,
+            44944,
+            52187,
+            46988,
+            27317,
+            26626
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 5,
+        "interface_version": "INTERFACE_A",
+        "timings_0": [
+            6866,
+            12533,
+            11636
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            243934,
+            32197,
+            46369,
+            177880,
+            303671,
+            50016,
+            16096
+        ],
+        "outcomes_1": [
+            "GIVE_UP",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            101618,
+            139264,
+            44508,
+            77330,
+            67512,
+            34750,
+            11952
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 6,
+        "interface_version": "INTERFACE_1",
+        "timings_0": [
+            6159,
+            15625,
+            12526
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            479814,
+            79937,
+            21789,
+            78030,
+            142025,
+            61721,
+            9725
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            47263,
+            74486,
+            41303,
+            52771,
+            43316,
+            27683,
+            9320
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 7,
+        "interface_version": "INTERFACE_A",
+        "timings_0": [
+            6410,
+            9889,
+            10251
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            57970,
+            123279,
+            53118,
+            105136,
+            96965,
+            39111,
+            18604
+        ],
+        "outcomes_1": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            63140,
+            68489,
+            28152,
+            73150,
+            40924,
+            10938,
+            7190
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    },
+    {
+        "participant_id": 8,
+        "interface_version": "INTERFACE_1",
+        "timings_0": [
+            5129,
+            7704,
+            8837
+        ],
+        "outcomes_0": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_1": [
+            322685,
+            111545,
+            53427,
+            107000,
+            88219,
+            38312,
+            10747
+        ],
+        "outcomes_1": [
+            "GIVE_UP",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ],
+        "timings_2": [
+            54690,
+            47754,
+            40393,
+            62927,
+            46516,
+            32212,
+            8678
+        ],
+        "outcomes_2": [
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE",
+            "COMPLETE"
+        ]
+    }
+]

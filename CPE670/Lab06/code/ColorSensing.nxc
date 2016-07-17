@@ -1,0 +1,84 @@
+#ifndef __COLORSENSING_NXC__
+#define __COLORSENSING_NXC__
+
+#define COLOR_DEBUG 0
+#define COLOR_MUXED 0
+
+#define COLOR_SENSOR IN_2 // msensor_S1_1
+
+/**
+ * This struct bundles all data relevant to a color sensor reading.
+ * It should be noted that the RGB values can sometimes be used to
+ * differentiate between colors that produce the same color
+ * number.
+ */
+typedef struct {
+  byte colorNum;
+  byte red;
+  byte green;
+  byte blue;
+} ColorVal;
+
+
+typedef struct {
+  ColorVal value;
+  mutex ownership;
+  bool readingIsValid;
+} ColorReading;
+
+
+bool gUseColorSensing = false;
+ColorReading gColorReading;
+
+task TASK_ColorSensing();
+void debugOutputColor(const ColorVal& pColorVal);
+
+/**
+ *  This method includes logic that must be tailored to the particular
+ *  sensor it is used with. This is to weed out garbage readings.
+ */
+bool readingIsValid(const ColorVal& pColorVal);
+
+
+/**
+ *  Spawns the thread that publishes color sensor readings.
+ */
+task TASK_ColorSensing() {
+  SetSensorLowspeed(COLOR_SENSOR);
+//  SetSensor(S1, SENSOR_LOWSPEED);
+  
+  while (true) {
+    until (gUseColorSensing);
+    while (gUseColorSensing) {
+      bool readSuccess = ReadSensorHTColor(
+        COLOR_SENSOR,
+        gColorReading.value.colorNum,
+        gColorReading.value.red,
+        gColorReading.value.green,
+        gColorReading.value.blue
+      );
+      Wait(MS_20 + MS_5);
+
+      #if COLOR_DEBUG
+        debugOutputColor(gColorReading.value);
+      #endif //COLOR_DEBUG
+    }
+  }
+}
+
+bool readingIsValid(const ColorVal& pColorVal) {
+  return true;
+}
+
+void debugOutputColor(const ColorVal& pColorVal) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Color Reading:");
+  NumOut(2, LCD_LINE2, pColorVal.colorNum);
+  NumOut(2, LCD_LINE3, pColorVal.red);
+  NumOut(2, LCD_LINE4, pColorVal.green);
+  NumOut(2, LCD_LINE5, pColorVal.blue);
+  Wait(MS_100);
+
+}
+
+#endif //__COLORSENSING_NXC__

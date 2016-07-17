@@ -1,0 +1,117 @@
+\hypertarget{ossim_8cpp}{\section{ossim.\-cpp \-File \-Reference}
+\label{ossim_8cpp}\index{ossim.\-cpp@{ossim.\-cpp}}
+}
+
+
+\-Contains definitions for cunctions that together comprise a heap sort utility. \-The \hyperlink{heapsort_8cpp_a1b9d07732ab0ab5fb1c3fabfb8ba4f4b}{heap\-Sort()} shell function is provided by the lab manual package, while the move\-Down helper function was written by \-T. \-Henriod. \-This heap\-Sort is for arrays.  
+
+
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$cstdlib$>$}\*
+{\ttfamily \#include $<$iomanip$>$}\*
+{\ttfamily \#include \char`\"{}\-Priority\-Queue.\-cpp\char`\"{}}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_task_data}{\-Task\-Data}
+\item 
+class \hyperlink{class_priority_arrival_compare}{\-Priority\-Arrival\-Compare$<$ Task\-Type $>$}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_task_data}{\-Task\-Data} \hyperlink{ossim_8cpp_acb5807868ff37a98acbeaa078a50aaab}{add\-Task} (int arrival\-Time, int num\-Priorities)
+\item 
+int \hyperlink{ossim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Contains definitions for cunctions that together comprise a heap sort utility. \-The \hyperlink{heapsort_8cpp_a1b9d07732ab0ab5fb1c3fabfb8ba4f4b}{heap\-Sort()} shell function is provided by the lab manual package, while the move\-Down helper function was written by \-T. \-Henriod. \-This heap\-Sort is for arrays. \-A shell program that utilizes the \hyperlink{class_priority_queue}{\-Priority\-Queue} \-A\-D\-T to simulatean operating system's use of a priority queue to regulate access to a system resource (printer, disk, etc.).
+
+\begin{DoxyAuthor}{\-Author}
+\-Terence \-Henriod
+\end{DoxyAuthor}
+\-Lab 10\-: \hyperlink{class_heap}{\-Heap} \-Sort
+
+\begin{DoxyVersion}{\-Version}
+\-Original \-Code 1.\-00 (11/8/2013) -\/ \-T. \-Henriod
+\end{DoxyVersion}
+\begin{DoxyAuthor}{\-Author}
+\-Terence \-Henriod
+\end{DoxyAuthor}
+\-Lab 10\-: \-Operating \-System \-Scheduling \-Simulator
+
+\begin{DoxyVersion}{\-Version}
+\-Original \-Code 1.\-00 (11/8/2013) -\/ \-T. \-Henriod 
+\end{DoxyVersion}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{ossim_8cpp_acb5807868ff37a98acbeaa078a50aaab}{\index{ossim.\-cpp@{ossim.\-cpp}!add\-Task@{add\-Task}}
+\index{add\-Task@{add\-Task}!ossim.cpp@{ossim.\-cpp}}
+\subsubsection[{add\-Task}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Task\-Data} {\bf add\-Task} (
+\begin{DoxyParamCaption}
+\item[{int}]{arrival\-Time, }
+\item[{int}]{num\-Priorities}
+\end{DoxyParamCaption}
+)}}\label{ossim_8cpp_acb5807868ff37a98acbeaa078a50aaab}
+add\-Task
+
+\-Generates a new task for the simulation using the arrival time of the task and a random priority level.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em arrival\-Time} & \-The time the task is simulated to arrive into the \hyperlink{class_priority_queue}{\-Priority\-Queue}. \\
+\hline
+{\em num\-Priorities} & \-The number of different priority levels being used in the simulation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+new\-Task \-A new task of type \hyperlink{struct_task_data}{\-Task\-Data}. \-Contains information relevant to the simulation.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-Ideally, int arrival\-Time and num\-Priorities should be passed logical values.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-A new task will be generated with a simulation arrival time and a random priority.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{ossim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{ossim.\-cpp@{ossim.\-cpp}!main@{main}}
+\index{main@{main}!ossim.cpp@{ossim.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf main} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{ossim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+main
+
+\-The driving function of the program. \-A number of differing priority levels and a length of time to run the simulation are prompted for, and then the simulation is run, randomly adding 0, 1, or 2 tasks of random priority each time. \-Each time a task is \char`\"{}processed,\char`\"{} its summary statistics are reported.
+
+\begin{DoxyReturn}{\-Returns}
+0 \-This return value indicates error free execution.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-None.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-A operating system task scheduling simulation will have been run.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 

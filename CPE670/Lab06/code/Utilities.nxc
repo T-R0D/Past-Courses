@@ -1,0 +1,40 @@
+#ifndef __UTILITIES_NXC__
+#define __UTILITIES_NXC__
+
+#include "HTSMUX-driver.h"
+
+/**
+ * Initializes the MUX if it is being used
+ */
+bool initializeMUX(byte pSensorPort) {
+  SetSensor(pSensorPort, SENSOR_LOWSPEED);
+
+  if (!HTSMUXscanPorts(S1)) {
+    // TODO: playDoomSong();
+    return false; // scan failed, MUX not working
+  }
+
+  return true;
+}
+
+/**
+ *  Plays a delightful victory tune.
+ */
+void playVictorySong();
+
+
+
+void playVictorySong() {
+  for (int i = 0; i < 5; i++) {
+    PlayTone(TONE_A4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_B4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_C4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_D4, MS_300);
+    Wait(MS_300);
+  }
+}
+
+#endif //__UTILITIES_NXC__

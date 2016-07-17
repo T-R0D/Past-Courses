@@ -1,0 +1,109 @@
+void gen16khzWave( unsigned long int numWaves )
+{
+  // variables
+  volatile unsigned char* portB = (unsigned char*) ;
+  volatile unsigned char* ddrB = (unsigned char*) ;
+  volatile unsigned long int counter = numWaves;
+
+  // set up port B
+    // set DDR appropriately (X1XX XXXX)
+    *ddrB |= 0x40;
+
+    // set B6 low (X0XX XXXX)
+    *portB &= 0xBF;
+
+  // generate specified number of square waves
+  while( counter > 0 )
+  {
+    // set B6 hi (X1XX XXXX)
+    *portB |= 0x40;
+
+    // delay for correct period
+    MyMicroDelay(  );
+
+    // set B6 lo (X0XX XXXX)
+    *portB &= 0xBF;
+
+    // delay for correct period
+    MyMicroDelay(  );
+
+    // decrement counter
+    counter--;
+  }
+
+  // no return - void
+}
+
+
+void gen12khzWave( unsigned long int numWaves )
+{
+  // variables
+  volatile unsigned char* portB = (unsigned char*) ;
+  volatile unsigned char* ddrB = (unsigned char*) ;
+  volatile unsigned long int counter = numWaves;
+
+  // set up port B
+    // set DDR appropriately (X1XX XXXX)
+    *ddrB |= 0x40;
+
+    // set B6 low (X0XX XXXX)
+    *portB &= 0xBF;
+
+  // generate specified number of square waves
+  while( counter > 0 )
+  {
+    // set B6 hi (X1XX XXXX)
+    *portB |= 0x40;
+
+    // delay for correct period
+    MyMicroDelay(  );
+
+    // set B6 lo (X0XX XXXX)
+    *portB &= 0xBF;
+
+    // delay for correct period
+    MyMicroDelay(  );
+
+    // decrement counter
+    counter--;
+  }
+
+  // no return - void
+}
+
+
+void gen500hzWave( unsigned long int numWaves )
+{
+  // variables
+  volatile unsigned char* portB = (unsigned char*) ;
+  volatile unsigned char* ddrB = (unsigned char*) ;
+  volatile unsigned long int counter = numWaves;
+
+  // set up port B
+    // set DDR appropriately (X1XX XXXX)
+    *ddrB |= 0x40;
+
+    // set B6 low (X0XX XXXX)
+    *portB &= 0xBF;
+
+  // generate specified number of square waves
+  while( counter > 0 )
+  {
+    // set B6 hi (X1XX XXXX)
+    *portB |= 0x40;
+
+    // delay for correct period (30%)
+    MyDelay(  );
+
+    // set B6 lo (X0XX XXXX)
+    *portB &= 0xBF;
+
+    // delay for correct period (70%)
+    MyDelay(  );
+
+    // decrement counter
+    counter--;
+  }
+
+  // no return - void
+}

@@ -1,0 +1,36 @@
+ command line:
+   ./gate2_top_v_isim_beh.exe
+     -intstyle  ise
+     -ipchost  localhost
+     -ipcport  1335
+
+Sun Dec 08 14:06:22 2013
+
+Total Line Count : 56
+
+ Elaboration time : 0.015625 sec.
+
+ Estimate current memory usage : 116.859 Meg. 
+
+ Total Signals          : 12
+ Total Nets             : 16
+ Total Signal Drivers   : 11
+ Total Blocks           : 3
+ Total Primitive Blocks : 2
+ Total Processes        : 14
+ Total Traceable Variables  : 19
+ Total Scalar Nets and Variables : 97
+ntrace select -o on -n /gate2_top_v/z 
+ntrace select -o on -n /gate2_top_v/a 
+ntrace select -o on -n /gate2_top_v/b 
+ntrace start 
+isimrun 1000 ns 
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+
+ Simulation time 0.046875 sec.
+
+ Estimate current memory usage : 125.247 Meg. 
+
+Sun Dec 08 14:07:08 2013
+

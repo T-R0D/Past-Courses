@@ -1,0 +1,1061 @@
+\hypertarget{class_weighted_graph}{\section{\-Weighted\-Graph \-Class \-Reference}
+\label{class_weighted_graph}\index{\-Weighted\-Graph@{\-Weighted\-Graph}}
+}
+
+
+{\ttfamily \#include $<$\-Weighted\-Graph.\-h$>$}
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_weighted_graph_a9255d382e53db8d520ef1e2b63814c81}{\-Weighted\-Graph} (int max\-Number=\hyperlink{class_weighted_graph_af9b34017e5b494cd3aca2dbc8335fc3c}{\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E})
+\item 
+\hyperlink{class_weighted_graph_a294fd717db213e761dc0eb65bbfcb7ab}{\-Weighted\-Graph} (const \hyperlink{class_weighted_graph}{\-Weighted\-Graph} \&other)
+\item 
+\hyperlink{class_weighted_graph}{\-Weighted\-Graph} \& \hyperlink{class_weighted_graph_aa5982a507e944af28e4749cdc06543c6}{operator=} (const \hyperlink{class_weighted_graph}{\-Weighted\-Graph} \&other)
+\item 
+\hyperlink{class_weighted_graph_ad7b4a5c8206772f9f4fb5906c0d64923}{$\sim$\-Weighted\-Graph} ()
+\item 
+void \hyperlink{class_weighted_graph_aeaea1bd5b1e14b69f2155613bfd25d68}{compute\-Paths} ()
+\item 
+void \hyperlink{class_weighted_graph_aec4ef3455e3cc0d73a42e042adb7ac40}{insert\-Vertex} (const \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} \&new\-Vertex)  throw ( logic\-\_\-error )
+\item 
+void \hyperlink{class_weighted_graph_a8be8442a104f3c411f6b1bb072fa97b1}{insert\-Edge} (const string \&v1, const string \&v2, const int wt)  throw ( logic\-\_\-error )
+\item 
+bool \hyperlink{class_weighted_graph_a3afabc2236c99dac950f5161f715f114}{retrieve\-Vertex} (const string \&v, \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} \&v\-Data) const 
+\item 
+bool \hyperlink{class_weighted_graph_ab136044e7378313087be69eb43e7f042}{get\-Edge\-Weight} (const string \&v1, const string \&v2, int \&wt) const   throw ( logic\-\_\-error )
+\item 
+void \hyperlink{class_weighted_graph_abaaa572a9b1a60ec3cd99d8db9d9590e}{remove\-Vertex} (const string \&v)  throw ( logic\-\_\-error )
+\item 
+void \hyperlink{class_weighted_graph_a1db455249fa7fedf70aa5683487a17df}{remove\-Edge} (const string \&v1, const string \&v2)  throw ( logic\-\_\-error )
+\item 
+void \hyperlink{class_weighted_graph_a26890ebf74d23821a6e4dbcf803b5002}{clear} ()
+\item 
+bool \hyperlink{class_weighted_graph_a03884e32b9e093b10e3a44add7eaa928}{are\-All\-Even} () const 
+\item 
+bool \hyperlink{class_weighted_graph_a60be8bab10a9142846093cb768855efd}{has\-Proper\-Coloring} () const 
+\item 
+bool \hyperlink{class_weighted_graph_a1c03a0f68447cf88fed97c2076501702}{is\-Empty} () const 
+\item 
+bool \hyperlink{class_weighted_graph_a22e56836e3967031a657cfa9ea5b9843}{is\-Full} () const 
+\item 
+void \hyperlink{class_weighted_graph_a8e6ea9adc87345052786eec67a5f9164}{show\-Shortest\-Paths} ()
+\item 
+void \hyperlink{class_weighted_graph_ad7f20a989073ea5401d504d944182347}{show\-Structure} () const 
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{class_weighted_graph_af9b34017e5b494cd3aca2dbc8335fc3c}{\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E} = 10
+\item 
+static const int \hyperlink{class_weighted_graph_ab41b338adfc1ebc080cfca0e0b85de4b}{\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T} = \-I\-N\-T\-\_\-\-M\-A\-X
+\item 
+static const int \hyperlink{class_weighted_graph_aff499d450cb315d42d5bcff949f53141}{\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D} = -\/1
+\item 
+static const int \hyperlink{class_weighted_graph_abc512f95c7ebf26d8984bc686f0b7bd7}{\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T} = 0
+\item 
+static const char \hyperlink{class_weighted_graph_ad1854c7cf163167c7cebe7a2f5ebe9d6}{\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R} = '\-R'
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_weighted_graph_a9a7095848029a217a2360ca8f6fc6fc7}{set\-Edge} (const int row, const int col, const int wt)
+\item 
+void \hyperlink{class_weighted_graph_a68788bc02a44a33289411a0d3d1da85a}{set\-Path} (const int row, const int col, const int cost)
+\item 
+int \hyperlink{class_weighted_graph_a8079a4fb184edefad85863d915e66e9e}{get\-Edge} (const int row, const int col) const 
+\item 
+int \hyperlink{class_weighted_graph_a0c6d1c040128d1818ab3b38ff72723a4}{get\-Index} (const string \&v) const 
+\item 
+int \hyperlink{class_weighted_graph_a8360fa50be8d2bc095b2ba69d02eb319}{get\-Path} (const int row, const int col) const 
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_weighted_graph_ae8cd4e7b91702a470e59472979e94cb5}{max\-Size}
+\item 
+int \hyperlink{class_weighted_graph_a4452835ad9619580ff968a4d6a9cfe44}{size}
+\item 
+\hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} $\ast$ \hyperlink{class_weighted_graph_a0893fce457ff57820d30fd050777a058}{vertex\-List}
+\item 
+int $\ast$ \hyperlink{class_weighted_graph_aed50ef32c1c87bb10ca5d1bbc182880a}{adjacency\-Matrix}
+\item 
+int $\ast$ \hyperlink{class_weighted_graph_ad2e0c787899af85ebf86e9c68431c9aa}{path\-Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_weighted_graph_a9255d382e53db8d520ef1e2b63814c81}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-Weighted\-Graph@{\-Weighted\-Graph}}
+\index{\-Weighted\-Graph@{\-Weighted\-Graph}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-Weighted\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Weighted\-Graph\-::\-Weighted\-Graph} (
+\begin{DoxyParamCaption}
+\item[{int}]{max\-Number = {\ttfamily {\bf \-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E}}}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_a9255d382e53db8d520ef1e2b63814c81}
+\hyperlink{class_weighted_graph}{\-Weighted\-Graph}
+
+\-The default constructor for the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} \-A\-D\-T. \-Initializes an empty graph of the given parameterized size.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em max\-Number} & \-The number of vertices the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} can contain when full. \-By default the value \-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E (defined in \hyperlink{_weighted_graph_8h}{\-Weighted\-Graph.\-h})is given.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-There is available memory to instantiate a \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object.
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} is given a valid identifier.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-An empty \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object will be instantiated.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a294fd717db213e761dc0eb65bbfcb7ab}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-Weighted\-Graph@{\-Weighted\-Graph}}
+\index{\-Weighted\-Graph@{\-Weighted\-Graph}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-Weighted\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Weighted\-Graph\-::\-Weighted\-Graph} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Weighted\-Graph} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_a294fd717db213e761dc0eb65bbfcb7ab}
+\hyperlink{class_weighted_graph}{\-Weighted\-Graph}
+
+\-The default constructor for the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} \-A\-D\-T. \-Initializes an empty graph of the given parameterized size. 
+\begin{DoxyParams}{\-Parameters}
+{\em max\-Number} & \-The number of vertices the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} can contain when full. \-By default the value \-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E (defined in \hyperlink{_weighted_graph_8h}{\-Weighted\-Graph.\-h})is given.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-There is available memory to instantiate a \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object.
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} is given a valid identifier.
+\item \-Weightedgraph other is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-A \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object equivalent to the given parameter \hyperlink{class_weighted_graph}{\-Weighted\-Graph} other will be instantiated.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_ad7b4a5c8206772f9f4fb5906c0d64923}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!$\sim$\-Weighted\-Graph@{$\sim$\-Weighted\-Graph}}
+\index{$\sim$\-Weighted\-Graph@{$\sim$\-Weighted\-Graph}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{$\sim$\-Weighted\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Weighted\-Graph\-::$\sim$\-Weighted\-Graph} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_ad7b4a5c8206772f9f4fb5906c0d64923}
+\hyperlink{class_weighted_graph}{\-Weighted\-Graph}
+
+\-The destructor for the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} \-A\-D\-T. \-Ensures all dynamic memory is returned.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this was a properly instantiated \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-All dynamic memory will be returned.
+\item $\ast$this will be destructed.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_weighted_graph_a03884e32b9e093b10e3a44add7eaa928}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!are\-All\-Even@{are\-All\-Even}}
+\index{are\-All\-Even@{are\-All\-Even}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{are\-All\-Even}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Weighted\-Graph\-::are\-All\-Even} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_weighted_graph_a03884e32b9e093b10e3a44add7eaa928}
+are\-All\-Even
+
+\-Determines if each vertex in the graph has an even degree, and then returns true if each vertex does have an even degree and false otherwise.
+
+\begin{DoxyReturn}{\-Returns}
+has\-Eulerian\-Chain \-The truth value of whether or not the graph has all even degree vertices (also indicates if there is a closed chain that uses all paths once). true if all vertices do have even degree, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} will remain unchanged.
+\item \-The truth of all verticex having even degree is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-Every vertex is iteratively checked.
+\item \-The number of edges each vertex has is checked.
+\item \-If any vertex is found to have an odd degree the check is halted.
+\item \-Return true if all vertices have even degree, return false otherwise. \-T\-O\-D\-O refine this algorithm if possible.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a26890ebf74d23821a6e4dbcf803b5002}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!clear@{clear}}
+\index{clear@{clear}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::clear} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_a26890ebf74d23821a6e4dbcf803b5002}
+clear
+
+\-Empties the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} of data.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-A valid \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object has been instantiated.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} will be emptied.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The size of the data set is reduced to zero.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_aeaea1bd5b1e14b69f2155613bfd25d68}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!compute\-Paths@{compute\-Paths}}
+\index{compute\-Paths@{compute\-Paths}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{compute\-Paths}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::compute\-Paths} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_aeaea1bd5b1e14b69f2155613bfd25d68}
+compute\-Paths
+
+\-Computes the shortest paths between the vertices of a graph and stores them in the graph's path matrix.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}
+\item \-The adjacency matrix is in a valid state.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The shortest (lowest cost) paths between all vertices will be computed.
+\item \-The path costs will be stored in the path matrix.
+\item \-No record of what the shortest paths actually are will be kept, only the resulting cost.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\-Floyd's \-Algorithm is used as follows\-:
+\begin{DoxyEnumerate}
+\item \-Every vertex is iteratively considered as a \char`\"{}mutual\char`\"{} neighbor.
+\item \-Every vertex is iteratively considered for every given \char`\"{}mutual\char`\"{} vertex as a \char`\"{}start\char`\"{} vertex.
+\item \-Every other vertex is then iteratively considered for given \char`\"{}mutual\char`\"{} and \char`\"{}start\char`\"{} vertices, as an \char`\"{}end\char`\"{} vertex.
+\item \-A check is made for the existence of paths between the start vertex and the mutual vertex and between the mutual vertex and the end vertex.
+\item \-If such paths exist, then the cost of traversing the two paths described in the previous step (the \char`\"{}indirect\char`\"{} path) is compared with the cost of the path directly from the start vertex to the end vertex.
+\item \-If the indirect path is found to be cheaper than the direct one, then the direct one is replaced with the indirect one on the path matrix.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a8079a4fb184edefad85863d915e66e9e}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!get\-Edge@{get\-Edge}}
+\index{get\-Edge@{get\-Edge}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{get\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Weighted\-Graph\-::get\-Edge} (
+\begin{DoxyParamCaption}
+\item[{const int}]{row, }
+\item[{const int}]{col}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a8079a4fb184edefad85863d915e66e9e}
+get\-Edge
+
+\-Returns the edge weight at the given position at the specified location in the adjacency matrix.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-The row index to be searched in the path matrix. \\
+\hline
+{\em col} & \-The column index to be searched in the path matrix.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+weight
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item row and col are valid positions in the adjacency matrix.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} and all its members will remain unchanged.
+\item \-The index of the desired entry in the 1-\/\-D representation of the adjacency matrix is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The indices that correspond to a 2-\/\-D matrix can be converted using the formula\-: (row-\/index $\ast$ number-\/of-\/columns) + column-\/index.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_ab136044e7378313087be69eb43e7f042}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!get\-Edge\-Weight@{get\-Edge\-Weight}}
+\index{get\-Edge\-Weight@{get\-Edge\-Weight}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{get\-Edge\-Weight}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Weighted\-Graph\-::get\-Edge\-Weight} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{v1, }
+\item[{const string \&}]{v2, }
+\item[{int \&}]{wt}
+\end{DoxyParamCaption}
+) const  throw ( logic\-\_\-error )}}\label{class_weighted_graph_ab136044e7378313087be69eb43e7f042}
+get\-Edge\-Weight
+
+\-Finds the edge wieght corresponding to the edge between two vertices of the given labels. \-The weight is then passes back by reference. true is retruned to indicate that the edge (or at least the two vertices that define it) exist in the graph. \-Otherwise, false is returned.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em v1} & \-A label for the first vertex used to define an edge. \\
+\hline
+{\em v2} & \-A label for the second vertex used to define an edge. \\
+\hline
+{\em wt} & \-The parameter used to pass back a weight of a sought edge.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+result \-The truth value of whether an edge could be found in a graph, true if the edge does exist in the graph, false otherwise. \-Also indicates if the reference parameter int wt contains valid or undeterminate data.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-The sought vertices v1 and v2 (and therefore the edge between them) should exist in the graph.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-If the edge exists in the graph, then its weight is copied into the int wt reference parameter to be passed back and true is returned.
+\item \-Otherwise, wt will be in an undetermined state and false is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The vertex list is searched for verticex with lables matching the two given ones.
+\item \-If found, their indices are used to locate the edge wait in the adjacency matrix.
+\item \-The edge weight is copied to the reference parameter wt.
+\item \-If either of the vertices is not found, then an exception is thrown to indicate that an invalid edge was sought.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-Used to indicate that at least one of the given vertex labels does not exist in the graph, and therefore the edge does not exist.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a0c6d1c040128d1818ab3b38ff72723a4}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!get\-Index@{get\-Index}}
+\index{get\-Index@{get\-Index}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{get\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Weighted\-Graph\-::get\-Index} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{v}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a0c6d1c040128d1818ab3b38ff72723a4}
+get\-Index
+
+\-Retrieves the index of a vertex in the vertex list for use as a coordinate in an adjacency matrix.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em v} & \-A string label used a a key for finding a desired vertex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+result \-The integer index of the sought vertex in the vertex list.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} will remain unchanged.
+\item \-The index of the sought vertex in the vertex list is returned.
+\item \-If the vertex is not found, \-N\-O\-T\-\_\-\-F\-O\-U\-N\-D (defined in \hyperlink{_weighted_graph_8h}{\-Weighted\-Graph.\-h}) is returned to signal that a vertex with a label matching v was not found.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-A linear search is conducted to find a vertex in the vertex list with a label matching the given parameter string v.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a8360fa50be8d2bc095b2ba69d02eb319}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!get\-Path@{get\-Path}}
+\index{get\-Path@{get\-Path}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{get\-Path}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Weighted\-Graph\-::get\-Path} (
+\begin{DoxyParamCaption}
+\item[{const int}]{row, }
+\item[{const int}]{col}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a8360fa50be8d2bc095b2ba69d02eb319}
+get\-Path
+
+\-Returns the path cost at the given position at the specified location in the path matrix.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-The row index to be searched in the path matrix. \\
+\hline
+{\em col} & \-The column index to be searched in the path matrix.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+path\-Cost
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item row and col are valid positions in the adjacency matrix.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} and all its members will remain unchanged.
+\item \-The index of the desired entry in the 1-\/\-D representation of the adjacency matrix is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The indices that correspond to a 2-\/\-D matrix can be converted using the formula\-: (row-\/index $\ast$ number-\/of-\/columns) + column-\/index.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a60be8bab10a9142846093cb768855efd}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!has\-Proper\-Coloring@{has\-Proper\-Coloring}}
+\index{has\-Proper\-Coloring@{has\-Proper\-Coloring}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{has\-Proper\-Coloring}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Weighted\-Graph\-::has\-Proper\-Coloring} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_weighted_graph_a60be8bab10a9142846093cb768855efd}
+has\-Proper\-Coloring
+
+\-Returns the truth value of whether or not the graph has a valid vertex coloring. true is returned if no vertex is adjacent to another vertex of same color, returns false otherwise.
+
+\begin{DoxyReturn}{\-Returns}
+has\-Valid\-Coloring \-The truth value of whether or not the graph has a valid vertex coloring.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-The vertices are all colored with valid colors.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} will remain unchanged.
+\item \-If the graph has a valid vertex coloring, true is returned. \-Otherwise, false is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-Every vertex is checked to see if it has the same color as any neighbors.
+\item \-If a pair of neighbors are found to have the same color, the check is halted.
+\item \-If no pair of neighbors are found to have the same color, then true is returned.
+\item \-If any pair of neighbors is found to have the same color, false is returned. \-T\-O\-D\-O refine this algorithm if possible.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a8be8442a104f3c411f6b1bb072fa97b1}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!insert\-Edge@{insert\-Edge}}
+\index{insert\-Edge@{insert\-Edge}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{insert\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::insert\-Edge} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{v1, }
+\item[{const string \&}]{v2, }
+\item[{const int}]{wt}
+\end{DoxyParamCaption}
+)  throw ( logic\-\_\-error )}}\label{class_weighted_graph_a8be8442a104f3c411f6b1bb072fa97b1}
+insert\-Edge
+
+\-Inserts an undirected edge of the given weight between the given vertices.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em v1} & \-The label of the first vertex in the pair defining the edge. \\
+\hline
+{\em v2} & \-The label of the second vertex in the pair defining the edge. \\
+\hline
+{\em wt} & \-The weight of the edge to be updated or added.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a properly instantiated \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-The graph contains at least two vertices.
+\item \-The vertices that define the edge should be present in the graph.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The weighted edge will be added to the graph. \-That is, the adjacency matrix will contain the updated/new edge weight in the two matrix locations pertaining to the given vertices (because this is not a digraph).
+\item \-If either of the given vertex parameters are not found, then an exception of type logic\-\_\-error is thrown to indicate such.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The vertex list is searched for both vertices and their index is recorded.
+\item \-The found indices are used to locate the appropriate locations in the adjacency matrix.
+\item \-The adjacency matrix is then updated with the appropriate edge weight.
+\item \-If either of the vertices is not found in the graph, then an exception of type logic\-\_\-error is thrown to indicate that the edge cannot be added between vertices that do not exist in the graph.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-This exception is used to report that the edge cannot be added between vertices that do not exist in the graph.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_aec4ef3455e3cc0d73a42e042adb7ac40}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!insert\-Vertex@{insert\-Vertex}}
+\index{insert\-Vertex@{insert\-Vertex}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{insert\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::insert\-Vertex} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Vertex} \&}]{new\-Vertex}
+\end{DoxyParamCaption}
+)  throw ( logic\-\_\-error )}}\label{class_weighted_graph_aec4ef3455e3cc0d73a42e042adb7ac40}
+insert\-Vertex
+
+\-Adds a vertex to the graph if there is room in the list. \-An exception is thrown if parameter \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} new\-Vertex cannot be added. \-No edges are added, just a vertex.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em new\-Vertex} & \-A new vertex to be added to the graph.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-A valid \hyperlink{class_weighted_graph}{\-Weighted\-Graph} object has been instantiated.
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} has not been filled to maximum capacity.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-If possible, \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} new\-Vertex is added to the end of the vertex\-List array member.
+\item \-If the graph is full, an exception of type logic\-\_\-error is thrown to indicate that the graph is full.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-If the vertex\-List array member is not full, then the size of the list is increased by one and the vertex is added in the last spot in the list.
+\item \-A row of \char`\"{}non-\/edges\char`\"{} is then added to the adjacency\-Matrix array member.
+\item \-An edge with the weight of a loop cost is added where the new vertex intersects with itself in the matrix.
+\item \-A column of \char`\"{}non\-\_\-edges\char`\"{} is also appended to the matrix.
+\item \-If the vertex\-List was full, then an exception of type logic\-\_\-error is thrown to indicate that the \hyperlink{class_weighted_graph}{\-Weighted\-Graph} is full.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-Indicates that an attempt to add a \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} to a full \hyperlink{class_weighted_graph}{\-Weighted\-Graph} was made\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a1c03a0f68447cf88fed97c2076501702}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Weighted\-Graph\-::is\-Empty} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_weighted_graph_a1c03a0f68447cf88fed97c2076501702}
+is\-Emtpy
+
+\-Returns the truth of the emptiness of the graph, true if empty, false otherwise.
+
+\begin{DoxyReturn}{\-Returns}
+empty \-The truth of the graph being empty.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-The size member of $\ast$this is in a valid state.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The truth of the emptiness of the graph is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a22e56836e3967031a657cfa9ea5b9843}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!is\-Full@{is\-Full}}
+\index{is\-Full@{is\-Full}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{is\-Full}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Weighted\-Graph\-::is\-Full} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_weighted_graph_a22e56836e3967031a657cfa9ea5b9843}
+is\-Full
+
+\-Returns the truth of the fullness of the graph, true if full, false otherwise.
+
+\begin{DoxyReturn}{\-Returns}
+full \-The truth of the graph being full.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-The size member of $\ast$this is in a valid state.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The truth of the fullness of the graph is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_aa5982a507e944af28e4749cdc06543c6}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!operator=@{operator=}}
+\index{operator=@{operator=}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Weighted\-Graph} \& \-Weighted\-Graph\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Weighted\-Graph} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_aa5982a507e944af28e4749cdc06543c6}
+operator=
+
+\-The overloaded assignment operator. \-Clones the data in the given parameter \hyperlink{class_weighted_graph}{\-Weighted\-Graph} other into $\ast$this.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & \-A \hyperlink{class_weighted_graph}{\-Weighted\-Graph} to whose data will be cloned.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+$\ast$this \-A reference to this for multiple assignments on the same line.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-Both $\ast$this and other are valid \hyperlink{class_weighted_graph}{\-Weighted\-Graph} objects.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will be an equivalent object to other. \-All data in $\ast$this will be a clone of that in other.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-If the given parameter other is $\ast$this, no action is taken.
+\item \-If \hyperlink{class_weighted_graph}{\-Weighted\-Graph} other is of different size, $\ast$this is resized.
+\item \-The data in this is then made equivalent to that of other, size and all.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a1db455249fa7fedf70aa5683487a17df}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!remove\-Edge@{remove\-Edge}}
+\index{remove\-Edge@{remove\-Edge}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{remove\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::remove\-Edge} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{v1, }
+\item[{const string \&}]{v2}
+\end{DoxyParamCaption}
+)  throw ( logic\-\_\-error )}}\label{class_weighted_graph_a1db455249fa7fedf70aa5683487a17df}
+remove\-Edge
+
+\-Removes an edge from the graph by giving it an \char`\"{}infinite\char`\"{} weight. (\-The \char`\"{}infinite\char`\"{} weight is the maximum integer value defined in climits)
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em v1} & \-A label corresponding to the first vertex that defines an edge. \\
+\hline
+{\em v2} & \-A label corresponding to the second vertex that defines an edge.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-Vertices with labels corresponding to the parameters v1 and v2 should exist in the graph.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-If the edge exists in the graph, it is \char`\"{}removed\char`\"{} by giving it an \char`\"{}infinite\char`\"{} weight.
+\item \-If either of the given vertex labels are not present in the vertex list, an exception is thrown to indicate that an invalid edge was sought.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The insert\-Edge function is called to \char`\"{}remove\char`\"{} the edge by giving it an infinite weight. \-This will prevent duplication of code.
+\item \-If the either of the vertices that define the edge can't be found, then an exception is thrown to indicate such.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-Used to indicate that an invalid edge was chosen because at least one of the given vertex labels does not correspond to an existing vertex.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_abaaa572a9b1a60ec3cd99d8db9d9590e}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!remove\-Vertex@{remove\-Vertex}}
+\index{remove\-Vertex@{remove\-Vertex}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{remove\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::remove\-Vertex} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{v}
+\end{DoxyParamCaption}
+)  throw ( logic\-\_\-error )}}\label{class_weighted_graph_abaaa572a9b1a60ec3cd99d8db9d9590e}
+remove\-Vertex
+
+\-Removes a vertex from the vertex list and resizes the adjacency matrix to remove any edges that were associated with the vertex.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em v} & \-A label corresponding to the vertex to be removed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-The given label parameter should correspond to a vertex contained in the vertex list of the graph.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The vertex corresponding to the given label will be removed.
+\item \-Data corresponding to edges shared by the removed vertex and other vertices will be removed and the adjacency matrix will be resized appropriately.
+\item \-The new size of the graph is updated.
+\item \-If the given label does not correspond to a given vertex, an exception is thrown to indicate this.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The sought vertex is first located in the vertex list and its index is saved.
+\item \-The size of the graph is decremented.
+\item \-The vertex list is then condensed by shifting all elements in the list after the removed vertex over.
+\item \-The rows of the adjacency matrix that appear after the row corresponding to the removed vertex are moved up to replace the \char`\"{}removed\char`\"{} row.
+\item \-The columns that appear after the one corresponding to the removed vertex are shifted left in order to replace the \char`\"{}removed\char`\"{} column.
+\item \-If the given label is not found in the graph, an exception is thrown, indicating this.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-Used to indicate that an attemp to remove a vertex that is not present in the graph was made.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a3afabc2236c99dac950f5161f715f114}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!retrieve\-Vertex@{retrieve\-Vertex}}
+\index{retrieve\-Vertex@{retrieve\-Vertex}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{retrieve\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Weighted\-Graph\-::retrieve\-Vertex} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{v, }
+\item[{{\bf \-Vertex} \&}]{v\-Data}
+\end{DoxyParamCaption}
+) const}}\label{class_weighted_graph_a3afabc2236c99dac950f5161f715f114}
+retrive\-Vertex
+
+\-Searches the vertex list for a particular vertex label. \-Passes the vertex back by reference if it is found.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em v} & \-A string used to identify a sought vertex. \\
+\hline
+{\em v\-Data} & \-An object of type \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} intended to contain the data of the sought vertex if the vertex with a label matching the parameter label is found.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+result \-The truth value of whether the sought vertex was found. \-If the vertex was found and v\-Data contains that vertex's information, then true is returned. \-Otherwise, false is returned and v\-Data is in an undetermined state.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a weighted graph.
+\item v\-Data is a properly constructed \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} object.
+\item \-A vertex with a label matching the one given as a parameter should exist in the graph.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-If a vertex with a matching label is found, then its data is copied into the given reference parameter \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} v\-Data and true is returned. \-Otherwise, false is returned and v\-Data will be in an undetermined state.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The vertex list is searched for a vertex with a label matching the given parameter.
+\item \-If such a vertex is found, its data is copied to parameter \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} v\-Data and true is returned.
+\item \-If a vertex with such a label is not found, then parameter \hyperlink{class_weighted_graph_1_1_vertex}{\-Vertex} v\-Data will be in an undetermined state and false is returned.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a9a7095848029a217a2360ca8f6fc6fc7}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!set\-Edge@{set\-Edge}}
+\index{set\-Edge@{set\-Edge}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{set\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::set\-Edge} (
+\begin{DoxyParamCaption}
+\item[{const int}]{row, }
+\item[{const int}]{col, }
+\item[{const int}]{wt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a9a7095848029a217a2360ca8f6fc6fc7}
+set\-Edge
+
+\-Given appropriate adjacency matrix coordinates, sets the weight of the edge between two vertices.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-The row index of the first vertex defining the edge. \\
+\hline
+{\em col} & \-The column index of the second vertex defining the edge. \\
+\hline
+{\em wt} & \-The weight the sought edge will be given.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-Parameters row and col are valid indices corresponding to a location in the adjacency matrix.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The location in the adjacency matrix representing the edge from the row index vertex to the column index vertex is given the parameterized weight.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The indices that correspond to a 2-\/\-D matrix can be converted using the formula\-: (row-\/index $\ast$ number-\/of-\/columns) + column-\/index.
+\item \-The resulting index is used to set the edge's weight.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a68788bc02a44a33289411a0d3d1da85a}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!set\-Path@{set\-Path}}
+\index{set\-Path@{set\-Path}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{set\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::set\-Path} (
+\begin{DoxyParamCaption}
+\item[{const int}]{row, }
+\item[{const int}]{col, }
+\item[{const int}]{cost}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a68788bc02a44a33289411a0d3d1da85a}
+set\-Path
+
+\-Given appropriate adjacency matrix coordinates, sets the cost of the path between two vertices.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-The row index of the first vertex defining the path. \\
+\hline
+{\em col} & \-The column index of the second vertex defining the path.\\
+\hline
+{\em cost} & \-The cost the sought path will be given.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\item \-Parameters row and col are valid indices corresponding to a location in the path matrix.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The location in the path matrix representing the edge from the row index vertex to the column index vertex is given the value of the parameter cost.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The indices that correspond to a 2-\/\-D matrix can be converted using the formula\-: (row-\/index $\ast$ number-\/of-\/columns) + column-\/index.
+\item \-The resulting index is used to set the path's cost.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_a8e6ea9adc87345052786eec67a5f9164}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!show\-Shortest\-Paths@{show\-Shortest\-Paths}}
+\index{show\-Shortest\-Paths@{show\-Shortest\-Paths}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{show\-Shortest\-Paths}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::show\-Shortest\-Paths} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_weighted_graph_a8e6ea9adc87345052786eec67a5f9164}
+show\-Shortest\-Paths
+
+\-Computes and displays the graphs path matrix.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}
+\item \-The adjacency matrix is in a valid state.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_weighted_graph}{\-Weighted\-Graph} will remain unchanged.
+\item \-The shortest (lowest cost) paths between all vertices will be re-\/computed.
+\item \-The shortest path matrix will be displayed.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The shortest paths are computed and stored in the path\-Matrix data member.
+\item \-Then the path matrix is displayed one row at a time.
+\item \-If the graph is actually empty, this is stated.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_weighted_graph_ad7f20a989073ea5401d504d944182347}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!show\-Structure@{show\-Structure}}
+\index{show\-Structure@{show\-Structure}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{show\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Weighted\-Graph\-::show\-Structure} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_weighted_graph_ad7f20a989073ea5401d504d944182347}
+show\-Structure
+
+\-Outputs a graph's vertex list and adjacency matrix. \-This operation is intended for testing/debugging purposes only.
+
+\-P\-R\-O\-V\-I\-D\-E\-D \-B\-Y \-T\-H\-E \-L\-A\-B \-M\-A\-N\-U\-A\-L \-P\-A\-C\-K\-A\-G\-E
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_weighted_graph}{\-Weighted\-Graph}.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will remain unchanged.
+\item \-The vertex list an adjacency matrix for the graph will be displayed.
+\item \-The weighted graph will remain unchanged.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-A vertex list is displayed, both labels and colors
+\item \-Then the adjacency matrix is displayed one row at a time.
+\item \-If the graph is actually empty, this is stated.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_weighted_graph_aed50ef32c1c87bb10ca5d1bbc182880a}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!adjacency\-Matrix@{adjacency\-Matrix}}
+\index{adjacency\-Matrix@{adjacency\-Matrix}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{adjacency\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ {\bf \-Weighted\-Graph\-::adjacency\-Matrix}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_aed50ef32c1c87bb10ca5d1bbc182880a}
+\hypertarget{class_weighted_graph_ad1854c7cf163167c7cebe7a2f5ebe9d6}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R@{\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R}}
+\index{\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R@{\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}const char {\bf \-Weighted\-Graph\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-O\-L\-O\-R} = '\-R'\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_weighted_graph_ad1854c7cf163167c7cebe7a2f5ebe9d6}
+\hypertarget{class_weighted_graph_ab41b338adfc1ebc080cfca0e0b85de4b}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T@{\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T}}
+\index{\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T@{\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf \-Weighted\-Graph\-::\-I\-N\-F\-I\-N\-I\-T\-E\-\_\-\-E\-D\-G\-E\-\_\-\-W\-T} = \-I\-N\-T\-\_\-\-M\-A\-X\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_weighted_graph_ab41b338adfc1ebc080cfca0e0b85de4b}
+\hypertarget{class_weighted_graph_abc512f95c7ebf26d8984bc686f0b7bd7}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T@{\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T}}
+\index{\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T@{\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf \-Weighted\-Graph\-::\-L\-O\-O\-P\-\_\-\-C\-O\-S\-T} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_weighted_graph_abc512f95c7ebf26d8984bc686f0b7bd7}
+\hypertarget{class_weighted_graph_af9b34017e5b494cd3aca2dbc8335fc3c}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E@{\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E}}
+\index{\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E@{\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf \-Weighted\-Graph\-::\-M\-A\-X\-\_\-\-G\-R\-A\-P\-H\-\_\-\-S\-I\-Z\-E} = 10\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_weighted_graph_af9b34017e5b494cd3aca2dbc8335fc3c}
+\hypertarget{class_weighted_graph_ae8cd4e7b91702a470e59472979e94cb5}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!max\-Size@{max\-Size}}
+\index{max\-Size@{max\-Size}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{max\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Weighted\-Graph\-::max\-Size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_ae8cd4e7b91702a470e59472979e94cb5}
+\hypertarget{class_weighted_graph_aff499d450cb315d42d5bcff949f53141}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D@{\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D}}
+\index{\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D@{\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf \-Weighted\-Graph\-::\-N\-O\-T\-\_\-\-F\-O\-U\-N\-D} = -\/1\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_weighted_graph_aff499d450cb315d42d5bcff949f53141}
+\hypertarget{class_weighted_graph_ad2e0c787899af85ebf86e9c68431c9aa}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!path\-Matrix@{path\-Matrix}}
+\index{path\-Matrix@{path\-Matrix}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{path\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ {\bf \-Weighted\-Graph\-::path\-Matrix}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_ad2e0c787899af85ebf86e9c68431c9aa}
+\hypertarget{class_weighted_graph_a4452835ad9619580ff968a4d6a9cfe44}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!size@{size}}
+\index{size@{size}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Weighted\-Graph\-::size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a4452835ad9619580ff968a4d6a9cfe44}
+\hypertarget{class_weighted_graph_a0893fce457ff57820d30fd050777a058}{\index{\-Weighted\-Graph@{\-Weighted\-Graph}!vertex\-List@{vertex\-List}}
+\index{vertex\-List@{vertex\-List}!WeightedGraph@{\-Weighted\-Graph}}
+\subsubsection[{vertex\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vertex}$\ast$ {\bf \-Weighted\-Graph\-::vertex\-List}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_weighted_graph_a0893fce457ff57820d30fd050777a058}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/nfs/home/thenriod/\-Desktop/\-P\-A11/\-Doxy11/\hyperlink{_weighted_graph_8h}{\-Weighted\-Graph.\-h}\item 
+/nfs/home/thenriod/\-Desktop/\-P\-A11/\-Doxy11/\hyperlink{_weighted_graph_8cpp}{\-Weighted\-Graph.\-cpp}\end{DoxyCompactItemize}

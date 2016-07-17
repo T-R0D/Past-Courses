@@ -1,0 +1,86 @@
+#ifndef __LAB04_SONAR_NXC__
+#define __LAB04_SONAR_NXC__
+
+
+#define RIGHT_SONAR IN_2
+#define LEFT_SONAR IN_1
+
+#define NEAR_THRESHOLD 17 // in cm (ish)
+
+#define OBJECT_ON_RIGHT 0
+#define OBJECT_ON_LEFT 1
+#define NO_OBJECT 255
+
+
+typedef struct {
+  byte right;
+  byte left;
+} SonarReading;
+
+
+mutex gSonarMutex;
+bool gUseSonar = true;
+bool gObstacleOnRight = false;
+bool gObstacleOnLeft = false;
+
+
+task TASK_sonarSensor();
+byte readSonarSensor(byte pSensorPort);
+void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading);
+
+/**
+ * Creates a thread that will be responsible for detecting when the
+ * touch sensors are activated and determining the appropriate
+ * avoidance strategy.
+ */
+task TASK_sonarSensor() {
+  SetSensorUltrasonic(RIGHT_SONAR);
+  SetSensorUltrasonic(LEFT_SONAR);
+
+  // start with sensors de-activated for good measure
+  I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+  I2CWrite(LEFT_SONAR, 0x41, 0x00);
+     
+  while (gUseSonar) {
+    byte rightReading = readSonarSensor(RIGHT_SONAR);
+    byte leftReading = readSonarSensor(LEFT_SONAR);
+
+    gObstacleOnRight = rightReading <= NEAR_THRESHOLD;
+    gObstacleOnLeft = leftReading <= NEAR_THRESHOLD;
+  }
+  
+  I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+  I2CWrite(LEFT_SONAR, 0x41, 0x00);
+}
+
+
+byte readSonarSensor(byte pSensorPort) {
+  I2CWrite(pSensorPort, 0x41, 0x00);
+  I2CWrite(RIGHT_SONAR, 0x41, 0x03);
+
+  byte reading = SensorUS(pSensorPort);
+  Wait(MS_20 + MS_5);
+  
+  I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+
+  return reading;
+}
+
+
+void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading) {
+  ClearScreen();
+    if (pSonarOneReading <= NEAR_THRESHOLD) {
+      TextOut(2, LCD_LINE2, "OBSTACLE ON RIGHT!");
+    } else {
+      NumOut(2, LCD_LINE2, pSonarOneReading);
+    }
+    if (pSonarTwoReading <= NEAR_THRESHOLD) {
+      TextOut(2, LCD_LINE4, "OBSTACLE ON LEFT!");
+    } else {
+      NumOut(2, LCD_LINE4, pSonarTwoReading);
+    }
+    Wait(MS_100);
+}
+
+
+#endif //__LAB04_SONAR_NXC__

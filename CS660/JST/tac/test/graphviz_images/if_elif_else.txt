@@ -1,0 +1,26 @@
+digraph {
+	"FileAST\n00023" -> {"FunctionDefinition: int main\n00022"};
+	"FunctionDefinition: int main\n00022" -> {"CompoundStatement\n00021"};
+	"CompoundStatement\n00021" -> {"Declaration: int i\n00000", "If\n00020"};
+	"Declaration: int i\n00000" -> {};
+	"If\n00020" -> {"BinaryOperator: EQUAL\n00003", "CompoundStatement\n00007", "If\n00019"};
+	"BinaryOperator: EQUAL\n00003" -> {"SymbolNode: int_i\n00001", "Constant: 5\n00002"};
+	"SymbolNode: int_i\n00001" -> {};
+	"Constant: 5\n00002" -> {};
+	"CompoundStatement\n00007" -> {"Assignment: ASSIGN\n00006"};
+	"Assignment: ASSIGN\n00006" -> {"SymbolNode: int_i\n00004", "Constant: 6\n00005"};
+	"SymbolNode: int_i\n00004" -> {};
+	"Constant: 6\n00005" -> {};
+	"If\n00019" -> {"BinaryOperator: EQUAL\n00010", "CompoundStatement\n00014", "CompoundStatement\n00018"};
+	"BinaryOperator: EQUAL\n00010" -> {"SymbolNode: int_i\n00008", "Constant: 6\n00009"};
+	"SymbolNode: int_i\n00008" -> {};
+	"Constant: 6\n00009" -> {};
+	"CompoundStatement\n00014" -> {"Assignment: ASSIGN\n00013"};
+	"Assignment: ASSIGN\n00013" -> {"SymbolNode: int_i\n00011", "Constant: 7\n00012"};
+	"SymbolNode: int_i\n00011" -> {};
+	"Constant: 7\n00012" -> {};
+	"CompoundStatement\n00018" -> {"Assignment: ASSIGN\n00017"};
+	"Assignment: ASSIGN\n00017" -> {"SymbolNode: int_i\n00015", "Constant: 5\n00016"};
+	"SymbolNode: int_i\n00015" -> {};
+	"Constant: 5\n00016" -> {};
+}

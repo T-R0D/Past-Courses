@@ -1,0 +1,7 @@
+digraph {
+	"FileAST\n00004" -> {"FunctionDefinition: int main\n00003"};
+	"FunctionDefinition: int main\n00003" -> {"CompoundStatement\n00002"};
+	"CompoundStatement\n00002" -> {"Return\n00001"};
+	"Return\n00001" -> {"Constant: 0\n00000"};
+	"Constant: 0\n00000" -> {};
+}

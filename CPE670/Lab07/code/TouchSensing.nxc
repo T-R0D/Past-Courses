@@ -1,0 +1,81 @@
+#ifndef __TOUCHSENSING_NXC__
+#define __TOUCHSENSING_NXC__
+
+#define TOUCH_DEBUG 0
+#define TOUCH_MUXED 0
+
+#if TOUCH_MUXED
+  #define RIGHT_TOUCH_SENSOR 2  // same as: msensorS1_3
+  #define LEFT_TOUCH_SENSOR 1    // same as: msensorS1_2
+#else
+  #define RIGHT_TOUCH_SENSOR IN_3
+  #define LEFT_TOUCH_SENSOR IN_4
+#endif
+
+typedef struct {
+  bool rightValue;
+  bool leftValue;
+  mutex ownership;
+  bool readingIsValid;
+} TouchReading;
+
+
+bool gUseTouchSensing = false;
+TouchReading gTouchReading;
+
+
+task TASK_TouchSensing();
+bool readTouchSensor(byte pPort);
+void debugOutputTouch(const byte pRightTouch, const byte pLeftTouch);
+
+
+/**
+ *  Spawns the thread responsible for publishing the touch sensor readings
+ */
+task TASK_TouchSensing() {
+  #if TOUCH_MUXED
+  #else
+    SetSensorTouch(RIGHT_TOUCH_SENSOR);
+    SetSensorTouch(LEFT_TOUCH_SENSOR);
+  #endif //TOUCH_MUXED
+
+  while (true) {
+    until (gUseTouchSensing);
+    while (gUseTouchSensing) {
+      gTouchReading.rightValue = readTouchSensor(RIGHT_TOUCH_SENSOR);
+      gTouchReading.leftValue = readTouchSensor(LEFT_TOUCH_SENSOR);
+
+      #if TOUCH_DEBUG
+        debugOutputTouch(gTouchReading.rightValue, gTouchReading.leftValue);
+      #endif //TOUCH_DEBUG
+    }
+  }
+}
+
+bool readTouchSensor(byte pPort) {
+      #if TOUCH_MUXED
+        return smuxReadSensorLegoTouch(pPort);
+      #else
+        return SensorValue(pPort);
+      #endif //Touch_MUXED
+}
+
+void debugOutputTouch(const byte pRightTouch, const byte pLeftTouch) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Touch Reading:");
+  
+  if (pRightTouch == 1) {
+    TextOut(4, LCD_LINE2, "OUCH! THAT HURT!");
+  } else {
+    TextOut(4, LCD_LINE2, "NO TOUCH!");
+  }
+  
+    if (pLeftTouch == 1) {
+    TextOut(4, LCD_LINE3, "OUCH! THAT HURT!");
+  } else {
+    TextOut(4, LCD_LINE3, "NO TOUCH!");
+  }
+  Wait(MS_100);
+}
+
+#endif //__TOUCHSENSING_NXC__

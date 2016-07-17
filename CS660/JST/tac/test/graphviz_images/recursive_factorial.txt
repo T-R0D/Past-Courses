@@ -1,0 +1,30 @@
+digraph {
+	"FileAST\n00029" -> {"FunctionDeclaration\nint factorial\n00001", "FunctionDefinition\nint main\n00011", "FunctionDefinition\nint factorial\n00028"};
+	"FunctionDeclaration\nint factorial\n00001" -> {"SymbolNode\nint_x\n00000"};
+	"SymbolNode\nint_x\n00000" -> {};
+	"FunctionDefinition\nint main\n00011" -> {"CompoundStatement\n00010"};
+	"CompoundStatement\n00010" -> {"Declaration\nint x\n00003", "Declaration\nint result\n00007", "Return\n00009"};
+	"Declaration\nint x\n00003" -> {"Constant\n5\n00002"};
+	"Constant\n5\n00002" -> {};
+	"Declaration\nint result\n00007" -> {"FunctionCall\nfactorial\n00006"};
+	"FunctionCall\nfactorial\n00006" -> {"SymbolNode\nint_x\n00005"};
+	"SymbolNode\nint_x\n00005" -> {};
+	"Return\n00009" -> {"Constant\n0\n00008"};
+	"Constant\n0\n00008" -> {};
+	"FunctionDefinition\nint factorial\n00028" -> {"SymbolNode\nint_x\n00027", "CompoundStatement\n00026"};
+	"SymbolNode\nint_x\n00027" -> {};
+	"CompoundStatement\n00026" -> {"If\n00025"};
+	"If\n00025" -> {"BinaryOperator\nGREATER\n00014", "CompoundStatement\n00021", "CompoundStatement\n00024"};
+	"BinaryOperator\nGREATER\n00014" -> {"SymbolNode\nint_x\n00012", "Constant\n1\n00013"};
+	"SymbolNode\nint_x\n00012" -> {};
+	"Constant\n1\n00013" -> {};
+	"CompoundStatement\n00021" -> {"Return\n00020"};
+	"Return\n00020" -> {"FunctionCall\nfactorial\n00019"};
+	"FunctionCall\nfactorial\n00019" -> {"BinaryOperator\nMINUS\n00018"};
+	"BinaryOperator\nMINUS\n00018" -> {"SymbolNode\nint_x\n00016", "Constant\n1\n00017"};
+	"SymbolNode\nint_x\n00016" -> {};
+	"Constant\n1\n00017" -> {};
+	"CompoundStatement\n00024" -> {"Return\n00023"};
+	"Return\n00023" -> {"Constant\n1\n00022"};
+	"Constant\n1\n00022" -> {};
+}

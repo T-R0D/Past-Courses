@@ -1,0 +1,396 @@
+Assignment # 3
+
+Table of Contents
+
+    Section  1:  Background
+    Section  2:  Program Requirements
+    Section  3:  Program Restrictions
+    Section  4:  Command Line - Normal Run Version
+    Section  5:  Command Line - Help Version
+    Section  6:  Command Line - Example 1
+    Section  7:  Command Line - Example 2
+    Section  8:  Command Line - Example 3
+    Section  9:  Complete Example
+    Section 10:  Program Design
+    Section 11:  Optional
+    Section 12:  Naming
+    Section 13:  Resources
+    Section 14:  Turn In
+
+-----------------------
+Section  1:  Background
+-----------------------
+
+A simple text-processing program can be built using C-Strings.
+
+In this assignment, such a program shall be built.
+
+In brief, the program shall,
+
+    (i)   read an "input/output" file, compute a
+          summary of it, write the results of the
+          summary to the "summary output" file
+
+    (ii)  perform file-wide character replacement
+          for a specified character and append the
+          results to the "input/output" file
+
+    (iii) for the new input file, re-compute the
+          summary [same as in part (a)] and append
+          the results to the "summary output" file
+
+---------------------------------
+Section  2:  Program Requirements
+---------------------------------
+
+    (a)  The MS Visual Studio project must build without warnings
+         and without errors to receive credit.
+
+    (b)  The program shall be command line driven.
+
+    (c)  The program shall use dynamic memory allocation to
+         allocate the memory it needs to perform its text-
+         processing functions.
+
+    (d)  There shall be four arguments passed to the program on
+         the command line:
+
+             (1) "input/output" file name
+             (2) "summary output" file name
+             (3) ASCII code of character to replace
+             (4) ASCII code of replacement character
+
+         NOTE:  For a full description of the "input/output" file
+                and the "summary output" file, see the section
+                "Complete Example" below.
+
+    (e)  Because it is a command line driven program, it shall
+         have no interactive component.  This means  the user
+         shall not have to interact with the program after it
+         has started.  There shall be no menus, no data entry
+         and no pauses.
+
+    (f)  The program shall implement, and display on command,
+         a help screen:  see the section "Command Line:  Help
+         Version" below.
+
+    (g)  The program shall display the help screen whenever a
+         fatal error is detected, after the error-specific
+         message is displayed for the user.
+
+    (h)  All command line arguments are required and the program
+         shall exit with error (and an appropriate error message)
+         if any are missing.
+
+    (i)  If the program encounters a line with more than 256
+         characters, the program shall exit with error.  The
+         error should explain (to the user) the capacity of
+         the program has been exceeded by the input file.
+
+---------------------------------
+Section  3:  Program Restrictions
+---------------------------------
+
+Restriction 1
+
+The program for this assignment is a rudimentary text-processor.  To simplify
+its design, assume no line from the "input/output" text file exceeds 256
+characters in length.
+
+If the program encounters a line with more than 256 characters, the program
+shall exit with error.
+
+The error shall explain (to the user) the capacity of the program has been
+exceeded by the input file.
+
+[The program exit was caused by operator error; the operator is the user;
+and the user is apparently unaware of the limitations of the program.  Restart
+the program with proper input.]
+
+Restriction 2
+
+Do not use the "string" data type for this assignment.
+
+Consequently, do not include <string>.
+
+The "string" data type is not a primitive data type; it is a complex data type
+that hides all detail from the programmer.
+
+To appreciate what the "string" data type does, it is necessary to write at
+least one program that manipulates C-Strings directly.
+
+Instead of using the "string" data type, use character arrays and null-
+terminated strings, e.g., C-Strings.
+
+Chapter 10 in the text,
+
+    Starting Out With C++, From Control Structures through Objects, 7E
+    Tony Gaddis, Addison Wesley
+    ISBN 13: 978-0-13-257625-3
+
+has a section called "Library Functions for Working with C-Strings."
+
+That section explains how to use C-String functions from the C++ Library.
+
+You can do the same things with C-Strings as you can do with objects of type
+"string."
+
+See Table 10-3 in Chapter 10.
+
+----------------------------------------------
+Section  4:  Command Line - Normal Run Version
+----------------------------------------------
+
+The program shall have the following command line interface:
+
+    asmt03 iofile summaryfile acode1 acode2
+
+where,
+
+    asmt03      = the name of the program
+    iofile      = name of the "input/output" text file
+    summaryfile = name of the "summary output" file
+    acode1      = ASCII code of character to replace
+    acode2      = ASCII code of replacement character
+
+The ASCII character codes "acode1" and "acode2" shall be passed to the program
+as decimal values (do not pass the character itself, do not pass its octal
+value, do not pass its hex value).
+
+Examples:
+
+    --- to replace all occurrences of 'i', pass 105 for "acode1"
+    --- to replace all occurrences of '2', pass  50 for "acode1"
+    --- to replace all occurrences of '.', pass  46 for "acode1"
+    --- to replace all occurrences of 'o', pass 111 for "acode1"
+    --- to replace all occurrences of 'f', pass 102 for "acode1"
+
+and:
+
+    --- to use 'a' as a replacement character, pass  97 for "acode2"
+    --- to use 'd' as a replacement character, pass 100 for "acode2"
+    --- to use ';' as a replacement character, pass  59 for "acode2"
+    --- to use '1' as a replacement character, pass  49 for "acode2"
+    --- to use '$' as a replacement character, pass  36 for "acode2"
+
+As previously stated, all command line arguments are required and the program
+shall exit with error (and an appropriate error message) if any are missing.
+
+----------------------------------------
+Section  5:  Command Line - Help Version
+----------------------------------------
+
+The program shall display help to the user if the following command line is
+invoked:
+
+    asmt03 /?
+
+-------------------------------------
+Section  6:  Command Line - Example 1
+-------------------------------------
+
+For example, the program could be called with this command line:
+
+    asmt03 input.txt summary.txt 111 36
+
+The first command line argument specifies the file name of the "input/output"
+file.
+
+The second command line argument specifies the file name of the "summary output"
+file.
+
+The third command line argument says to find and replace all occurrences of the
+character whose decimal ASCII code is 111.
+
+The fourth command line argument says to use the character whose decimal ASCII
+code is 36 as the replacement character.
+
+-------------------------------------
+Section  7:  Command Line - Example 2
+-------------------------------------
+
+As a second example, the program could be called with this command line:
+
+    asmt03 input.txt summary.txt 111
+
+The fourth command line argument is missing, and this shall produce a fatal
+run-time error.
+
+The program shall write an appropriate error message (meaningful to the user)
+then exit with a non-zero exit code.
+
+The help screen shall be shown after the error message has been displayed and
+before the program exits.
+
+-------------------------------------
+Section  8:  Command Line - Example 3
+-------------------------------------
+
+As a second example, the program could be called with this command line:
+
+    asmt03 /?
+
+The program shall display the help screen and then exit.
+
+-----------------------------
+Section  9:  Complete Example
+-----------------------------
+
+Suppose the program is called with this command line:
+
+    asmt03 input.txt summary.txt 97 100
+
+Suppose the file "input.txt" consists of the following lines:
+
+    Hello, how are you?
+    I am fine and I hope you are too.
+    Have a good day.
+
+When the program finishes running, the file "summary.txt" shall consist of the
+lines shown below:
+
+    Line  1:    SUMMARY FOR ORIGINAL FILE
+    Line  2:
+    Line  3:    Number of digits:                   #
+    Line  4:    Number of lower case characters:    #
+    Line  5:    Number of nonprintable characters:  #
+    Line  6:    Number of printable characters:     #
+    Line  7:    Number of punctuation characters:   #
+    Line  8:    Number of upper case characters:    #
+    Line  9:    Count for ASCII Code   0:           #
+    Line 10:    Count for ASCII Code   1:           #
+    Line 11:    Count for ASCII Code   2:           #
+    ...         ...
+    ...         ... codes 3 - 126
+    ...         ...
+    ...         Count for ASCII Code 127:           #
+    ...
+    ...         SUMMARY FOR APPENDED FILE
+    ...
+    ...         Number of digits:                   #
+    ...         Number of lower case characters:    #
+    ...         Number of nonprintable characters:  #
+    ...         Number of printable characters:     #
+    ...         Number of punctuation characters:   #
+    ...         Number of upper case characters:    #
+    ...         Count for ASCII Code   0:           #
+    ...         Count for ASCII Code   1:           #
+    ...         Count for ASCII Code   2:           #
+    ...         ...
+    ...         ... codes 3 - 126
+    ...         ...
+    ...         Count for ASCII Code 127:           #
+
+where # is to be replaced an appropriate count in each case.
+
+The file "input.txt" shall be appended (in this example, by replacing 'a' by 'd'
+everywhere) to become:
+
+    Hello, how are you?
+    I am fine and I hope you are too.
+    Have a good day.
+    Hello, how dre you?
+    I dm fine dnd I hope you dre too.
+    Hdve d good ddy.
+
+Notice, "input.txt" has not been replaced, but rather appended to.  It is truly
+an input/output file.
+
+---------------------------
+Section 10:  Program Design
+---------------------------
+
+Write a high-level pseudocode description of your design, put it in a plain text
+file, submit it with the program.
+
+Below is one such design.
+
+As the programmer, you are free to do whatever you want to make the program
+work, including ignoring the pseudocode given below.
+
+On the other hand, if you choose to implement the design below, you may submit
+the following as your pseudocode document.
+
+    Step  1:  Process the command line, exit with error if necessary
+
+    Step  2:  Open the "input/output" file
+
+    Step  3:  Read the "input/output" file, one character at a time,
+              and count the number of new line characters encountered
+
+    Step  4:  Using dynamic memory allocation, allocate the necessary
+              number of buffers to hold all lines from the "input/output"
+              file (see Step 9)
+
+    Step  5:  Close and reopen the "input/output" file (alternatively,
+              rewind it to the beginning)
+
+    Step  6:  Read the lines of the "input/output" file into the allocated
+              buffers
+
+    Step  7:  Close and reopen the "input/output" file in append mode
+
+    Step  8:  Advance the "input/output" file pointer to the end of
+              the file
+
+    Step  9:  Process each line buffer
+
+                  --- keep track of important counts before replacement
+                  --- perform character replacement
+                  --- keep track of important counts after replacement
+                  --- append modified line to the "input/output" file
+
+    Step 10:  Close the "input/output" file
+
+    Step 11:  Open the "summary output" file
+
+    Step 12:  Write the "summary output" file
+
+    Step 13:  Close the "summary output" file
+
+    Step 14:  Exit the progam
+
+---------------------
+Section 11:  Optional
+---------------------
+
+Write a proposal document that lists other text-processing features one might
+implement.
+
+Give details as to how one might extend this assignment to incorporate those
+features in a second version of the program.
+
+Include the proposal document in your submission .zip file.
+
+-------------------
+Section 12:  Naming
+-------------------
+
+Name the program asmt03.
+
+----------------------
+Section 13:  Resources
+----------------------
+
+An ASCII code table can be found here:
+
+    http://www.theasciicode.com.ar/ascii-table-characters.pdf
+
+--------------------
+Section 14:  Turn In
+--------------------
+
+Submit to the drop box a .zip file that contains your MS Visual Studio project
+and your pseudocode design document (a plain text file).
+
+Before zipping, you may shrink the size of the directory structure by deleting
+certain subdirectories.  You may delete the IPCH subdirectory.
+
+If you built in Debug mode, you may delete the Debug subdirectories (you will
+find two in the project).
+
+If you built in Release mode, you may delete the Release subdirectories (you
+will find two in the project).
+
+The MS Visual Studio project must build without warnings and without errors to
+receive credit.

@@ -1,0 +1,55 @@
+#ifndef LAB07_CONTROLLER_NXC
+#define LAB07_CONTROLLER_NXC
+
+#include "ControllerConfigurations.nxc"
+
+#include "Utilities.nxc"
+
+#include "DrivingAPI.nxc"
+
+#include "CompassSensing.nxc"
+#include "InfraredSensing.nxc"
+#include "TouchSensing.nxc"
+
+/**
+ * Spawns the thread responsible for initializing the robot.
+ */
+task main();
+
+/**
+ * The main controlling task. 
+ */
+task TASK_controller();
+
+task
+main() {
+  Precedes(
+    TASK_CompassSensing,
+    TASK_TouchSensing,
+    TASK_InfraredSensing,
+    TASK_controller
+  );
+}
+
+
+task
+TASK_controller() {
+  // start the kicker motor
+  OnFwd(OUT_B, 100);
+
+  // start the robot off by making slight turns to provide variation
+  // to the penalty kick trajectory
+  startDynamicTurn(LEFT, FAST_SPEED, 1);
+  Wait(MS_150);
+  startDynamicTurn(RIGHT, FAST_SPEED, 2);
+  Wait(MS_150);
+
+  // drive the ball home for the score!
+  startDrivingStraight(FORWARD, FAST_SPEED);
+  Wait(SEC_20);
+  
+  StopAllTasks();
+}
+
+
+#endif //LAB07_CONTROLLER_NXC

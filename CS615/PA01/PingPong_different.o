@@ -1,0 +1,24 @@
+Program run #1 (different boxes) results: 
+Average time to ping-pong a message was: 1.024490E-04 seconds
+Processor 0 says: I am running on host: compute-40-6.local
+Processor 1 says: I am running on host: compute-41-1.local
+
+Program run #2 (different boxes) results: 
+Average time to ping-pong a message was: 1.021920E-04 seconds
+Processor 0 says: I am running on host: compute-40-6.local
+Processor 1 says: I am running on host: compute-41-1.local
+
+Program run #3 (different boxes) results: 
+Average time to ping-pong a message was: 1.056730E-04 seconds
+Processor 0 says: I am running on host: compute-40-6.local
+Processor 1 says: I am running on host: compute-41-1.local
+
+Program run #4 (different boxes) results: 
+Average time to ping-pong a message was: 1.074970E-04 seconds
+Processor 0 says: I am running on host: compute-40-6.local
+Processor 1 says: I am running on host: compute-41-1.local
+
+Program run #5 (different boxes) results: 
+Average time to ping-pong a message was: 1.079150E-04 seconds
+Processor 0 says: I am running on host: compute-40-6.local
+Processor 1 says: I am running on host: compute-41-1.local

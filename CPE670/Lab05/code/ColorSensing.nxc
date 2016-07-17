@@ -1,0 +1,94 @@
+#ifndef __COLORSENSING_NXC__
+#define __COLORSENSING_NXC__
+
+#define COLOR_DEBUG 0
+
+#define COLOR_SENSOR IN_3 // msensor_S1_1
+
+
+// we might be able to use RGB values to somehow compensate for poor
+// color number results
+typedef struct {
+  byte colorNum;
+  byte red;
+  byte green;
+  byte blue;
+} ColorVal;
+
+
+typedef struct {
+  ColorVal value;
+  mutex ownership;
+  bool readingIsValid;
+} ColorReading;
+
+
+bool gUseColorSensing = true;
+ColorReading gColorReading;
+
+task TASK_colorSensing();
+void debugOutputColor(const ColorVal& pColorVal);
+bool readingIsValid(const ColorVal& pColorVal);
+
+
+/**
+ *  This thread continually reads the color sensor value
+ */
+task TASK_colorSensing() {
+  SetSensorLowspeed(COLOR_SENSOR);
+//  SetSensor(S1, SENSOR_LOWSPEED);
+  
+
+  gColorReading.readingIsValid = false;
+
+  while (true) {
+    until (gUseColorSensing);
+    while (gUseColorSensing) {
+      bool readSuccess = ReadSensorHTColor(
+        COLOR_SENSOR,
+        gColorReading.value.colorNum,
+        gColorReading.value.red,
+        gColorReading.value.green,
+        gColorReading.value.blue
+      );
+
+      Wait(MS_20 + MS_5);
+
+      if (readSuccess) {
+        gColorReading.readingIsValid = true;
+      } else {
+        gColorReading.readingIsValid = false;
+      }
+      
+#if COLOR_DEBUG
+      debugOutputColor(gColorReading.value);
+#endif //COLOR_DEBUG
+    }
+
+    gColorReading.readingIsValid = false;
+  }
+
+}
+
+
+/**
+ *  This method includes logic that must be tailored to the particular
+ *  sensor it is used with. This is to weed out garbage readings.
+ */
+bool readingIsValid(const ColorVal& pColorVal) {
+  return true;
+}
+
+
+void debugOutputColor(const ColorVal& pColorVal) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Color Reading:");
+  NumOut(2, LCD_LINE2, pColorVal.colorNum);
+  NumOut(2, LCD_LINE3, pColorVal.red);
+  NumOut(2, LCD_LINE4, pColorVal.green);
+  NumOut(2, LCD_LINE5, pColorVal.blue);
+  Wait(MS_100);
+
+}
+
+#endif //__COLORSENSING_NXC__

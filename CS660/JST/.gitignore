@@ -1,0 +1,11 @@
+__pycache__/
+.idea/
+.idea/*
+**/.idea/
+**/.idea/*
+parsing/parser.out
+parsing/parsetab.py
+**/scanner_dump_symbol_table.txt
+**/scanner_dump_tokens.txt
+**/parsing_dump_productions.txt
+**/log_*.txt

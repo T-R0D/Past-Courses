@@ -1,0 +1,268 @@
+Testing Problem 1 code by outputting
+<Return_Value, Max(left_idx, right_idx)> tuples
+=======================================================
+<T, Max(0, 0)>
+<I, Max(1, 1)>
+<T, Max(0, 1)>
+<N, Max(2, 2)>
+<T, Max(0, 2)>
+<Y, Max(3, 3)>
+<E, Max(4, 4)>
+<Y, Max(3, 4)>
+<X, Max(5, 5)>
+<Y, Max(3, 5)>
+<Y, Max(0, 5)>
+<A, Max(6, 6)>
+<M, Max(7, 7)>
+<M, Max(6, 7)>
+<P, Max(8, 8)>
+<P, Max(6, 8)>
+<L, Max(9, 9)>
+<E, Max(10, 10)>
+<L, Max(9, 10)>
+<P, Max(6, 10)>
+<Y, Max(0, 10)>
+
+
+Testing Problem 2 code by outputting
+the sub-arrays to be processed
+=======================================================
+p: 0, q: 0, r: 1
+Before: A S 
+After:  A S 
+
+p: 2, q: 2, r: 3
+Before: O R 
+After:  O R 
+
+p: 4, q: 4, r: 5
+Before: T I 
+After:  I T 
+
+p: 6, q: 6, r: 7
+Before: N G 
+After:  G N 
+
+p: 8, q: 8, r: 9
+Before: E X 
+After:  E X 
+
+p: 10, q: 10, r: 11
+Before: A M 
+After:  A M 
+
+p: 12, q: 12, r: 13
+Before: P L 
+After:  L P 
+
+p: 14, q: 14, r: 14
+Before: E 
+After:  E 
+
+p: 0, q: 1, r: 3
+Before: A S O R 
+After:  A O R S 
+
+p: 4, q: 5, r: 7
+Before: I T G N 
+After:  G I N T 
+
+p: 8, q: 9, r: 11
+Before: E X A M 
+After:  A E M X 
+
+p: 12, q: 13, r: 14
+Before: L P E 
+After:  E L P 
+
+p: 0, q: 3, r: 7
+Before: A O R S G I N T 
+After:  A G I N O R S T 
+
+p: 8, q: 11, r: 14
+Before: A E M X E L P 
+After:  A E E L M P X 
+
+p: 0, q: 7, r: 14
+Before: A G I N O R S T A E E L M P X 
+After:  A A E E G I L M N O P R S T X 
+
+
+Testing Problem 4 code by outputting
+the array with various indices shown
+=======================================================
+At the start of a new call:
+ABRACACABRABCDC
+^            ^^
+l            jr
+
+After an iteration of scan/swapping:
+DBRACACABRABCAC
+^            ^^
+l            jr
+
+After an iteration of scan/swapping:
+ABRACACABRABCDC
+^ ^         ^^^
+l i         jqr
+
+After an iteration of scan/swapping:
+CBAACACABRABRDC
+^^  ^      ^ ^^
+lp  i      j qr
+
+After an iteration of scan/swapping:
+CBAABACABRADRCC
+^^    ^   ^ ^ ^
+lp    i   j q r
+
+After an iteration of scan/swapping:
+CBAABAAABRRDCCC
+^^      ^^ ^  ^
+lp      ji q  r
+
+After pivot swapping and creating the middle partition:
+BBAABAAACCCCRDR
+^      ^     ^^
+l      j     ir
+
+At the start of a new call:
+BBAABAAA
+^     ^^
+l     jr
+
+After an iteration of scan/swapping:
+ABAABABA
+^    ^^^
+l    jqr
+
+After an iteration of scan/swapping:
+ABAABBAA
+^  ^ ^ ^
+l  j q r
+
+After an iteration of scan/swapping:
+ABABBAAA
+^ ^ ^  ^
+l j q  r
+
+After an iteration of scan/swapping:
+ABBBAAAA
+^  ^   ^
+l  q   r
+
+After pivot swapping and creating the middle partition:
+AAAAABBB
+^    ^ ^
+l    i r
+
+At the start of a new call:
+
+
+
+
+At the end of a call:
+
+
+
+
+At the start of a new call:
+    ABBB
+    ^ ^^
+    l jr
+
+After an iteration of scan/swapping:
+    BBAB
+    ^ ^^
+    l jr
+
+After an iteration of scan/swapping:
+    ABBB
+    ^^^^
+    lijr
+
+After an iteration of scan/swapping:
+    BABB
+    ^^^^
+    lpir
+
+After pivot swapping and creating the middle partition:
+    ABBB
+    ^  ^
+    l  r
+
+At the start of a new call:
+    A
+    ^
+    r
+
+At the end of a call:
+    A
+    ^
+    r
+
+At the start of a new call:
+       B
+       ^
+       r
+
+At the end of a call:
+       B
+       ^
+       r
+
+At the end of a call:
+    ABBB
+    ^  ^
+    l  r
+
+At the end of a call:
+AAAAABBB
+^    ^ ^
+l    i r
+
+At the start of a new call:
+            RDR
+            ^^^
+            ljr
+
+After an iteration of scan/swapping:
+            DRR
+            ^^^
+            lir
+
+After pivot swapping and creating the middle partition:
+            DRR
+            ^ ^
+            l r
+
+At the start of a new call:
+            D
+            ^
+            r
+
+At the end of a call:
+            D
+            ^
+            r
+
+At the start of a new call:
+              R
+              ^
+              r
+
+At the end of a call:
+              R
+              ^
+              r
+
+At the end of a call:
+            DRR
+            ^ ^
+            l r
+
+At the end of a call:
+AAAAABBBCCCCDRR
+^      ^     ^^
+l      j     ir
+

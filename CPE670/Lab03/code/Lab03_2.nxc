@@ -1,0 +1,212 @@
+/**
+ *  Configurations
+ */
+#define RIGHT_SONAR IN_2
+#define LEFT_SONAR IN_1
+
+#define RFID_SENSOR IN_4
+
+
+#define RIGHT_WHEEL OUT_C
+#define LEFT_WHEEL OUT_A
+#define BOTH_WHEELS OUT_AC
+
+#define FULL_SPEED 84
+#define MODERATE_SPEED 60
+#define SLOW_SPEED 30
+#define SPEED_INCREMENT 4
+
+#define DISTANCE_DIFFERENCE_THRESHOLD 18
+
+#define CLOSE_RANGE 12 // in cm(ish)
+
+
+/**
+ * An enumeration of avoidance strategy values.
+ */
+#define PROCEED 0
+#define ENDZONE 1
+#define TURN_RIGHT 2
+#define TURN_LEFT 3
+
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#define FORWARD true
+#define REVERSE false
+#define RIGHT true
+#define LEFT false
+
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#include "RFIDlib.nxc"
+
+#define NO_OBSTACLE 255
+
+
+/**
+ * These mutexes are used to prevent ciritical section violations.
+ * They ensure that only one task has access to the wheels at a time,
+ * and that only one task is reading or writing to the avoidance
+ * strategy variable.
+ */
+mutex gStrategyMutex;   // wasn't sure how atomic operations are with NXC
+
+
+/**
+ * Global variables to allow for inter-process communication for determining
+ * which strategies to use.
+ */
+int gStrategy = PROCEED;
+bool gUturnMade = false;
+
+
+
+
+/**
+ * Creates a thread that will be responsible for detecting when the
+ * touch sensors are activated and determining the appropriate
+ * avoidance strategy.
+ */
+task TASK_checkSonar() {
+     int obstacleFreeCycleCount = 0;
+
+    while (true) {
+          int rightBuffer = SensorUS(RIGHT_SONAR);
+          int leftBuffer = SensorUS(LEFT_SONAR);
+
+          int difference = rightBuffer - leftBuffer;
+          
+          ClearScreen();
+          NumOut(2, LCD_LINE2, rightBuffer);
+          NumOut(2, LCD_LINE4, leftBuffer);
+          NumOut(2, LCD_LINE8, difference);
+          
+          Acquire(gStrategyMutex);
+          if (abs(difference) > DISTANCE_DIFFERENCE_THRESHOLD) {
+             obstacleFreeCycleCount = 0;
+          
+             if (difference > DISTANCE_DIFFERENCE_THRESHOLD) {
+                   gStrategy = TURN_RIGHT;
+             } else if (difference < -DISTANCE_DIFFERENCE_THRESHOLD) {
+                    gStrategy = TURN_LEFT;
+             }
+          } else {
+            obstacleFreeCycleCount++;
+            
+            if (obstacleFreeCycleCount >= 5) {
+               obstacleFreeCycleCount = 0;
+               gStrategy = PROCEED;
+            }
+
+          }
+          Release(gStrategyMutex);
+    }
+}
+
+
+
+
+
+/**
+ *
+ */
+task TASK_checkRfid() {
+   // send dummy command to wake up sensor
+   RFIDDummy(RFID_SENSOR);
+
+   byte rfidData[5];
+   while (true) {
+      GetRFIDArray(RFID_SENSOR, rfidData, true);
+
+      int dataSum = rfidData[0] +
+                    rfidData[1] +
+                    rfidData[2] +
+                    rfidData[3] +
+                    rfidData[4];
+
+      // when we cross the RFID card line, it is now ok to turn all the way around.
+      if (dataSum > 0) {
+         Acquire(gStrategyMutex);
+         gStrategy = ENDZONE;
+         PlayTone(dataSum, MS_100);
+         Release(gStrategyMutex);
+      }
+   }
+}
+
+
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task TASK_movement() {
+
+     int cruiseSpeed = FULL_SPEED - SPEED_INCREMENT;
+
+     int rightWheelSpeed = cruiseSpeed;
+     int leftWheelSpeed = cruiseSpeed;
+
+     while (true) {
+           Acquire(gStrategyMutex);
+
+           NumOut(7, LCD_LINE1, gStrategy);
+
+           switch(gStrategy) {
+                case TURN_RIGHT:
+                     if (leftWheelSpeed < FULL_SPEED) {
+                        leftWheelSpeed += SPEED_INCREMENT;
+                     } else if (rightWheelSpeed > SLOW_SPEED) {
+                        rightWheelSpeed -= SPEED_INCREMENT;
+                     }
+                     OnFwd(RIGHT_WHEEL, rightWheelSpeed);
+                     OnFwd(LEFT_WHEEL, leftWheelSpeed);
+                     break;
+                case TURN_LEFT:
+                     if (rightWheelSpeed < FULL_SPEED) {
+                        rightWheelSpeed += SPEED_INCREMENT;
+                     } else if (leftWheelSpeed > SLOW_SPEED) {
+                         leftWheelSpeed -= SPEED_INCREMENT;
+                     }
+                     OnFwd(RIGHT_WHEEL, rightWheelSpeed);
+                     OnFwd(LEFT_WHEEL, leftWheelSpeed);
+                     break;
+                case ENDZONE:
+                     if(!gUturnMade) {
+                         gUturnMade = true;
+                         OnFwdReg(BOTH_WHEELS, rightWheelSpeed, OUT_REGMODE_SYNC);
+                         Wait(MS_500);
+                         PlayTone(1000, SEC_1);
+                         OnFwd(RIGHT_WHEEL, 60);
+                         OnRev(LEFT_WHEEL, 60);
+                         Wait(MS_500 + MS_250);
+                     }
+                     break;
+                case PROCEED:
+                default:
+                     rightWheelSpeed = cruiseSpeed;
+                     leftWheelSpeed = cruiseSpeed;
+                     OnFwdReg(BOTH_WHEELS, rightWheelSpeed, OUT_REGMODE_SYNC);
+                     break;
+           }
+           Release(gStrategyMutex);
+           Wait(MS_10);
+    }
+}
+
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+     Precedes(TASK_movement, TASK_checkSonar, TASK_checkRfid);
+     SetSensorUltrasonic(RIGHT_SONAR);
+     SetSensorUltrasonic(LEFT_SONAR);
+     SetSensorLowspeed(RFID_SENSOR);
+}

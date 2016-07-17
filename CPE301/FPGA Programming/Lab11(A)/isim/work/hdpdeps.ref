@@ -1,0 +1,10 @@
+V3 7
+FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/gate2.v" 2013/12/08.13:46:54 J.36
+MO work/gate2 \
+      FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/gate2.v"
+FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/gate2_top.v" 2013/12/08.13:57:40 J.36
+MO work/gate2_top_v \
+      FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/gate2_top.v" \
+      MI gate2
+FL $XILINX/verilog/src/glbl.v 2007/05/18.13:22:56 J.36
+MO work/glbl FL $XILINX/verilog/src/glbl.v

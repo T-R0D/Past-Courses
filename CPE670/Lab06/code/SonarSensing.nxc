@@ -1,0 +1,106 @@
+#ifndef __SONARSENSING_NXC__
+#define __SONARSENSING_NXC__
+
+#define SONAR_DEBUG 0
+#define SONAR_MUXED 1
+
+
+#if SONAR_MUXED
+  #define RIGHT_SONAR 4   // msensor_S1_4
+  #define LEFT_SONAR 0   // msensor_S1_1
+#else
+  #define RIGHT_SONAR IN_2
+  #define LEFT_SONAR IN_1
+#endif
+
+
+#define SONAR_CLEAR 255
+
+#define NEAR_THRESHOLD 20
+
+typedef struct {
+  byte rightValue;
+  byte leftValue;
+  mutex ownership;
+  bool readingIsValid;
+} SonarReading;
+
+
+//int smuxSensorLegoUS(const byte muxport);
+
+bool gUseSonarSensing = true;
+SonarReading gSonarReading;
+
+task TASK_SonarSensing();
+byte readSonarSensor(byte pSensorPort);
+void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading);
+
+/**
+ * Spawns a thread to publish sonar readings.
+ */
+task TASK_SonarSensing() {
+  #if SONAR_MUXED
+  #else
+    SetSensorUltrasonic(RIGHT_SONAR);
+    SetSensorUltrasonic(LEFT_SONAR);
+
+    // start with sensors de-activated for good measure (0x00 - off, 0x03 - on)
+    I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+    I2CWrite(LEFT_SONAR, 0x41, 0x00);
+  #endif
+
+while (true) {
+  until(gUseSonarSensing);
+  while (gUseSonarSensing) {
+    gSonarReading.rightValue = readSonarSensor(RIGHT_SONAR);
+    gSonarReading.leftValue = readSonarSensor(LEFT_SONAR);
+    
+    #if SONAR_DEBUG
+      debugOutputSonar(gSonarReading.rightValue, gSonarReading.leftValue);
+    #endif //SONAR_DEBUG
+  }
+  
+  #if SONAR_MUXED
+  #else
+    I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+    I2CWrite(LEFT_SONAR, 0x41, 0x00);
+  #endif
+  }
+}
+
+
+byte readSonarSensor(byte pSensorPort) {
+  byte reading = -250;
+
+  #if SONAR_MUXED
+    reading = smuxSensorLegoUS(pSensorPort);
+  #else
+    I2CWrite(pSensorPort, 0x41, 0x00);
+    I2CWrite(pSensorPort, 0x41, 0x03);
+
+    reading = SensorUS(pSensorPort);
+    Wait(MS_20 + MS_5);
+  
+    I2CWrite(pSensorPort, 0x41, 0x00);
+  #endif //SONAR_MUXED
+
+  return reading;
+}
+
+
+void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading) {
+  ClearScreen();
+    if (pSonarOneReading <= NEAR_THRESHOLD) {
+      TextOut(2, LCD_LINE2, "OBSTACLE ON RIGHT!");
+    } else {
+      NumOut(2, LCD_LINE2, pSonarOneReading);
+    }
+    if (pSonarTwoReading <= NEAR_THRESHOLD) {
+      TextOut(2, LCD_LINE4, "OBSTACLE ON LEFT!");
+    } else {
+      NumOut(2, LCD_LINE4, pSonarTwoReading);
+    }
+    Wait(MS_100);
+}
+
+#endif //__SONARSENSING_NXC__

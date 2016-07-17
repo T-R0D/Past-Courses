@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="314dp"
+        android:layout_height="350dp"
+        android:id="@+id/imageview_screenshot"
+        android:contentDescription="@string/task_screenshot"
+        android:src="@drawable/wilfred"
+        android:layout_marginLeft="0dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageview_screenshot"
+        android:layout_alignEnd="@+id/imageview_screenshot"
+        android:layout_above="@+id/imageview_screenshot" />
+
+</RelativeLayout>

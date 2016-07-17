@@ -1,0 +1,21 @@
+<dir> "Normalized"
+    [all the original size images (100x100 pixels) separated by class;]
+
+<dir> "3-fold Cross-Validation"
+    [contains the cross-validation partitions of the two different
+     sets (48x60 images in "48_60" dir and 16x20 images in "16_20" dir)]
+
+    each of these directories contains:
+
+    1. the gamma lookup table as a text file ("Gamma.lookup.txt")
+
+    2. the pre-calculated eigenvectors (PCs_*.mat) and eigenvalues
+       (EVs_*.mat) for each fold and the pre-calculated PCA projected
+       data (*PCA_*.mat) for each fold (see "descr.txt" file) - you can
+       use these files for your GAs in order to save time since you won't
+       have to do the PCA projection yourself
+
+    3. the images separated by fold, set and class (i.e. tr_XX, val_XX and
+       ts_XX contain the training, validation and test images respectively
+       for fold XX).
+

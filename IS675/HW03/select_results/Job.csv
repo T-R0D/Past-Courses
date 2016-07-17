@@ -1,0 +1,11 @@
+JobID,JobName,DateProposed,DateAccepted,JobAddress,JobCity,JobState,JobZip,AllTaskCreated,JobCompleted,PrimaryJobID,ClientID,EmpManagerID
+15771,"Main Showroom, Entry Area",2/2/2015,NULL,1200 Apricot Boulevard,Reno,NV,89509,0,0,NULL,5012,NULL
+16885,"Hampstead, Bathroom #2",7/11/2014,7/25/2014,23 Pine Forest Ave.,Incline Village,NV,89541,1,0,32687,6672,NULL
+32687,"Hampstead, Bathroom 1",7/25/2014,7/25/2014,23 Pine Forest Ave.,Incline Village,NV,89541,1,1,NULL,6672,NULL
+55841,AO Reid - Wonder Valley PH 2-2,5/20/2013,6/17/2013,"Sunrise Terrace, Unit 2",Reno,NV,89507,1,1,55873,6295,7651
+55873,AO Reid - Wonder Valley PH 2-3,5/20/2013,6/17/2013,"Sunrise Terrace, Unit 3",Reno,NV,89507,1,1,55873,6295,7651
+55878,AO Reid - Wonder Valley PH 2-4,5/20/2013,6/17/2013,"Sunrise Terrace, Unit 4",Reno,NV,89507,1,1,55873,6295,7651
+62254,"Dew Drop, Meadow Wood-1",9/14/2014,10/4/2014,"33 West Triple Diamond, FL 2",Reno,NV,89514,1,1,NULL,4435,4702
+62257,"Dew Drop, Meadow Wood-2",9/14/2014,10/4/2014,"33 West Triple Diamond, FL 3",Reno,NV,89514,1,1,62254,4435,4702
+78431,Custom Stained Glass Part.,11/1/2014,11/18/2014,1500 Diagon Alley,Reno,NV,89519,1,0,NULL,2924,6460
+91584,Restaurant Remodel,3/18/2014,3/20/2014,27 Main Street (Outside Bar),Truckee,CA,96161,1,1,NULL,9948,4702

@@ -1,0 +1,15 @@
+void promptForPlayer( char name[ NAME_LEN ] )
+   {
+   // variables
+
+   // clear screen to black, then a smaller box to blue
+      // functions: setColor, clearScreen
+
+   // write prompt text for player name
+      // function: printStringAt
+
+   // prompt for user name, storing the name in a C-style string
+      // function: getLineAt (the void one)
+
+   // no return - void
+   }

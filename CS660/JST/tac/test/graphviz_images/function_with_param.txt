@@ -1,0 +1,20 @@
+digraph {
+	"FileAST\n00021" -> {"FunctionDeclaration: int foo\n00003", "FunctionDefinition: int main\n00013", "FunctionDefinition: int foo\n00020"};
+	"FunctionDeclaration: int foo\n00003" -> {"SymbolNode: int_a\n00000", "SymbolNode: int_b\n00001", "SymbolNode: int_c\n00002"};
+	"SymbolNode: int_a\n00000" -> {};
+	"SymbolNode: int_b\n00001" -> {};
+	"SymbolNode: int_c\n00002" -> {};
+	"FunctionDefinition: int main\n00013" -> {"CompoundStatement\n00012"};
+	"CompoundStatement\n00012" -> {"Declaration: int i\n00009", "Return\n00011"};
+	"Declaration: int i\n00009" -> {};
+	"Return\n00011" -> {"Constant: 0\n00010"};
+	"Constant: 0\n00010" -> {};
+	"FunctionDefinition: int foo\n00020" -> {"SymbolNode: int_a\n00017", "SymbolNode: int_b\n00018", "SymbolNode: int_c\n00019", "CompoundStatement\n00016"};
+	"SymbolNode: int_a\n00017" -> {};
+	"SymbolNode: int_b\n00018" -> {};
+	"SymbolNode: int_c\n00019" -> {};
+	"CompoundStatement\n00016" -> {"Return\n00015"};
+	"Return\n00015" -> {"Constant: 1\n00014"};
+	"Constant: 1\n00014" -> {};
+}
+

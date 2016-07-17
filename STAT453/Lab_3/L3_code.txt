@@ -1,0 +1,43 @@
+#=========================================
+#              STAT 453/653
+#        Generalized Linear Models
+#=========================================
+
+# One independent (explanatory) variable
+#=========================================
+
+# Set-up
+#=========================================
+s<-c(0,3,4,5) # snoring levels
+hd<-c(24,35,21,30) # heart disease counts
+n<-c(1355,603,192,224) # healthy patient counts
+SF<-cbind(hd,n) # matrix of "successes" and "failures"
+p<-hd/(n+hd) # probabilities of "success"
+
+# GLM estimation
+#=========================================
+gl<-glm(SF~s,family=binomial(link='logit'))
+gp<-glm(SF~s,family=binomial(link='probit'))
+summary(gl)
+summary(gp)
+
+# Response function plot
+#=========================================
+windows()
+plot(c(0,5),c(0,.2),type='n',xlab='Snoring Level',ylab='Proportion')
+points(s,p,type='p',pch=19,col='red')
+x<-seq(0,5,.1)
+pl<-predict(gl,data.frame(s=x),type='response')
+lines(x,pl,col=3) # green line -- logit
+pp<-predict(gp,data.frame(s=x),type='response')
+lines(x,pp,col=4) # blue line -- probit
+grid()
+
+# Link function plot
+#=========================================
+windows()
+plot(c(0,5),c(-5,-1),type='n',xlab='Snoring Level',ylab='Logit')
+points(s,log(p/(1-p)),type='p',pch=19,col='red')
+x<-seq(0,5,.1)
+pl<-predict(gl,data.frame(s=x),type='link')
+lines(x,pl,col=3)

@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: Improving_APSP_on_the_GPU.aux
+The style file: ./IEEEtran.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: ./IEEEabrv.bib
+Database file #2: ./Improving_APSP_on_GPU_references.bib.bib
+I was expecting a `,' or a `}'---line 58 of file ./Improving_APSP_on_GPU_references.bib.bib
+ : 
+ : year={2001},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 95 of file ./Improving_APSP_on_GPU_references.bib.bib
+ : 
+ : author = {Schrijver, Alexander},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty author in Tiskin2001
+Warning--empty title in Tiskin2001
+Warning--empty booktitle in Tiskin2001
+Warning--empty year in Tiskin2001
+Warning--empty author in Schrijver2012
+Warning--empty title in Schrijver2012
+Warning--empty journal in Schrijver2012
+Warning--empty year in Schrijver2012
+
+Done.
+You've used 7 entries,
+            4039 wiz_defined-function locations,
+            1253 strings with 15959 characters,
+and the built_in function-call counts, 4206 in all, are:
+= -- 334
+> -- 70
+< -- 35
++ -- 39
+- -- 10
+* -- 220
+:= -- 681
+add.period$ -- 10
+call.type$ -- 7
+change.case$ -- 6
+chr.to.int$ -- 78
+cite$ -- 15
+duplicate$ -- 302
+empty$ -- 328
+format.name$ -- 12
+if$ -- 920
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 51
+newline$ -- 54
+num.names$ -- 5
+pop$ -- 130
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 320
+stack$ -- 0
+substring$ -- 186
+swap$ -- 237
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 7
+warning$ -- 8
+while$ -- 16
+width$ -- 8
+write$ -- 93
+(There were 2 error messages)

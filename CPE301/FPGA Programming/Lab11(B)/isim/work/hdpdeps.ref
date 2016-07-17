@@ -1,0 +1,10 @@
+V3 7
+FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/problem3_1.v" 2013/12/08.14:22:23 J.36
+MO work/problem3_1 \
+      FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/problem3_1.v"
+FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/problem3_1_top.v" 2013/12/08.14:31:54 J.36
+MO work/problem3_1_top_v \
+      FL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/problem3_1_top.v" \
+      MI problem3_1
+FL $XILINX/verilog/src/glbl.v 2007/05/18.13:22:56 J.36
+MO work/glbl FL $XILINX/verilog/src/glbl.v

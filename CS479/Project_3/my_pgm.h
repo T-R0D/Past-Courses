@@ -1,0 +1,219 @@
+#ifndef __MY_PGM_H__
+#define __MY_PGM_H__
+/**
+    @file my_pgm.h
+
+    @author Terence Henriod
+
+    @brief Provides a functions for using .pgm files.    
+
+    @version Original Code 1.00 (2/28/2014) - T. Henriod
+
+    UNOFFICIALLY:
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+/*==============================================================================
+=======     HEADER FILES     ===================================================
+==============================================================================*/
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+
+
+/*==============================================================================
+=======     CONSTANTS / MACROS     =============================================
+==============================================================================*/
+#define false 0
+#define true 1
+#define kImageNameLength 40
+
+
+/*==============================================================================
+=======     USER DEFINED TYPES     =============================================
+==============================================================================*/
+
+/**
+@struct ImageInfo
+A structure containing information relevant to the image format.
+
+@var name         The image name
+@var width        The width of the image
+@var height       The height of the image
+@var num_shades   The number of shades to be represented in the image.
+                  Generally, 256 will be enough for my purposes, hence the
+                  byte sized type.
+@var data         A 2-d byte array pointer for the image data
+*/
+typedef struct
+{
+  char name[kImageNameLength];
+  int width;
+  int height;
+  int num_shades;
+  char** data; 
+} PGMImageData;
+
+
+/*==============================================================================
+=======     FUNCTION PROTOTYPES     ============================================
+==============================================================================*/
+
+/**
+createPGMimage
+
+Takes a given matrix of byte data and exports that data to a .pgm image file.
+
+@param file_name      The name the the created file will have, as a C-string
+@param image_width    The width of the image/number of data columns
+@param image_height   The height of the image/the number rows for the
+                      image/data
+@param max_shades     The shade range for the data
+@param image_data     A pointer to the image data matrix
+
+@return success   The success of the operation. Returns false if the image
+                  cannot be created, true if it can.
+
+@pre
+-# Valid dimensions that match the data must be given
+-# All data must be given in bytes
+-# The number of shades should be a normal count (it will be decremented
+   to enable storage as a byte)
+
+@post
+-# A binary .pgm file will be created
+
+@detail @bAlgorithm
+-# A new image file with the given name is created
+-# A header for a .pgm file is written
+-# The data from the given matrix to the image file is written
+-# The file is then closed
+
+@code
+@endcode
+*/
+int createPGMimage( PGMImageData* image );
+
+
+/**
+writePGMheader
+
+Writes the header for the pgm file
+
+@param image_file     A file pointer to the newly created file
+@param image_width    The width of the image/number of data columns
+@param image_height   The height of the image/the number rows for the
+                      image/data
+@param max_shades     The shade range for the data
+
+
+@pre
+-# Valid dimensions that match the data must be given
+-# All data must be given in bytes
+-# The number of shades should be a normal count (it will be decremented
+   to enable storage as a byte)
+
+@post
+-# A binary .pgm file header will be written
+
+@detail @bAlgorithm
+-# The "magic number" for a binary grayscale format is written
+-# A comment is written for the file
+-# The dimensions of the image are written
+-# Finally, the number of possible shades are written
+
+@code
+@endcode
+*/
+void writePGMheader( FILE* image_file, PGMImageData* image );
+
+
+/*==============================================================================
+=======     FUNCTION IMPLEMENTATIONS     =======================================
+==============================================================================*/
+
+int createPGMimage( PGMImageData* image )
+{
+  // variables
+  int success = false;
+  FILE* the_file = NULL;
+  int pixel_x = 0;
+  int pixel_y = 0;
+  unsigned char pixel = 0;
+
+  // assert necessities for variables
+  assert( image->num_shades <= 255 ); // byte max
+  assert( image->num_shades > 0 );
+
+  // create a new file
+  the_file = fopen( image->name, "wb" );
+
+  // case: the file opening was successful
+  if( the_file != NULL )
+  {
+    // update the success status
+    success = true;
+
+    // write the file header
+    writePGMheader( the_file, image );
+
+    // write the image data
+    // iterate through rows
+    for( pixel_x = 0; pixel_x < image->height; pixel_x++ )
+    {
+      // iterate across the row
+      for( pixel_y = 0; pixel_y < image->width; pixel_y++ )
+      {
+        // print the pixel value
+        pixel = (unsigned char) image->data[pixel_y][pixel_x];
+        fprintf( the_file, "%c", (unsigned char) pixel );
+      }
+
+      // NOTE: ASCII mode requires a '\n' to end the row,
+      //       binary mode will create a black diagonal line if you do this
+    }
+
+  // close the file
+  fclose( the_file );
+  }
+
+  // return the success state of the operation
+  return success;
+}
+
+void writePGMheader( FILE* image_file, PGMImageData* image )
+{
+  // variables
+    // none
+
+  // print the pgm (Portable Gray Map) format
+  // use P2 for ASCII mode (gives easy human readability, requires spaces)
+  // use P5 for binary mode (gives better storage and processing)
+  fprintf( image_file, "P5\n" );
+
+  // write the file comment
+  fprintf( image_file, "# Makin' my PGM file\n" );
+
+  // specify image dimensions
+  fprintf( image_file, "%d %d\n", image->width, image->height );
+
+  // print the max shade value (granularity) number
+  fprintf( image_file, "%d\n", image->num_shades );
+
+  // no return - void
+}
+
+#endif
+

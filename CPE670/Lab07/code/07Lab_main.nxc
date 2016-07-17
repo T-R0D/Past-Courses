@@ -1,0 +1,272 @@
+#ifndef LAB07_CONTROLLER_NXC
+#define LAB07_CONTROLLER_NXC
+
+#include "ControllerConfigurations.nxc"
+
+#include "Utilities.nxc"
+
+#include "DrivingAPI.nxc"
+
+#include "CompassSensing.nxc"
+#include "InfraredSensing.nxc"
+#include "TouchSensing.nxc"
+
+/**
+ * Spawns the thread responsible for initializing the robot.
+ */
+task main();
+
+/**
+ * The main controlling task. 
+ */
+task TASK_controller();
+
+/**
+ * Uses the robot's current heading and squashes the current heading to a
+ * predetermined, more accurate one. Returns the corrected enemy goal heading.
+ */
+int determineGoalDirection();
+
+/**
+ * Causes the robot to charge and follow the infrared ball. Causes the robot
+ * to turn with varying magnitude depending on how far to the side of the
+ * robot the ball is. Can detect if the robot is stuck or facing the wrong
+ * direction and halt the charging behavior.
+ */
+int chargeBall(int pGoalDirection);
+
+/**
+ * Causes the robot to turn to face the opponent's goal, then reverse until it
+ * reaches it's own goal or a wall to help the robot reposition itself to
+ * regain a good attack position.
+ */
+int goBackToStart(int pGoalDirection);
+
+/**
+ * Causes the robot to spin until the robot faces the desired heading.
+ */
+void orientSelf(const int pHeading);
+
+
+task
+main() {
+  // setup all other tasks to run
+  Precedes(
+    TASK_CompassSensing,
+    TASK_TouchSensing,
+    TASK_InfraredSensing,
+    TASK_controller
+  );
+
+  // start kicker motor
+  OnFwd(OUT_B, 100);
+}
+
+
+task
+TASK_controller() {
+  // get the infrared readings started
+  gUseInfraredSensing = true;
+
+  // swerve towards the ball initially to get a good start
+  // and align with the goal direction
+  startDynamicTurn(LEFT, FAST_SPEED, 4);
+  Wait(MS_900 + MS_350);
+  startDrivingStraight(FORWARD, FAST_SPEED);
+  int goalDirection = determineGoalDirection();
+  
+  // for the rest of the competition, either chase the ball or
+  // go to back to a good starting position to begin attacking the ball
+  // again
+  while (true) {
+    chargeBall(goalDirection);
+    goBackToStart(goalDirection);
+  }
+
+  StopAllTasks();
+}
+
+
+int
+determineGoalDirection() {
+  // start the compass sensor reading process, give the sensor a moment
+  // to collect a good reading
+  gUseCompassSensing = true;
+  Wait(MS_70);
+
+  // collect the reading and squash it down to a pre-measured direction for
+  // improved accuracy
+  int goalDirection = gCompassReading.value;
+  if (abs(ARENA_EAST - goalDirection) < 80) {
+    goalDirection = ARENA_EAST;
+  } else {
+    goalDirection = ARENA_WEST;
+  }
+  
+  // turn off the compass sensor
+  gUseCompassSensing = false;
+
+  // return the squashed measurement
+  return goalDirection;
+}
+
+int
+chargeBall(int pGoalDirection) {
+  // infrared sensing will be needed to see the ball - turn it on
+  gUseInfraredSensing = true;
+
+  // immediately begin charging forward
+  startDrivingStraight(FORWARD, FAST_SPEED);
+
+  // setup variables
+  bool ballIsVisible = true;
+  int turnDifferentialFactor = 0;
+  bool turnDirection = RIGHT;
+  int readingDirection = gInfraredReading.value.direction;
+  int i = 0;
+
+  // while the ball can be detected, attack the ball
+  while (ballIsVisible) {
+
+    // every couple of iterations of the loop, perform some checks to make
+    // sure the robot isn't stuck or going the wrong direction
+    if (i & 0x06 == 0x06) {
+      // start the reading early to give time for good readings
+      gUseCompassSensing = true;
+
+      // if the wheels have stopped - i.e. the robot is stuck - break out
+      // of the charging behavior
+      if (wheelsHaveStopped()) {
+        gUseInfraredSensing = false;
+        return GO_BACK_TO_START;
+      }
+      
+      // check the compass value to see if the robot is facing the wrong
+      // wrong direction so that the robot can stop chasing the ball into the
+      // wrong goal
+      int heading = gCompassReading.value;
+      if (pGoalDirection == ARENA_EAST) {
+        if (heading <= (ARENA_NORTH - 40) || (ARENA_SOUTH + 40) <= heading) {
+          gUseCompassSensing = false;
+          return GO_BACK_TO_START;
+        }
+      } else {
+        if ((ARENA_NORTH + 40) <= heading && heading <= (ARENA_SOUTH - 40)) {
+          gUseCompassSensing = false;
+          return GO_BACK_TO_START;
+        }
+      }
+      gUseCompassSensing = false;
+    }
+    i++;
+  
+    // with every iteration of the loop, update the turning direction to best
+    // chase the ball
+    startDynamicTurn(turnDirection, FAST_SPEED, turnDifferentialFactor);
+    readingDirection = gInfraredReading.value.direction;
+
+    // update the turn direction required to chase the ball for the next
+    // iteration
+    if (readingDirection == 5 || readingDirection == 0) {
+      turnDirection = RIGHT; // arbitrary and stupid
+    } else if (readingDirection < 5) {
+      turnDirection = RIGHT;
+    } else {
+      turnDirection = LEFT;
+    }
+
+    // update the wheel speed differential factor for the next iteration when
+    // the turn speed is updated
+    switch (readingDirection) {
+      case 0:
+        ballIsVisible = false;
+        break;
+      default:
+        int turnDifference = abs(5 - readingDirection);
+        switch (turnDifference) {
+          case 1:
+            turnDifferentialFactor = 1;
+            break;
+          case 2:
+          case 3:
+            turnDifferentialFactor = 4;
+            break;
+          case 4:
+            turnDifferentialFactor = 8;
+            break;
+          case 0:
+          default:
+            turnDifferentialFactor = 0;
+            break;
+        }
+        break;
+    }
+  }
+
+  // if the ball can't be detected, the infrared sensor can be turned off
+  gUseInfraredSensing = false;
+
+  // currently meaningless return value
+  return GO_BACK_TO_START;
+}
+
+int goBackToStart(int pGoalDirection) {
+  
+  // back up a little to free the robot of an obstacle  
+  moveSetDistance(REVERSE, 3);
+
+  // orient the robot so that it is pointing at the enemy goal
+  orientSelf(pGoalDirection);
+
+  // drive backwards until the robot reaches its own goal
+  gUseTouchSensing = true;
+  startDrivingStraight(REVERSE, FAST_SPEED);
+  Wait(MS_20);
+  until(gTouchReading.rightValue == 1 || gTouchReading.leftValue == 1);
+  gUseTouchSensing = false;
+
+
+  // now the robot should be facing the entirety of the field, giving it good
+  // prospects of re-detecting and successfully charging the ball
+
+  // drive forward a little in order to have a chance to re-detect the ball
+  // if it was too far away to sense
+  startDrivingStraight(FORWARD, FAST_SPEED);
+  Wait(MS_700);
+
+  // currently meaningless return value
+  return CHARGE_BALL;
+}
+
+void
+orientSelf(const int pHeading) {
+  // turn on the compass sensor and initialize variables
+  gUseCompassSensing = true;
+  bool aboveThreshold = false;
+  bool belowThreshold = false;
+
+  // compute the optimal direction to turn relative to the current and
+  // desired headings; begin spinning
+  int currentHeading = gCompassReading.value;
+  if (currentHeading - pHeading > ORIENTATION_TOLERANCE) {
+    startStationarySpin(RIGHT);
+  } else if (currentHeading - pHeading < -1 * ORIENTATION_TOLERANCE) {
+    startStationarySpin(LEFT);
+  }
+
+  // if we are already at the correct heading, the robot won't be moving.
+  // this would honestly be more readable with a do-while, but I am
+  // principally against do-whiles
+  while (!(aboveThreshold && belowThreshold)) {
+    aboveThreshold =
+      (pHeading - ORIENTATION_TOLERANCE) <= gCompassReading.value;
+    belowThreshold =
+      gCompassReading.value <= (pHeading + ORIENTATION_TOLERANCE);
+  }
+
+  // stop spinning and turn off the compass sensor
+  stopWheels();
+  gUseCompassSensing = false;
+}
+
+#endif //LAB07_CONTROLLER_NXC

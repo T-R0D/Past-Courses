@@ -1,0 +1,18 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 1
+#$ -N Sequential_Matrix_Multiply
+#$ -q Common.q
+#$ -o sequential_matrix_multiply_output.txt
+#$ -e errors_sequential_matrix_multiply.txt
+
+num_processors=1
+matrix_A_file="test_matrix_3.txt"
+matrix_B_file="test_matrix_3.txt"
+matrix_C_file="sequential_verification_output.txt"
+
+# do the image creation runs
+mpirun -np $num_processors ./Sequential_Matrix_Multiply "Y" $matrix_A_file $matrix_B_file $matrix_C_file
+mpirun -np $num_processors ./Sequential_Matrix_Multiply "100" $matrix_A_file $matrix_B_file $matrix_C_file
+mpirun -np $num_processors ./Sequential_Matrix_Multiply "4" $matrix_A_file $matrix_B_file $matrix_C_file
+

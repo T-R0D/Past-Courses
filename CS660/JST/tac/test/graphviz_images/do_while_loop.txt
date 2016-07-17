@@ -1,0 +1,14 @@
+digraph {
+	"FileAST\n00011" -> {"FunctionDefinition\nint main\n00010"};
+	"FunctionDefinition\nint main\n00010" -> {"CompoundStatement\n00009"};
+	"CompoundStatement\n00009" -> {"Declaration\nint i\n00000", "IterationNode\n00008"};
+	"Declaration\nint i\n00000" -> {};
+	"IterationNode\n00008" -> {"BinaryOperator\nGREATER\n00007", "CompoundStatement\n00004"};
+	"BinaryOperator\nGREATER\n00007" -> {"SymbolNode\nint_i\n00005", "Constant\n10\n00006"};
+	"SymbolNode\nint_i\n00005" -> {};
+	"Constant\n10\n00006" -> {};
+	"CompoundStatement\n00004" -> {"Assignment\nASSIGN\n00003"};
+	"Assignment\nASSIGN\n00003" -> {"SymbolNode\nint_i\n00001", "Constant\n5\n00002"};
+	"SymbolNode\nint_i\n00001" -> {};
+	"Constant\n5\n00002" -> {};
+}

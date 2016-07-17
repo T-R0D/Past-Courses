@@ -1,0 +1,68 @@
+Terence Henriod
+CS 202
+asmt04 
+Psuedo-code outline
+
+[1] Define Factor Finding Function
+
+    [a] This function accepts an unsigned int parameter 'x',
+        which is a number whose factors will be found
+
+    [b] This function returns an unsigned int pointer, called
+        'factors', this will be externally defined by a driver 
+        program
+
+[2] Define Variables
+
+    [a] Initialize static variables that will keep their values
+        as the function is called multiple times to find all
+        factors:
+          - number variable to test as factors
+          - index for the list of found factors
+
+    [b] Initialize the externally defined pointer that will be
+        used to define the list of found factors
+          - this will be defined/cleared with zeroes by the
+            instructor
+
+[3] Call the Function
+
+    [a] Call the function with the number whose factors are to be
+        found as the parameter
+
+    [b] The algorithm in steps [4] - [6] will be implemented
+
+[4] Define/Test Base Case
+
+    [a] Check to see if the number being checked for a factor is
+        equal to the number itself, otherwise, move on to
+        step [5]
+
+    [b] If so, store the number in the array at the current index
+        position
+
+    [c] Reset the static variables for the next time the function 
+        might be called
+
+    [d] Return the pointer to end the function call
+
+[5] Test Current Candidate Number as Factor
+
+    [a] Use modulo division by the parameter x, if the result is
+        zero, the factor has been found, otherwise skip to 
+        step [6]
+ 
+    [b] If a factor has been found, store the number in the list
+        at the current index position
+ 
+    [c] Increment the index position 
+
+[6] If Base Case Has Not Been Reached, Prepare to Test Next Case
+
+    [a] Increment the test number
+
+    [b] Call the function again, with the same value for
+        parameter x (Start again at step [3])
+
+    [c] Return the pointer to end the function call
+

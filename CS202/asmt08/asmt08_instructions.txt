@@ -1,0 +1,76 @@
+                             ---------------------
+                                    CS  202
+
+                                  ASSIGNMENT 8
+                             ---------------------
+
+-------
+SUMMARY
+-------
+
+Abstract Base Classes:
+
+   This problem requires you to write an abstract base class
+   and inherit from it several times.
+
+   An abstract base class is characterized by the fact that
+   it has at least one pure virtual function.
+
+   No instance of an abstract base class is allowed, therefore
+   only derived classes can be instantiated.
+
+Write C++ classes and driver program(s) to solve the problem listed below.
+
+Compile, debug and run your classes and driver program(s).
+
+--------------------------------------------------------------------------------
+
+From the text,
+
+       Starting Out With C++, From Control Structures through Objects, 7E
+       Tony Gaddis, Addison Wesley
+       ISBN 13: 978-0-13-257625-3
+
+do problem 9, page 942:  File Filter
+
+--------------------------------------------------------------------------------
+
+-------
+Turn In
+-------
+
+Turn in a .ZIP file [to the drop box] that contains your MS Visual Studio
+project.
+
+Before zipping, you may shrink the size of the directory structure by deleting
+certain subdirectories.  You may delete the IPCH subdirectory.
+
+If you built in Debug mode, you may delete the Debug subdirectories (you will
+find two in the project).
+
+If you built in Release mode, you may delete the Release subdirectories (you
+will find two in the project).
+
+--------------------------------------------------------------------------------
+
+9. File Filter
+
+A file filter reads an input file, transforms it in some way, and writes the results to an output file. Write an abstract file filter class that defines a pure 
+virtual function for transforming a character. Create one derived class of your 
+file filter class that performs encryption, another that transforms a file to 
+all uppercase, and another that creates an unchanged copy of the original file. 
+
+The class should have the following member function:
+
+void doFilter(ifstream &in, ofstream &out)
+
+This function should be called to perform the actual filtering. The member function for transforming a single character should have the prototype:
+
+char transform(char ch)
+
+The encryption class should have a constructor that takes an integer as an 
+argument and uses it as the encryption key.
+
+
+
+

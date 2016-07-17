@@ -1,0 +1,6 @@
+App,Participant,Mode,Condition,Block,Phrase,Text,Reduced_text,Correct_guesses,Incorrect_guesses,KSPC,Time
+LetterGuessingExperiment,P03,One_guess,C00,B01,1,every saturday he folds the laundry,ev-ry sa-------he f-ld--t----------,21,14,1.0,153527
+LetterGuessingExperiment,P03,One_guess,C00,B01,2,my bank account is overdrawn,m--bank-ac---------ov-------,19,9,1.0,105752
+LetterGuessingExperiment,P03,One_guess,C00,B01,3,dolphins leap high out of the water,dolph----le-p-h--- ou--------------,23,12,1.0,99861
+LetterGuessingExperiment,P03,One_guess,C00,B01,4,the food at this restaurant,t---fo---a--t-i--r---au----,18,9,1.0,77432
+LetterGuessingExperiment,P03,One_guess,C00,B01,5,raindrops keep falling on my head,rai-dr---------------------------,28,5,1.0,61576

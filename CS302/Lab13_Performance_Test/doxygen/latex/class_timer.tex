@@ -1,0 +1,84 @@
+\hypertarget{class_timer}{\section{\-Timer \-Class \-Reference}
+\label{class_timer}\index{\-Timer@{\-Timer}}
+}
+
+
+{\ttfamily \#include $<$\-Timer.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{\-Timer} ()
+\item 
+void \hyperlink{class_timer_a3a8b5272198d029779dc9302a54305a8}{start} ()  throw (runtime\-\_\-error)
+\item 
+void \hyperlink{class_timer_a63f0eb44b27402196590a03781515dba}{stop} ()  throw (logic\-\_\-error, runtime\-\_\-error)
+\item 
+double \hyperlink{class_timer_ad306e18f8d8a0296e001683f92d7f86e}{get\-Elapsed\-Time} () const   throw (logic\-\_\-error)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{\index{\-Timer@{\-Timer}!\-Timer@{\-Timer}}
+\index{\-Timer@{\-Timer}!Timer@{\-Timer}}
+\subsubsection[{\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Timer\-::\-Timer} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_timer_a5f16e8da27d2a5a5242dead46de05d97}
+\-The default constructor for the timer class. \-This constructor initializes all data members to 0 or equivalent values.
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_timer_ad306e18f8d8a0296e001683f92d7f86e}{\index{\-Timer@{\-Timer}!get\-Elapsed\-Time@{get\-Elapsed\-Time}}
+\index{get\-Elapsed\-Time@{get\-Elapsed\-Time}!Timer@{\-Timer}}
+\subsubsection[{get\-Elapsed\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Timer\-::get\-Elapsed\-Time} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const  throw (logic\-\_\-error)}}\label{class_timer_ad306e18f8d8a0296e001683f92d7f86e}
+\-Computes the time measured by the \hyperlink{class_timer}{\-Timer} class after a complete start/stop cycle.
+
+\-Utilizes stored begin\-Time and duration values to return an elapsed time in seconds. \-This function will throw a logic error if an elapsed time is solicited, but the timer is still being run (that is, the timer has not been stopped).
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_timer_a3a8b5272198d029779dc9302a54305a8}{\index{\-Timer@{\-Timer}!start@{start}}
+\index{start@{start}!Timer@{\-Timer}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Timer\-::start} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throw (runtime\-\_\-error)}}\label{class_timer_a3a8b5272198d029779dc9302a54305a8}
+\-Starts the timer for the \hyperlink{class_timer}{\-Timer} class.
+
+\-Uses \char`\"{}wall clock\char`\"{} functionality to get a beginning time. \-This time is then stored in the begin\-Time data member. \-Will throw a runtime error if the gettimeofday function fails.
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_timer_a63f0eb44b27402196590a03781515dba}{\index{\-Timer@{\-Timer}!stop@{stop}}
+\index{stop@{stop}!Timer@{\-Timer}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Timer\-::stop} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throw (logic\-\_\-error, runtime\-\_\-error)}}\label{class_timer_a63f0eb44b27402196590a03781515dba}
+\-Stops the timer in the \hyperlink{class_timer}{\-Timer} class.
+
+\-Uses the \char`\"{}wall clock\char`\"{} functionality to record a stopping time in the duration data member. \-This time will be compared to the timer's start time to compute and elapsed time. \-Will throw a logic error if the the timer has not been started. \-Throws a runtime error if the gettimeofday function fails.
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_timer_8h}{\-Timer.\-h}\item 
+\hyperlink{_timer_8cpp}{\-Timer.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,41 @@
+Start Simulator Configuration 
+Version: 1.1
+File path: /home/bobby/CS646-OS_Simulator/new_config_file
+Quantum (cycles) 3
+Processor Scheduling: RR
+Processor cycle time (msec): 10
+Monitor display time (msec): 25
+Hard drive cycle time (msec): 50
+Printer Cycle time (msec): 500
+Keyboard cycle time (msec): 1000
+Memory type: Fixed
+Log: Log to Both
+End Simulator Configuration File
+ 
+ 
+SYSTEM - System configured (0 msec)
+SYSTEM - Peripheral devices initialized (0 msec)
+SYSTEM - Meta-data read, batch schedule loaded (0 msec)
+SYSTEM - System fully booted (1 msec)
+PID 1 - Moved into run state (0 msec)
+PID 1 - Completed processing quantum and was put back in the ready_queue (0 msec)
+PID 3 - Moved into run state (0 msec)
+PID 2 - Starting action on Hard Drive Write (0 msec)
+PID 3 - Completed processing quantum and was put back in the ready_queue (1 msec)
+PID 3 - Moved into run state (0 msec)
+PID 1 - Starting action on Hard Drive Read (0 msec)
+PID 2 - Hard Drive Write action completed - process placed back in main scheduler (0 msec)
+PID 3 - Completed processing quantum and was put back in the ready_queue (0 msec)
+PID 2 - Moved into run state (0 msec)
+PID 1 - Hard Drive Read action completed - process placed back in main scheduler (0 msec)
+PID 2 - Completed processing quantum and was put back in the ready_queue (0 msec)
+PID 3 - Moved into run state (0 msec)
+PID 3 - Completed processing quantum and was put back in the ready_queue (0 msec)
+PID 3 - Ran to completion (time is global system time requiredto complete) (5 msec)
+PID 1 - Moved into run state (0 msec)
+PID 1 - Completed processing quantum and was put back in the ready_queue (0 msec)
+PID 1 - Ran to completion (time is global system time requiredto complete) (6 msec)
+PID 2 - Moved into run state (0 msec)
+PID 2 - Completed processing quantum and was put back in the ready_queue (0 msec)
+PID 2 - Ran to completion (time is global system time requiredto complete) (7 msec)
+SYSTEM - No processes to run found (0 msec)

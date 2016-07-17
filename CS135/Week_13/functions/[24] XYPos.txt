@@ -1,0 +1,35 @@
+/*
+  Name: XYPos
+  Process: Generate x and y position to be used for item placement
+  Function Input/Parameters: x and y positions as a reference
+  Function Output/Parameters: x y postions
+  Function Output/Returned: none
+  Device Input: none
+  Device Output: none
+  Dependencies: spaceOccupied, rand()
+  Developer: Nicholas Smith
+*/
+void XYPos ( int &xPos, int &yPos );
+
+
+void XYPos ( int &xPos, int &yPos )
+   {
+    // Initalize variables
+
+    // Loop to run until variable = false
+
+
+    // generate X variable
+       // random number between 0 and width of board
+	  // Function: rand()
+
+    // generate y variable
+       // random number between 0 and height of board
+	  // Function: rand()
+
+    // Check if occupied
+       // Function: spaceOccupied
+
+    // End loop
+       // if spaceOccupied = ture, varibael = false
+   }

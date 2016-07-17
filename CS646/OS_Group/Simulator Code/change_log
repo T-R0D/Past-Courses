@@ -1,0 +1,12 @@
+4/18/14
+
+Group 5:
+Terence Howard
+Raja Singh
+Sanjeev Rayaprolu
+
+Changes made to the final simulator code from our initial design
+
+The final simulator code stuck to our final design except for a few modifications. The first change is with regards to context switching. In our final design we had decided to enable context switching in two situations: (i) when an I/O interrupt was detected, and (ii) when the current job's time quantum completed. In our final simulator code, however, we decided to simplify the design and make it more intuitive by disabling context switching whenever an I/O interrupt was detected; instead, after completion of I/O an interrupt is generated, and upon interrupt detection the process waiting for I/O is simply placed at the back of the scheduler queue.
+A second change was with regards to counting time quantum as it passed: we decided to instead count cycles as they passed, and perform context switching as necessary.
+Another change was the usage of priority queue data structure instead of a regular queue for jobs waiting for I/O. This change was incorporated to enable code re-usability.

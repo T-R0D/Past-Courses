@@ -1,0 +1,68 @@
+void setFloor( int floorNumber, short playMatrix[PLAY_AR_W][PLAY_AR_H] )
+   {
+   // variables
+
+   // clear the play matrix
+      // function: clearMatrix
+
+   // load coordinate arrays depending on which floor is selected
+      // operation: switch
+
+         // case: floor 1
+      
+                // function: readFloorData
+    
+         // case: floor 2
+  
+                // function: readFloorData
+
+         // case: floor 3
+
+                // function: readFloorData
+
+   // load walls into game matrix by looping through coordinates until the walls have been "used up"
+      // operation: for
+
+   // reload player into matrix
+
+   // reload stairs, depending on level
+      // operation: switch
+
+         // case: setting floor 1 (only up stairs)
+ 
+                // function: genObjectAt
+
+         // case: setting floor 2 (both stairs)
+
+                // function: genObjectAt
+
+         // case: setting floor 3 (only down stairs)
+
+                // function: genObjectAt
+
+   // output walls to display, again by looping
+      // operation: for
+
+         // use coordinates stored in X and Y arrays to output walls stored in matrix to display
+            // setColor, matrixToScreen  
+   
+   // output player to screen
+      // functions: setColor, matrixToScreen
+
+   // output stairs to screen
+      // operation: switch
+
+         // case: setting floor 1 (only up stairs)
+ 
+                // function: setColor, matrixToScreen
+
+         // case: setting floor 2 (both stairs)
+
+                // function: setColor, matrixToScreen
+
+         // case: setting floor 3 (only down stairs)
+
+                // function: setColor, matrixToScreen
+
+   // no return - void
+   } 

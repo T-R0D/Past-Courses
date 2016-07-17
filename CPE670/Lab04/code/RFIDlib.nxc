@@ -1,0 +1,173 @@
+/*
+Codatex RFID sensor library for NXC
+Author : Daniele Benedettelli
+29 March 2008 - First version
+18 June 2008 - GetI2CString bug fix and GetRFIDSerial by
+               Hermann Hainzlmaier
+
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+///                     CONSTANT DEFINITIONS FOR RFID SENSOR                 ///
+////////////////////////////////////////////////////////////////////////////////
+
+#define RFID_ADDRESS       0x04
+
+#define RFID_VERSION       0x00
+#define RFID_MANUFACTURER  0x08
+#define RFID_TYPE          0x10
+#define RFID_STATUS        0x32
+#define RFID_COMMAND       0x41
+#define RFID_DATA(i)       0x42+(i)  // i = 0...5
+#define RFID_SERIAL(i)     0xA0+(i)  // i = 0...4
+
+#define RFID_CMD_STOP      0x00
+#define RFID_CMD_READ      0x01
+#define RFID_CMD_POLL      0x02
+#define RFID_CMD_BOOT      0x81
+#define RFID_CMD_START     0x83
+
+////////////////////////////////////////////////////////////////////////////////
+///                     I2C LOW LEVEL ROUTINES                               ///
+////////////////////////////////////////////////////////////////////////////////
+
+string GetI2CString(byte port, byte add, byte reg)
+{
+   byte inbuf[], outbuf[], count, bytesready;
+   string s;
+   ArrayInit(inbuf,0,2);
+   inbuf[0] = add;
+   inbuf[1] = reg;
+   count = 8;
+   while(I2CCheckStatus(port) == STAT_COMM_PENDING);
+   I2CBytes(port, inbuf, count, outbuf);
+   s = ByteArrayToStr(outbuf);
+   return s;
+}
+
+byte GetI2CByte(byte port, byte add, byte reg)
+{
+   byte inbuf[], outbuf[], out, count, bytesready;
+   ArrayInit(inbuf,0,2);
+   inbuf[0] = add;
+   inbuf[1] = reg;
+   count = 1;
+   while(I2CCheckStatus(port) == STAT_COMM_PENDING);
+   I2CBytes(port, inbuf, count, outbuf);
+   out = outbuf[0];
+   return out;
+}
+
+int WriteI2CData(byte port, byte add, byte reg, byte data[])
+{
+   byte inbuf[], buflen, outbuf[], bytesready, datalen;
+   datalen = ArrayLen(data);
+   if (datalen>8) datalen = 8;
+   buflen = datalen + 2;
+   ArrayInit(inbuf,0,buflen);
+   inbuf[0] = add;
+   inbuf[1] = reg;
+   for (byte c = 0; c<datalen; c++)
+   {
+      inbuf[c+2] = data[c];
+   }
+   while(I2CCheckStatus(port) == STAT_COMM_PENDING);
+   return I2CWrite(port, 0, inbuf);
+}
+
+int WriteI2CByte(byte port, byte add, byte reg, byte data)
+{
+   byte inbuf[];
+   ArrayInit(inbuf,0,3);
+   inbuf[0] = add;
+   inbuf[1] = reg;
+   inbuf[2] = data;
+   while(I2CCheckStatus(port) == STAT_COMM_PENDING);
+   return I2CWrite(port, 0, inbuf);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+///                     BYTE TO HEX UTILITY                                  ///
+////////////////////////////////////////////////////////////////////////////////
+
+string ByteToHexString( byte n )
+{
+   string out = "";
+   byte up_val, low_val;
+   string hexmap[];
+   string up,low;
+   if (n>255) return out;
+   ArrayBuild(hexmap,"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");
+   up_val = (n & 0xF0)>>4;
+   low_val= n & 0x0F;
+   up = hexmap[up_val];
+   low = hexmap[low_val];
+   out = StrCat(up,low);
+   return out;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+///                     RFID - RELATED ROUTINES                              ///
+////////////////////////////////////////////////////////////////////////////////
+
+int RFIDDummy( byte port )
+{
+   return WriteI2CByte(port,RFID_ADDRESS,0x00,0x00);
+}
+
+int RFIDCommand( byte port, byte command )
+{
+   return WriteI2CByte(port,RFID_ADDRESS,RFID_COMMAND,command);
+}
+
+int RFIDStopp( byte port )
+{
+   return RFIDCommand(port, RFID_CMD_STOP);
+}
+
+void GetRFIDArray( byte port ,  byte &d[],  byte continuous )
+{
+   byte status;
+   RFIDDummy(port);
+   if (continuous)
+   {
+      RFIDCommand(port,RFID_CMD_POLL);
+      status = GetI2CByte(port, RFID_ADDRESS, RFID_STATUS);
+      if (status == 0) Wait(250);
+   }
+   for (int i = 0; i<5; i++)
+   {
+      d[i] = GetI2CByte(port, RFID_ADDRESS, RFID_DATA(i));
+   }
+   Wait(200);
+}
+
+void RFIDDataToString( const byte &d[], string &out )
+{
+   string tmp;
+   out = "";
+   for (int i = 0; i<=4; i++)
+   {
+      tmp = ByteToHexString(d[i]);
+      out = StrCat(out,tmp," ");
+   }
+}
+
+void GetRFIDSerial( byte port, string &ser )
+{
+   byte s[4];
+   RFIDDummy(port);
+   RFIDCommand(port,RFID_CMD_BOOT);
+   for (int i = 0; i<=3; i++)
+   {
+      s[i] = GetI2CByte(port, RFID_ADDRESS, RFID_SERIAL(i));
+   }
+   string tmp;
+   for (int i = 0; i<=3; i++)
+   {
+      tmp = ByteToHexString(s[i]);
+      ser = StrCat(ser,tmp," ");
+   }
+   RFIDCommand(port,RFID_CMD_START);
+}
+

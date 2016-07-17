@@ -1,0 +1,28 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Theory}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Reduction Through Multiple Kernel Launches}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Reduction Through Kernels That Launch Kernels}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Reduction With a Kernel Launch and Final Reduction on the CPU}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Reduction With a Single Kernel and Inter-Block Synchronization}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Information on the GPU device used}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Performance Graphs}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A comparison of the runtimes for reduction across vectors of various sizes.}}{4}}
+\newlabel{fig:runtime_line}{{1}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A comparison of the throughput for vector reduction of various sizes.}}{4}}
+\newlabel{fig:throughput_line}{{2}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The speedup achieved using multiple kernel launches for a representative vector size.}}{5}}
+\newlabel{fig:multi_kernel_surface}{{3}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Blocks and Threads}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Many Kernel Launches vs. Final Reduction on the CPU}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Kernel Recursion vs. The Others}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The speedup achieved when reducing the vector with the GPU and then performing the final reduction on the CPU for a representative vector size.}}{6}}
+\newlabel{fig:cpu_finish_surface}{{4}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The speedup of the ``GPU Recursive" method for a vector of representative size.}}{6}}
+\newlabel{fig:kernel_in_kernel_surface}{{5}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Using \texttt  {threadfence()} to Have a Final Block Perform the Final Reduction (or not)}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Issues}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Unreliable Hardware}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The ``GPU Recursive" Algorithm}{7}}

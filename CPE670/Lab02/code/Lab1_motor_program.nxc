@@ -1,0 +1,20 @@
+task main() {
+     int forwardTime = 3000;
+     int reverseTime = 2000;
+     int waitTime = 2000;
+     char port = OUT_AB;
+
+     OnFwd(port, 50);
+     PlayTone(1000, 250);
+     Wait(forwardTime);
+     Off(port);
+     OnRev(port, 50);
+     PlayTone(1000, 250);
+     Wait(reverseTime);
+     Off(port);
+     Wait(reverseTime);
+     OnFwd(port, 100);
+     PlayTone(1000, 250);
+     Wait(forwardTime);
+     Off(port);
+}

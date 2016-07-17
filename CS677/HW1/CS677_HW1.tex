@@ -1,0 +1,472 @@
+\title{CS 677: Assignment 1}
+\author{Terence Henriod}
+\date{\today}
+
+\documentclass[11pts]{article}
+
+%\usepackage{qtree}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[right=1in,top=1in,left=1in,bottom=1in]{geometry}
+
+
+
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+\newcommand{\BigTheta}[1]{\ensuremath{\operatorname{\Theta}\bigl(#1\bigr)}}
+
+%\title{CS 677 Homework \\ Assignment 1}
+%\date{February 12, 2014}
+%\author{Terence Henriod}
+
+\setlength{\topmargin}{-1cm}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.3in}
+
+
+%%Currently default settings for indentation and symbols.
+%%Try these by uncommenting this block!!!
+%%Redefine the first level symbols
+%\renewcommand{\theenumi}{\fnsymbol{enumi}-}
+%\renewcommand{\labelenumi}{\theenumi}
+%
+%%Redefine the second level symbols
+%\renewcommand{\theenumii}{\alph{enumii})}
+%\renewcommand{\labelenumii}{\theenumii}
+%
+%%Redefine the third level symbols
+%\renewcommand{\theenumiii}{\roman{enumiii}.}
+%\renewcommand{\labelenumiii}{\theenumiii}
+%
+%%Options for redefining levels
+
+
+%\arabic
+%\alph 
+%\Alph
+%\roman
+%\Roman
+%\fnsymbol
+%This ^^^ is all you need to change!!
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this assignment, the topics of growth order functions and asymptotic 
+notations are explored.
+\end{abstract}
+\newpage
+
+\begin{enumerate}
+%================= Problem 1 ===================================================
+\item Arrange the following list of functions in ascending
+order of growth rate. That is, if function g(n) immediately follows function
+f(n) in your list, then f(n) should be O(g(n)).
+
+  \begin{enumerate}
+  \item $f_1(n) = n^2.5$
+
+  \item $f_2(n) = \sqrt{2n}$
+
+  \item $f_3(n) = n^3 + 10$
+
+  \item $f_4(n) = 10^n$
+
+  \item $f_5(n) = 100^n$
+
+  \item $f_6(n) = n log n$
+  \end{enumerate}
+    
+  \textbf{Solution:} In general, we can order these terms by intuitively 
+  seeking the highest order term in each $f_i(n)$. Should confusion arise, 
+  techniques such as L\^Hopital's rule can be used to compare the
+  order of functions.
+
+  \begin{align*}
+  f_1(n) &= n^{2.5}     \Rightarrow \BigO{n^{2.5}},   \\
+  f_2(n) &= \sqrt{2n}   \Rightarrow \BigO{\sqrt{n}},    \\
+  f_3(n) &= n^3 + 10    \Rightarrow \BigO{n^3},         \\
+  f_4(n) &= 10^n        \Rightarrow \BigO{10^n},        \\
+  f_5(n) &= 100^n       \Rightarrow \BigO{100^n},       \\
+  f_6(n) &= n \log n    \Rightarrow \BigO{n \log n}
+  \end{align*}
+
+  Thus the correct ordering (lowest order to highest) is:
+  \begin{align*}
+  f_2(n) &= \sqrt{2n}, & f_6(n) &= n \log n,  & f_1(n) &= n^{2.5},     \\
+  f_3(n) &= n^3 + 10,  & f_4(n) &= 10^{n},    & f_5(n) &= 100^{n}
+  \end{align*}
+  \newpage
+
+%================= Problem 2 ===================================================
+\item Using mathematical induction, show that the following relations are true
+for every $n\ge1$:
+
+  \begin {enumerate}
+  %-----------------   A   -----------------------------------------------------
+  \item $ \sum_{i=1}^{n}{(-1)^{i+1}i^2} = \frac{(-1)^{n+1}n(n+1)}{2} $ \\
+
+  \textbf{Solution:} When using induction, we must prove a base case,
+  assume that the equation holds true for an arbitrary $n$, and then prove
+  that the equation holds for the arbritrary $n+1$ value. The three parts
+  combine to prove the equation for all $n\ge1$. The process becomes easier
+  if the assumption is used to simplify the expression in the inductive step.\\
+
+  \textit{Basis Case}\\
+  Let $n=1$:
+  \begin{align*}
+  \sum_{i=1}^{(1)}{(-1)^{i+1}i^2} &= \frac{(-1)^{(1)+1}(1)((1)+1)}{2} \\
+                (-1)^{(1)+1}(1)^2 &= \frac{(-1)^{2}(1)(2)}{2} \\
+                       (-1)^{2}*1 &= \frac{1 * (1)(2)}{2} \\
+                              1*1 &= \frac{2}{2} \\
+                                1 &= 1
+  \end{align*}
+
+  \textit{Assumption}\\
+  Assume that:
+  \begin{align*}
+  \sum_{i=1}^{n}{(-1)^{i+1}i^2} &= \frac{(-1)^{n+1}n(n+1)}{2}
+  \end{align*}
+
+  \newpage % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  \textit{To Show}\\
+  To prove the formula inductively, let $n=n+1$:
+  \begin{align*}
+    \sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= \frac{(-1)^{(n+1)+1}(n+1)((n+1)+1)}{2} \\
+    \sum_{i=n+1}^{n+1}{(-1)^{i+1}i^2}+\sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= 
+         \frac{(-1)^{n+2}(n+1)(n+2)}{2}   \\
+    (-1)^{n+2}(n+1)^{2}+\sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= 
+         \frac{(-1)^{n+2}(n^{2}+3n+2)}{2} \\
+    (-1)^{n+2}(n+1)^{2}+\sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= 
+         \frac{(-1)^{n+2}(n^{2}+3n+2)}{2} \\
+    (-1)^{n+2}(n+1)^{2}+\sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= 
+         \frac{(-1)^{n+2}(2n^{2}+4n+2)}{2}-\frac{(-1)^{n+2}(n^{2}+n)}{2} \\
+    (-1)^{n + 2} (n + 1)^{2} + \sum_{i = 1}^{n + 1}{(-1)^{i + 1}i^2} &= 
+         \frac{(-1)^{n+2}(2n^{2}+4n+2)}{2}-\frac{(-1)(-1)^{n+1}(n^{2}+n)}{2} \\
+    (-1)^{n+2}(n^{2}+2n+1)+\sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= 
+         \frac{(-1)^{n+2}(2n^{2}+4n+2)}{2}+\frac{(-1)^{n+1}(n^{2}+n)}{2} \\
+    (-1)^{n+2}(n^{2}+2n+1)+\sum_{i=1}^{n+1}{(-1)^{i+1}i^2} &= 
+         \frac{(-1)^{n+2}(2n^{2}+4n+2)}{2}+\frac{(-1)^{n+1}n(n+1)}{2} \\
+    (-1)^{n+2}(n^{2}+2n+1) &= \frac{(-1)^{n+2}(2n^{2}+4n+2)}{2}
+        \text{   By the Assumption}  \\
+    (-1)^{n+2}(n^{2}+2n+1) &= (-1)^{n+2}(2n^{2}+2n+1)
+  \end{align*}
+  \newpage
+
+  %-----------------   B   -----------------------------------------------------
+  \item $ \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} = \frac{n}{2n+1} $ \\
+
+  \textbf{Solution:} Again, use the three parts of the induction process
+  and use the assumption to simplify the process.\\
+
+  \textit{Basis Case}\\
+  Let $n = 1$
+  \begin{align*}
+    \sum_{i=1}^{(1)}{\frac{1}{(2i - 1)(2i + 1)}} &= \frac{(1)}{2(1) + 1} \\
+    \frac{1}{(2(1) - 1)(2(1) + 1)} &= \frac{1}{2 + 1} \\
+    \frac{1}{(2 - 1)(2 + 1)} &= \frac{1}{3} \\
+    \frac{1}{1 * 3} &= \frac{1}{3} \\
+    \frac{1}{3} &= \frac{1}{3}
+  \end{align*}
+
+  \textit{Assumption} \\
+  Assume that:
+  \begin{align*}
+    \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} &= \frac{n}{2n + 1}
+  \end{align*}
+
+  \newpage % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  \textit{To Show}\\
+  To prove the formula inductively, let $n = n + 1$
+  \begin{align*}
+    \sum_{i=1}^{(n+1)}{\frac{1}{(2i-1)(2i+1)}} &= \frac{(n+1)}{2(n + 1) + 1}\\
+    \sum_{i=n+1}^{n+1}{\frac{1}{(2i - 1)(2i + 1)}} + 
+        \sum_{i=1}^{n}{\frac{1}{(2i - 1)(2i + 1)}} 
+        &= \frac{(n+1)}{(2n + 2) + 1}\\
+    \frac{1}{((2n + 2) - 1)((2n + 2) + 1)} + 
+        \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} 
+        &= \frac{(n+1)}{2n + 3}\\
+    \frac{1}{(2n + 1)(2n + 3)} + \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} 
+        &= \frac{(n+1)}{2n + 3}\\
+    \frac{1}{(2n + 1)(2n + 3)} + \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} 
+        &= \frac{(n+1)}{2n + 3} * \frac{(2n + 1)}{(2n + 1)}\\
+    \frac{1}{(2n + 1)(2n + 3)} + \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} 
+        &= \frac{(n+1)(2n + 1)}{(2n + 3)(2n + 1)} \\
+    \frac{1}{(2n + 1)(2n + 3)} + \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} 
+        &= \frac{2n^{2} + 3n + 1}{(2n + 3)(2n + 1)} \\
+    \frac{1}{(2n + 1)(2n + 3)} + \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}} 
+        &= \frac{2n^{2} + 3n}{(2n + 3)(2n + 1)} + \frac{1}{(2n + 3)(2n + 1)} \\
+    \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}}
+        &= \frac{2n^{2} + 3n}{(2n + 3)(2n + 1)} \\
+    \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}}
+        &= \frac{(2n + 3) * n}{(2n + 3)(2n + 1)} \\
+    \sum_{i=1}^{n}{\frac{1}{(2i-1)(2i+1)}}
+        &= \frac{n}{2n + 1}
+  \end{align*}
+
+  \end{enumerate}
+  \newpage
+
+%================= Problem 3 ===================================================
+\item Find the order of growth of the following sums:
+
+  \begin{enumerate}
+  %-----------------   A   -----------------------------------------------------
+  \item $ \sum_{i=0}^{n-1}{(i^{2}+1)^{2}} $ \\
+
+  \textbf{Solution:} In this problem, the key is to expand the typical element
+  formula, distrubute the summation across each element, and finally, find
+  the order of the terms of the resulting expression. Some summations will be
+  relaced with the known identity: 
+  $ \sum_{k=1}^{n}{k^{p}} \approx \frac{1}{p+1}n^{p+1} $
+  \begin{align*}
+    \sum_{i=0}^{n-1}{(i^{2}+1)^{2}}
+        &= ((0)^{2} + 1)^{2} + \sum_{i=1}^{n-1}{(i^{2}+1)^{2}} \\
+    &= 0 + \sum_{i=1}^{n-1}{(i^{2}+1)^{2}}\\
+    &= \sum_{i=1}^{n-1}{i^{4} + 2i^{2} + 1}\\
+    &= \sum_{i=1}^{n-1}{i^{4}} + \sum_{i=1}^{n-1}{2i^{2}} +
+        \sum_{i=1}^{n-1}{1}\\
+    &= \sum_{i=1}^{n-1}{i^{4}} + 2\sum_{i=1}^{n-1}{i^{2}} + (n - 1)\\
+    &= \frac{1}{(4)+1}(n - 1)^{(4)+1} + 2(\frac{1}{(2)+1}(n - 1)^{(2)+1})
+        + (n - 1)\\
+    &= \frac{1}{5}(n - 1)^{5} + 2(\frac{1}{3}(n - 1)^{3}) + (n - 1)
+  \end{align*}
+  Thus, by expanding the terms with exponents and ignoring lower order
+  terms and multiplicative constants, it is
+  easily seen that $ \sum_{i=0}^{n-1}{(i^{2}+1)^{2}} = \BigO{n^{5}} $.
+  \newpage
+
+  %-----------------   B   -----------------------------------------------------
+  \item $ \sum_{i=2}^{n-1}{\lg{i^{2}}} $ \\
+
+  \textbf{Solution:} This problem is also solved using a similar strategy as
+  the previous one. A summation will be replaced with the identity:
+  $ \sum_{k=1}^{n}{\lg{n}} \approx n \lg{n} $
+
+  \begin{align*}
+    \sum_{i=2}^{n-1}{\lg{i^{2}}} &= \sum_{i=1}^{n-1}{2\lg{i}} - 2\lg{(1)} \\
+    &= 2\sum_{i=1}^{n-1}{\lg{i}} - 2(0)\\
+    &= 2((n - 1)\lg{(n - 1)}) \\
+    &= (2n - 2)\lg{(n - 1)} \\
+    &= 2n \lg{(n - 1)} - 2 \lg{(n - 1)}
+  \end{align*}
+  Again, ignoring lower order terms and multiplicative constants,
+  it is seen that $ \sum_{i=2}^{n-1}{\lg{i^{2}}} = \BigO{n \lg{n}} $.
+  \end{enumerate}
+  \newpage
+
+  %=============== Problem 4 ===================================================
+  \item
+  For each of the following functions, indicate the class
+  $Θ(g(n))$ the function belongs to. Use the simplest $g(n)$ possible in your
+  answers.
+
+    \begin{enumerate}
+  %-----------------   A   -----------------------------------------------------
+      \item $ (n^{2}+1)^{10} $ \\
+
+        \textbf{Solution:} Intuitively, it can be seen that once expanded,
+        the leading term of the function will be
+        $ (n^{2})^{10} = n^{20} $. Clearly, this term dominates the function's
+        behavior, and I propose that $ \forall n_0 \ge 1$ with
+        arbitrary constants $ c_1 = 1 $ and $ c_2 = 1024 $
+        that $ c_1n^{10} \le (n + 1)^{10} \le c_2n^{10} $.\\
+
+        The lower bound:
+        \begin{align*}
+          c_1(n^{20}) &\le (n^2 + 1)^{10} \\
+          (1)(n^{20}) &\le (n^2)^{10} + \BigO{(n^2)^{9}} \\
+               n^{20} &\le n^{20} + \BigO{(n^2)^{9}} \\
+                    0 &\le \BigO{n^{18}} 
+        \end{align*}
+        The upper bound:
+        \begin{align*}
+          (n^2 + 1)^{10} &= (n^{2})^{10} + \ldots \\
+                         &= n^{20} + \BigO{n^{18}} + \ldots \\
+                         &= \BigO{n^{20}}
+        \end{align*}
+        Thus, $ (n^{2}+1)^{10} = \BigTheta{n^{20}} $ by the definition
+        of $\Theta$.\\
+        \\
+
+  %-----------------   B   -----------------------------------------------------
+      \item $ \sqrt{10n^{2}+7n+3} $ \\
+
+        \textbf{Solution:} Due to the radical, this expression is difficult
+        to manipulate directly. However, the $10n^2$ term is clearly the
+        the dominating term in the radicand. So let
+        $ f(x) = \sqrt{10n^2 + \BigO{n}} $ and it follows that:
+
+        \begin{align*}
+          \sqrt{10n^2 + \BigTheta{n}} &\approx \sqrt{10n^{2}}  \\
+                                      &= \sqrt{10} * \sqrt{n^{2}} \\
+                                      &= \sqrt{10} * n \\
+                                      &= \BigTheta{n}
+        \end{align*}
+
+       Thus, $ \sqrt{10n^{2}+7n+3} = \BigTheta{n}$.\\
+       \\
+
+  %-----------------   C   -----------------------------------------------------
+      \item $ 2n\lg{(n+2)^{2}}+(n+2)^{2}\lg{\frac{n}{2}} $ \\
+
+        \textbf{Solution:} By simplifying the expressions, we have
+        \begin{align*}
+          2n\lg{(n+2)^{2}}+(n+2)^{2}\lg{\frac{n}{2}}
+              &= 2n(2\lg{n + 2}) + (n^{2} + 4n + 4)(\lg{n} - \lg{2}) \\
+          &= 4n\lg{n + 2} + (n^{2} + 4n + 4)(\lg{n} - 1) \\
+          &= \BigTheta{n\lg{n}} + \BigTheta{n^{2}} * \BigTheta{\lg{n}} \\
+          &= \BigTheta{n^{2}} * \BigTheta{\lg{n}} \\
+          &= \BigTheta{n^{2}}
+        \end{align*}
+        Leaving a highest order term of $n^{2}\lg{n}$.\\
+        Thus, $ 2n\lg{(n+2)^{2}}+(n+2)^{2}\lg{\frac{n}{2}}
+            = \BigTheta{n^{2}\lg{n}} $.\\
+      \\
+
+  %-----------------   D   -----------------------------------------------------
+      \item $ 2^{n+1}+3^{n-1} $ \\
+
+        \textbf{Solution:} Although to start, the $2^{n+1}$ is the dominating
+        term, $ \forall n \ge 5 $, $ 3^{n-1} $ will be the dominating term: \\
+
+        \begin{center}
+        \begin{tabular}{| c || c | c | c | c | c |}
+          \hline
+          $n$ & 1 & 2 & 3 & 4 & 5 \\
+          \hline \hline
+          $2^{n+1}$ & 4 & 8 & 16 & 32 & 64 \\
+          \hline
+          $3^{n-1}$ & 1 & 3 & 9 & 27 & 81 \\
+          \hline
+        \end{tabular}
+        \end{center}
+        \newline
+        Thus, $ 2^{n+1}+3^{n-1} = \BigTheta{3^n}$.
+      \\
+    \end{enumerate}
+    \newpage
+
+%================= Problem 5 ===================================================
+  \item
+  For each of the following functions, indicate how much the
+  function’s value will change if its argument is increased fourfold:
+
+    \begin{enumerate}
+  %-----------------   A   -----------------------------------------------------
+    \item $ f(n)=\log_2{n} $ \\
+
+    \textbf{Solution:} In this case, I will replace the $n$ in $f(n)$ with
+    $4n$ to create $f'(n)$ and compute the \emph{difference} of the two
+    functions.\\
+    Let $f'(n) = \log_2{4n}$
+
+    \begin{align*}
+    f'(4n) &= \log_2{4n}            \\
+           &= \log_2{4} + \log_2{n} \\
+           &= 2 + \log_2{n}
+    \end{align*}
+
+    So: 
+    \begin{align*}
+    f'(n) - f(n) &= (2 + \log_2{n}) - (\log_2{n}) \\
+                 &= 2
+    \end{align*}
+    The function's value increases by precisely $2$. \\
+
+  %-----------------   B   -----------------------------------------------------
+    \item $ f(n)=\sqrt{n} $ \\
+
+    \textbf{Solution:} Again, I will replace the $n$ in $f(n)$ with
+    $4n$ to create $f'(n)$, but this time compute the \emph{ratio} of the two
+    functions to find a \emph{multiplicative factor} to illustrate
+    the change in value of the function.\\
+    Let $f'(n) = \sqrt{4n}$
+
+    \begin{align*}
+    f'(4n) &= \sqrt{4n}            \\
+           &= \sqrt{4} * \sqrt{n}  \\
+           &= 2 * \sqrt{n}
+    \end{align*}
+
+    So: 
+    \begin{align*}
+    \frac{f'(n)}{f(n)} &= \frac{2\sqrt{n}}{\sqrt{n}} \\
+                 &= 2
+    \end{align*}
+    The function's value increases by a factor of $2$. \\
+
+  %-----------------   C   -----------------------------------------------------
+    \item $ f(n)=n $ \\
+
+    \textbf{Solution:} Again, I will replace the $n$ in $f(n)$ with
+    $4n$ to create $f'(n)$ and compute the \emph{ratio} of the two
+    functions to find a \emph{multiplicative factor} to illustrate
+    the change in value of the function.\\
+    Let $f'(n) = 4n$
+
+    \begin{align*}
+    f'(n) &= 4n            \\
+    \end{align*}
+
+    So: 
+    \begin{align*}
+    \frac{f'(n)}{f(n)} &= \frac{4}{n} \\
+                 &= 4
+    \end{align*}
+    The function's value increases by a factor of $4$. \\
+
+  %-----------------   D   -----------------------------------------------------
+    \item $ f(n)=n^{3} $ \\
+
+    \textbf{Solution:} Again, I will replace the $n$ in $f(n)$ with
+    $4n$ to create $f'(n)$ and compute the \emph{ratio} of the two
+    functions to find a \emph{multiplicative factor} to illustrate
+    the change in value of the function.\\
+    Let $f'(n) = (4n)^{3}$
+
+    \begin{align*}
+    f'(n) &= (4n)^{3}            \\
+          &= 4^{3} * n^{3}       \\
+          &= 64 * n^{3}          \\
+          &= 64n^{3}
+    \end{align*}
+
+    So: 
+    \begin{align*}
+    \frac{f'(n)}{f(n)} &= \frac{64n^{3}}{n^{3}} \\
+                       &= 64
+    \end{align*}
+    The function's value increases by a factor of $64$. \\
+
+  %-----------------   E   -----------------------------------------------------
+    \item $ f(n)=2^{n} $ \\
+
+    \textbf{Solution:} Again, I will replace the $n$ in $f(n)$ with
+    $4n$ to create $f'(n)$ and compute the \emph{ratio} of the two
+    functions to find a \emph{multiplicative factor} to illustrate
+    the change in value of the function.\\
+    Let $f'(n) = 2^{4n}$
+
+    \begin{align*}
+    f'(n) &= 2^{4n}
+    \end{align*}
+
+    So: 
+    \begin{align*}
+    \frac{f'(n)}{f(n)} &= \frac{2^{4n}}{2^{n}} \\
+                 &= 2^{4n-n}                   \\
+                 &= 2^{3n}                     \\
+                 &= (2^{3})^{n}                \\
+                 &= 8^{n}
+    \end{align*}
+    The function's value changes by  factor of $ 8^{n} $. \\
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

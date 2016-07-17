@@ -1,0 +1,223 @@
+.data
+.text
+JAL            , main           , -              , -
+BR             , PROG_END       , -              , -
+main:
+PROCENTRY      , 12             , -              , -
+LA             , ireg_00000     , ($FP)          , -
+LI             , ireg_00001     , 0              , -
+STORE          , ireg_00001     , (ireg_00000)   , 4
+KICK           , ireg_00001     , -              , -
+KICK           , ireg_00000     , -              , -
+LA             , ireg_00002     , -4($FP)        , -
+LI             , ireg_00003     , 10             , -
+STORE          , ireg_00003     , (ireg_00002)   , 4
+KICK           , ireg_00003     , -              , -
+KICK           , ireg_00002     , -              , -
+LA             , ireg_00004     , -8($FP)        , -
+LI             , ireg_00005     , 15             , -
+STORE          , ireg_00005     , (ireg_00004)   , 4
+KICK           , ireg_00005     , -              , -
+KICK           , ireg_00004     , -              , -
+LA             , ireg_00006     , ($FP)          , -
+LI             , ireg_00007     , 0              , -
+STORE          , ireg_00007     , (ireg_00006)   , 4
+KICK           , ireg_00006     , -              , -
+KICK           , ireg_00007     , -              , -
+LOOP_CONDITION_00000:
+LOAD           , ireg_00008     , ($FP)          , 4
+LI             , ireg_00009     , 5              , -
+LE             , ireg_00010     , ireg_00008     , ireg_00009
+KICK           , ireg_00008     , -              , -
+KICK           , ireg_00009     , -              , -
+BRNE           , LOOP_BODY_00000, ireg_00010     , $ZERO
+BR             , LOOP_EXIT_00000, -              , -
+LOOP_BODY_00000:
+LOOP_CONDITION_00001:
+LOAD           , ireg_00011     , -4($FP)        , 4
+LI             , ireg_00012     , 15             , -
+LE             , ireg_00013     , ireg_00011     , ireg_00012
+KICK           , ireg_00011     , -              , -
+KICK           , ireg_00012     , -              , -
+BRNE           , LOOP_BODY_00001, ireg_00013     , $ZERO
+BR             , LOOP_EXIT_00001, -              , -
+LOOP_BODY_00001:
+BR             , LOOP_BODY_00002, -              , -
+LOOP_CONDITION_00002:
+LOAD           , ireg_00014     , -8($FP)        , 4
+LI             , ireg_00015     , 20             , -
+LE             , ireg_00016     , ireg_00014     , ireg_00015
+KICK           , ireg_00014     , -              , -
+KICK           , ireg_00015     , -              , -
+BRNE           , LOOP_BODY_00002, ireg_00016     , $ZERO
+BR             , LOOP_EXIT_00002, -              , -
+LOOP_BODY_00002:
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00018     , 107            , -
+STORE          , ireg_00018     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00018     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00017     , $RV            , $ZERO
+KICK           , ireg_00017     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00020     , 58             , -
+STORE          , ireg_00020     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00020     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00019     , $RV            , $ZERO
+KICK           , ireg_00019     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00022     , 32             , -
+STORE          , ireg_00022     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00022     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00021     , $RV            , $ZERO
+KICK           , ireg_00021     , -              , -
+CALL_PROC      , print_int      , 0              , -
+LOAD           , ireg_00024     , -8($FP)        , 4
+STORE          , ireg_00024     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00024     , -              , -
+JAL            , print_int      , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00023     , $RV            , $ZERO
+KICK           , ireg_00023     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00026     , 10             , -
+STORE          , ireg_00026     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00026     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00025     , $RV            , $ZERO
+KICK           , ireg_00025     , -              , -
+LA             , ireg_00027     , -8($FP)        , -
+LOAD           , ireg_00028     , (ireg_00027)   , 4
+ADD            , ireg_00029     , ireg_00028     , $ZERO
+ADDIU          , ireg_00028     , ireg_00028     , 1
+STORE          , ireg_00028     , (ireg_00027)   , 4
+KICK           , ireg_00027     , -              , -
+KICK           , ireg_00028     , -              , -
+KICK           , ireg_00029     , -              , -
+BR             , LOOP_CONDITION_00002, -              , -
+LOOP_EXIT_00002:
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00031     , 106            , -
+STORE          , ireg_00031     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00031     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00030     , $RV            , $ZERO
+KICK           , ireg_00030     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00033     , 58             , -
+STORE          , ireg_00033     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00033     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00032     , $RV            , $ZERO
+KICK           , ireg_00032     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00035     , 32             , -
+STORE          , ireg_00035     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00035     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00034     , $RV            , $ZERO
+KICK           , ireg_00034     , -              , -
+CALL_PROC      , print_int      , 0              , -
+LOAD           , ireg_00037     , -4($FP)        , 4
+STORE          , ireg_00037     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00037     , -              , -
+JAL            , print_int      , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00036     , $RV            , $ZERO
+KICK           , ireg_00036     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00039     , 10             , -
+STORE          , ireg_00039     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00039     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00038     , $RV            , $ZERO
+KICK           , ireg_00038     , -              , -
+LA             , ireg_00040     , -4($FP)        , -
+LOAD           , ireg_00041     , (ireg_00040)   , 4
+ADD            , ireg_00042     , ireg_00041     , $ZERO
+ADDIU          , ireg_00041     , ireg_00041     , 1
+STORE          , ireg_00041     , (ireg_00040)   , 4
+KICK           , ireg_00040     , -              , -
+KICK           , ireg_00041     , -              , -
+KICK           , ireg_00042     , -              , -
+BR             , LOOP_CONDITION_00001, -              , -
+LOOP_EXIT_00001:
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00044     , 105            , -
+STORE          , ireg_00044     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00044     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00043     , $RV            , $ZERO
+KICK           , ireg_00043     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00046     , 58             , -
+STORE          , ireg_00046     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00046     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00045     , $RV            , $ZERO
+KICK           , ireg_00045     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00048     , 32             , -
+STORE          , ireg_00048     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00048     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00047     , $RV            , $ZERO
+KICK           , ireg_00047     , -              , -
+CALL_PROC      , print_int      , 0              , -
+LOAD           , ireg_00050     , ($FP)          , 4
+STORE          , ireg_00050     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00050     , -              , -
+JAL            , print_int      , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00049     , $RV            , $ZERO
+KICK           , ireg_00049     , -              , -
+CALL_PROC      , print_char     , 0              , -
+LI             , ireg_00052     , 10             , -
+STORE          , ireg_00052     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00052     , -              , -
+JAL            , print_char     , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00051     , $RV            , $ZERO
+KICK           , ireg_00051     , -              , -
+LA             , ireg_00053     , ($FP)          , -
+LOAD           , ireg_00054     , (ireg_00053)   , 4
+ADD            , ireg_00055     , ireg_00054     , $ZERO
+ADDIU          , ireg_00054     , ireg_00054     , 1
+STORE          , ireg_00054     , (ireg_00053)   , 4
+KICK           , ireg_00053     , -              , -
+KICK           , ireg_00054     , -              , -
+KICK           , ireg_00055     , -              , -
+BR             , LOOP_CONDITION_00000, -              , -
+LOOP_EXIT_00000:
+LI             , ireg_00056     , 0              , -
+RETURN         , ireg_00056     , -              , -
+ENDPROC        , -              , -              , -
+PROG_END:

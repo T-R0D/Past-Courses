@@ -1,0 +1,10 @@
+bool doGenObject( int chancein100 )
+   {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Number
+
+    // Return true if generated number is less or equal to than input number
+
+   }

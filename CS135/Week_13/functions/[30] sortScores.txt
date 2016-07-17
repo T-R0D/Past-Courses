@@ -1,0 +1,31 @@
+/*
+  Name: sortScores
+  Process: sorts the scores from highest to lowest, only has ten
+  Function Input/Parameters: name of players, scores for players, new score to be sorted
+  Function Output/Parameters: none
+  Function Output/Returned:none
+  Device Input: none
+  Device Output: none
+  Dependencies: noen
+  Developer: Nicholas Smith
+*/
+void sortScores( char names[ NAME_LEN], int scores[], int candidate);
+
+
+void sortScores( char names[ NAME_LEN], int scores[], int candidate)
+   {
+    // Initilize Variables
+
+    // Takes candidate and bubble sort it through existing scores
+    // Places candidate at apropiat index
+       // start master loop
+       
+            // iterate through array and compare values
+            
+                 // swap values if not in order
+                 
+  }
+
+
+
+   

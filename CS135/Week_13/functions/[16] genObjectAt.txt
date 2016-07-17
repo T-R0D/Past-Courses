@@ -1,0 +1,9 @@
+void genObjectAt( int Xcoord, int Ycoord, short object, short playMatrix[PLAY_AR_W][PLAY_AR_H] )
+   {
+   // place object in matrix
+
+   // animate object on screen
+      // function: matrixToScreen
+
+   // no return - void
+   } 

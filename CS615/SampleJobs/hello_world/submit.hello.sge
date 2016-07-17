@@ -1,0 +1,9 @@
+#!/bin/bash 
+
+#$ -cwd 
+#$ -pe SharedMem 4
+#$ -N hello_world 
+
+echo "Hello World!"
+echo "I've allocated $NSLOTS CPU cores"
+echo $(cat $TMP/machines) 1>&2 

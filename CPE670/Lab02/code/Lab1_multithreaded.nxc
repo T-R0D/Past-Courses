@@ -1,0 +1,172 @@
+/**
+ * An enumeration of avoidance strategy values.
+ */
+#define BOTH_SENSORS_ACTIVATED 0
+#define RIGHT_SENSOR_ACTIVATED 1
+#define LEFT_SENSOR_ACTIVATED 2
+#define NOTHING_TO_AVOID 99
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#define FORWARD true
+#define REVERSE false
+#define RIGHT true
+#define LEFT false
+
+/**
+ * These mutexes are used to prevent ciritical section violations.
+ * They ensure that only one task has access to the wheels at a time,
+ * and that only one task is reading or writing to the avoidance
+ * strategy variable.
+ */
+mutex gWheelMutex;      // we don't want a MISD model for the wheels
+mutex gStrategyMutex;   // wasn't sure how atomic operations are with NXC
+
+/**
+ * A global variable to allow for inter-process communication of
+ * which avoidance strategy to use.
+ */
+int gAvoidanceStrategy = NOTHING_TO_AVOID;
+
+/**
+ * This provides a sort of "stepped" movement functionality.
+ * That is, it makes the robot move for a set time and then stop.
+ */
+void blockingMove(bool pMoveForward, int pPower, int pDurationMs) {
+     if (pMoveForward) {
+        OnFwdReg(OUT_AB, pPower, OUT_REGMODE_SYNC);
+     } else {
+        OnRevReg(OUT_AB, pPower, OUT_REGMODE_SYNC);
+     }
+     Wait(pDurationMs);
+     Off(OUT_AB);
+}
+
+/**
+ * Similar to blockingMove(), except with rotating the robot.
+ */
+void blockingTurn(bool pTurnRight, int pPower, int pDurationMs) {
+     byte forwardWheel;
+     byte reverseWheel;
+     
+     if (pTurnRight) {
+     OnFwd(OUT_B, pPower);
+     OnRev(OUT_A, pPower);
+     } else {
+     OnFwd(OUT_A, pPower);
+     OnRev(OUT_B, pPower);
+     }
+
+     Wait(pDurationMs);
+     Off(OUT_AB);
+}
+
+/**
+ * Creates a thread that will be responsible for detecting when the
+ * touch sensors are activated and determining the appropriate
+ * avoidance strategy.
+ */
+task checkSensors() {
+    while (true) {
+          bool rightSensorHit = false;
+          bool leftSensorHit = false;
+
+          Acquire(gStrategyMutex);
+          
+          until (SENSOR_1 == 1 || SENSOR_2 == 1);
+          
+          // stupid delay loop just to make sure we capture
+          // the fact that both sensors have been hit, if they have
+          for (int i = 0; i < 25; i++) {
+              if (SENSOR_1 == 1) {
+                 rightSensorHit = true;
+              }
+              
+              if (SENSOR_2 == 1) {
+                 leftSensorHit = true;
+              }
+          }
+          
+          if (rightSensorHit && leftSensorHit) {
+             gAvoidanceStrategy = BOTH_SENSORS_ACTIVATED;
+          } else if (rightSensorHit) {
+             gAvoidanceStrategy = RIGHT_SENSOR_ACTIVATED;
+          } else if (leftSensorHit) {
+             gAvoidanceStrategy = LEFT_SENSOR_ACTIVATED;
+          } else {
+             gAvoidanceStrategy = NOTHING_TO_AVOID;
+          }
+          Release(gStrategyMutex);
+    }
+}
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task moveForward() {
+     while (true) {
+        Acquire(gWheelMutex);
+
+        OnFwd(OUT_AB, 50);
+        until (gAvoidanceStrategy != NOTHING_TO_AVOID);
+        Off(OUT_AB);
+
+        Release(gWheelMutex);
+    }
+}
+
+/**
+ * Creates a thread that will execute an avoidance strategy only
+ * once use of the wheels has been relinquished and an appropriate
+ * avoidance strategy has been determined by other tasks.
+ *
+ * Tones were added to the avoidance strategy to help differentiate
+ * which strategy was being executed. As it turns out, it is difficult
+ * to activate both sensors at once, so it is helpful to be able to
+ * easily tell which sensor was hit.
+ */
+task avoid() {
+     while (true) {
+           Acquire(gWheelMutex);
+           Acquire(gStrategyMutex);
+
+           blockingMove(REVERSE, 45, MS_500);
+
+           switch (gAvoidanceStrategy) {
+                  case BOTH_SENSORS_ACTIVATED:
+                       PlayTone(1000, MS_500);
+                       blockingTurn(LEFT, 60, SEC_1);
+                       break;
+                  case RIGHT_SENSOR_ACTIVATED:
+                       PlayTone(300, MS_500);
+                       blockingTurn(LEFT, 50, MS_500);
+                       break;
+                  case LEFT_SENSOR_ACTIVATED:
+                       PlayTone(300, MS_500);
+                       blockingTurn(RIGHT, 50, MS_500);
+                       break;
+                  case NOTHING_TO_AVOID:
+                  default:
+                       Off(OUT_AB);
+                       break;
+           }
+           
+           gAvoidanceStrategy = NOTHING_TO_AVOID;
+
+           Release(gStrategyMutex);
+           Release(gWheelMutex);
+     }
+}
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+     Precedes(checkSensors, moveForward, avoid);
+     SetSensorTouch(IN_1);
+     SetSensorTouch(IN_2);
+
+}

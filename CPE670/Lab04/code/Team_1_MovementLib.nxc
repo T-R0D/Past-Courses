@@ -1,0 +1,133 @@
+#ifndef __TEAM_1_MOVEMENTLIB_NXC__
+#define __TEAM_1_MOVEMENTLIB_NXC__
+
+
+#define RIGHT_WHEEL OUT_C
+#define LEFT_WHEEL OUT_A
+#define BOTH_WHEELS OUT_AC
+
+#define FORWARD true
+#define REVERSE false
+#define RIGHT true
+#define LEFT false
+
+#define TURN_45_TIME (MS_200)
+#define TURN_45 45
+#define TURN_90 90
+#define TURN_180 180
+
+#define FULL_SPEED 100
+#define MODERATE_SPEED 75
+#define SLOW_SPEED 50
+#define SPEED_INCREMENT 4
+#define TIME_PER_UNIT (MS_300 + 25) // time to move half of a "car length"
+
+
+void setWheelMotion(bool pDirection);
+void stopWheels();
+void moveSetDistance(bool pDirection, int pUnitsToMove);
+void setSway(bool pSide);
+void hardTurn(bool pDirection, int pTurnMagnitude);
+void stationaryTurn(bool pDirection, int pTurnMagnitude);
+void testMovementLib();
+
+
+void setWheelMotion(bool pDirection) {
+	if (pDirection == FORWARD) {
+		OnFwdReg(BOTH_WHEELS, FULL_SPEED, OUT_REGMODE_SYNC);
+	} else {
+		OnRevReg(BOTH_WHEELS, FULL_SPEED, OUT_REGMODE_SYNC);
+	}
+}
+
+
+void stopWheels() {
+ 	Float(BOTH_WHEELS);
+ 	Wait(MS_50);
+ 	Off(BOTH_WHEELS);
+}
+
+
+void moveSetDistance(bool pDirection, int pUnitsToMove) {
+	setWheelMotion(pDirection);
+	Wait(pUnitsToMove * TIME_PER_UNIT);
+	stopWheels();
+}
+
+
+void setSway(bool pSide) {
+	byte dragWheel;
+	byte drivingWheel;
+
+	if (pSide == RIGHT) {
+		dragWheel = RIGHT_WHEEL;
+		drivingWheel = LEFT_WHEEL;
+	} else {
+		dragWheel = LEFT_WHEEL;
+		drivingWheel = RIGHT_WHEEL;
+	}
+
+	OnFwd(drivingWheel, FULL_SPEED);
+	for (int i = 0; i < 5; i++) {
+		Off(dragWheel);
+		Wait(MS_10);
+		OnFwd(dragWheel, FULL_SPEED / 2);
+	}
+
+	OnFwd(dragWheel, FULL_SPEED * 0.8);
+}
+
+
+void hardTurn(bool pDirection, int pTurnMagnitude) {
+	byte dragWheel;
+	byte drivingWheel;
+
+	if (pDirection == RIGHT) {
+		dragWheel = RIGHT_WHEEL;
+		drivingWheel = LEFT_WHEEL;
+	} else {
+		dragWheel = LEFT_WHEEL;
+		drivingWheel = RIGHT_WHEEL;
+	}
+
+	float factor = pTurnMagnitude / 45.0;
+
+	OnFwd(drivingWheel, SLOW_SPEED);
+	OnRev(dragWheel, SLOW_SPEED);
+
+	Wait(factor * TURN_45_TIME);
+}
+
+
+void stationaryTurn(bool pDirection, int pTurnMagnitude) {
+	stopWheels();
+
+  hardTurn(pDirection, pTurnMagnitude);
+
+	stopWheels();
+}
+
+
+void testMovementLib() {
+  moveSetDistance(FORWARD, 2);
+  Wait(MS_500);
+  moveSetDistance(REVERSE, 2);
+  Wait(MS_500);
+
+  stationaryTurn(RIGHT, TURN_45);
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_90);
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_45);
+  Wait(MS_500);
+  stationaryTurn(LEFT, TURN_180);
+
+  Wait(MS_500);
+  setWheelMotion(FORWARD);
+  Wait(SEC_1);
+  setSway(RIGHT);
+  Wait(SEC_2);
+  stopWheels();
+}
+
+#endif //__TEAM_1_MOVEMENTLIB_NXC__

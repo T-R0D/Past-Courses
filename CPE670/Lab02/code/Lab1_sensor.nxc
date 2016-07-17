@@ -1,0 +1,29 @@
+bool handleTouchSensor(bool pStartSpinnin\\
+);
+
+task main() {
+     SetSensorTouch(IN_1);
+     bool spin = false;
+     while (true) {
+           spin = handleTouchSensor(spin);
+     }
+}
+
+bool handleTouchSensor(bool pStartSpinning) {
+     bool spinOn = pStartSpinning;
+
+     if (SENSOR_1 == 1) {
+        TextOut(1, LCD_LINE1, "BAD TOUCH!");
+     
+        spinOn = ~spinOn;
+        
+        if (spinOn) {
+           OnFwd(OUT_A, 50);
+           OnRev(OUT_B, 50);
+        } else {
+          Off(OUT_AB);
+        }
+     }
+     
+     return spinOn;
+}

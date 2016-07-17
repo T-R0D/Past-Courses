@@ -1,0 +1,12 @@
+50,Otherguy 3
+45,Otherguy 2
+40,Otherguy 1
+35,Guy1
+30,Guy2
+25,Guy3
+20,Guy4
+15,Guy5
+10,Guy6
+5,Guy7
+
+              

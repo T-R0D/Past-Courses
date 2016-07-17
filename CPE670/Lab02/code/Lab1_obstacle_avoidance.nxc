@@ -1,0 +1,86 @@
+int REVTIME = MS_500;
+int TURNTIME = MS_500;
+
+void avoidObstacles(bool pRightHit, bool pLeftHit);
+
+void accel();
+void decel();
+void smoothBackUp(int pPwr, int pRevTime);
+void smoothTurnLeft(int pPwr, int pTurnTime);
+void smoothTurnRight(int pPwr, int pTurnTime);
+
+task main()
+{
+	SetSensorTouch(IN_1);
+	SetSensorTouch(IN_2);
+
+	while(true)
+	{
+		accel();
+		OnFwd(OUT_AB, 75);
+		until (SENSOR_1 == 1 || SENSOR_2 == 1);
+		
+		bool rightHit = SENSOR_1 == 1;
+		bool leftHit = SENSOR_2 == 1;
+
+		decel();
+		avoidObstacles(rightHit, leftHit);
+	}
+}
+
+void accel()
+{
+	OnFwd(OUT_AB, 25);
+	Wait(100);
+	OnFwd(OUT_AB, 50);
+	Wait(100);
+}
+
+void decel()
+{
+	OnFwd(OUT_AB, 50);
+	Wait(100);
+	OnFwd(OUT_AB, 25);
+	Wait(100);
+}
+
+//Looking from behind the robot, port A and 1 are for parts on the right side
+void avoidObstacles(bool pRightHit, bool pLeftHit)
+{
+	if (pRightHit && pLeftHit)
+	{
+		smoothBackUp(75, REVTIME);
+		smoothTurnLeft(75, 2 * TURNTIME);
+	}
+	else if(pRightHit)
+	{
+    smoothBackUp(75, REVTIME);
+		smoothTurnLeft(75, TURNTIME);
+	}
+	else if(pLeftHit)
+	{
+       smoothBackUp(75, REVTIME);
+		   smoothTurnRight(75, TURNTIME);
+	}
+}
+
+void smoothBackUp(int pPwr, int pRevTime)
+{
+	OnRev(OUT_AB, pPwr);
+	Wait(pRevTime);
+	Off(OUT_AB);
+}
+
+void smoothTurnLeft(int pPwr, int pTurnTime)
+{
+	OnFwd(OUT_A, pPwr);
+	Wait(pTurnTime);
+	Off(OUT_A);
+}
+
+void smoothTurnRight(int pPwr, int pTurnTime)
+{
+	OnFwd(OUT_B, pPwr);
+	Wait(pTurnTime);
+	Off(OUT_B);
+}

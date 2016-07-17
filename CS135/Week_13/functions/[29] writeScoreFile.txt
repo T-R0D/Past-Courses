@@ -1,0 +1,30 @@
+/*
+  Name: writeScoreFile
+  Process: writes scores into file after game has been played
+  Function Input/Parameters: name of players and scores (array)
+  Function Output/Parameters: none
+  Function Output/Returned: none
+  Device Input: none
+  Device Output: none
+  Dependencies: sortScores
+  Developer: Nicholas Smith
+*/
+void writeScoreFile( char names[ NAME_LEN ], int scores[], int candidate );
+
+
+void writeScoreFile( char names[ NAME_LEN ], int scores[], int candidate )
+   {
+    // initalize variables
+
+    // Open file to sort
+       // .open    
+
+    // Sort scores from highest to lowest
+       // sortScores
+
+    // Close file
+       // .close
+
+
+
+   }

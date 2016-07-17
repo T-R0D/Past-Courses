@@ -1,0 +1,13 @@
+//! **************************************************************************
+// Written by: Map J.36 on Sun Dec 08 14:26:30 2013
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "switches<0>" LOCATE = SITE "R17" LEVEL 1;
+COMP "switches<1>" LOCATE = SITE "N17" LEVEL 1;
+COMP "switches<2>" LOCATE = SITE "L13" LEVEL 1;
+COMP "switches<3>" LOCATE = SITE "L14" LEVEL 1;
+COMP "lights<0>" LOCATE = SITE "R4" LEVEL 1;
+COMP "lights<1>" LOCATE = SITE "F4" LEVEL 1;
+COMP "lights<2>" LOCATE = SITE "P15" LEVEL 1;
+SCHEMATIC END;

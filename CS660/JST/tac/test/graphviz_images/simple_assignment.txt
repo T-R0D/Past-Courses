@@ -1,0 +1,11 @@
+digraph {
+	"FileAST\n00008" -> {"FunctionDefinition\nint main\n00007"};
+	"FunctionDefinition\nint main\n00007" -> {"CompoundStatement\n00006"};
+	"CompoundStatement\n00006" -> {"Declaration\nint i\n00000", "Assignment\nASSIGN\n00003", "Return\n00005"};
+	"Declaration\nint i\n00000" -> {};
+	"Assignment\nASSIGN\n00003" -> {"SymbolNode\nint_i\n00001", "Constant\n0\n00002"};
+	"SymbolNode\nint_i\n00001" -> {};
+	"Constant\n0\n00002" -> {};
+	"Return\n00005" -> {"Constant\n0\n00004"};
+	"Constant\n0\n00004" -> {};
+}

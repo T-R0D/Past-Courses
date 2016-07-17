@@ -1,0 +1,48 @@
+/* replace the aqua green background with something that matches your color scheme.*/
+#header {
+  /*you can use .pngs with alpha transparency since you dont have to worry about IE6*/
+  background: url("phototopback.gif") repeat-x scroll left center transparent;
+}
+
+/*replace the "Canvas" logo with your school's*/
+#header-logo, #header.no-user #header-logo {
+  background: url("webcollege.png") no-repeat scroll 0 0 transparent;
+  bottom: 10px;
+  height: 50px;
+  left: 6px;
+  width: 191px;
+}
+/* if you are going to replace the Canvas logo on the top left with your school's, 
+you should move a (smaller) Cavas logo to the right side of the header'*/
+#header-logo-secondary {
+  /* note, you should set up you webserver to set the right headers to cache these 
+     images you link to for a long time (eg: 1 year) and change the querystring 
+     (the part that says "?v1") to force users to download a new version if you 
+     change it, see: http://developer.yahoo.com/performance/rules.html#expires */
+  background: url("header_canvas_logo.png?v1") no-repeat scroll 0 0 transparent;
+  bottom: 11px;
+  height: 26px;
+  position: absolute;
+  right: 26px;
+  width: 135px;
+  display: block;
+}
+/*make room for the menu since my sample logo is bigger than default canvas logo*/
+#menu{ margin-left: 200px; }
+
+/*make the menu lettering white and make it go back to grey when you hover over*/
+.menu-item .menu-item-title, .menu-item .menu-item-no-drop { color: #FFFFFF; }
+.menu-item.hover .menu-item-title { color: #555555; }
+
+/*style the #identity (the thing that says "Ryan Shaw | inbox | profile | logout | (feedback)" in top right) */
+#identity { background-color: #333333; }
+#identity .user_name a{ color: #ffcb88 !important; }
+#identity a { color: #fff; }
+#identity #feedback_link{ border-color: #333; background-color: #333; }
+#identity .inbox a .unread-messages-count { background-color: #333; }
+
+#identity #identity-help-container a {
+    background-color: #DDDDDD;
+    border: 0 solid #E79900;
+    color: #000000 !important;
+}

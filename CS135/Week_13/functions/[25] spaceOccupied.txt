@@ -1,0 +1,37 @@
+/*
+  Name: spaceOccupied
+  Process: takes a x & y corridnate and runs them through the matrix 
+	   checking to see if that spot is occupied
+  Function Input/Parameters: x & y position, and matrix
+  Function Output/Parameters: none
+  Function Output/Returned:Bool, true if nothing is there, false it there is something in that spot
+  Device Input: none
+  Device Output: none
+  Dependencies: none
+  Developer: Nicholas Smith
+*/
+bool spaceOccupied ( int XPos, int YPos, short playMatrix[PLAY_AR_W][PLAY_AR_H]);
+
+
+
+
+bool spaceOccupied ( int XPos, int YPos, short playMatrix[PLAY_AR_W][PLAY_AR_H])
+   {
+    // Initalize Variables
+
+    // takes XPos and runs it through playMatrix[PLAY_AR_W]
+
+    // take YPos and run through playMatrix[PLAY_AR_H]
+
+    // return false if x and y are occupied
+
+    return true;
+   }
+
+
+
+
+
+
+
+   }

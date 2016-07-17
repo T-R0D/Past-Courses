@@ -1,0 +1,6 @@
+App,Participant,Mode,Condition,Block,Phrase,Text,Reduced_text,Correct_guesses,Incorrect_guesses,KSPC,Time
+LetterGuessingExperiment,P00,One_guess,C00,B01,1,win first prize in the contest,win firs--priz--in---e-c-nt-s-,11,19,1.0,93948
+LetterGuessingExperiment,P00,One_guess,C00,B01,2,coalition governments never work,c-al----- gov-------s-n-v---wor-,19,13,1.0,60285
+LetterGuessingExperiment,P00,One_guess,C00,B01,3,the world is a stage,----wo-l-----a s-a--,13,7,1.0,37635
+LetterGuessingExperiment,P00,One_guess,C00,B01,4,we drive on parkways,we-dr-------p-r-w---,13,7,1.0,41308
+LetterGuessingExperiment,P00,One_guess,C00,B01,5,interesting observation was made,int-re------ob-er------ was-ma--,17,15,1.0,57847

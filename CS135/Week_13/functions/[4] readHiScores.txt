@@ -1,0 +1,31 @@
+/*
+  Name: readHiScores
+  Process: If file excits it reads the file in to be used later
+  Function Input/Parameters: none
+  Function Output/Parameters: none
+  Function Output/Returned: none
+  Device Input: none
+  Device Output: none
+  Dependencies: none
+  Developer: Nicholas Smith
+*/
+void readHiScores ( char names[ NAME_LEN ], int scores[] );
+
+
+void readHiScores ( char names[ NAME_LEN ], int scores[] )
+   {
+    // Initalize Variables
+    
+    // Loop to read in files, go until index < 11 || fin !.good
+   
+       // read in name into array
+      
+       // read in score into array
+
+       // update index 
+
+
+
+
+
+   }

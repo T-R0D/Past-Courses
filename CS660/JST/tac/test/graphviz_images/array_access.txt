@@ -1,0 +1,15 @@
+digraph {
+	"FileAST\n00016" -> {"FunctionDefinition: int main\n00015"};
+	"FunctionDefinition: int main\n00015" -> {"CompoundStatement\n00014"};
+	"CompoundStatement\n00014" -> {"ArrayDeclaration: int[2][2][2][2] a\n00002", "Assignment: ASSIGN\n00011", "Return\n00013"};
+	"ArrayDeclaration: int[2][2][2][2] a\n00002" -> {};
+	"Assignment: ASSIGN\n00011" -> {"ArrayReference: a\n00005", "ArrayReference: a\n00009"};
+	"ArrayReference: a\n00005" -> {"Constant: 0\n00004", "Constant: 0\n00006"};
+	"Constant: 0\n00004" -> {};
+	"Constant: 0\n00006" -> {};
+	"ArrayReference: a\n00009" -> {"Constant: 1\n00008", "Constant: 1\n00010"};
+	"Constant: 1\n00008" -> {};
+	"Constant: 1\n00010" -> {};
+	"Return\n00013" -> {"Constant: 0\n00012"};
+	"Constant: 0\n00012" -> {};
+}

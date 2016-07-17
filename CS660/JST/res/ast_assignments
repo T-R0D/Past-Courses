@@ -1,0 +1,129 @@
+/*  Declaration of Variables  - Shub */
+// constant
+const int G;
+
+// regular variable declaration
+int g;
+
+// array
+int a[10];
+
+/* Simple Assignments - Janelle */
+// regular variable
+g= 5;
+
+// variable gets another variable's value
+g = G;
+
+/* If Statements - Terence */
+// if
+int i;
+if (i == 5) {
+  i = 6;
+}
+
+// if else
+int i;
+if (i == 5) {
+  i = 6;
+} else {
+	i = 5;
+}
+
+// if elif else
+int i;
+if (i == 5) {
+  i = 6;
+} else if (i == 6) {
+	i = 7;
+} else {
+	i = 5;
+}
+
+
+/* While Loops - Shub */
+// the one case
+int i = 5;
+while (i > 0) {
+	i--;
+}
+
+// while 1
+int i;
+while (1) {
+	i = 0;
+}
+
+// while 0
+int i;
+while (0) {
+	i = 0;
+}
+
+/* Array Accesses - Janelle*/
+// simple assign
+int a[10];
+a[1] = 4;
+
+// simple access
+g = a[1];
+
+
+// index expression access
+g = a[g + 1];
+
+
+// REACH: Two dimensional
+int a[2][2];
+
+a[1][1] = 4;
+
+
+/* Function Declarations and Calls - Terence */
+// definition on top
+int do_stuff() {
+	return 5;
+}
+
+// definition on top, call after that
+int do_stuff() {
+	return 5;
+}
+
+int main() {
+	return do_stuff();
+}
+
+
+// prototype on top, definition on bottom
+int do_stuff();
+
+int do_stuff() {
+	return 5;
+}
+
+// prototype on top, definition on bottom call in middle
+
+int do_stuff();
+
+int main() {
+  return do_stuff();
+}
+
+int do_stuff() {
+	return 5;
+}
+
+// parameters
+int do_stuff(int* ret, int x) {
+	*ret = x + x;
+	return 5;
+}
+
+int main() {
+	return do_stuff();
+}
+
+
+/* For/Do While Loops - Anybody */
+

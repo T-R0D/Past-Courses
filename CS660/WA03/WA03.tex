@@ -1,0 +1,618 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+  \DeclareGraphicsExtensions{.png, .jpeg}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{parsetree}
+\usepackage{amsmath}
+
+\title{Compiler Construction \\ WA03: Top-Down Parsing}
+\author{Terence Henriod}
+\date{\today}
+
+\begin{document}
+
+\clearpage            % All of
+\maketitle            % this,
+\thispagestyle{empty} % removes the page number from the title page
+
+\begin{abstract}
+\noindent This assignment asks you to prepare written answers to
+questions on top-down parsing. Each question has a short answer. You
+may discuss this assignment with other students and work the problems together.
+However, your writeup should be your own individual work. Remember written
+assignments are to be turned in in class on the date due.
+\end{abstract}
+
+\newpage
+\noindent Consider the following grammar for a subset of English sentences. The
+nonterminals are $S$, $NP$, $VP$, $AP$. The terminals are $the$, $noun$,
+$adjective$, $verb$. The starts symbol is $S$.
+
+\begin{align*}
+  S  \rightarrow& \; NP \; VP \; | \; NP \; VP \; NP \\
+  NP \rightarrow& \; the \; AP \; noun \\
+  AP \rightarrow& \; AP \; adjective \; | \; \epsilon \\
+  VP \rightarrow& \; verb
+\end{align*}
+
+\noindent\textit{Note}: In order to make the notation cleaner for presentation,
+I will be replacing the symbols of this grammar with a single
+(presumably reasonable) character replacement:\\\\
+\begin{tabular}{| l | l |}
+  \hline
+  Original Symbol & Replacement \\
+  \hline
+  \hline
+  $S$           & $S$       \\
+  \hline
+  $NP$          & $N$       \\
+  \hline
+  $AP$          & $A$       \\
+  \hline
+  $VP$          & $V$       \\
+  \hline
+  $the$         & $t$       \\
+  \hline
+  $noun$        & $n$       \\
+  \hline
+  $adjective$   & $a$       \\
+  \hline
+  $verb$        & $v$       \\
+  \hline
+\end{tabular}\\
+
+\begin{enumerate}
+  \item Left-factor this grammar.\\\\
+  \textit{Answer}:\\\\
+  The only left factoring possible is done on $S$.
+  \begin{align*}
+    S          \rightarrow& \; N V S^{\prime} \\
+    S^{\prime} \rightarrow& \; N \; | \; \epsilon \\
+    N          \rightarrow& \; t A n \\
+    A          \rightarrow& \; A a \; | \; \epsilon \\
+    V          \rightarrow& \; v
+  \end{align*}
+
+  \item Eliminate left-recursion from your answer to part (1).\\\\
+  \textit{Answer}:\\\\
+  The only left-recursion to be eliminated is done on $AP$.
+  \begin{align*}
+    S           \rightarrow& \; N V S^{\prime} \\
+    S^{\prime}  \rightarrow& \; N \; | \; \epsilon \\
+    N           \rightarrow& \; t A n \\
+    A           \rightarrow& \; \epsilon A^{\prime} = A^{\prime} \\
+    A^{\prime}  \rightarrow& \; a A^{\prime} \; | \; \epsilon \\
+    V           \rightarrow& \; v
+  \end{align*}
+  \textit{Note}: At this point it is clear that the symbol $A^{\prime}$ could
+  be eliminated, leaving the production $A \rightarrow a A$, and the grammar
+  would be equivalent, but I did not remove it for the sake of being
+  explicit.
+
+  \newpage
+  \item Give the \textit{First} and \textit{Follow} sets for each grammar
+  symbol for your answer to part (2).\\\\
+  \textit{Answer}:\\
+
+  First Sets:\\\\
+  \begin{tabular}{| r   l |}
+  \hline
+  $First(S \rightarrow \; N V S^{\prime})$ & $= \; First(N V S^{\prime})$ \\
+                                           & $= \; First(N)$              \\
+                                           & $= \; \{t\}$                 \\
+  \hline
+  \hline
+  $First(S)$                               & = $\; \{t\}$                 \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $First(S^{\prime} \rightarrow N)$       & $= \; First(N)$                   \\
+                                           & $= \; \{t\}$                     \\
+  \hline
+  $First(S^{\prime} \rightarrow \epsilon)$ & $= \; First(\epsilon)$           \\
+                                           & $= \; \{\epsilon\}$              \\
+  \hline
+  \hline
+  $First(S^{\prime})$                      & $= \; \{t\} \cup \{\epsilon\}$   \\
+                                           & $= \; \{t, \; \epsilon\}$        \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $First(N \rightarrow t A n)$ & $= \; First(t A n)$ \\
+                               & $= \; First(t)$     \\
+                               & $= \; \{t\}$        \\
+  \hline
+  \hline
+  $First(N)$                   & $= \; \{t\}$        \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $First(A \rightarrow A^{\prime})$ & $= \; First(A^{\prime})$  \\
+                                    & $= \; \{a, \; \epsilon\}$ \\
+  \hline
+  \hline
+  $First(A)$                        & $= \; \{a, \; \epsilon\}$ \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $First(A^{\prime} \rightarrow a A^{\prime})$ & $= \; First(a A^{\prime}))$    \\
+                                               & $= \; First(a)$                \\
+                                               & $= \; \{a\}$                   \\
+  \hline
+  $First(A^{\prime} \rightarrow \epsilon)$     & $= \; First(\epsilon)$         \\
+                                               & $= \; \{\epsilon\}$            \\
+  \hline
+  \hline
+  $First(A^{\prime})$                          & $= \; \{a\} \cup \{\epsilon\}$ \\
+                                               & $= \; \{a, \; \epsilon\}$      \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $First(V \rightarrow v)$ & $= \; First(v)$ \\
+                           & $= \; \{v\}$    \\
+  \hline
+  \hline
+  $First(V)$               & $= \; \{v\}$    \\
+  \hline
+  \end{tabular}\\\\
+
+  Follow Sets:\\\\
+  \begin{tabular}{| r   l |}
+  \hline
+  $Follow(S: start \; symbol)$ & $= \; \{\$\}$ \\
+  \hline
+  \hline
+  $Follow(S)$                  & $= \; \{\$\}$ \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $Follow(S^{\prime}: S \rightarrow N V S^{\prime})$ & $= \; Follow(S)$ \\
+                                                     & $= \; \{\$\}$    \\
+  \hline
+  \hline
+  $Follow(S^{\prime})$                               & $= \; \{\$\}$    \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $Follow(N: S \rightarrow N V S^{\prime})$ & $= \; First(V S^{\prime})$     \\
+                                            & $= \; First(V)$                \\
+                                            & $= \; \{v\}$                   \\
+  \hline
+  $Follow(N: S^{\prime} \rightarrow N)$     & $= \; Follow(S^{\prime})$      \\
+                                            & $= \; \{\$\}$                  \\
+  \hline
+  \hline
+  $Follow(N)$                               & $= \; \{v\} \; \cup \; \{\$\}$ \\
+                                            & $= \; \{v, \; \$\}$            \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $Follow(A: N \rightarrow t A n)$ & $= \; First(n)$ \\
+                                   & $= \; \{n\}$    \\
+  \hline
+  \hline
+  $Follow(A)$                      & $= \; \{n\}$    \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $Follow(A^{\prime}: A \rightarrow A^{\prime})$            & $= \; Follow(A)$            \\
+                                                            & $= \; \{n\}$                \\
+  \hline
+  $Follow(A^{\prime}: A^{\prime} \rightarrow a A^{\prime})$ & $= \; Follow(A^{\prime})$   \\
+                                                            & $= \; to \; be \; resolved$ \\
+  \hline
+  \hline
+  $Follow(A^{\prime})$                                      & $= \; \{n\}$                \\
+  \hline
+  \end{tabular}\\\\
+
+  \begin{tabular}{| r   l |}
+  \hline
+  $Follow(V: S \rightarrow N V S^{\prime})$ & $= \; (First(S^{\prime}) - \{\epsilon\}) \; \cup \; Follow(S)$ \\
+                                            & $= \; \{t\} \; \cup \; \{\$\}$                                 \\
+                                            & $= \; \{t, \; \$\}$                                            \\
+  \hline
+  \hline
+  $Follow(V)$                               & $= \; \{t, \; \$\}$                                            \\
+  \hline
+  \end{tabular}\\\\
+
+  \item Give an LL(1) parsing table for your answer to part (2).\\\\
+  \textit{Answer}:\\\\
+  \begin{tabular}{| c || c | c | c | c | c |}
+    \hline
+                 & $t$                            & $n$                               & $a$                                   & $v$                & $\$$                               \\
+    \hline
+    \hline
+    $S$          & $S \rightarrow N V S^{\prime}$ &                                   &                                       &                    &                                    \\
+    \hline
+    $S^{\prime}$ & $S^{\prime} \rightarrow N$     &                                   &                                       &                    &  $S^{\prime} \rightarrow \epsilon$ \\
+    \hline
+    $N$          & $N \rightarrow t A n$          &                                   &                                       &                    &                                    \\
+    \hline
+    $A$          &                                &                                   & $A \rightarrow A^{\prime}$            &                    &                                    \\
+    \hline
+    $A^{\prime}$ &                                & $A^{\prime} \rightarrow \epsilon$ & $A^{\prime} \rightarrow a A^{\prime}$ &                    &                                    \\
+    \hline
+    $V$          &                                &                                   &                                       &  $V \rightarrow v$ &                                    \\
+    \hline
+  \end{tabular}\\\\
+
+  \item Show the sequence of moves of your LL(1) parser on the input:\\
+  \textit{The silly professor invented the awkward obscure sentence.}\\
+  (Note that you need to tokenize the input first.)\\\\
+  \textit{Answer}:\\\\
+  \textit{Assumption}: The `.' character can be replaced with $\$$.\\\\
+  Tokens: $\{The, \; silly, \; professor, \; invented, \; the, \; awkward, \; obscure, \; sentence, \; \$\}$ becomes\\
+  $\{t, \; a, \; n, \; v, \; t, \; a, \; a, \; n, \; \$\}$\\
+
+  \begin{tabular}{| l | l | l | l |}
+  \hline
+    Stack                         & Input        & Production                            & Derivation                 \\
+  \hline
+  \hline
+    $\$S$                         & $tanvtaan\$$ & $S \rightarrow NVS^{\prime}$          & $S$                        \\
+  \hline
+    $\$S^{\prime}VN$              & $tanvtaan\$$ & $N \rightarrow tAn$                   & $NVS^{\prime}$             \\
+  \hline
+    $\$S^{\prime}VnAt$            & $tanvtaan\$$ & [pop and go to next token]            & $tAnVS^{\prime}$           \\
+  \hline
+    $\$S^{\prime}VnA$             & $anvtaan\$$  & $A \rightarrow A^{\prime}$            & $tA^{\prime}nVS^{\prime}$  \\
+  \hline
+    $\$S^{\prime}VnA^{\prime}$    & $anvtaan\$$  & $A^{prime} \rightarrow aA^{\prime}$   & $taA^{\prime}nVS^{\prime}$ \\
+  \hline
+    $\$S^{\prime}VnA^{\prime}a$   & $anvtaan\$$  & [pop and go to next token]            &                            \\
+  \hline
+    $\$S^{\prime}VnA^{\prime}$    & $nvtaan\$$   & $A^{\prime} \rightarrow \epsilon$     & $tanVS^{\prime}$           \\
+  \hline
+    $\$S^{\prime}Vn$              & $nvtaan\$$   & [pop and go to next token]            &                            \\
+  \hline
+    $\$S^{\prime}V$               & $vtaan\$$    & $V \rightarrow v$                     & $tanvS^{\prime}$           \\
+  \hline
+    $\$S^{\prime}v$               & $vtaan\$$    & [pop and go to next token]            &                            \\
+  \hline
+    $\$S^{\prime}$                & $taan\$$     & $S^{\prime} \rightarrow N$            & $tanvN$                    \\
+  \hline
+    $\$N$                         & $taan\$$     & $N \rightarrow tAn$                   & $tanvtAn$                  \\
+  \hline
+    $\$nAt$                       & $taan\$$     & [pop and go to next token]            &                            \\
+  \hline
+    $\$nA$                        & $aan\$$      & $A \rightarrow A^{\prime}$            & $tanvtA^{\prime}n$         \\
+  \hline
+    $\$nA^{\prime}$               & $aan\$$      & $A^{\prime} \rightarrow aA^{\prime}$  & $tanvtaA^{\prime}n$        \\
+  \hline
+    $\$nA^{\prime}a$              & $aan\$$      & [pop and go to next token]            &                            \\
+  \hline
+    $\$nA^{\prime}$               & $an\$$       & $A^{\prime} \rightarrow aA^{\prime}$  & $tanvtaaA^{\prime}n$       \\
+  \hline
+    $\$nA^{\prime}a$              & $an\$$       & [pop and go to next token]            &                            \\
+  \hline
+    $\$nA^{\prime}$               & $n\$$        & $A^{\prime} \rightarrow \epsilon$     & $tanvtaan$                 \\
+  \hline
+    $\$n$                         & $n\$$        & [pop and go to next token]            &                            \\
+  \hline
+    $\$$                          & $\$$         & [pop and go to next token]            &                            \\
+  \hline
+                                  &              & Successful parse.                     &                            \\
+  \hline
+
+  \end{tabular}\\\\
+
+  \item Show the parse tree that your parser traces for this sentence.\\\\
+  \textit{Answer}:\\\\
+  (See the ``Derication" column in the table in the previous exercise to see
+  the string representations of the trees, sentential and otherwise.)\\\\
+  \begin{parsetree}
+    (`S')
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      `N'
+      `V'
+      `$S^{\prime}$'
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        `A'
+        `n'
+      )
+      `V'
+      `$S^{\prime}$'
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          `$A^{\prime}$'
+        )
+        `n'
+      )
+      `V'
+      `$S^{\prime}$'
+    )
+  \end{parsetree}\\
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          `$A^{\prime}$'
+        )
+        `n'
+      )
+      `V'
+      `$S^{\prime}$'
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            `$A^{\prime}$'
+          )
+        )
+        `n'
+      )
+      `V'
+      `$S^{\prime}$'
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      `V'
+      `$S^{\prime}$'
+    )
+  \end{parsetree}\\
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      `$S^{\prime}$'
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      (.$S^{\prime}$.
+        `N'
+      )
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      (.$S^{\prime}$.
+        (.N.
+          `t'
+          `A'
+          `n'
+        )
+      )
+    )
+  \end{parsetree}\\
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      (.$S^{\prime}$.
+        (.N.
+          `t'
+          (.A.
+            `$A^{\prime}$'
+          )
+          `n'
+        )
+      )
+    )
+  \end{parsetree}
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      (.$S^{\prime}$.
+        (.N.
+          `t'
+          (.A.
+            (.$A^{\prime}$.
+              `a'
+              `$A^{\prime}$'
+            )
+          )
+          `n'
+        )
+      )
+    )
+  \end{parsetree}\\
+  $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      (.$S^{\prime}$.
+        (.N.
+          `t'
+          (.A.
+            (.$A^{\prime}$.
+              `a'
+              (.$A^{\prime}$.
+                `a'
+                `$A^{\prime}$'
+              )
+            )
+          )
+          `n'
+        )
+      )
+    )
+  \end{parsetree}\\
+  (Finally) $\Longrightarrow$
+  \begin{parsetree}
+    (.S.
+      (.N.
+        `t'
+        (.A.
+          (.$A^{\prime}$.
+            `a'
+            (.$A^{\prime}$.
+              `$\epsilon$'
+            )
+          )
+        )
+        `n'
+      )
+      (.V.
+        `v'
+      )
+      (.$S^{\prime}$.
+        (.N.
+          `t'
+          (.A.
+            (.$A^{\prime}$.
+              `a'
+              (.$A^{\prime}$.
+                `a'
+                (.$A^{\prime}$.
+                  `$\epsilon$'
+                )
+              )
+            )
+          )
+          `n'
+        )
+      )
+    )
+  \end{parsetree}
+\end{enumerate}
+
+\end{document}

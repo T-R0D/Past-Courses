@@ -1,0 +1,109 @@
+\documentclass[[11pts]{report}
+
+\usepackage{qtree}
+\usepackage{listings}
+
+\title{CS 477 Homework \\ Assignment ***}
+\date{*ember *, 201*}
+\author{Author's name! bam!}
+
+\setlength{\topmargin}{-1cm}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.3in}
+
+
+%%Currently default settings for indentation and symbols.
+%%Try these by uncommenting this block!!!
+%%Redefine the first level symbols
+%\renewcommand{\theenumi}{\fnsymbol{enumi}-}
+%\renewcommand{\labelenumi}{\theenumi}
+%
+%%Redefine the second level symbols
+%\renewcommand{\theenumii}{\alph{enumii})}
+%\renewcommand{\labelenumii}{\theenumii}
+%
+%%Redefine the third level symbols
+%\renewcommand{\theenumiii}{\roman{enumiii}.}
+%\renewcommand{\labelenumiii}{\theenumiii}
+%
+%%Options for redefining levels
+
+
+%\arabic
+%\alph 
+%\Alph
+%\roman
+%\Roman
+%\fnsymbol
+%This ^^^ is all you need to change!!
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{enumerate}
+			\item
+			Type contents for first part here.
+			\item
+			Double backslash is new line. \\
+			As you can see.
+		\end{enumerate}
+		\item 
+		Formatting is all taken care of.
+	\end{enumerate}
+	\item
+	And you can write after new items, \\
+	With newline characters to seperate stuff...
+	\item The last item! \\
+	This has been nested enumeration!
+\end{enumerate}
+
+\noindent
+Here is a tree that I made for CS326. \\
+I didn't get full credit, so don't copy this! But this is the format of trees if you need to use them. \\
+
+\Tree [.AssignStmt [.Var [.a[Index] [.a[E] [.a[2] ]]]] [.= ] [.E [.E [.Var [.b ]]] [.+ ] [.E [.1 ]]]] \\
+
+Here is an equation: \\
+$$\sum_{i=0}^{n} \frac{i(i+1)}{2} = n^{2} + 2n + 1$$
+
+Here is the same equation $\sum_{i=0}^{n} \frac{i(i+1)}{2} = n^{2} + 2n + 1$ inline. \\
+
+\noindent
+Here is a c++ program: 
+\lstset{language=C++,basicstyle=\footnotesize}
+\begin{lstlisting}
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	cout<<"Hello World"<<endl;
+	return 0;
+}
+\end{lstlisting}
+
+\noindent
+Here is a Python Program: 
+\lstset{language=C++,basicstyle=\footnotesize}
+\begin{lstlisting}
+def f(x):
+	return math.cos(x) - x
+def fPrime(x):
+	return -math.sin(x) - 1
+
+def newtonRec(a,eps = 10**-5):
+	A = a - f(a) / fPrime(a)
+	if abs(A - a) < eps:
+		return A
+	else:
+		return newtonRec(A,eps)
+print newtonRec(.05)
+\end{lstlisting}
+\end{document}

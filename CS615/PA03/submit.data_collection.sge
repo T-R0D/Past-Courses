@@ -1,0 +1,56 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 20
+#$ -N Matrix_Data
+#$ -q Common.q
+#$ -o data_collection.txt
+#$ -e errors_data_collection.txt
+
+trial=0
+num_processors=4
+matrix_size=800
+matrix_A_file="test_matrix_3.txt"
+matrix_B_file="test_matrix_3.txt"
+output_file="verification_output.txt"
+
+# do the matrix multiplication verification runs
+mpirun -np 1 ./Sequential_Matrix_Multiply "Y" $matrix_A_file \
+    $matrix_B_file "sequential_verification_output.txt"
+mpirun -np 4 ./Modified_SUMMA "Y" $matrix_A_file $matrix_B_file \
+    "parallel_verification_output.txt"
+
+# do the sequential runs from 80 to 4800 by 800s
+echo "Sequential Runs"
+echo "total nodes, matrix I, matrix J, total (sec), computation (sec), collection (sec)"
+for matrix_size in {800..4800..800}
+do
+    # do 5 trials
+    for trial in {1..5..1}
+    do
+        mpirun -np 1 ./Sequential_Matrix_Multiply $matrix_size $matrix_A_file \
+            $matrix_B_file "sequential_verification_output.txt"
+    done
+done
+
+#do the modified SUMMA runs
+echo "Modified SUMMA Runs"
+echo "total nodes, matrix I, matrix J, total (sec), computation (sec), collection (sec)"
+# do runs for different numbers of processors
+for num_processors in {2..20..2}
+do
+    # do all image sizes 800 to 4800
+    for matrix_size in {800..4800..800}
+    do
+        # do 5 trials
+        for trial in [1..5..1]
+        do
+            mpirun -np $num_processors ./Modified_SUMMA $matrix_size \
+                $matrix_A_file $matrix_B_file "parallel_verification_output.txt"
+        done
+    done
+done
+
+
+#MPI_Datatype dtype;
+#MPI_Type_contiguous( 2, MPI_INT, &dtype );
+#MPI_Commit( &dtype )

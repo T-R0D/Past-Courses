@@ -1,0 +1,101 @@
+Gender , Smoking , CreditCard , Age , Belief_in_afterlife
+Female , Never smoked , Visa , <25 , N
+Female , Smokes , Master Card , >45 , N
+Female , Never smoked , Master Card , 35 to 45 , Y
+Female , Smokes , Visa , 35 to 45 , Y
+Male , Quit , Visa , 25 to 35 , Y
+Male , Smokes , Visa , <25 , N
+Female , Quit , Master Card , 25 to 35 , Y
+Female , Smokes , Master Card , 25 to 35 , Y
+Male , Quit , Visa , 35 to 45 , N
+Male , Never smoked , Master Card , 25 to 35 , N
+Male , Quit , Master Card , 35 to 45 , N
+Female , Smokes , Visa , 25 to 35 , Y
+Female , Never smoked , Visa , 25 to 35 , N
+Male , Quit , Visa , 35 to 45 , Y
+Female , Smokes , Visa , 25 to 35 , N
+Male , Never smoked , Visa , 35 to 45 , N
+Male , Smokes , Master Card , 25 to 35 , N
+Female , Smokes , Master Card , 25 to 35 , Y
+Female , Smokes , Master Card , 35 to 45 , Y
+Female , Smokes , Visa , <25 , Y
+Male , Never smoked , Visa , 25 to 35 , N
+Male , Never smoked , Master Card , 25 to 35 , N
+Female , Smokes , Visa , 35 to 45 , Y
+Male , Quit , Master Card , 35 to 45 , N
+Male , Never smoked , Master Card , 25 to 35 , Y
+Female , Smokes , Visa , 35 to 45 , Y
+Female , Never smoked , Visa , <25 , N
+Female , Never smoked , Visa , <25 , N
+Male , Smokes , Visa , 25 to 35 , N
+Male , Quit , Master Card , 25 to 35 , N
+Female , Never smoked , Visa , 35 to 45 , N
+Male , Never smoked , Master Card , <25 , Y
+Female , Never smoked , American Express , 25 to 35 , Y
+Male , Quit , Visa , >45 , N
+Female , Smokes , American Express , 35 to 45 , Y
+Female , Never smoked , Visa , 35 to 45 , Y
+Female , Smokes , American Express , 35 to 45 , N
+Female , Never smoked , Visa , >45 , Y
+Male , Never smoked , Visa , 35 to 45 , Y
+Male , Smokes , Visa , 35 to 45 , Y
+Female , Quit , Visa , 25 to 35 , N
+Male , Quit , Visa , >45 , N
+Female , Never smoked , Master Card , 35 to 45 , Y
+Male , Never smoked , Master Card , <25 , N
+Male , Quit , Visa , 25 to 35 , Y
+Male , Quit , Visa , 35 to 45 , N
+Male , Quit , Master Card , 35 to 45 , N
+Female , Never smoked , Master Card , 35 to 45 , N
+Male , Smokes , Visa , 35 to 45 , Y
+Female , Never smoked , Master Card , 35 to 45 , N
+Male , Never smoked , Master Card , 35 to 45 , N
+Male , Quit , American Express , <25 , N
+Male , Never smoked , Visa , 25 to 35 , N
+Male , Smokes , Visa , 25 to 35 , Y
+Female , Never smoked , Master Card , >45 , Y
+Male , Never smoked , Visa , 35 to 45 , N
+Male , Quit , Visa , <25 , Y
+Female , Smokes , Visa , >45 , Y
+Male , Never smoked , Master Card , 35 to 45 , Y
+Male , Never smoked , Master Card , <25 , N
+Male , Never smoked , American Express , 35 to 45 , Y
+Female , Never smoked , Visa , 35 to 45 , Y
+Female , Never smoked , Other , >45 , N
+Male , Never smoked , Visa , 25 to 35 , N
+Male , Smokes , Master Card , 25 to 35 , N
+Male , Smokes , Master Card , 25 to 35 , Y
+Female , Never smoked , Master Card , 25 to 35 , Y
+Female , Smokes , Visa , 25 to 35 , N
+Female , Smokes , Visa , <25 , Y
+Female , Smokes , Visa , 25 to 35 , N
+Female , Quit , Other , 35 to 45 , N
+Female , Smokes , Visa , <25 , Y
+Male , Never smoked , Visa , 35 to 45 , N
+Male , Never smoked , Master Card , 25 to 35 , Y
+Female , Never smoked , Visa , 35 to 45 , Y
+Female , Never smoked , Visa , 35 to 45 , Y
+Female , Never smoked , Master Card , 35 to 45 , Y
+Male , Smokes , Visa , >45 , N
+Male , Quit , Visa , 25 to 35 , N
+Male , Quit , Visa , 25 to 35 , N
+Male , Never smoked , Master Card , 35 to 45 , N
+Male , Never smoked , Master Card , >45 , Y
+Female , Smokes , Master Card , 25 to 35 , N
+Female , Never smoked , Master Card , 35 to 45 , N
+Female , Never smoked , Master Card , 25 to 35 , Y
+Male , Never smoked , Master Card , >45 , N
+Male , Never smoked , Visa , <25 , Y
+Male , Never smoked , Visa , 25 to 35 , Y
+Male , Quit , Master Card , >45 , Y
+Female , Quit , Visa , 35 to 45 , N
+Male , Smokes , Master Card , 25 to 35 , N
+Female , Never smoked , Master Card , 25 to 35 , Y
+Male , Never smoked , Visa , 35 to 45 , N
+Male , Quit , Master Card , >45 , N
+Male , Quit , Master Card , 25 to 35 , Y
+Female , Smokes , Master Card , >45 , N
+Female , Never smoked , Visa , 35 to 45 , Y
+Female , Never smoked , American Express , 25 to 35 , N
+Female , Quit , American Express , 25 to 35 , Y
+Female , Never smoked , Visa , >45 , N

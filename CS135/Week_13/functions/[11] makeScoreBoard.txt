@@ -1,0 +1,40 @@
+void makeScoreBoard( bool xcMode )
+   {
+   //variables
+
+   // paint scoreboard background
+      // functions: setColor, clearScreen
+
+   // create tool item tallies
+
+      // cloak tally
+         // functions: printStringAt, printIntAt
+
+      // extra credit item tallies if extra credit mode is active
+         // operation: if 
+         
+            // sword tally
+               // functions: printStringAt, printIntAt          
+   
+            // spell tally
+               // functions: printStringAt, printIntAt
+
+   // create treasure tally
+      // functions: printStringAt, printIntAt
+
+   // create score tally
+      // functions: printStringAt, printIntAt
+
+   // write game directions
+   
+      // movement directions
+         // function: printStringAt
+
+      // stair instructions
+         // function: printStringAt
+
+      // how the game ends
+         // function: printStringAt
+
+   // no return - void   
+   }

@@ -1,0 +1,131 @@
+\hypertarget{_rush_final_8cpp}{\section{\-Rush\-Final.\-cpp \-File \-Reference}
+\label{_rush_final_8cpp}\index{\-Rush\-Final.\-cpp@{\-Rush\-Final.\-cpp}}
+}
+
+
+\-The driver program for a fast \-Rush \-Hour \-Solver.  
+
+
+{\ttfamily \#include $<$cstdlib$>$}\*
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$iomanip$>$}\*
+{\ttfamily \#include $<$string$>$}\*
+{\ttfamily \#include $<$queue$>$}\*
+{\ttfamily \#include $<$map$>$}\*
+{\ttfamily \#include \char`\"{}\-Game\-State.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_rush_final_8cpp_a491a1c10cbfad353e5d90a6da6bebed4}{solve\-Rush\-Hour} (int num\-Cars, \hyperlink{class_game_state}{\-Game\-State} initial, queue$<$ \hyperlink{class_game_state}{\-Game\-State} $>$ states\-To\-Evaluate, map$<$ string, int $>$ observed\-States)
+\item 
+int \hyperlink{_rush_final_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{_rush_final_8cpp_a2fa356f76a0c08a58e03fd152a0013ba}{k\-Unsolvable} = -\/8
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-The driver program for a fast \-Rush \-Hour \-Solver. \begin{DoxyAuthor}{\-Author}
+\-Terence \-Henriod
+\end{DoxyAuthor}
+\-Rush \-Hour\-: \-Breadth \-First \-Search
+
+\begin{DoxyVersion}{\-Version}
+\-Original \-Code 1.\-00 (10/29/2013) -\/ \-T. \-Henriod 
+\end{DoxyVersion}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_rush_final_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{\-Rush\-Final.\-cpp@{\-Rush\-Final.\-cpp}!main@{main}}
+\index{main@{main}!RushFinal.cpp@{\-Rush\-Final.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf main} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_rush_final_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+main
+
+\-The driver of a \-Rush \-Hour solver. \-Reports the number of moves required to solve given rush hour puzzles.
+
+\begin{DoxyReturn}{\-Returns}
+program\-Success \-The success/error code of the program's execution.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-There is valid data waiting to be provided to the program.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-A number of \-Rush \-Hour puzzles will have been solved
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{_rush_final_8cpp_a491a1c10cbfad353e5d90a6da6bebed4}{\index{\-Rush\-Final.\-cpp@{\-Rush\-Final.\-cpp}!solve\-Rush\-Hour@{solve\-Rush\-Hour}}
+\index{solve\-Rush\-Hour@{solve\-Rush\-Hour}!RushFinal.cpp@{\-Rush\-Final.\-cpp}}
+\subsubsection[{solve\-Rush\-Hour}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf solve\-Rush\-Hour} (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Cars, }
+\item[{{\bf \-Game\-State}}]{initial, }
+\item[{queue$<$ {\bf \-Game\-State} $>$}]{states\-To\-Evaluate, }
+\item[{map$<$ string, int $>$}]{observed\-States}
+\end{DoxyParamCaption}
+)}}\label{_rush_final_8cpp_a491a1c10cbfad353e5d90a6da6bebed4}
+solve\-Rush\-Hour
+
+\-Finds the lowest number of moves required to find the solution to a \-Rush \-Hour puzzle. \-If a solution cannot be found, an error code is returned.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em num\-Cars} & \-The number of cars to be used in a given puzzle. \\
+\hline
+{\em initial} & \-The initial board for a given problem. \\
+\hline
+{\em states\-To\-Evaluate} & \-A queue that will be used in a breadth first search to contain every game state that will be considered. \\
+\hline
+{\em observed\-States} & \-A map used to contain an identifying key string that contains vehicle list data used to check to see if a state has already been considered.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+num\-Moves \-The minimum number of moves required to solve the given puzzle.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-A valid number of cars that corresponds precisely to the data waiting to be read in is required.
+\item states\-To\-Evaluate must be an empty queue.
+\item observed\-States must be empty as well.
+\item \-The initial state will be representative of the starting condition for the puzzle to be solved.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-A number of moves corresponding to either the number of moves needed to solve a given puzzle or an error code for an unsolvable puzzle is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+{\bfseries } 
+\begin{DoxyEnumerate}
+\item \-A breadth first search is implemented.
+\item \-Game\-States are added to the queue and their representative strings are added to the queue if they are newly encountered.
+\item \-States are iteratively popped off the queue and checked to see if they are a winning state.
+\item \-If they are not, all possible \-Game\-States based on legal moves are generated and stored in the queue. \-Their representative strings and the number of moves used up to that point are stored for future reference.
+\item \-Should the queue ever become empty, this indicates that all possible moves have been attempted and the puzzle is unsolvable.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{_rush_final_8cpp_a2fa356f76a0c08a58e03fd152a0013ba}{\index{\-Rush\-Final.\-cpp@{\-Rush\-Final.\-cpp}!k\-Unsolvable@{k\-Unsolvable}}
+\index{k\-Unsolvable@{k\-Unsolvable}!RushFinal.cpp@{\-Rush\-Final.\-cpp}}
+\subsubsection[{k\-Unsolvable}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Unsolvable} = -\/8}}\label{_rush_final_8cpp_a2fa356f76a0c08a58e03fd152a0013ba}

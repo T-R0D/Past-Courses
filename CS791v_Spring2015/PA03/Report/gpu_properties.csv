@@ -1,0 +1,11 @@
+Attribute,Value
+Device Name,NVS 5400M
+Cuda Version,2.1
+Multiprocessors,2
+Clock Rate,950 mHz
+Total Global Memory,1073 MB
+Warp Size,32
+Max Threads/Block,1024
+Max Threads-Dim,1024 x 1024 x 64
+Max Grid Size,65535 x 65535 x 65535
+SharedMem/Block,49 KB

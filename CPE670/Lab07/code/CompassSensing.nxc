@@ -1,0 +1,79 @@
+#ifndef __COMPASSSENSING_NXC__
+#define __COMPASSSENSING_NXC__
+
+#define COMPASS_DEBUG 0
+#define COMPASS_MUXED 0
+
+#define COMPASS_SENSOR IN_2 // msensor_S1_1
+
+
+typedef struct {
+  int value;
+  mutex ownership;
+  bool readingIsValid;
+} CompassReading;
+
+
+bool gUseCompassSensing = false;
+CompassReading gCompassReading;
+
+
+task TASK_CompassSensing();
+int readCompassSensor(byte pPort);
+int findOppositeDirectionOf(int pDirection);
+void debugOutputCompass(const int pCompassVal);
+
+
+/**
+ *  Spawns the thread responsible for publishing the compass readings
+ */
+task TASK_CompassSensing() {
+  #if COMPASS_MUXED
+  #else
+    SetSensorLowspeed(COMPASS_SENSOR);
+    gCompassReading.value = readCompassSensor(COMPASS_SENSOR);
+  #endif //COMPASS_MUXED
+
+  while (true) {
+    until (gUseCompassSensing);
+    while (gUseCompassSensing) {
+      gCompassReading.value = readCompassSensor(COMPASS_SENSOR);
+
+      #if COMPASS_DEBUG
+        debugOutputCompass(gCompassReading.value);
+      #endif //COMPASS_DEBUG
+    }
+  }
+
+}
+
+int readCompassSensor(byte pPort) {
+  int reading;
+
+  #if COMPASS_MUXED
+  #else
+  reading = SensorHTCompass(pPort);
+  Wait(MS_10);
+  #endif //COMPASS_MUXED
+      
+  return reading;
+}
+
+int findOppositeDirectionOf(int pDirection) {
+  int oppositeDirection = pDirection - 180;
+  if (oppositeDirection < 0) {
+    oppositeDirection *= -1;
+  }
+  return oppositeDirection;
+}
+
+
+
+void debugOutputCompass(const int pCompassVal) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Compass Reading:");
+  NumOut(4, LCD_LINE2, pCompassVal);
+  Wait(MS_100);
+}
+
+#endif //__COMPASSSENSING_NXC__

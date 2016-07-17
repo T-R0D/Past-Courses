@@ -1,0 +1,25 @@
+k: 15
+k: 16
+k: 17
+k: 18
+k: 19
+k: 20
+j: 10
+k: 21
+j: 11
+k: 22
+j: 12
+k: 23
+j: 13
+k: 24
+j: 14
+k: 25
+j: 15
+i: 0
+i: 1
+i: 2
+i: 3
+i: 4
+i: 5
+
+-- program is finished running --

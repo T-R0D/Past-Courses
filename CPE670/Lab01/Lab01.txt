@@ -1,0 +1,1 @@
+A beginning robot was built in order to familiarize ourselves with working with the pieces of the Lego NXT kits.

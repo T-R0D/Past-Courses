@@ -1,0 +1,27 @@
+void keepScore( bool xcMode, int cloaks, int swords, int spells, int treasure, int &score )
+   {
+   // update item tallies
+
+      // cloak tally
+         // function: printIntAt
+
+      // extra credit items if extra credit mode is active
+         // operation: if
+
+            // sword tally
+               // function: printIntAt 
+
+            // spell tally
+               // function: printIntAt
+ 
+      // treasure tally
+         // function: printIntAt
+
+   // re-calculate score, if extra credit mode is inactive, extra credit item tallies will be zero
+      // operation: math
+
+   // update score
+      // function: printIntAt
+
+   // no return - void 
+   }

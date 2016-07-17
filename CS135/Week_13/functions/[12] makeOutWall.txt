@@ -1,0 +1,52 @@
+/*
+  Name: makeOutWal
+  Process: Creates the outside wall of the game
+  Function Input/Parameters: Width of the wall, heigh of the wal
+  Function Output/Parameters: none
+  Function Output/Returned: non
+  Device Input: none
+  Device Output: The wall around the board
+  Dependencies: none  
+  Developer: Nicholas Smith 
+*/ 
+void makeOutWall( int width, int height );
+
+void makeOutWall( int width, int height )
+   {
+    // initialize function/variables
+    int counter;
+    int leftUpperX = SCRN_MAX_X / 2 - width / 2;
+    int leftUpperY = SCRN_MAX_Y / 2 - height / 2;
+    int rightLowerX = leftUpperX + width - 1;
+    int rightLowerY = leftUpperY + height - 1;
+
+    // clear screen in shape of box
+    clearScreen( leftUpperX, leftUpperY, rightLowerX, rightLowerY );
+
+    // iterate from left to right across box
+    for( counter = leftUpperX; counter < leftUpperX + width; counter++ )
+       {
+        // print top frame character
+        printSpecialCharAt( counter, leftUpperY, OUT_WALL );
+
+        // print bottom frame character
+        printSpecialCharAt( counter, rightLowerY, OUT_WALL );
+       }
+    
+    for( counter = leftUpperY; counter < leftUpperY + height; counter++ )
+       {
+        // print left frame character
+        printSpecialCharAt( leftUpperX, counter, OUT_WALL );
+
+        // print right frame character
+        printSpecialCharAt( rightLowerX, counter, OUT_WALL );
+       }
+    }
+
+
+
+
+     
+
+
+

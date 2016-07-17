@@ -1,0 +1,6 @@
+root_finder_test.o: root_finder_test.c /usr/include/stdc-predef.h \
+ ../config.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:

@@ -1,0 +1,4 @@
+Device, Method, Status, |v|, Compute Time, Total Time
+CPU, sequential-FW, complete, 4096, 1, 1, 580.975, 580.975
+CPU, sequential-FW, complete, 4096, 1, 1, 580.8, 580.8
+CPU, sequential-FW, complete, 4096, 1, 1, 580.461, 580.461

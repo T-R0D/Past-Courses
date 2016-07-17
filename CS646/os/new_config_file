@@ -1,0 +1,13 @@
+Start Simulator Configuration File
+Version: 1.1
+Quantum(cycles): 3
+Processor Scheduling: RR
+File Path: /home/bobby/CS646-OS_Simulator/new_config_file
+Processor cycle time (msec): 10
+Monitor display time (msec): 25
+Hard drive cycle time (msec): 50
+Printer cycle time (msec): 500
+Keyboard cycle time (msec): 1000
+Memory type: Fixed
+Log: Log to File
+End Simulator Configuration File

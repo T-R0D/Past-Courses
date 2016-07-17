@@ -1,0 +1,6 @@
+App,Participant,Mode,Condition,Block,Phrase,Text,Reduced_text,Correct_guesses,Incorrect_guesses,KSPC,Time
+LetterGuessingExperiment,P01,One_guess,C00,B01,1,please provide your date of birth,pl--s--prov----y----d------------,24,9,1.0,79687
+LetterGuessingExperiment,P01,One_guess,C00,B01,2,an excellent way to communicate,an exc-ll----w-y----com-u------,17,14,1.0,62930
+LetterGuessingExperiment,P01,One_guess,C00,B01,3,a steep learning curve in riding a unicycle,a s-eep-lea------------i--r-d----a-uni-----,27,16,1.0,100980
+LetterGuessingExperiment,P01,One_guess,C00,B01,4,i like to play tennis,i l-------pl-y-te----,13,8,1.0,42360
+LetterGuessingExperiment,P01,One_guess,C00,B01,5,all work and no play,all-wo-k-an---------,12,8,1.0,39080

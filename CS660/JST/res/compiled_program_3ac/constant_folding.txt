@@ -1,0 +1,25 @@
+.data
+GLOBLDECL      , C              , .word          , 8
+.text
+JAL            , main           , -              , -
+BR             , PROG_END       , -              , -
+main:
+PROCENTRY      , 4              , -              , -
+LA             , ireg_00000     , ($FP)          , -
+LI             , ireg_00001     , 14             , -
+STORE          , ireg_00001     , (ireg_00000)   , 4
+KICK           , ireg_00001     , -              , -
+KICK           , ireg_00000     , -              , -
+CALL_PROC      , print_int      , 0              , -
+LOAD           , ireg_00003     , ($FP)          , 4
+STORE          , ireg_00003     , ($SP)          , 4
+SUB            , $SP            , $SP            , 4
+KICK           , ireg_00003     , -              , -
+JAL            , print_int      , -              , -
+END_PROC       , 0              , -              , -
+ADD            , ireg_00002     , $RV            , $ZERO
+KICK           , ireg_00002     , -              , -
+LI             , ireg_00004     , 0              , -
+RETURN         , ireg_00004     , -              , -
+ENDPROC        , -              , -              , -
+PROG_END:

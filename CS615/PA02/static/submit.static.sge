@@ -1,0 +1,41 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 20
+#$ -N Mandelbrot_static
+#$ -q Common.q
+#$ -o static_runs.txt
+#$ -e static_runs_errors.txt
+
+num_processors=2
+image_dim=500
+run_num=1
+image_name_base="static_"
+image_ext=".pgm"
+image_name="startname"
+
+# run the Mandelbrot with dynamic job allocation problem
+echo "Static runs:"
+
+#do runs using 2 to 20 processors by twos
+for num_processors in {2..20..2}
+do
+    #do image sizes from 
+    for image_dim in {500..10000..500}
+    do
+        # do 10 trial runs at current settings       
+        for run_num in {1..10..1}
+        do
+            if [ $run_num -eq 5 ] && [ $num_processors -eq 10 ]
+            then
+                #create the image name
+                image_name="$image_name_base""$image_dim""$image_ext"
+
+                # run the program with the image creation argument
+                mpirun -np $num_processors ./Mandelbrot_static $image_name $image_dim $image_dim "Y"
+            else
+                # run the program without creating an image
+                mpirun -np $num_processors ./Mandelbrot_static $image_name $image_dim $image_dim "N"
+            fi
+        done
+    done
+done

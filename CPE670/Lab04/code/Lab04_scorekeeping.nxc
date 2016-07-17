@@ -1,0 +1,39 @@
+#ifndef __LAB04_SCOREKEEPING_NXC__
+#define __LAB04_SCOREKEEPING_NXC__
+
+
+typedef struct {
+  // TBD: consider counting RFs and colors
+} Score;
+
+mutex gScoreMutex;
+bool gGoHome = false;
+
+
+task TASK_scoreKeeping();
+void playGoHomeSong();
+
+task TASK_scoreKeeping() {
+  gUseColorSensor = true;
+  gUseRfidSensor = true;
+  
+  gGoHome = false;
+  Wait(MIN_1);
+  
+  gGoHome = true;
+  gUseRfidSensor = false;
+  playGoHomeSong();
+}
+
+
+void playGoHomeSong() {
+  for (int i = 0; i < 3; i++) {
+      PlayTone(TONE_D6, MS_250);
+      Wait(MS_250);
+      PlayTone(TONE_B6, MS_250);
+      Wait(MS_250);
+  }
+}
+
+
+#endif //__LAB04_SCOREKEEPING_NXC__

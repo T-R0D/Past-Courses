@@ -1,0 +1,184 @@
+\hypertarget{class_priority_queue}{\section{\-Priority\-Queue$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$ \-Class \-Template \-Reference}
+\label{class_priority_queue}\index{\-Priority\-Queue$<$ Data\-Type, Key\-Type, Comparator $>$@{\-Priority\-Queue$<$ Data\-Type, Key\-Type, Comparator $>$}}
+}
+
+
+{\ttfamily \#include $<$\-Priority\-Queue.\-h$>$}
+
+\-Inheritance diagram for \-Priority\-Queue$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_priority_queue}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_priority_queue_a47de2a46cff1d6a6ed30a99c94dc1b14}{\-Priority\-Queue} (int max\-Number=\hyperlink{_priority_queue_8h_a88703212007be018800be64f2f5fde2f}{def\-Max\-Queue\-Size})
+\item 
+\hyperlink{class_priority_queue_ab3b8c46007394fe44868b316ec157b92}{\-Priority\-Queue} (const \hyperlink{class_heap}{\-Heap}$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$ \&other)
+\item 
+void \hyperlink{class_priority_queue_a61f3339cf0e87c67ed004f8eff0a1bfa}{enqueue} (const \-Data\-Type \&new\-Data\-Item)
+\item 
+\-Data\-Type \hyperlink{class_priority_queue_a5bc758e313d6244e672ea6e81d695a46}{dequeue} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\subsubsection*{template$<$typename Data\-Type, typename Key\-Type = int, typename Comparator = \-Less$<$ Key\-Type $>$$>$class Priority\-Queue$<$ Data\-Type, Key\-Type, Comparator $>$}
+
+\-The \-Priority \-Queue \-A\-D\-T. \-Inherits an array based \hyperlink{class_heap}{\-Heap} \-A\-D\-T in order to provide a priority first functionality. \-This class is really just a practice for inheritance and provides new function names to mask the \hyperlink{class_heap}{\-Heap}'s functionality. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_priority_queue_a47de2a46cff1d6a6ed30a99c94dc1b14}{\index{\-Priority\-Queue@{\-Priority\-Queue}!\-Priority\-Queue@{\-Priority\-Queue}}
+\index{\-Priority\-Queue@{\-Priority\-Queue}!PriorityQueue@{\-Priority\-Queue}}
+\subsubsection[{\-Priority\-Queue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type , typename Comparator $>$ {\bf \-Priority\-Queue}$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$\-::{\bf \-Priority\-Queue} (
+\begin{DoxyParamCaption}
+\item[{int}]{max\-Number = {\ttfamily {\bf def\-Max\-Queue\-Size}}}
+\end{DoxyParamCaption}
+)}}\label{class_priority_queue_a47de2a46cff1d6a6ed30a99c94dc1b14}
+\hyperlink{class_priority_queue}{\-Priority\-Queue}
+
+\-The default constructor for the \hyperlink{class_priority_queue}{\-Priority\-Queue} \-A\-D\-T. \-Calls the \hyperlink{class_heap}{\-Heap} constructor with the given size parameter value.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em max\-Number} & \-The size value for the \hyperlink{class_priority_queue}{\-Priority\-Queue}. \-Defaults to the constant value def\-Max\-Queue\-Size specified in \hyperlink{_priority_queue_8h}{\-Priority\-Queue.\-h}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-A valid identifier is selected for the \hyperlink{class_priority_queue}{\-Priority\-Queue}.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-An empty \hyperlink{class_priority_queue}{\-Priority\-Queue} will be instantiated.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_priority_queue_ab3b8c46007394fe44868b316ec157b92}{\index{\-Priority\-Queue@{\-Priority\-Queue}!\-Priority\-Queue@{\-Priority\-Queue}}
+\index{\-Priority\-Queue@{\-Priority\-Queue}!PriorityQueue@{\-Priority\-Queue}}
+\subsubsection[{\-Priority\-Queue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type , typename Comparator $>$ {\bf \-Priority\-Queue}$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$\-::{\bf \-Priority\-Queue} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Heap}$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_priority_queue_ab3b8c46007394fe44868b316ec157b92}
+\hyperlink{class_priority_queue}{\-Priority\-Queue}
+
+\-The copy constructor for the \hyperlink{class_priority_queue}{\-Priority\-Queue} \-A\-D\-T. \-Calls the \hyperlink{class_heap}{\-Heap} copy constructor with the given \hyperlink{class_heap}{\-Heap} parameter value in order to create a clone of other into this.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & \-A \hyperlink{class_heap}{\-Heap} to be cloned into $\ast$this.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-A valid identifier is selected for the \hyperlink{class_priority_queue}{\-Priority\-Queue}.
+\item \hyperlink{class_heap}{\-Heap} other is a valide \hyperlink{class_heap}{\-Heap} instantiation.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-An empty \hyperlink{class_priority_queue}{\-Priority\-Queue} will be instantiated.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_priority_queue_a5bc758e313d6244e672ea6e81d695a46}{\index{\-Priority\-Queue@{\-Priority\-Queue}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!PriorityQueue@{\-Priority\-Queue}}
+\subsubsection[{dequeue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type , typename Comparator $>$ \-Data\-Type {\bf \-Priority\-Queue}$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$\-::{\bf dequeue} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_priority_queue_a5bc758e313d6244e672ea6e81d695a46}
+dequeue
+
+\-Dequeues the highest priority item. \-The item is returned along with its removal.
+
+\begin{DoxyReturn}{\-Returns}
+dequeued\-Item \-The item of type \-Data\-Type that was removed from the \hyperlink{class_heap}{\-Heap}, and therefore, the \hyperlink{class_priority_queue}{\-Priority\-Queue}.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_priority_queue}{\-Priority\-Queue} must not be empty, otherwise an exception will be thrown.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-If the \hyperlink{class_priority_queue}{\-Priority\-Queue} is not empty, the highest priority item is removed from the queue and returned. \-If dequeueing is attempted on an empty \hyperlink{class_priority_queue}{\-Priority\-Queue}, an exception of type logic\-\_\-error is thrown.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The remove method of the \hyperlink{class_heap}{\-Heap} base class is utilized.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-This exception is thrown by the \hyperlink{class_heap}{\-Heap} base class if removal is attempted when the \hyperlink{class_priority_queue}{\-Priority\-Queue} is empty.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_priority_queue_a61f3339cf0e87c67ed004f8eff0a1bfa}{\index{\-Priority\-Queue@{\-Priority\-Queue}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!PriorityQueue@{\-Priority\-Queue}}
+\subsubsection[{enqueue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type , typename Key\-Type , typename Comparator $>$ void {\bf \-Priority\-Queue}$<$ \-Data\-Type, \-Key\-Type, \-Comparator $>$\-::{\bf enqueue} (
+\begin{DoxyParamCaption}
+\item[{const \-Data\-Type \&}]{new\-Data\-Item}
+\end{DoxyParamCaption}
+)}}\label{class_priority_queue_a61f3339cf0e87c67ed004f8eff0a1bfa}
+enqueue
+
+\-Adds the data item to the \-Priority \-Queue. \-The item's releative position will depend on it's priority.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em new\-Data\-Item} & \-The new \-Data\-Item to be inserted into the \hyperlink{class_priority_queue}{\-Priority\-Queue}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-Data\-Type must support a valid get\-Priority() method.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-If there is room in the \hyperlink{class_priority_queue}{\-Priority\-Queue}, the new item will be stored in the appropriate position. \-If there is no room, an exception of type logic\-\_\-error is thrown.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_heap}{\-Heap}'s insert method is called.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em logic\-\_\-error} & \-The \hyperlink{class_heap}{\-Heap} base class may throw an exception if insertion is attempted when the data array is full.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_priority_queue_8h}{\-Priority\-Queue.\-h}\item 
+\hyperlink{_priority_queue_8cpp}{\-Priority\-Queue.\-cpp}\end{DoxyCompactItemize}

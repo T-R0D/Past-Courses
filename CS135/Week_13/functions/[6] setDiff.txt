@@ -1,0 +1,32 @@
+int setDiff()
+   {
+   // variables
+
+   // clear screen to black, then a small area to blue
+      // functions: setColor, clearScreen
+
+   // display "screen title"
+      // function: printStringAt
+
+   // display prompt
+      // function: printStringAt
+
+   // loop until proper entry is received
+      // operation: while
+
+         // prompt user for dificulty selection
+           // function: promptForIntAt
+
+   // convert user selection to meaningful program terms 
+      // operation: switch
+        
+        // case: easy ( 1 -> 5 )
+
+        // case: medium ( 2 -> 3 )
+
+        // case: hard ( 3 -> 1 )
+ 
+
+   // return difficulty in meaningful program terms
+
+   }

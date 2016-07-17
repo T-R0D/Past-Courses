@@ -1,0 +1,61 @@
+#ifndef __COMPASSSENSING_NXC__
+#define __COMPASSSENSING_NXC__
+
+#define COMPASS_DEBUG 0
+#define COMPASS_MUXED 0
+
+#define COMPASS_SENSOR IN_4 // msensor_S1_1
+
+
+typedef struct {
+  int value;
+  mutex ownership;
+  bool readingIsValid;
+} CompassReading;
+
+
+bool gUseCompassSensing = true;
+CompassReading gCompassReading;
+
+
+task TASK_CompassSensing();
+void debugOutputCompass(const int pCompassVal);
+
+
+/**
+ *  Spawns the thread responsible for publishing the compass readings
+ */
+task TASK_CompassSensing() {
+  #if COMPASS_MUXED
+
+  #else
+    SetSensorLowspeed(COMPASS_SENSOR);
+  #endif //COMPASS_MUXED
+
+  while (true) {
+    until (gUseCompassSensing);
+    while (gUseCompassSensing) {
+      #if COMPASS_MUXED
+
+      #else
+        gCompassReading.value = SensorHTCompass(COMPASS_SENSOR);
+        Wait(MS_10);
+      #endif //COMPASS_MUXED
+
+      #if COMPASS_DEBUG
+        debugOutputCompass(gCompassReading.value);
+      #endif //COMPASS_DEBUG
+    }
+  }
+
+}
+
+
+void debugOutputCompass(const int pCompassVal) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Compass Reading:");
+  NumOut(4, LCD_LINE2, pCompassVal);
+  Wait(MS_100);
+}
+
+#endif //__COMPASSSENSING_NXC__

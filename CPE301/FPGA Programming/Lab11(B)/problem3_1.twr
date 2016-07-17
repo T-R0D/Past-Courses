@@ -1,0 +1,64 @@
+--------------------------------------------------------------------------------
+Release 9.2i Trace 
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx92i\bin\nt\trce.exe -ise
+C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise
+-intstyle ise -e 3 -s 5 -xml problem3_1 problem3_1.ncd -o problem3_1.twr
+problem3_1.pcf -ucf problem3_1.ucf
+
+Design file:              problem3_1.ncd
+Physical constraint file: problem3_1.pcf
+Device,package,speed:     xc3s500e,fg320,-5 (PRODUCTION 1.26 2007-04-13)
+Report level:             error report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+switches<0>    |lights<0>      |    8.097|
+switches<0>    |lights<1>      |    9.639|
+switches<0>    |lights<2>      |    6.818|
+switches<1>    |lights<0>      |    8.197|
+switches<1>    |lights<1>      |    9.795|
+switches<1>    |lights<2>      |    6.141|
+switches<2>    |lights<0>      |    7.814|
+switches<2>    |lights<1>      |    9.378|
+switches<2>    |lights<2>      |    5.960|
+switches<3>    |lights<0>      |    7.834|
+switches<3>    |lights<1>      |    9.427|
+switches<3>    |lights<2>      |    6.037|
+---------------+---------------+---------+
+
+
+Analysis completed Sun Dec 08 14:26:41 2013 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 95 MB
+
+
+

@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{indentfirst}
+
+\title{CS791m: A1}
+\author{Terence Henriod}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% \begin{abstract}
+An analysis of two papers that could be categorized as ``IoT: Ambient Interfaces."
+% \end{abstract}
+
+\newpage
+\section{Topic - IoT: Ambient Interfaces}
+The following papers represent a sub-field of HCI known as \emph{ambient interfaces}. These are interfaces that are meant to blend into their surroundings better than most of the computing technology today and convey information that is not urgent in a non-disruptive way for users. Ideally, users will be \emph{peripherally aware}, attending to the information with only a small portion of their consciousness. These interfaces seem to largely be one-directional (delivering information only to the user), but in some cases, they can accept input as well. These kinds of interfaces also have a goal of being aesthetically pleasing through resembling well-received surroundings that are commonplace today. The following papers also have a very IoT-flavor because they utilize small, connected devices. The prototypes presented in the papers could also be first steps toward \emph{ambient intelligence} systems.
+
+\section{Info-Plant}
+
+\subsection{Paper Information}
+\noindent
+\textbf{Title}: InfoPlant: Multimodal augmentation of plants for enhanced human-computer interaction \\
+\textbf{Author(s)}: Jan Hammerschmidt, Thomas Hermann, Alex Walender, Niels Kr{\"o}mker \\
+% \textbf{Volume}:  \\
+\textbf{Place of Publication}: $6^{th}$ IEEE Conference on Cognitive Infocommunications \\
+\textbf{Date}: October 19-21, 2015 \\
+\textbf{Pages}: 511-516 \\
+
+\subsection{Analysis}
+% Important ideas
+With the advent of ``ubiquitous computing," the vision of computing and interfaces that blend into the everyday scenery of our life becomes real. There will always be ``artificial" interfaces for work tasks, but there is information not related to our primary tasks that we want to receive. Interfaces that deliver information unobtrusively are called \emph{peripheral interfaces} or \emph{ambient interfaces}. Such interfaces avoid stealing a user's focus from their primary task.
+
+When it comes to \emph{ambient displays}, some believe that \emph{new} artifacts that are capable of blending into their surroundings should be created, but the authors of this paper feel that designers can modify \emph{existing} artifacts in the user's environment for success. This way, displays can be added in a way that is aesthetically pleasing, will not require acclimation on the users' part, and even encourage a sense of [spiritual] connectedness.
+
+% Main Goals
+In the paper, the authors sought to create a prototype for an ambient display that was effective, unobtrusive, and aesthetically pleasing. They embedded electronics into an office plant. Office plants are common in human environments, considered generally pleasant, and can be modified to convey information to humans.
+
+With this, the authors of the paper decided to create ``InfoPlant." InfoPlant utilizes five (5) (reduced from 7) modalities for communication:
+\begin{enumerate}
+\item Health State (controlled via regulating water intake)
+\item Orientation of the plant/container (eliminated)
+\item Illumination of the plant with RGB LEDs
+\item Tactile interaction with the plant (via capacitive sensing)
+\item Rustling of leaves (via small fans)
+\item Altering the posture of the plant (via controlled strings)
+\item Sound output (eliminated)
+\end{enumerate}
+
+The authors were also interested in creating an eco-feedback device to encourage eco-friendly behavior, and they felt a plant was a good decision due to the semantic connection between plants and ecology.
+
+To test the effectiveness of the InfoPlant, the authors trialed the InfoPlant with up to 4 participants per trial for 30 minutes, with a total of 15 participants, in a living room setting. Participants were told what eco-feedback InfoPlant would give, and were told to bring and do work of their own for the 30 minutes. The InfoPlant gave feedback according to a (made-up) script (for reproducibility). InfoPlant was generally well received.
+
+% Smaller Points
+The authors noted that InfoPlant was wirelessly connected. I find this to be important because it helps InfoPlant be easier to deploy and seem less artificial.
+
+% Personal Views
+I enjoyed the concept of this paper. I think it is a great way to integrate computing to automate and improve things without discarding our current norms. I think that these ideas of ``calm computing" are nice to think about, even if they may not be economically viable (why use a plant to tell you what a phone app could?).
+
+I thought it was ingenious to add capacitive touch sensing to the plant, even if the authors did not have use for the input. The importance of touching for humans has made many appearances in research.
+% I also just thought that it was a fascinating way to detect human interaction with a plant.
+
+Many of the criticisms I do have for this paper are issues reported by the authors themselves. The first and foremost being that the experiment design likely was not done with enough participants or a long enough period of time to see the true effectiveness of an ambient interface like InfoPlant.
+
+Another criticism I have is with the ``novelty" of InfoPlant. The authors remark that participants disregarded their instructions to do their work order to attend to InfoPlant. This would foul the experiment because the novelty of InfoPlant was intrusive. While not entirely avoidable, I think InfoPlant could have been placed in a more normal pot to help avoid this. 
+% (see the photo on the first page of the paper).
+% Again, the only real way to test the novelty factor is with an experiment that is run for more than half an hour.
+
+\section{Activity Wallpaper}
+
+\subsection{Paper Information}
+\noindent
+\textbf{Title}: Activity Wallpaper: Ambient Visualization of Activity Information \\
+\textbf{Author(s)}: Tobias Skog \\
+% \textbf{Volume}:  \\
+\textbf{Place of Publication}: DIS '04 Proceedings of the 5th conference on Designing interactive systems: processes, practices, methods, and techniques \\
+\textbf{Date}: October 19-21, 2015 \\
+\textbf{Pages}: 325-328 \\
+
+\subsection{Analysis}
+The author asserts that amount of computers in the public space are increasing, and most of these are in the form of public information displays. Often, they do not integrate well with existing architecture. Further, the information that is displayed is often either directly related to computer use or is unprocessed sensor data. The author believes that displays can be better integrated with existing architectures and feature data related to the activities that have occurred in that space.
+
+The author had the goal of developing an \emph{ambient interface} that could display the activity history of a caf\'{e}. A caf\'{e} was chosen because the author felt that a real-world setting would produce better results and feedback than an experiment conducted in a lab setting.
+
+An ambient display named \emph{Activity Wallpaper} was constructed. The display was composed of a projector to project the display onto an otherwise blank wall. The display consisted of patterns of colored dots that looked similar to a typical wallpaper pattern. The dots indicated the noise and activity levels of the caf\'{e} over the operating hours for the previous week. A microphone and some signal processing techniques were used to determine estimates of how noisy patrons were (colors of the dots) and how many patrons (number of dots) there were in the caf\'{e}.
+
+The author achieved their goal to implement the display, but they do not remark on the effectiveness of the display as the patrons or owners of the caf\'{e} might rate it.
+
+The author remarks that a wide variety of sensors could be used, including cameras or photocells, yet they chose to use microphones because they are a cheap, easy to use technology. Further, microphones are easily concealed, decreasing the obtrusiveness of the peripheral display. I find this admirable since this is not only an interesting approach, but it could lead to better adoption of ambient display modalities in the future.
+
+The author also remarks that their original intent was to use a large LCD display mounted to a wall, but that a projector was chosen due to the large size of the walls in the caf\'{e}. I think that this was better because the solution is more flexible and better integrated with the existing architecture.
+
+As a weakness of the paper, as a paper and not the experiment, I think the author could have mentioned their previous work in ambient displays to greater effect. They merely stated and described the design of two similar, previous works. Perhaps the author could have mentioned any effects, successes, or learning from the previous works.
+
+My largest criticism for this paper is that the author did not report that they did any kind of experiment to evaluate the effect of the display. It is reasonable to assume that it was functional, but it would be nice to know if the patrons or owners of the caf\'{e} appreciated the display in any way, if it was helpful or interesting, if it was distracting or intrusive, or if there were any shortcomings or annoyances. The author could have at least made observations of people interacting with the display and listed those.
+% I think this is a major weakness because it doesn't matter what you can build, if it is supposed to interface with humans in a public setting, the value to those humans should be evaluated.
+
+Finally, I think the author could have made an excellent case for the value of their work by proposing some settings where ambient displays could be effective. I think a hospital might be one such setting, where there is a lot of, not necessarily urgent, information
+% A hospital setting came readily to mind for me. There is a lot of information that needs to be displayed for patients in hospital rooms, and displaying it in a pleasant, accessible way could be helpful for the nurses who need to be aware of information, but do not need the information thrust upon them. The display could also help patients and their visitors be aware of the information. (I should note that I am aware that some information is personal and should be kept private, I am referring to less sensitive information such as when meals are delivered or when bedding may have been changed, when check-ins are due, and so forth) The hospital setting, is of course, one example.
+
+\end{document}

@@ -1,0 +1,260 @@
+/**
+ *  Configurations
+ */
+#define RIGHT_SONAR IN_1
+#define LEFT_SONAR IN_2
+
+#define RFID_SENSOR IN_4
+#define RIGHT_WHEEL OUT_A
+
+#define LEFT_WHEEL OUT_B
+#define BOTH_WHEELS OUT_AB
+
+#define FULL_SPEED 75
+#define MODERATE_SPEED 45
+#define SLOW_SPEED 25
+
+#define CLOSE_RANGE 12 // in cm(ish)
+
+
+/**
+ * An enumeration of avoidance strategy values.
+ */
+#define BOTH_SENSORS_ACTIVATED 0
+#define RIGHT_SENSOR_ACTIVATED 1
+#define LEFT_SENSOR_ACTIVATED 2
+#define NOTHING_TO_AVOID 99
+
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#define FORWARD true
+#define REVERSE false
+#define RIGHT true
+#define LEFT false
+
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#include "RFIDlib.nxc"
+
+
+/**
+ * These mutexes are used to prevent ciritical section violations.
+ * They ensure that only one task has access to the wheels at a time,
+ * and that only one task is reading or writing to the avoidance
+ * strategy variable.
+ */
+mutex gWheelMutex;      // we don't want a MISD model for the wheels
+mutex gStrategyMutex;   // wasn't sure how atomic operations are with NXC
+
+/**
+ * Global variables to allow for inter-process communication for determining
+ * which strategies to use.
+ */
+int gAvoidanceStrategy = NOTHING_TO_AVOID;
+bool gEndzoneEntered = false;
+
+/**
+ * This provides a sort of "stepped" movement functionality.
+ * That is, it makes the robot move for a set time and then stop.
+ */
+void blockingMove(bool pMoveForward, int pPower, int pDurationMs) {
+     if (pMoveForward) {
+        OnRevReg(BOTH_WHEELS, pPower, OUT_REGMODE_SYNC);
+     } else {
+        OnFwdReg(BOTH_WHEELS, pPower, OUT_REGMODE_SYNC);
+     }
+     Wait(pDurationMs);
+     Off(BOTH_WHEELS);
+}
+
+/**
+ * Similar to blockingMove(), except with rotating the robot.
+ */
+void blockingTurn(bool pTurnRight, int pPower, int pDurationMs) {
+//     byte forwardWheel;
+//     byte reverseWheel;
+     
+//     if (pTurnRight) {
+//       OnFwd(LEFT_WHEEL, pPower);
+//       OnRev(RIGHT_WHEEL, pPower);
+//     } else {
+//       OnFwd(RIGHT_WHEEL, pPower);
+//       OnRev(LEFT_WHEEL, pPower);
+//     }
+     
+//     Wait(pDurationMs);
+//     Float(BOTH_WHEELS);
+//     Off(BOTH_WHEELS);
+
+       if (pTurnRight) {
+          OnFwd(OUT_C, 30);
+       
+       } else {
+       
+       OnRev(OUT_C, 30);
+       
+       }
+       Wait(MS_100);
+       Off(OUT_C);
+       
+       OnFwd(BOTH_WHEELS, pPower);
+       Wait(MS_250);
+       Off(BOTH_WHEELS);
+}
+
+/**
+ * Returns the equivalent of a bump sensor being hit, but for a sonar sensor
+ */
+ bool sensorIsHit(byte pSensor, int pBumpThreshold) {
+      return SensorUS(pSensor) <= pBumpThreshold;
+ }
+
+
+/**
+ * Creates a thread that will be responsible for detecting when the
+ * touch sensors are activated and determining the appropriate
+ * avoidance strategy.
+ */
+task checkSensors() {
+    while (true) {
+          bool rightSensorHit = false;
+          bool leftSensorHit = false;
+
+          Acquire(gStrategyMutex);
+          
+          until (sensorIsHit(RIGHT_SONAR, CLOSE_RANGE) ||
+                 sensorIsHit(LEFT_SONAR, CLOSE_RANGE));
+          
+          // stupid delay loop just to make sure we capture
+          // the fact that both sensors have been hit, if they have
+          for (int i = 0; i < 5; i++) {
+              if (sensorIsHit(RIGHT_SONAR, CLOSE_RANGE)) {
+                 rightSensorHit = true;
+              }
+              
+              if (sensorIsHit(LEFT_SONAR, CLOSE_RANGE)) {
+                 leftSensorHit = true;
+              }
+          }
+          
+          if (rightSensorHit && leftSensorHit) {
+             gAvoidanceStrategy = BOTH_SENSORS_ACTIVATED;
+          } else if (rightSensorHit) {
+             gAvoidanceStrategy = RIGHT_SENSOR_ACTIVATED;
+          } else if (leftSensorHit) {
+             gAvoidanceStrategy = LEFT_SENSOR_ACTIVATED;
+          } else {
+             gAvoidanceStrategy = NOTHING_TO_AVOID;
+          }
+          Release(gStrategyMutex);
+    }
+}
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task moveForward() {
+     while (true) {
+        Acquire(gWheelMutex);
+
+        OnRev(BOTH_WHEELS, 30);
+        until (gAvoidanceStrategy != NOTHING_TO_AVOID);
+        Off(BOTH_WHEELS);
+
+        Release(gWheelMutex);
+    }
+}
+
+/**
+ * Creates a thread that will execute an avoidance strategy only
+ * once use of the wheels has been relinquished and an appropriate
+ * avoidance strategy has been determined by other tasks.
+ *
+ * Tones were added to the avoidance strategy to help differentiate
+ * which strategy was being executed. As it turns out, it is difficult
+ * to activate both sensors at once, so it is helpful to be able to
+ * easily tell which sensor was hit.
+ */
+task avoid() {
+     while (true) {
+           Acquire(gWheelMutex);
+           Acquire(gStrategyMutex);
+
+           switch (gAvoidanceStrategy) {
+                  case BOTH_SENSORS_ACTIVATED:
+                       if (gEndzoneEntered) {
+
+
+
+
+
+                       } else {
+//                              blockingTurn(LEFT, MODERATE_SPEED, MS_500 + MS_250);
+                       }
+                       break;
+                  case RIGHT_SENSOR_ACTIVATED:
+//                       blockingTurn(LEFT, MODERATE_SPEED, MS_500);
+                       break;
+                  case LEFT_SENSOR_ACTIVATED:
+//                       blockingTurn(RIGHT, MODERATE_SPEED, MS_500);
+                       break;
+                  case NOTHING_TO_AVOID:
+                       break;
+                  default:
+                       Off(BOTH_WHEELS);
+                       break;
+           }
+           
+           gAvoidanceStrategy = NOTHING_TO_AVOID;
+
+           Release(gStrategyMutex);
+           Release(gWheelMutex);
+     }
+}
+
+
+/**
+ *
+ */
+task manageRfid() {
+   // send dummy command to wake up sensor
+   RFIDDummy(RFID_SENSOR);
+
+   byte rfidData[5];
+   while (true) {
+      GetRFIDArray(RFID_SENSOR, rfidData, true);
+
+      int dataSum = rfidData[0] +
+                    rfidData[1] +
+                    rfidData[2] +
+                    rfidData[3] +
+                    rfidData[4];
+
+      // when we cross the RFID card line, it is now ok to turn all the way around.
+      if (dataSum > 0) {
+         gEndzoneEntered = !gEndzoneEntered;
+         PlayTone(dataSum, MS_100);
+      }
+   }
+}
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+     Precedes(checkSensors, moveForward, avoid, manageRfid);
+     SetSensorLowspeed(RIGHT_SONAR);
+     SetSensorLowspeed(LEFT_SONAR);
+     SetSensorLowspeed(IN_4);
+     
+     
+     blockingMove(true, 30, SEC_1);
+     blockingTurn(true, 30, SEC_1);
+}

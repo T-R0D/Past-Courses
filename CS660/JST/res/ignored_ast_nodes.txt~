@@ -1,0 +1,13 @@
+
+
+// pretty sure this is for structs: struct Pixel p = {.r = 5, .g = 6, .b = 7};
+NamedInitializer
+
+
+Struct
+StructReference
+Typename
+Union
+
+// no preprocessor stuff
+Pragma

@@ -1,0 +1,6 @@
+test_gsl_ran_gaussian_tail.o: test_gsl_ran_gaussian_tail.c \
+ /usr/include/stdc-predef.h ../config.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:

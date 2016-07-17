@@ -1,0 +1,188 @@
+#ifndef __DRIVINGAPI_NXC__
+#define __DRIVINGAPI_NXC__
+
+
+#define RIGHT_WHEEL OUT_C
+#define LEFT_WHEEL OUT_A
+#define BOTH_WHEELS OUT_AC
+
+#define FORWARD true
+#define REVERSE false
+#define RIGHT true
+#define LEFT false
+
+#define MIN_TURN_TIME (MS_100 + MS_50)
+#define TURN_15 1
+#define TURN_30 30
+#define TURN_45 45
+#define TURN_90 40
+#define TURN_180 180
+#define MIN_TURN 15
+#define TURN_POWER_DIFFERENTIAL 5
+
+#define SPEED_INCREMENT 4
+#define TIME_PER_UNIT (MS_150) // time to move 1/4 of a "car length"
+                                       // at FAST_SPEED
+#define DRIVE_DEBUG 0
+
+enum DrivingSpeed {
+  CRAWL_SPEED = 40,
+  SLOW_SPEED = 60,
+  CRUISE_SPEED = 85,
+  FAST_SPEED = 100,
+  STATIONARY_SPIN_SPEED = 60
+};
+
+
+void stopWheels();
+
+void startDrivingStraight(bool pDirection, int pSpeed);
+void moveSetDistance(bool pDirection, int pUnitsToMove);
+
+void startStationarySpin(bool pDirection);
+void hardTurn(bool pDirection, int pTurnMagnitude);
+void stationaryTurn(bool pDirection, int pTurnMagnitude);
+
+void startDynamicTurn(bool pDirection, int pSpeed, int pTurnDifferentialFactor);
+
+bool wheelsHaveStopped();
+
+void testMovementLib();
+void debugOutputDrive(int pSpeed);
+
+void
+stopWheels() {
+ 	Float(BOTH_WHEELS);
+ 	Wait(MS_20);
+ 	Off(BOTH_WHEELS);
+}
+
+
+void
+startDrivingStraight(bool pDirection, int pSpeed) {
+  if (pDirection == FORWARD) {
+    OnFwdReg(BOTH_WHEELS, pSpeed, OUT_REGMODE_SYNC);
+  } else {
+    OnRevReg(BOTH_WHEELS, pSpeed, OUT_REGMODE_SYNC);
+  }
+}
+
+
+void
+moveSetDistance(bool pDirection, int pUnitsToMove) {
+	startDrivingStraight(pDirection, FAST_SPEED);
+	Wait(pUnitsToMove * TIME_PER_UNIT);
+	stopWheels();
+}
+
+
+void
+startStationarySpin(bool pDirection) {
+  if (pDirection == RIGHT) {
+    OnRev(RIGHT_WHEEL, STATIONARY_SPIN_SPEED);
+    OnFwd(LEFT_WHEEL, STATIONARY_SPIN_SPEED);
+  } else {
+    OnFwd(RIGHT_WHEEL, STATIONARY_SPIN_SPEED);
+    OnRev(LEFT_WHEEL, STATIONARY_SPIN_SPEED);
+  }
+}
+
+
+void
+hardTurn(bool pDirection, int pTurnMagnitude) {
+  byte dragWheel;
+  byte drivingWheel;
+
+  if (pDirection == RIGHT) {
+    dragWheel = RIGHT_WHEEL;
+    drivingWheel = LEFT_WHEEL;
+  } else {
+    dragWheel = LEFT_WHEEL;
+    drivingWheel = RIGHT_WHEEL;
+  }
+
+  float factor = pTurnMagnitude / MIN_TURN;
+
+  OnFwd(drivingWheel, CRUISE_SPEED);
+  OnRev(dragWheel, CRUISE_SPEED);
+
+  Wait((factor * MIN_TURN_TIME) - factor);
+}
+
+
+void
+stationaryTurn(bool pDirection, int pTurnMagnitude) {
+  stopWheels();
+
+  hardTurn(pDirection, pTurnMagnitude);
+
+  stopWheels();
+}
+
+
+void
+startDynamicTurn(bool pDirection, int pSpeed, int pTurnDifferentialFactor) {
+  int turnSpeedDifference = pTurnDifferentialFactor * TURN_POWER_DIFFERENTIAL;
+
+  if (pDirection == RIGHT) {
+    OnFwd(LEFT_WHEEL, pSpeed);
+    OnFwd(RIGHT_WHEEL, pSpeed - turnSpeedDifference);
+  } else {
+    OnFwd(RIGHT_WHEEL, pSpeed);
+    OnFwd(LEFT_WHEEL, pSpeed - turnSpeedDifference);
+  }
+}
+
+bool
+wheelsHaveStopped() {
+  ResetRotationCount(RIGHT_WHEEL);
+  ResetRotationCount(LEFT_WHEEL);
+  Wait(MS_100);
+  int rightWheelRotationCount = MotorRotationCount(RIGHT_WHEEL);
+  int leftWheelRotationCount = MotorRotationCount(LEFT_WHEEL);
+
+  return rightWheelRotationCount < 1 && leftWheelRotationCount < 1;
+}
+
+
+void
+testMovementLib() {
+  for (int i = 0; i < 4; i++) {
+    moveSetDistance(FORWARD, 1);
+  }
+  Wait(MS_500);
+  for (int i = 0; i < 2; i++) {
+    moveSetDistance(REVERSE, 2);
+  }
+  Wait(MS_500);
+
+  for (int i = 0; i < 3; i++) {
+    stationaryTurn(LEFT, TURN_15);
+  }
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_45);
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_90);
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_45);
+  Wait(MS_500);
+  stationaryTurn(LEFT, TURN_180);
+
+  Wait(MS_500);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  Wait(SEC_1);
+  startDynamicTurn(RIGHT, CRUISE_SPEED, 2);
+  Wait(SEC_2);
+  stopWheels();
+}
+
+void
+debugOutputDrive(int pSpeed) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Drive Speed:");
+  NumOut(2, LCD_LINE2, pSpeed);
+  Wait(MS_100);
+}
+
+
+#endif //__DRIVINGAPI_NXC__

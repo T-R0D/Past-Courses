@@ -1,0 +1,17 @@
+void gameOverMessage()
+   {
+   // variables
+
+   // clear the message box
+      // functions: setColor, clearScreen
+
+   // print message text
+      // function: printStringAt
+
+      // update cursor position
+
+   // wait for user input to terminate game
+      // function: waitForInput
+
+   // no return - void
+   }

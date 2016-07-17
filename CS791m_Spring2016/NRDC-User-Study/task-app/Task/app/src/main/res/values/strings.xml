@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Task</string>
+    <string name="app_description">A task giving app for HCI user experiments.</string>
+    <string name="finished">Finished!</string>
+    <string name="give_up">Give Up!</string>
+    <string name="task_screenshot">task_screenshot</string>
+    <string name="back_to_task">swipe left to get back to the task</string>
+    <string name="placeholder_task">This is where a task will go. We might as a user to find some data on tree sap or something, nad they should find how much flows in a given area and date range.</string>
+    <string name="swipe_left_or_right">swipe left or right</string>
+    <string name="thank_you_for_your_time">Thank you for your time!</string>
+    <string name="exit">EXIT</string>
+    <string name="interface_version">Interface Version</string>
+    <string name="task_block">Task Block</string>
+    <string name="begin">Begin</string>
+    <string name="participant_id">Participant ID</string>
+    <string name="block_b">Block B</string>
+    <string name="block_a">Block A</string>
+    <string name="nrdc_1">NRDC 1</string>
+    <string name="nrdc_a">NRDC A</string>
+    <string name="radio_label_nrdc_a">NRDC A</string>
+    <string name="radio_label_nrdc_1">NRDC 1</string>
+    <string name="proceed">Proceed</string>
+</resources>

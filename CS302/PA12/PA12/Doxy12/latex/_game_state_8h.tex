@@ -1,0 +1,100 @@
+\hypertarget{_game_state_8h}{\section{\-Game\-State.\-h \-File \-Reference}
+\label{_game_state_8h}\index{\-Game\-State.\-h@{\-Game\-State.\-h}}
+}
+
+
+\-Class declarations for a \-Rush \-Hour \-Game \-State.  
+
+
+{\ttfamily \#include $<$cassert$>$}\*
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$string$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_game_state}{\-Game\-State}
+\item 
+struct \hyperlink{struct_game_state_1_1car}{\-Game\-State\-::car}
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+const bool \hyperlink{_game_state_8h_ad57a56e3ed15b460e7af97dea8f38fe2}{\-F\-O\-R\-W\-A\-R\-D} = true
+\item 
+const bool \hyperlink{_game_state_8h_ac0d8ed2ccd9c411fb1b32690ca09fb64}{\-B\-A\-C\-K\-W\-A\-R\-D} = false
+\item 
+const char \hyperlink{_game_state_8h_a762c48c139eecc0ee0bb24df3786e791}{k\-Horizontal} = '\-H'
+\item 
+const char \hyperlink{_game_state_8h_a74aa816b326800efd9cd33d99afbb095}{k\-Vertical} = '\-V'
+\item 
+const char \hyperlink{_game_state_8h_a09646b3ce306ff0c9ecedb9ca03b3d6a}{k\-Empty} = '.'
+\item 
+const int \hyperlink{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}{k\-Board\-Size} = 6
+\item 
+const int \hyperlink{_game_state_8h_ad271c8ca2b87af864a9b2d42368e0ecc}{k\-Board\-Size\-Squared} = ( \hyperlink{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}{k\-Board\-Size} $\ast$ \hyperlink{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}{k\-Board\-Size} )
+\item 
+const int \hyperlink{_game_state_8h_a86fc485a258631289bf2599fb89b25ed}{k\-Max\-Cars} = 18
+\item 
+const int \hyperlink{_game_state_8h_af0ed9ed9968abe5ddfd96d1f8d5718c4}{k\-Car\-Xpos} = 0
+\item 
+const int \hyperlink{_game_state_8h_aafde2c2971ed0954ecbd5deba5dc9992}{k\-Car\-Ypos} = 1
+\item 
+const int \hyperlink{_game_state_8h_ab583a455fc8940962549aa453495015d}{k\-Length\-Pos} = 3
+\item 
+const int \hyperlink{_game_state_8h_a4b93e48258326a6fa6c043a3d54214cf}{k\-Orientation\-Pos} = 4
+\item 
+const int \hyperlink{_game_state_8h_ab2605637cc92100b22579d022a72e34b}{k\-Car\-Data\-Size} = 4
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class declarations for a \-Rush \-Hour \-Game \-State. \begin{DoxyAuthor}{\-Author}
+\-Terence \-Henriod
+\end{DoxyAuthor}
+\-Rush \-Hour\-: \-Breadth \-First \-Search
+
+\begin{DoxyVersion}{\-Version}
+\-Original \-Code 1.\-00 (10/29/2013) -\/ \-T. \-Henriod 
+\end{DoxyVersion}
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{_game_state_8h_ac0d8ed2ccd9c411fb1b32690ca09fb64}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!\-B\-A\-C\-K\-W\-A\-R\-D@{\-B\-A\-C\-K\-W\-A\-R\-D}}
+\index{\-B\-A\-C\-K\-W\-A\-R\-D@{\-B\-A\-C\-K\-W\-A\-R\-D}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{\-B\-A\-C\-K\-W\-A\-R\-D}]{\setlength{\rightskip}{0pt plus 5cm}const bool {\bf \-B\-A\-C\-K\-W\-A\-R\-D} = false}}\label{_game_state_8h_ac0d8ed2ccd9c411fb1b32690ca09fb64}
+\hypertarget{_game_state_8h_ad57a56e3ed15b460e7af97dea8f38fe2}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!\-F\-O\-R\-W\-A\-R\-D@{\-F\-O\-R\-W\-A\-R\-D}}
+\index{\-F\-O\-R\-W\-A\-R\-D@{\-F\-O\-R\-W\-A\-R\-D}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{\-F\-O\-R\-W\-A\-R\-D}]{\setlength{\rightskip}{0pt plus 5cm}const bool {\bf \-F\-O\-R\-W\-A\-R\-D} = true}}\label{_game_state_8h_ad57a56e3ed15b460e7af97dea8f38fe2}
+\hypertarget{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Board\-Size@{k\-Board\-Size}}
+\index{k\-Board\-Size@{k\-Board\-Size}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Board\-Size}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Board\-Size} = 6}}\label{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}
+\hypertarget{_game_state_8h_ad271c8ca2b87af864a9b2d42368e0ecc}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Board\-Size\-Squared@{k\-Board\-Size\-Squared}}
+\index{k\-Board\-Size\-Squared@{k\-Board\-Size\-Squared}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Board\-Size\-Squared}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Board\-Size\-Squared} = ( {\bf k\-Board\-Size} $\ast$ {\bf k\-Board\-Size} )}}\label{_game_state_8h_ad271c8ca2b87af864a9b2d42368e0ecc}
+\hypertarget{_game_state_8h_ab2605637cc92100b22579d022a72e34b}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Car\-Data\-Size@{k\-Car\-Data\-Size}}
+\index{k\-Car\-Data\-Size@{k\-Car\-Data\-Size}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Car\-Data\-Size}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Car\-Data\-Size} = 4}}\label{_game_state_8h_ab2605637cc92100b22579d022a72e34b}
+\hypertarget{_game_state_8h_af0ed9ed9968abe5ddfd96d1f8d5718c4}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Car\-Xpos@{k\-Car\-Xpos}}
+\index{k\-Car\-Xpos@{k\-Car\-Xpos}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Car\-Xpos}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Car\-Xpos} = 0}}\label{_game_state_8h_af0ed9ed9968abe5ddfd96d1f8d5718c4}
+\hypertarget{_game_state_8h_aafde2c2971ed0954ecbd5deba5dc9992}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Car\-Ypos@{k\-Car\-Ypos}}
+\index{k\-Car\-Ypos@{k\-Car\-Ypos}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Car\-Ypos}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Car\-Ypos} = 1}}\label{_game_state_8h_aafde2c2971ed0954ecbd5deba5dc9992}
+\hypertarget{_game_state_8h_a09646b3ce306ff0c9ecedb9ca03b3d6a}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Empty@{k\-Empty}}
+\index{k\-Empty@{k\-Empty}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}const char {\bf k\-Empty} = '.'}}\label{_game_state_8h_a09646b3ce306ff0c9ecedb9ca03b3d6a}
+\hypertarget{_game_state_8h_a762c48c139eecc0ee0bb24df3786e791}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Horizontal@{k\-Horizontal}}
+\index{k\-Horizontal@{k\-Horizontal}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Horizontal}]{\setlength{\rightskip}{0pt plus 5cm}const char {\bf k\-Horizontal} = '\-H'}}\label{_game_state_8h_a762c48c139eecc0ee0bb24df3786e791}
+\hypertarget{_game_state_8h_ab583a455fc8940962549aa453495015d}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Length\-Pos@{k\-Length\-Pos}}
+\index{k\-Length\-Pos@{k\-Length\-Pos}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Length\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Length\-Pos} = 3}}\label{_game_state_8h_ab583a455fc8940962549aa453495015d}
+\hypertarget{_game_state_8h_a86fc485a258631289bf2599fb89b25ed}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Max\-Cars@{k\-Max\-Cars}}
+\index{k\-Max\-Cars@{k\-Max\-Cars}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Max\-Cars}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Max\-Cars} = 18}}\label{_game_state_8h_a86fc485a258631289bf2599fb89b25ed}
+\hypertarget{_game_state_8h_a4b93e48258326a6fa6c043a3d54214cf}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Orientation\-Pos@{k\-Orientation\-Pos}}
+\index{k\-Orientation\-Pos@{k\-Orientation\-Pos}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Orientation\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf k\-Orientation\-Pos} = 4}}\label{_game_state_8h_a4b93e48258326a6fa6c043a3d54214cf}
+\hypertarget{_game_state_8h_a74aa816b326800efd9cd33d99afbb095}{\index{\-Game\-State.\-h@{\-Game\-State.\-h}!k\-Vertical@{k\-Vertical}}
+\index{k\-Vertical@{k\-Vertical}!GameState.h@{\-Game\-State.\-h}}
+\subsubsection[{k\-Vertical}]{\setlength{\rightskip}{0pt plus 5cm}const char {\bf k\-Vertical} = '\-V'}}\label{_game_state_8h_a74aa816b326800efd9cd33d99afbb095}

@@ -1,0 +1,74 @@
+                             ---------------------
+                                    CS  202
+
+                                  ASSIGNMENT 5
+                             ---------------------
+
+-------
+SUMMARY
+-------
+
+Write code to solve the problem listed below.
+
+Compile, debug and run your code.
+
+--------------------------------------------------------------------------------
+
+From the text,
+
+       Starting Out With C++, From Control Structures through Objects, 7E
+       Tony Gaddis, Addison Wesley
+       ISBN 13: 978-0-13-257625-3
+
+do problem 13, page 648:  Drink Machine Simulator
+
+--------------------------------------------------------------------------------
+
+ADDITIONAL REQUIREMENT
+
+This additional requirement was suggested by someone in class.
+
+Read Chapter 12, specifically Sections 12.7 and 12.8.
+
+Incorporate the ideas of those sections into your program to accomplish the
+following additional program requirement.
+
+Add two menu items to your menu.
+
+    (1)  to allow the user to write the contents of the array
+         of structs to an output file
+
+    (2)  the other to allow the user to read the contents of
+         the output file into an array of structs
+
+By adding these two menu choices, you extend the program by giving it the
+flexibility to:
+
+    ---  save it's current data set, and
+    ---  restore the data set from an earlier session
+
+When incorporating the two menu items into the program, please play particular
+attention to the NOTE at the bottom of page 679.
+
+Here is a design question.
+
+How shall the user specify, to the program, the name of the output file (which
+will later become an input file).
+
+First, the file name should not end in .txt, because it will be a binary file.
+
+Second, should the user
+
+    ---  pass the information on the command line?
+
+or
+
+    ---  specify the file's name in a prompt/answer dialog?
+
+Since you are the program designer, it's your choice.
+
+Note that using a command line approach requires the program's designer to
+design a command line syntax and supply a help screen to insure the user knows
+how to use the program correctly.
+
+--------------------------------------------------------------------------------

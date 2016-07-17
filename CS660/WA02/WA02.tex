@@ -1,0 +1,722 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+  \DeclareGraphicsExtensions{.png, .jpeg}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{parsetree}
+\usepackage{amsmath}
+
+\title{Compiler Construction \\ WA02: Parse Trees}
+\author{Terence Henriod}
+\date{\today}
+
+\begin{document}
+
+\clearpage            % All of
+\maketitle            % this,
+\thispagestyle{empty} % removes the page number from the title page
+
+\begin{abstract}
+\noindent This assignment asks you to prepare written answers to questions on context-free grammars.
+Each question has a short answer. You may discuss this assignment with other
+students and work the problems together. However, your writeup should be your own individual
+work. Remember written assignments are to be turned in in class on the date
+due.
+\end{abstract}
+
+\newpage
+
+\begin{enumerate}
+  \item Given the Grammar G =
+  \begin{itemize}
+    \item $A \rightarrow Ba\; |\; bC$
+    \item $B \rightarrow d\; |\; eBf$
+    \item $C \rightarrow gC\; |\; g$
+  \end{itemize}
+  Determine which strings are in L(G). Construct parse trees for those that are.
+
+  \begin{itemize}
+    \item bg\\\\
+    \textit{Answer}:\\
+    \begin{parsetree}
+      (.A.
+        `b'
+        (.C.
+          `g'
+        )
+      )
+    \end{parsetree}\\
+
+    \item bffd\\\\
+    \textit{Answer}:\\
+    Not in L(G).
+    \begin{parsetree}
+      (.A.
+        `b'
+        (.C.
+          `No way to get f or d'
+        )
+      )
+    \end{parsetree}\\
+
+    \item bggg\\\\
+    \textit{Answer}:\\
+    \begin{parsetree}
+      (.A.
+        `b'
+        (.C.
+          `g'
+          (.C.
+            `g'
+            (.C.
+              `g'
+            )
+          )
+        )
+      )
+    \end{parsetree}\\
+
+    \item edfa\\\\
+    \textit{Answer}:\\
+    \begin{parsetree}
+      (.A.
+        (.B.
+          `e'
+          (.B.
+            `d'
+          )
+          `f'
+        )
+        `a'
+      )
+    \end{parsetree}\\
+
+    \hfill\newline\hfill\newline
+    \item eedffa\\\\
+    \textit{Answer}:\\
+    \begin{parsetree}
+      (.A.
+        (.B.
+          `e'
+          (.B.
+            `e'
+            (.B.
+              `d'
+            )
+            `f'
+          )
+          `f'
+        )
+        `a'
+      )
+    \end{parsetree}\\
+
+    \item faae\\\\
+    \textit{Answer}:\\
+    Not in L(G).
+    \begin{parsetree}
+      (.A.
+        `Given string does not end with a or start with b'
+      )
+    \end{parsetree}\\
+
+    \item defa\\\\
+    \textit{Answer}:\\
+    Not in L(G).
+    \begin{parsetree}
+      (.A.
+        (.B.
+          `Rewrite to d $\rightarrow$ no ef'
+          `Rewrite to eBf $\rightarrow$ no d before ef'
+        )
+        `a'
+      )
+    \end{parsetree}\\
+  \end{itemize}
+
+  \newpage
+  \item Given the following parse tree,
+  \begin{parsetree}
+    ( .S.
+      (.A.
+        (.B.
+          `e'
+          `f'
+        )
+        `d'
+      )
+      (.B.
+        `e'
+        `f'
+      )
+      (.C.
+        `g'
+        (.C.
+          (.A.
+            `h'
+          )
+          `d'
+        )
+        `g'
+      )
+    )
+  \end{parsetree}\\
+
+  \begin{enumerate}
+    \item Construct the corresponding rightmost derivation.\\\\
+    \textit{Answer}:\\
+    (Both left and right derivations will be shown simultaneously, along with the sentential form of the string they produce)\\
+
+    \underline{Left} \hspace{0.4\textwidth} \underline{Right}\\\\
+    
+    S  \hspace{0.42\textwidth} S\\
+    \begin{parsetree}
+      (`S')
+    \end{parsetree}
+    \hspace{0.4\textwidth}
+    \begin{parsetree}
+      (`S')
+    \end{parsetree}\\\\
+
+    ABC \hspace{0.4\textwidth} ABC\\
+    \begin{parsetree}
+      (.S.
+        `A'
+        `B'
+        `C'
+      )
+    \end{parsetree}
+    \hspace{0.35\textwidth}
+    \begin{parsetree}
+      (.S.
+        `A'
+        `B'
+        `C'
+      )
+    \end{parsetree}\\\\
+    
+    BdBC \hspace{0.4\textwidth} ABgCg\\
+    \begin{parsetree}
+      (.S.
+        (.A.
+          `B'
+          `d'
+        )
+        `B'
+        `C'
+      )
+    \end{parsetree}
+    \hspace{0.30\textwidth}
+    \begin{parsetree}
+      (.S.
+        `A'
+        `B'
+        (.C.
+          `g'
+          `C'
+          `g'
+        )
+      )
+    \end{parsetree}\\\\
+    
+    efdBC \hspace{0.4\textwidth} ABgAdg\\
+    \begin{parsetree}
+      (.S.
+        (.A.
+          (.B.
+            `e'
+            `f'
+          )
+          `d'
+        )
+        `B'
+        `C'
+      )
+    \end{parsetree}
+    \hspace{0.28\textwidth}
+    \begin{parsetree}
+      (.S.
+        `A'
+        `B'
+        (.C.
+          `g'
+          (.C.
+            `A'
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}\\\\
+    
+    \newpage
+    efdefC \hspace{0.4\textwidth} ABghdg\\
+    \begin{parsetree}
+      (.S.
+        (.A.
+          (.B.
+            `e'
+            `f'
+          )
+          `d'
+        )
+        (.B.
+          `e'
+          `f'
+        )
+        `C'
+      )
+    \end{parsetree}
+    \hspace{0.26\textwidth}
+    \begin{parsetree}
+      (.S.
+        `A'
+        `B'
+        (.C.
+          `g'
+          (.C.
+            (.A.
+              `h'
+            )
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}\\\\
+  
+    efdefgCg \hspace{0.4\textwidth} Aefghdg\\
+    \begin{parsetree}
+      (.S.
+        (.A.
+          (.B.
+            `e'
+            `f'
+          )
+          `d'
+        )
+        (.B.
+          `e'
+          `f'
+        )
+        (.C.
+          `g'
+          `C'
+          `g'
+        )
+      )
+    \end{parsetree}
+    \hspace{0.2\textwidth}
+    \begin{parsetree}
+      (.S.
+        `A'
+        (.B.
+          `e'
+          `f'
+        )
+        (.C.
+          `g'
+          (.C.
+            (.A.
+              `h'
+            )
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}\\\\
+  
+    efdefgAdg \hspace{0.4\textwidth} Bdefghdg\\
+    \begin{parsetree}
+      (.S.
+        (.A.
+          (.B.
+            `e'
+            `f'
+          )
+          `d'
+        )
+        (.B.
+          `e'
+          `f'
+        )
+        (.C.
+          `g'
+          (.C.
+            `A'
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}
+    \hspace{0.12\textwidth}
+    \begin{parsetree}
+      (.S.
+        (.A.
+          `B'
+          `d'
+        )
+        (.B.
+          `e'
+          `f'
+        )
+        (.C.
+          `g'
+          (.C.
+            (.A.
+              `h'
+            )
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}\\\\
+    
+    efdefghdg \hspace{0.4\textwidth} efdefghdg\\
+    \begin{parsetree}
+      (.S.
+        (.A.
+          (.B.
+            `e'
+            `f'
+          )
+          `d'
+        )
+        (.B.
+          `e'
+          `f'
+        )
+        (.C.
+          `g'
+          (.C.
+            (.A.
+              `h'
+            )
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}
+    \hspace{0.1\textwidth}
+    \begin{parsetree}
+      (.S.
+        (.A.
+          (.B.
+            `e'
+            `f'
+          )
+          `d'
+        )
+        (.B.
+          `e'
+          `f'
+        )
+        (.C.
+          `g'
+          (.C.
+            (.A.
+              `h'
+            )
+            `d'
+          )
+          `g'
+        )
+      )
+    \end{parsetree}\\\\
+
+    \newpage
+    \item Construct as much of the grammar as can be determined from the parse tree.\\\\
+    \textit{Answer}:\\
+    G =
+    \begin{itemize}
+      \item $S \rightarrow ABC$
+      \item $A \rightarrow Bd\; |\; h$
+      \item $B \rightarrow ef$
+      \item $C \rightarrow gCg\; |\; Ad$
+    \end{itemize}
+
+  \end{enumerate}
+  
+  \hfill\newline
+  \item Given the grammar
+  \begin{itemize}
+    \item $S \rightarrow aS\; |\; SB\; |\; d$
+    \item $B \rightarrow Bb\; |\; c$
+  \end{itemize}
+  Show that this grammar is ambiguous by showing two parse trees for the string aadccb.\\\\
+  \textit{Answer}:\\
+  One:
+  \begin{parsetree}
+    (.S.
+      `a'
+      (.S.
+        `a'
+        (.S.
+          (.S.
+            (.S.
+              `d'
+            )
+            (.B.
+              `c'
+            )
+          )
+          (.B.
+            (.B.
+              `c'
+            )
+            `b'
+          )
+        )
+      )
+    )
+  \end{parsetree}
+  Another one:
+  \begin{parsetree}
+    (.S.
+      (.S.
+        (.S.
+          `a'
+          (.S.
+            `a'
+            (.s.
+              `d'
+            )
+          )
+        )
+        (.B.
+          `c'
+        )
+      )
+      (.B.
+        (.B.
+          `c'
+        )
+        `b'
+      )
+    )
+  \end{parsetree}\\
+
+  \newpage
+  \item Our usual expression grammar (Old Faithful)
+  \begin{itemize}
+    \item $E \rightarrow E + T \; | \; E - T \; | \; T$
+    \item $T \rightarrow T * F \; | \; T / F \; | \; F$
+    \item $F \rightarrow (E) \; | \; i$
+  \end{itemize}
+  can't be used as is in a predictive parser because it has left recursion. Someone had the idea that he could remove left recursion from this grammar by changing it to
+  \begin{itemize}
+    \item $E \rightarrow T + E \; | \; T - E \; | \; T$
+    \item $T \rightarrow F * T \; | \; F / T \; | \; F$
+    \item $F \rightarrow (E) \; | \; i$
+  \end{itemize}
+  Show that this isn’t such a good idea by:
+
+  \begin{enumerate}
+    \item  Drawing parse trees for $a - b - c$ using both the original grammar and the revised grammar.\\\\
+    \textit{Answer}:\\
+    Original:
+    \begin{parsetree}
+      (.E.
+        (.E.
+          (.E.
+          	(.T.
+              (.F.
+                `$i \rightarrow a$'
+              )
+            )
+          )
+          `-'
+          (.T.
+            (.F.
+              `$i \rightarrow b$'
+            )
+          )
+        )
+        `-'
+        (.T.
+          (.F.
+            `$i \rightarrow c$'
+          )
+        )
+      )
+    \end{parsetree}
+    Modified:
+    \begin{parsetree}
+      (.E.
+        (.T.
+          (.F.
+            `$i \rightarrow a$'
+          )
+        )
+        `-'
+        (.E.
+          (.T.
+            (.F.
+              `$i \rightarrow b$'
+            )
+          )
+          `-'
+          (.E.
+            (.T.
+              (.F.
+                `$i \rightarrow c$'
+              )
+            )
+          )
+        )
+      )
+    \end{parsetree}\\
+
+    \item  Using the trees as a guide to determine the results of the corresponding computations if $a = 3$, $b = 5$, $c = 8$.\\\\
+    \textit{Answer}:\\\\
+    Original: $a - b - c \rightarrow (a - b) - c = (3 - 5) - 8 = -10$\\
+    Modified: $a - b - c \rightarrow a - (b - c) = 3 - (5 - 8) = 6$
+  \end{enumerate}
+
+  \textit{Comment}: Apparently the change to the grammar was not a good idea because it changed the grammar to be a consequentially different one than the original.\\
+
+  \newpage
+  \item Find the \textit{FIRST} and \textit{FOLLOW} sets for the grammar
+  \begin{itemize}
+    \item $S \rightarrow ABC$
+    \item $A \rightarrow a \; | \; Cb \; | \; \epsilon$
+    \item $B \rightarrow c \; | \; dA \; | \; \epsilon$
+    \item $C \rightarrow e \; | \; f$
+  \end{itemize}
+
+  \textit{Answer}:\\\\
+  \textit{First Sets}:\\
+  Recall the rules for constructing the first set:
+  \begin{itemize}
+    \item If $X$ is a terminal, then $First(X) = \{x\}$
+    \item If a production $X \rightarrow \epsilon$ exists, then $\epsilon \in First(X)$
+    \item For non-terminal $X$ and symbols (terminal and non-terminal) $Y_{1}...Y_{k}$, if a production of  $X \rightarrow Y_{1}...Y_{k}$ exists, then $First(Y_{1}...Y_{k}) \in First(X)$
+    \item $First(Y_{1}...Y_{k})$ is equal to $First(Y_{1}) \cup ... \cup First(Y_{i}) - \{\epsilon\}$, where $i$ indicates the first $Y$ s.t. $\epsilon \not\in First(Y_{i})$. If there is no such $i$, then $First(Y_{1}...Y_{k}) = First(Y_{1}) \cup ... \cup First(Y_{k}) \cup \{\epsilon\}$
+  \end{itemize}
+  \begin{align*}
+    First(S \rightarrow ABC) =& \{\} \cup First(ABC)\\
+                             =& First(A) \cup First(B) \cup First(C) \; - \; \{\epsilon\}\\
+                             =& \{\} \cup \{\} \cup \{\} - \{\epsilon\}\\
+                             =& \{a, c, d, e, f\}
+  \end{align*}
+  \begin{align*}
+    First(S) =& \{a, c, d, e, f\}
+  \end{align*}
+
+  \begin{align*}
+    First(A \rightarrow a) =& First(a)\\
+                           =& \{a\}
+  \end{align*}
+  \begin{align*}
+    First(A \rightarrow Cb) =& First(C)\\
+                            =& \{e, f\}
+  \end{align*}
+  \begin{align*}
+    First(A \rightarrow \epsilon) =& \{\epsilon\}
+  \end{align*}
+  \begin{align*}
+    First(A) =& \{a\} \cup \{e, f\} \cup \{\epsilon\}\\
+             =& \{a, e, f, \epsilon\}
+  \end{align*}
+
+  \begin{align*}
+    First(B \rightarrow c) =& First(c)\\
+                           =& \{c\}
+  \end{align*}
+  \begin{align*}
+    First(B \rightarrow dA) =& First(d)\\
+                            =& \{d\}
+  \end{align*}
+  \begin{align*}
+    First(B \rightarrow \epsilon) =& \{\epsilon\}
+  \end{align*}
+  \begin{align*}
+    First(B) =& First(c) \cup First(dA) \cup \{\epsilon\}\\
+    		 =& \{c\} \cup First(d) \cup \{\epsilon\}\\
+    		 =& \{c\} \cup \{d\} \cup \{\epsilon\}\\
+             =& \{c, d, \epsilon\}
+  \end{align*}
+
+  \begin{align*}
+    First(C \rightarrow e) =& First(e)\\
+                           =& \{e\}
+  \end{align*}
+  \begin{align*}
+    First(C \rightarrow f) =& First(f)\\
+                           =& \{f\}
+  \end{align*}
+  \begin{align*}
+    First(C) =& First(e) \cup First(f)\\
+    		 =& \{e\} \cup \{f\}\\
+             =& \{e, f\}
+  \end{align*}
+
+  \begin{align*}
+    First(a) =& \{a\}\\
+    First(b) =& \{b\}\\
+    First(c) =& \{c\}\\
+    First(d) =& \{d\}\\
+    First(e) =& \{e\}\\
+    First(f) =& \{f\}\\
+  \end{align*}
+
+  \textit{Follow Sets}:\\
+  Recall the rules for constructing the follow set:
+  \begin{itemize}
+    \item The $Follow Set$ for terminals is undefined.
+    \item $\$ \in Follow(S)$, where $\$$ is the input termination symbol and $S$ is the start symbol of the grammar
+    \item If $X$ appears in the RHS of a production of the form $Y \rightarrow aXb$, where $a$ is an arbitrary string (including $\epsilon$) and $b$ is an arbitrary symbol (terminal or not), then $First(b) - \{\epsilon\} \in Follow(X)$
+    \item If $X$ appears in the RHS of a production of the form $Y \rightarrow aXb$ and $\epsilon \in First(b)$, then $Follow(Y) \in Follow(X)$
+    \item If $X$ appears in the RHS of a production of the form $Y \rightarrow aX$, then $Follow(Y) \in Follow(X)$
+  \end{itemize}
+  \begin{align*}
+    Follow(S: S \; is \; start) =& \{\$\}
+  \end{align*}
+  \begin{align*}
+    Follow(S) =& \{\$\}
+  \end{align*}
+
+  \begin{align*}
+    Follow(A: S \rightarrow ABC) =& First(BC) - \{\epsilon\}\\
+                                 =& First(B) \cup First(C) - \{\epsilon\}\\
+                                 =& \{c, d, \epsilon\} \cup \{e, f\} - \{\epsilon\}\\
+                                 =& \{c, d, e, f\}
+  \end{align*}
+  \begin{align*}
+    Follow(A: B \rightarrow dA) =& Follow(B)\\
+                                =& \{e, f\}
+  \end{align*}
+  \begin{align*}
+    Follow(A) =& \{c, d, e, f\} \cup \{e, f\}\\
+              =& \{c, d, e, f\}
+  \end{align*}
+
+  \begin{align*}
+    Follow(B: S \rightarrow ABC) =& First(C) - \{\epsilon\}\\
+                                 =& \{e, f\} - \{\epsilon\}\\
+                                 =& \{e, f\}
+  \end{align*}
+  \begin{align*}
+    Follow(B) =& \{e, f\}
+  \end{align*}
+
+  \begin{align*}
+    Follow(C: S \rightarrow ABC) =& Follow(S)\\
+                                 =& \{\$\}
+  \end{align*}
+  \begin{align*}
+    Follow(C: A \rightarrow Cb) =& First(b)\\
+                                =& \{b\}
+  \end{align*}
+  \begin{align*}
+    Follow(C) =& \{\$\} \cup \{b\}\\
+              =& \{\$, b\}
+  \end{align*}
+\end{enumerate}
+
+\end{document}

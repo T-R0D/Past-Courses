@@ -1,0 +1,70 @@
+/*
+  Name: movePlayer
+  Process: Decided were to move
+  Function Input/Parameters: time it takes to run loop
+  Function Output/Parameters: none
+  Function Output/Returned: none
+  Device Input: none
+  Device Output: none
+  Dependencies: function: move
+  Developer: Nicholas Smith
+*/
+void movePlayer ( int waitTime, bool &continueProgram );
+
+// userInput = waitForInput( FIXED_WAIT);//WAIT_TIME
+
+void movePlayer ( int waitTime, bool &continueProgram )
+    { 
+    // Initialize variables
+       int xLoc, yLoc, xVector, yVector;
+      
+
+       // initialize locations and movement vectors
+       xLoc = ???????? / 2;
+       yLoc = ???????? / 2;
+       xVector = 0; yVector = 0;
+    do
+       {
+        // if user input, set direction, otherwise ignore
+        switch( waitTime )
+           {
+            case KB_RIGHT_ARROW:
+               xVector = 1;
+               yVector = 0;
+               break;
+
+            case KB_LEFT_ARROW:
+               xVector = -1;
+               yVector = 0;
+               break;
+ 
+            // set up a case for moving up with the up arrow key
+        
+            case KB_UP_ARROW:
+               xVector = 0;
+               yVector = -1;
+               break;    
+
+            // set up a case for moving down with the down arrow key
+            case KB_DOWN_ARROW:
+               xVector = 0;
+               yVector = 1;
+               break;
+
+            // set up a case for moving down with the down arrow key
+            case KB_ESCAPE:
+               continueProgram = false;
+               break;
+            }
+
+        // decide if player can move into next spot
+           // operation: if
+
+              // if collisionTest allows, move the character
+              move( xLoc, yLoc, xVector, yVector );
+
+              // otherwise, player is not allowed to move
+       }
+
+// no return - void
+}

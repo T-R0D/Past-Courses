@@ -1,0 +1,6 @@
+xst -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/Lab11(C).ise" -intstyle ise -ifn decoder_2_4.xst -ofn decoder_2_4.syr
+ngdbuild -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/Lab11(C).ise" -intstyle ise -dd _ngo -nt timestamp -uc "decoder_2_4.ucf" -p xc3s500e-fg320-5 "decoder_2_4.ngc" decoder_2_4.ngd
+map -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/Lab11(C).ise" -intstyle ise -p xc3s500e-fg320-5 -cm area -pr b -k 4 -c 100 -o decoder_2_4_map.ncd decoder_2_4.ngd decoder_2_4.pcf
+par -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/Lab11(C).ise" -w -intstyle ise -ol std -t 1 decoder_2_4_map.ncd decoder_2_4.ncd decoder_2_4.pcf
+trce -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/Lab11(C).ise" -intstyle ise -e 3 -s 5 -xml decoder_2_4 decoder_2_4.ncd -o decoder_2_4.twr decoder_2_4.pcf -ucf decoder_2_4.ucf
+bitgen -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(C)/Lab11(C).ise" -intstyle ise -f decoder_2_4.ut decoder_2_4.ncd

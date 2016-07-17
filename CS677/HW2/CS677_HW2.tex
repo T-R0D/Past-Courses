@@ -1,0 +1,467 @@
+%===============================================================================
+%=======     Document Information     ==========================================
+%===============================================================================
+
+\title{CS 677: Assignment 1}
+\author{Terence Henriod}
+\date{\today}
+\documentclass[11pts]{article}
+
+
+%===============================================================================
+%=======     Packages Used     =================================================
+%===============================================================================
+
+%\usepackage{qtree}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[named]{algo}
+\usepackage{verbatim}
+\usepackage[right=1in,top=1in,left=1in,bottom=1in]{geometry}
+
+
+%===============================================================================
+%=======     Document Settings     =============================================
+%===============================================================================
+
+\setlength{\topmargin}{-1cm}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.3in}
+
+
+%%Currently default settings for indentation and symbols.
+%%Try these by uncommenting this block!!!
+%%Redefine the first level symbols
+%\renewcommand{\theenumi}{\fnsymbol{enumi}-}
+%\renewcommand{\labelenumi}{\theenumi}
+%
+%%Redefine the second level symbols
+%\renewcommand{\theenumii}{\alph{enumii})}
+%\renewcommand{\labelenumii}{\theenumii}
+%
+%%Redefine the third level symbols
+%\renewcommand{\theenumiii}{\roman{enumiii}.}
+%\renewcommand{\labelenumiii}{\theenumiii}
+%
+%%Options for redefining levels
+
+
+%\arabic
+%\alph 
+%\Alph
+%\roman
+%\Roman
+%\fnsymbol
+%This ^^^ is all you need to change!!
+
+
+%===============================================================================
+%=======     User Defined Commands     =========================================
+%===============================================================================
+
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+\newcommand{\BigTheta}[1]{\ensuremath{\operatorname{\Theta}\bigl(#1\bigr)}}
+\newcommand{\BigOmega}[1]{\ensuremath{\operatorname{\Omega}\bigl(#1\bigr)}}
+
+
+%===============================================================================
+%=======     The Document     ==================================================
+%===============================================================================
+\begin{document}
+
+\maketitle
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~     Abstract     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{abstract}
+In this assignment, methods for solving recurrences are practiced. Methods
+considered include iteration, substitution, the recursion tree, and the
+"Master's" method.
+\end{abstract}
+\newpage
+
+% begin the problem set
+\begin{enumerate}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~     Number 1     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\item Consider the following algorithm:
+\begin{algorithm}{Enigma}[ A( 0 \dots n-1, 0 \dots n-1 ) ]{
+  \qcomment{// Input: a matrix A[0 \dots n-1, 0 \dots n-1] of integer numbers} }
+\qfor{ $i \qlet 0$ \qto $n - 2$ } \\
+\do \\
+  \qfor{ $j \qlet i + 1$ \qto $n - 1 $ } \\
+  \do \\
+    \qif{ $ A[i, j] \ne A[j, i] $ } \\
+      \qreturn \qfalse \qfi \qrof \qrof \\
+\qreturn \qtrue
+\end{algorithm}
+
+  \begin{enumerate}
+  %-----------------------------------------------------------------------------
+  %-------     A     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item What does this algorithm do? \\
+
+  \textbf{Solution:} This algorithm checks to see if all of the elements
+  below the main diagonal of the matrix are equal to the element that
+  is transposed from the
+  original element in a matrix, i.e. symmetric about, but not including,
+  the diagonal. If the matrix is symmetric in this manner, this is indicated
+  by the returning of true after checking all the elements. If any pair of
+  elements are detected to be asymmetric, the check halts and false is
+  returned. \\
+
+  %-----------------------------------------------------------------------------
+  %-------     B     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item Compute the running time of this algorithm. \\
+
+  \textbf{Solution:} Outline the number of times each primitive operation
+  (primitive math operations, comparisons, etc.) occurs, consider primitive
+  operations to have constant running time. Note that $t_x$ indicates the
+  number of times a statement is executed for a given value of $x$. Then sum
+  the cost multiples to get the running time of the algorithm. \\
+
+  \textit{ Numbers refer to the steps of the algorithm above.}
+    \begin{center}
+    \begin{tabular}{| c || c | c | c |}
+      \hline
+      Step Number & Cost & Times Executed (Best Case)
+          & Times Executed (Worst Case)  \\
+      \hline \hline
+      1.          & $c_1$  & $1$ & $\sum_{i=0}^{n-2}{1} = n - 1$  \\
+      \hline
+      2.          & $c_2$  & $1$ & $\sum_{i=0}^{n-2}{t_i} $ \\
+      \hline
+      3.          & $c_3$  & $1$ & $\sum_{i=0}^{n-2}{t_i - 1}$  \\
+      \hline
+      4.          & $c_4$  & $1$ & $0$  \\
+      \hline
+      5.          & $c_5$  & $0$ & $1$  \\
+      \hline
+    \end{tabular}
+    \end{center}
+
+  In the "best" case scenario, the very first pair of elements A[$i,j$] and
+  A[$j,i$] are not equal, thus the first for-loop check will only execute once,
+  the inner for-loop check will only execute once, and the if statement will
+  only execute once, and of course the return statement will return once.
+  In this case, $t_i = 1$, but this will make little difference overall:
+  \begin{align*}
+    T(n) &= c_1(1) + c_2(1) + c_3(1) + c_4(1) + c_5(0) \\
+         &= c_1 + c_2 + c_3 + c_4 \\
+         &= c_a \text{(an arbitrary constant)} \\
+         &= \BigTheta{1}
+  \end{align*}
+%  In the "best" case, this function is \BigTheta{1}.
+\newpage
+  In the "worst" case, both loops will execute the maximum number of times
+  because each pair of elements tested will be checked before true is
+  finally returned.
+  In this case the value for $t_i$ will be:
+  \begin{align*}
+    t_i &= \sum_{j=i+1}^{n-1}{1} \\
+        &= ((n - 1) - (i + 1)) + 1 \\
+        &= (n - i - 2) + 1 \\
+        &= n - i - 1
+  \end{align*}
+
+  So the resulting time cost is:
+  \begin{align*}
+    T(n) &= c_1(\sum_{i=0}^{n-2}{1}) + c_2(\sum_{i=0}^{n-2}{t_i}) +
+            c_3(\sum_{i=0}^{n-2}{t_i - 1}) + c_4(0) + c_5(1) \\
+         &= c_1(n - 1) + c_2(\sum_{i=0}^{n-2}{n - i - 1}) +
+            c_3(\sum_{i=0}^{n-2}{(n - i - 1) - 1}) + c_5 \\
+         &= c_1(n - 1) +
+            c_2(\sum_{i=0}^{n-2}{n}-\sum_{i=0}^{n-2}{i}-\sum_{i=0}^{n-2}{1}) +
+            c_3(\sum_{i=0}^{n-2}{n - i - 2}) + c_5 \\
+         &= c_1(n - 1) +
+            c_2((n - 1)(n) - (\frac{(n-1)n}{2}) - (n - 1)) +
+            c_3(\sum_{i=0}^{n-2}{n}-\sum_{i=0}^{n-2}{i}-\sum_{i=0}^{n-2}{2}) +
+            c_5 \\
+         &= c_1(n - 1) + c_2((n^{2} - n) - (\frac{n^{2} - n}{2}) - (n - 1)) +
+            c_3((n - 1)(n) - (\frac{(n-1)n}{2}) - 2(n - 1)) + c_5 \\
+         &= c_1(n - 1) + c_2(\frac{n^{2} - n}{2} - (n - 1)) +
+            c_3(\frac{n^{2} - n}{2} - (2n - 2)) + c_5 \\
+         &= c_1(n - 1) + c_2(\frac{n^{2} - 3n + 2}{2}) +
+            c_3(\frac{n^{2} - 5n + 4}{2}) + c_5 \\
+         &= an^{2} + bn + c \text{, for sufficient a, b, c} \\
+         &= \BigTheta{n^{2}}
+  \end{align*}
+  \end{enumerate}
+\newpage
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~     Number 2     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\item Solve the following recurrences using a method of your choice:
+  \begin{enumerate}
+  %-----------------------------------------------------------------------------
+  %-------     A     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item $ T(n) = 4T(\frac{n}{3}) + n^{2} $ \\
+
+  \textbf{Solution:} One method to use is the "Master's Method." To use this
+  method, we must put the expression into the form:
+  $$ T(n) = aT(\frac{n}{b}) + f(n) $$
+  and then, based on which of three cases $T(n)$ and $f(n)$ fall
+  into, we can make our decision:
+  \begin{align*}
+  \text{Case 1: } & \text{if } f(n) = \BigO{n^{\log_{b}{a-\epsilon}}}
+      \text{ for some } \epsilon > 0,
+      \text{ then } T(n) = \BigTheta{n^{\log_{b}{a}}} \\
+  \text{Case 2: } & \text{if } f(n) = \BigTheta{n^{\log_{b}{a}}}
+      \text{ then } T(n) = \BigTheta{n^{\log_{b}{a}} \lg{n}} \\
+  \text{Case 3: } & \text{if } f(n) = \BigOmega{n^{\log_{b}{a+\epsilon}}}
+      \text{ for some } \epsilon > 0, \\
+      & \text{ and if } a*f(\frac{n}{b}) \le c*f(n)
+        \text{ for some } c < 1 \text{ and all sufficiently large n, } \\
+      & \text{ then } T(n) = \BigTheta{f(n)}
+  \end{align*}
+  By applying the Master's method to this recurrence, we have
+  $a=4$, $b=3$, and $f(n) = n^{2}$, giving:
+  \[ T(n) = 4T(\frac{n}{3}) + n^{2} \rightarrow n^{\log_{3}{4}}\approx
+        n^{1.26} \rightarrow f(n) = \BigOmega{n^{\log_{3}{4}}} \]
+  Thus, the recurrence falls under Case 3. Since it falls under case 3,
+  we must ensure that the regularity condition is met:
+  \begin{align*}
+       a*f(\frac{n}{b}) &\le c*f(n) \text{, for all $c > 1$} \\
+    (4)f(\frac{n}{(3)}) &\le c*f(n) \\
+    4*(\frac{n}{3})^{2} &\le c*(n)^{2} \\
+     4(\frac{n^{2}}{9}) &\le cn^{2} \\
+       \frac{4}{9}n^{2} &\le cn^{2}
+           \text{, }\forall c \text{ s.t. }\frac{4}{9} \le c < 1
+  \end{align*}
+  The regularity condition holds, so: $ T(n) = \BigTheta{n^{2}} $
+  \newline
+  \newpage
+  %-----------------------------------------------------------------------------
+  %-------     B     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item $ T(n) = T(n - 1) + 5 $ \\
+
+  \textbf{Solution:} Using the "tree" method, we find out how many times
+  the recurrence will execute before reaching its base case (problem size of
+  1), and count the cost of each recursive execution. \\
+
+  In this problem, there isn't really much of a "tree" since the recurunce
+  only takes one path, but we can still use the method.
+
+  The cost of one execution is $5 + T(n-1)$, which is a cost of $5$ per
+  recurrence execution plus a constant.
+
+  Next we must find how many times $i$ the recurrence will execute. Note
+  that each time the recurrence executes, the problem size decreases by one
+  until the problem size is one. So the total number of times $i$ the
+  recurrence will execute is:
+  \begin{align*}
+    n - 1i &= 1 \\
+    -i     &= 1 - n \\
+    i      &= n - 1 
+  \end{align*}
+
+  Assuming that the running time of $T(1)$/$T(0)$ is constant, putting it
+  all together, we get:
+  \[ T(n) = 5i = 5(n-1) = \BigTheta{n} \]
+
+  \end{enumerate}
+\newpage
+
+
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~     Number 3     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\item Consider the following recursive algorithm for computing the sum
+of the first $n$ cubes:
+\[ S(n) = 1^{3} + 2^{3} + \ldots + n^{3} \]
+\begin{algorithm}{S}[ n ]{
+  \qcomment{// Input: A positive integer $n$}
+  \qcomment{// Output: The sum of the first n cubes} }
+\qif{$n = 1$} \\
+  \qreturn $1$ \\
+\qelse \\
+  \qreturn $ S(n - 1) + (n * n * n) $ \qfi
+\end{algorithm}
+
+  \begin{enumerate}
+  %-----------------------------------------------------------------------------
+  %-------     A     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item Write and solve a recurrence relation for the number of
+  multiplications made by this algorithm and solve it. \\
+
+  \textbf{Solution:} Assuming that multiplications are primitive operations,
+  we have \[ S(n) = S(n - 1) + 4 \] because the "problem size" decreases
+  by one with each recursive call, and the cost incurred by each
+  recursive call (other than the next recursive call) is one comparison,
+  two multiplications and one addition. \\
+
+  %-----------------------------------------------------------------------------
+  %-------     B     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item How does this algorithm compare with the straightforward
+  non-recursive algorithm for computing this function? \\
+
+  \textbf{Solution:} Using the "tree" method, we can determine the running
+  time for the recursive method. It clearly has a cost of 4 per recursive
+  call, except for in the base case where it only has a cost of 1 comparison
+  and the return of 1, i.e. a constant cost per recursice call. Since
+  the "problem size" is only reduced by one with each call, and assuming that
+  it will take $i$ calls to solve the problem, we find that:
+  \begin{align*}
+    n - 1i &= 1 \\
+    -i     &= 1 - n \\
+    i      &= n - 1 
+  \end{align*}
+  $n - 1$ calls are needed to resolve the problem. Thus, the recursive
+  algorithm has running time
+  \[ S(n) = ci = c(n - 1) = \BigTheta{n} \]
+
+  As for the iterative algorithm, it would look like:
+  \begin{algorithm}{S}[ n ]{
+    \qcomment{// Input: A positive integer $n$}
+    \qcomment{// Output: The sum of the first n cubes} }
+  \qfor{$ S \qlet 0, i \qlet 0 \qto n $} \\
+    \qdo{ $ S \qlet S + i^{3} $ }\qrof
+  \qreturn $ S $
+  \end{algorithm}
+
+  Simple cost analysis would indicate that the loop runs $n + 1$ times,
+  and the actions inside the loop run $n$ times, giving
+  \[ S(n) = c_1(n + 1) + c_2(n) + c_3(1) = an + b = \BigTheta{n} 
+      \text{, for sufficient $a$ and $b$ } \]
+
+  Thus the running times are very comparable. In practice, the iterative
+  algorithm would actually run faster due to the lack of overhead
+  associated with recursive calls, but the two algorithms do have the same
+  order of growth.
+
+  \end{enumerate}
+
+\newpage
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~     Number 4     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\item Consider the following recursive algorithm:
+\begin{algorithm}{Min}[ A, l, r ]{
+  \qcomment{// Input: An array A[0 \dots n-1] of integer numbers}
+  \qcomment{// The initial call is \textit{Min( A, 0, n-1)}} }
+\qif{$l = r$} \\
+  \qreturn $A[l]$ \\
+\qelse{$temp1 \qlet Min(A, l, \lfloor \frac{l + r}{2} \rfloor )$} \\
+       $temp2 \qlet Min(A, \lfloor \frac{l + r}{2} \rfloor + 1, r)$ \\
+  \qif{$temp1 \le temp2$} \\
+    \qreturn $temp1$ \\
+  \qelse \\
+    \qreturn $temp2$ \qfi \qfi 
+\end{algorithm}
+
+  \begin{enumerate}
+  %-----------------------------------------------------------------------------
+  %-------     A     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item Write the recurrence relation for the above algorithm. \\
+
+  \textbf{Solution:} One might write the recurrence relation as follows:
+  \[ M(n) = 2M(\frac{n}{2}) + c \]
+  because does make some comparisons and a return with each recursive call,
+  but we can also see that when further recursive calls are made, the problem
+  size is halved by moving one of the indices to the median value of the
+  array given for the current recursive call and passing the smaller array
+  to the next recursive call. Each half of the given array is given to one
+  of the two recursive calls. It should be noted that all calls to the 
+  function/algorithm will generate sub-trees of equal height/size, but it
+  can be reasonably said that the actual cost of the algorithm will be less
+  than or equal to the running time that is found by assuming all recursive
+  calls generate subtrees of precisely the same height/size. It should be
+  noted that these "sub-tree" imbalances occur when integer division of an
+  odd number creates a pair of unequal halves. \\
+
+  %-----------------------------------------------------------------------------
+  %-------     B     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item Solve the recurrence obtained in part (a). \\
+
+  \textbf{Solution:} Using the tree method (appropriately this time), we
+  can solve the running time of this recurrence. The cost associated with
+  each recursive call is a constant plus two recursive calls (with the
+  exception of base cases, which have only a constant cost). Then we
+  need to compute the number of times the algorithm will run. This number,
+  $i$, is found by solving the following equation: 
+  \begin{align*}
+    \frac{n}{2^{i}} &= 1 \\
+    2^{i}           &= n \\
+    i               &= \lg{n}
+  \end{align*}
+  So, to compute the total cost/running time of the algorithm, we have:
+  \[ M(n) = ci = c(\lg{n}) = \BigTheta{\lg{n}} \]
+
+  \end{enumerate}
+\newpage
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~     Number 5     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\item Consider the following algorithm:
+\begin{algorithm}{Mystery}[ n ]{
+  \qcomment{// Input: A nonnegative integer n} }
+$S \qlet 0$ \\
+\qfor{$i \qlet 1$ \qto $n$} \\
+\qdo \\
+  $S \qlet S + i * i$ \qrof \\
+\qreturn $S$
+\end{algorithm}
+
+  \begin{enumerate}
+  %-----------------------------------------------------------------------------
+  %-------     A     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item What does this algorithm compute? \\
+
+  \textbf{Solution:} This algorithm computes the sum of all the squares
+  with roots $1$ to $n$. Every number from $1$ to $n$ is visited (step 2), each
+  of those numbers are squared (step 4), and the resulting square is added
+  to the running total (step 4). \\ %Prove by induction?
+
+  %-----------------------------------------------------------------------------
+  %-------     B     -----------------------------------------------------------
+  %-----------------------------------------------------------------------------
+  \item Compute the running time of this algorithm. \\
+
+  \textbf{Solution:} We can begin a cost anaysis by laying out the cost and
+  frequency of each step in a table:
+    \begin{center}
+    \begin{tabular}{| c || c | c |}
+      \hline
+      Step Number & Cost & Times Executed  \\
+      \hline \hline
+      1.          & $c_1$ & $1$ \\
+      \hline
+      2.          & $c_2$ & $n + 1$ \\
+      \hline
+      3.          & ---   & --- \\
+      \hline
+      4.          & $c_3$ & $n * 3$ \\
+      \hline
+      5.          & $c_4$ & $1$  \\
+      \hline
+    \end{tabular}
+    \end{center}
+  Which, using the values in the table to compute the running time, gives:
+  \begin{align*}
+    T(n) &= c_1(1) + c_2(n + 1) + c_3(3n) + c_4(1) \\
+         &= an + b \\
+         &= \BigTheta{n}
+  \end{align*}
+
+  \end{enumerate
+%\LAST PAGE
+\end{enumerate}
+
+\end{document}
+

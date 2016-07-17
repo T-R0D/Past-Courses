@@ -1,0 +1,43 @@
+void dispInstructions( bool xMode )
+   {
+   // variables
+
+   // paint gray background
+      // function: clearScreen
+      
+      // paint a bigger background if extra credit mode is enabled
+         // operation: if
+
+           //function: clearScreen
+ 
+   // write title line w/ underline
+      // functions: printStringAt
+
+   // write cloak/hole info
+      // functions: printStringAt, setColor, printSpecialCharAt
+
+   // if game is in extra credit mode, display extra credit info
+      // operation: if
+
+        // write sword/monster info
+           // functions: printStringAt, setColor, printSpecialCharAt
+
+        // write spell/wall info
+           // functions: printStringAt, setColor, printSpecialCharAt
+
+   // write treasure info
+      // functions: printStringAt, setColor, printSpecialCharAt
+
+   // write stair info
+      // functions: printStringAt, setColor, printCharAt
+
+   // write condition(s) for ending the game
+      // functions: printStringAt
+
+   // write object of game message
+      // functions: printStringAt
+
+   // hold the system for the user
+      // function: waitForInput
+
+   }

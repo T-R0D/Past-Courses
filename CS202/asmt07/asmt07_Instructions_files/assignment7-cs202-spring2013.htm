@@ -1,0 +1,157 @@
+
+<!-- saved from url=(0240)https://cluster8-files.instructure.com/courses/793006/files/26561880/course%20files/2013_spring_assignment_files/assignment7-cs202-spring2013.txt?download=1&inline=1&sf_verifier=6a5a726664245c608035c89db30e2517&ts=1365559599&user_id=3364816 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">                             ---------------------
+                                    CS  202
+
+                                  ASSIGNMENT 7
+                             ---------------------
+
+-------
+SUMMARY
+-------
+
+Write C++ classes and driver programs to solve the problems listed below.
+
+Compile, debug and run your classes and driver programs.
+
+Write a separate driver program for each class.
+
+For this assignment, you may choose to work alone, or with a partner.
+
+If you work with a partner, each of you must
+
+    1.  make a submission to the drop box
+    2.  turn in the same files to the drop box
+    3.  put the other partner's name (first and last)
+        in the comment area of the drop box
+
+If you work with a partner, each of you will receive the same grade on the
+assignment.
+
+-------
+Turn In
+-------
+
+Turn in two separate .ZIP files.
+
+    For PROBLEM 1, submit to the drop box a .ZIP file that
+    contains your MS Visual Studio project for the list
+    class.
+
+    For PROBLEM 2, submit to the drop box a .ZIP file that
+    contains your MS Visual Studio project for the string
+    class.
+
+Before zipping, you may shrink the size of the directory structure by deleting
+certain subdirectories.  You may delete the IPCH subdirectory.
+
+If you built in Debug mode, you may delete the Debug subdirectories (you will
+find two in the project).
+
+If you built in Release mode, you may delete the Release subdirectories (you
+will find two in the project).
+
+--------------------------------------------------------------------------------
+
+1. Write a list class, for maintaining a list of integers.  Call the class
+   myIntListClass.
+
+   Write at least two constructors for your list class.
+
+   Include these public functions (you may include more if you wish):
+
+       add();
+       delete();
+       find();
+       traverse();
+       get_head();
+       get_tail();
+       size();
+
+   You may implement either a doubly-linked list or a singly-linked list, it's
+   your choice.
+
+   Here are more details.
+
+   ----------
+
+       myIntListClass * add( int i )
+
+       Adds a node with value i to the list.
+       Returns a pointer to that node.
+
+   ----------
+
+       void delete( int i )
+
+       Deletes a node with value i from the list, if such a node exists.
+       If such a node does not exist, nothing is deleted.
+       If more than one such node exists, the first one found is deleted.
+
+   ----------
+
+       myIntListClass * find( int i)
+
+       Finds a node in the list with value i.
+       Returns a pointer to that node.
+       If a node with value i does not exist, returns NULL.
+
+   ----------
+
+       traverse()
+
+       Walks down the list, from head to tail, visiting each node.
+       Displays, to the screen, the contents of each node visited.
+       If the list is empty, displays a message saying so.
+
+   ----------
+
+       traverse_reverse()
+
+       Walks up the list, from tail to head, visiting each node.
+       Displays, to the screen, the contents of each node visited.
+       If the list is empty, displays a message saying so.
+       NOTE:  Only applies if you implement a doubly-linked list.
+
+   ----------
+
+       myIntListClass * get_head()
+
+       Returns a pointer the list head.
+       If the list is empty, returns NULL.
+
+   ----------
+
+       myIntListClass * get_tail()
+
+       Returns a pointer the list tail.
+       If the list is empty, returns NULL.
+       NOTE:  Only applies if you implement a doubly-linked list.
+
+   ----------
+
+       int size();
+
+       Returns the number of nodes in the list.
+       If the list is empty, returns 0.
+
+   ----------
+
+--------------------------------------------------------------------------------
+
+2. Write a simple string class, call the class myStringClass.
+
+   Write at least two constructors for your string class.
+
+   Include these public functions (you may include more if you wish):
+
+       length      ();
+       operator +  ();
+       operator =  ();
+       operator == ();
+       operator != ();
+       operator &lt;&lt; ();
+       operator &gt;&gt; ();
+
+--------------------------------------------------------------------------------
+</pre></body></html>

@@ -1,0 +1,242 @@
+#ifndef __LAB04_CONTROLLER_NXC__
+#define __LAB04_CONTROLLER_NXC__
+
+#include "Team_1_MovementLib.nxc"
+#include "Lab04_sonar.nxc"
+#include "Lab04_rfid.nxc"
+#include "Lab04_color.nxc"
+#include "Lab04_scoreKeeping.nxc"
+
+
+/**
+ * Configuration constants
+ */
+#define GATHER_TIME MIN_1
+
+
+/**
+ * An enumeration of control strategy values.
+ */
+enum Strategies {
+  NO_STRATEGY,
+  PROCEED,
+  HARD_RIGHT,
+  HARD_LEFT,
+  SOFT_RIGHT,
+  SOFT_LEFT,
+  BACK_AWAY,
+  U_TURN,
+  AT_HOME = 777
+};
+
+
+task main();
+task TASK_waitForHome();
+task TASK_controller();
+void gatherFood();
+int determineGatheringStrategy();
+void goHome();
+int determineHomeFindingStrategy();
+void playVictorySong();
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+  Precedes(
+    TASK_controller,
+    TASK_sonarSensor,
+    TASK_colorSensor,
+    TASK_rfidSensor,
+    TASK_scoreKeeping
+  );
+
+  gUseSonar = true;
+  gUseColorSensor = true;
+  gUseRfidSensor = true;
+}
+
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task TASK_controller() {
+  while (!gGoHome) {
+    gatherFood();
+  }
+
+  goHome();
+}
+
+
+/**
+ *  Manages food gathering behavior.
+ */
+void gatherFood() {
+
+  if (gColorReading.colorNum > HOME_BLACK &&
+    gColorReading.colorNum < FEILD_WHITE &&
+    readingIsNotErroneous(gColorReading)) {
+    PlayTone(TONE_G7, MS_500);
+  }
+    
+  if (gRfidReading > 20) {
+    PlayTone(TONE_E7, MS_500);
+  }
+
+  int strategy = determineGatheringStrategy();
+  
+  switch (strategy) {
+    case HARD_RIGHT:
+      stationaryTurn(RIGHT, TURN_90);
+      break;
+    case HARD_LEFT:
+      stationaryTurn(LEFT, TURN_90);
+      break;
+    case U_TURN:
+      stopWheels();
+      moveSetDistance(REVERSE, 2);
+      stationaryTurn(RIGHT, TURN_180);
+      break;
+    case SOFT_RIGHT:
+      setSway(RIGHT);
+      Wait(MS_50);
+      break;
+    case SOFT_LEFT:
+      setSway(LEFT);
+      Wait(MS_50);
+      break;
+    case PROCEED:
+    default:
+      setWheelMotion(FORWARD);
+      break;
+  }
+}
+
+
+/**
+ *  Reads available sensor data to produce the best gathering strategy.
+ */
+int determineGatheringStrategy() {
+  int strategy = NO_STRATEGY;
+  
+  if (gObstacleOnRight || gObstacleOnLeft) {
+    if (!gObstacleOnRight) {
+      strategy = HARD_RIGHT;
+    } else if (!gObstacleOnLeft) {
+      strategy = HARD_LEFT;
+    } else {
+      strategy = U_TURN;
+    }
+  }
+
+  if (strategy != NO_STRATEGY) {
+    return strategy;
+  }
+
+  int randomNumber = Random(5);
+  switch (randomNumber) {
+    case 0:
+    case 3:
+      strategy = SOFT_RIGHT;
+      break;
+    case 1:
+    case 4:
+      strategy = SOFT_LEFT;
+      break;
+    case 2:
+    default:
+      strategy = PROCEED;
+      break;
+  }
+
+  return strategy;
+}
+
+
+/**
+ *  Manages egress behavior.
+ */
+void goHome() {
+  bool atHome = false;
+
+  while (!atHome) {
+    int strategy = determineHomeFindingStrategy();
+
+    switch (strategy) {
+      case AT_HOME:
+        atHome = true;
+        break;
+      case HARD_RIGHT:
+        hardTurn(RIGHT, TURN_45 / 2);
+        break;
+      case HARD_LEFT:
+        hardTurn(LEFT, TURN_45);
+        break;
+      case BACK_AWAY:
+        stopWheels();
+        moveSetDistance(REVERSE, 1);
+        stationaryTurn(RIGHT, TURN_45);
+        break;
+      case PROCEED:
+      default:
+        setWheelMotion(FORWARD);
+        break;
+    }
+  }
+
+  stopWheels();
+  
+  moveSetDistance(FORWARD, 1);
+
+  playVictorySong();
+  
+  StopAllTasks();
+}
+
+
+/**
+ *  Reads available sensor data to produce the best egress strategy.
+ */
+int determineHomeFindingStrategy() {
+  int strategy = PROCEED;
+
+  if (gColorReading.colorNum == HOME_BLACK) {
+    return AT_HOME;
+  }
+
+  if (gObstacleOnRight || gObstacleOnLeft) {
+    if (!gObstacleOnRight) {
+      strategy = HARD_RIGHT;
+    } else if (!gObstacleOnLeft) {
+      strategy = HARD_LEFT;
+    } else {
+      strategy = BACK_AWAY;
+    }
+  }
+  
+  return strategy;
+}
+
+
+/**
+ *  Plays a delightful victory tune.
+ */
+void playVictorySong() {
+  for (int i = 0; i < 5; i++) {
+    PlayTone(TONE_A4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_B4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_C4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_D4, MS_300);
+    Wait(MS_300);
+  }
+}
+
+
+#endif //__LAB04_CONTROLLER_NXC__

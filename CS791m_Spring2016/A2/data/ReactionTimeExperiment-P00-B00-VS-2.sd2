@@ -1,0 +1,2 @@
+Participant,Block,Mode,Number_of_Items,total_time,total_errors,total_match_time,n_match,n_match_errors,total_no-match_time,n_no-match,n_no-match_errors
+P00,B00,VS,2,9175.0,1,4112.0,5,0,5063.0,5,1

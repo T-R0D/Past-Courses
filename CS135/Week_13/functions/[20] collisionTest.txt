@@ -1,0 +1,60 @@
+bool collisionTest( int &cloakTally,  int &swordTally,  int &spellTally, int &treasureTally,
+                    int intendedX, int intendedY, short playMatrix[PLAY_AR_W][PLAY_AR_H], bool &continueGame )
+   {
+   // test new player position, if space, allow player to move
+      // operation: if; function: spaceOccupied 
+
+   // else, program responds accordingly
+      // operations: else, switch
+
+          // case: Hole
+             
+             // test to see if requisite tool is present
+                // operation: if, else
+
+                   // if not enough of tool, return signal to stop movement and end game
+                
+
+                // otherwise, decrement item tally
+
+          // case: Monster
+             
+             // test to see if requisite tool is present
+                // operation: if, else
+
+                   // if not enough of tool, return signal to stop movement and end game
+                
+
+                // otherwise, decrement item tally       
+
+          // case: Wall
+             
+             // test to see if requisite tool is present
+                // operation: if, else
+
+                   // if not enough of tool, return signal to stop movement
+                
+
+                // otherwise, decrement item tally
+
+          // case: cloak
+             
+             // set flag to allow movement, increment item tally
+
+          // case: sword
+             
+             // set flag to allow movement, increment item tally
+
+          // case: spell
+             
+             // set flag to allow movement, increment item tally
+
+          // case: treasure
+             
+             // set flag to allow movement, increment item tally
+
+
+        }
+
+   // return movement decision if it hasn't been already
+   }

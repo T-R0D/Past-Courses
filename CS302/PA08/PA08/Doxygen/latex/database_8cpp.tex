@@ -1,0 +1,60 @@
+\hypertarget{database_8cpp}{\section{database.\-cpp \-File \-Reference}
+\label{database_8cpp}\index{database.\-cpp@{database.\-cpp}}
+}
+
+
+(\-Shell) \-Indexed accounts database program. \-This program should be used with the database file accounts.\-dat. \-Builds a binary search tree index for the account records in the text file accounts.\-dat.  
+
+
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$fstream$>$}\*
+{\ttfamily \#include \char`\"{}\-B\-S\-Tree.\-cpp\char`\"{}}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_account_record}{\-Account\-Record}
+\item 
+struct \hyperlink{struct_index_entry}{\-Index\-Entry}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{database_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{database_8cpp_a5d9687231dabb10b55cd7598e1be6702}{name\-Length} = 11
+\item 
+const long \hyperlink{database_8cpp_a79deb9c018e75d0dbd8d7e19d0415e89}{bytes\-Per\-Record} = 37
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+(\-Shell) \-Indexed accounts database program. \-This program should be used with the database file accounts.\-dat. \-Builds a binary search tree index for the account records in the text file accounts.\-dat. \begin{DoxyAuthor}{\-Author}
+\-Terence \-Henriod
+\end{DoxyAuthor}
+\-Laboratory 11, \-In-\/lab exercise 1
+
+\begin{DoxyVersion}{\-Version}
+\-Original \-Code 1.\-00 (10/29/2013) -\/ \-Modified by \-T. \-Henriod 
+\end{DoxyVersion}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{database_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{database.\-cpp@{database.\-cpp}!main@{main}}
+\index{main@{main}!database.cpp@{database.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf main} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{database_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{database_8cpp_a79deb9c018e75d0dbd8d7e19d0415e89}{\index{database.\-cpp@{database.\-cpp}!bytes\-Per\-Record@{bytes\-Per\-Record}}
+\index{bytes\-Per\-Record@{bytes\-Per\-Record}!database.cpp@{database.\-cpp}}
+\subsubsection[{bytes\-Per\-Record}]{\setlength{\rightskip}{0pt plus 5cm}const long {\bf bytes\-Per\-Record} = 37}}\label{database_8cpp_a79deb9c018e75d0dbd8d7e19d0415e89}
+\hypertarget{database_8cpp_a5d9687231dabb10b55cd7598e1be6702}{\index{database.\-cpp@{database.\-cpp}!name\-Length@{name\-Length}}
+\index{name\-Length@{name\-Length}!database.cpp@{database.\-cpp}}
+\subsubsection[{name\-Length}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf name\-Length} = 11}}\label{database_8cpp_a5d9687231dabb10b55cd7598e1be6702}

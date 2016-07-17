@@ -1,0 +1,86 @@
+\hypertarget{heapsort_8cpp}{\section{heapsort.\-cpp \-File \-Reference}
+\label{heapsort_8cpp}\index{heapsort.\-cpp@{heapsort.\-cpp}}
+}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Data\-Type $>$ }\\void \hyperlink{heapsort_8cpp_ace0c151b0a221e24a1aad0bf9a821c2f}{move\-Down} (\-Data\-Type data\-Items\mbox{[}$\,$\mbox{]}, int root, int size)
+\item 
+{\footnotesize template$<$typename Data\-Type $>$ }\\void \hyperlink{heapsort_8cpp_a1b9d07732ab0ab5fb1c3fabfb8ba4f4b}{heap\-Sort} (\-Data\-Type data\-Items\mbox{[}$\,$\mbox{]}, int size)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{heapsort_8cpp_a1b9d07732ab0ab5fb1c3fabfb8ba4f4b}{\index{heapsort.\-cpp@{heapsort.\-cpp}!heap\-Sort@{heap\-Sort}}
+\index{heap\-Sort@{heap\-Sort}!heapsort.cpp@{heapsort.\-cpp}}
+\subsubsection[{heap\-Sort}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type $>$ void {\bf heap\-Sort} (
+\begin{DoxyParamCaption}
+\item[{\-Data\-Type}]{data\-Items\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{heapsort_8cpp_a1b9d07732ab0ab5fb1c3fabfb8ba4f4b}
+heap\-Sort
+
+\hyperlink{class_heap}{\-Heap} sort routine. \-Sorts the data items in the array in ascending order based on priority.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em data\-Items\mbox{[}$\,$\mbox{]}} & \-The array to be heapified. \\
+\hline
+{\em size} & \-The number of items in the array as a whole.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-The array should contain elements arranged as in a binary search tree.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The items in the array will be heapified.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{heapsort_8cpp_ace0c151b0a221e24a1aad0bf9a821c2f}{\index{heapsort.\-cpp@{heapsort.\-cpp}!move\-Down@{move\-Down}}
+\index{move\-Down@{move\-Down}!heapsort.cpp@{heapsort.\-cpp}}
+\subsubsection[{move\-Down}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Data\-Type $>$ void {\bf move\-Down} (
+\begin{DoxyParamCaption}
+\item[{\-Data\-Type}]{data\-Items\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{root, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{heapsort_8cpp_ace0c151b0a221e24a1aad0bf9a821c2f}
+move\-Down
+
+\-Converts a binary search tree (array implementation) subtree into a heap. \-Assumes any lower subtrees are alrady heaps. \-Restores the binary tree that is rooted at root to a heap by moving data\-Items\mbox{[}root\mbox{]} downward until the tree satisfies the heap property. \-Parameter size is the number of data items in the array.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em data\-Items\mbox{[}$\,$\mbox{]}} & \-The array to be heapified. \\
+\hline
+{\em root} & \-The index of the array indicating the root of a sub-\/tree. \\
+\hline
+{\em size} & \-The number of items in the array as a whole.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-All parameters are valid.
+\item \-Any subtrees are already heaps (assumed, not checked)
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The sub-\/array will be heapified.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 

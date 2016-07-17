@@ -1,0 +1,15 @@
+void matrixToScreen(int matrixX, int matrixY, short playMatrix[PLAY_AR_W][PLAY_AR_H] )
+   {
+   // variables
+
+   // convert matrix x coordinate to screen x coordinate
+
+   // convert matrix y coordinate to screen y coordinate
+
+   // copy the object from the matrix
+
+   // print the object in the matrix to the screen
+      // function: printSpecialCharAt
+
+   // no return - void
+   }

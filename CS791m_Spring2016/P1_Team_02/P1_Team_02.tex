@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{indentfirst}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{graphicx}
+    \DeclareGraphicsExtensions{.png, .jpeg}
+    
+\usepackage{biblatex}
+\addbibresource{P1_Team_02.bib}
+
+\title{CS791 Project 1: Concept \\ A Usability Evaluation of a Public Collaboratie Data Portal}
+\author{\emph{Team 2}: Terence Henriod, Vinh Le \\ \emph{Instructor}: Sergiu Dascalu}
+\date{\today}
+
+\begin{document}
+
+% Title Page Needs:
+% university
+% department
+% course
+% project title
+% project part
+% team number
+% authors
+% instructor
+% date
+
+\clearpage            % necessary for removing page number on first page
+
+\maketitle
+\begin{center}
+\includegraphics[scale=0.4]{unr-logo} \\[0.5cm]
+\textsc{\Large University of Nevada, Reno} \\[0.5cm]
+\textsc{\large Computer Science and Engineering Department} \\
+\end{center}
+
+\thispagestyle{empty} % removes the page number from the title page
+
+% create some whitespace between title stuff and abstract
+\vspace{10mm}
+
+\begin{abstract}
+% \noindent
+The Nevada Research Data Center(NRDC) is the cornerstone of the Cyberinfrastructure portion of the NSF-funded NEXUS project in the state of Nevada. The NRDC currently services approximately three thousand users with the goal of gaining even more, therefore a user study of current features from layout to widgets can be of vital importance in the days to come. This paper entails a two phase study into the features of two NRDC iterations, the current production and the new in-development version. The first phase entails a series of tasks in which subjects of the study undertake for each iteration and provide feedback. The second phase involves compiling the data and experimenting with a potential new third iteration built from the first phase. The scheduling of tasks and feedback will be handled by a Scheduling Application via mobile device to ensure ease of use.
+\end{abstract}
+
+%
+%
+\newpage
+\section{Main Goals}
+The goal of this study is to enhance the current NRDC system in order to appeal to the wider audiences of potential users. Feedback from the study will aid in the development of a third iteration, drawing on the best features from the previous versions and adding highly-requested usability features.
+
+Research indicates that there is a positive correlation between web interface attractiveness and time spent in the environment (use of the interface). Increased time spent in the environment equates to increased search perseverance\cite{PerceivedAttractiveness}, which is vital for continued use of a system like the NRDC.
+
+We intend to evaluate both the current and an in-development version of the NRDC to determine which changes are improvements or not, and what changes users would like to see made. The NRDC  will be evaluated quantitatively by testing the completion time of fundamental information finding tasks; the interfaces will be evaluated qualitatively by means of survey questions and open-ended feedback from participants\cite{information-and-web-services}.
+
+%
+%
+\section{Intended Users \& Key Goals}
+%
+\subsection{Users}
+The intended users of the NRDC are primarily researchers, but perhaps also college students or individuals with a personal interest in the data collected by the NRDC's associated research efforts. For the purposes of this study, university students and faculty will be asked to participate, in accordance with the NRDC target audience. However, any additional participants that can be recruited will be welcomed\cite{dontmakemethink}.
+
+\subsection{Key Goals}
+The specific NRDC-functionality to be addressed is:
+\begin{itemize}
+\item Overall Navigation: Can users find any of the site's functionality and switch between services without more quickly and with less hassle (self-reported) in an improved version of the site?
+
+\item Web Image Archive: Can a user quickly and precisely find images they are looking for?
+
+\item Webcam Streams: Are users able to access a webcam stream from the research site of their choice with minimal confusion and as few ineffective actions as possible?
+
+\item Geo-spatial Data Search: Is a user able to both access summaries and full data sets containing data of their choosing with minimal errors, or at least fewer from one version to the next?
+\end{itemize}
+
+%
+%
+\section{Main Functionality and Characteristics}
+The NRDC is an already functional system in production, and as mentioned previously, its purpose is to provide geographical/climate data sets from research sites located throughout Nevada. The NRDC interface is designed to unite the data from several NSF-sponsored projects and improve accessibility for a user. The NRDC helps its users explore and download that data by offering data aggregation services and providing the data in digestible formats\cite{microservice-nrdc}.
+
+Although the NRDC has proven to be an overall success, reservations regarding ease-of-use have surfaced. In order to address these, a new iteration is in development and nears completion. Instead of focusing solely on functionality, this new iteration will place a higher precedence on usability while maintaining current functionality. A great emphasis was placed on best practices, such as strategic color schemes, page layout, and consistency\cite{usability.gov}\cite{web-ui-principles}. This in turn will ideally create an easier experience for users utilizing the system.
+
+%
+%
+\section{Existing Systems}
+Perhaps one of the best-known free public data repositories is Data.gov. Data.gov presents a clean interface, with low noise-to-content ratio, and features a large number of free data sets. The data sets come from a wide variety of sources within the United States Federal Government. The data is provided in the hopes that researchers and hackers alike will use the data to make the world a better place\cite{data.gov}.
+
+The generality of Data.gov is both one of its great strengths and its weaknesses. While Data.gov needs to be general to maintain a clean interface, it also means that users might need some initiation to the site and an idea of what data is available through Data.gov beforehand if they want are to be successful. Further, Data.gov lacks a themed interface, does not allow for exploration of the data in the site, and data is not collected nor supplied in real time (the way it is with the NRDC).
+
+Another weakness of Data.gov is the layers of indirection that can appear between a user and the actual data. During a brief exploration of the site, a new user could easily find themselves sifting through "articles" about exciting new data sets and following links to external sites.
+
+% Other things to look at:
+% UW's SQLShare: people can spin up their own instance and have all data a SQL query away
+% The Dataverse Network Project – archival repository software promoting data sharing, persistent data citation, and reproducible research 
+
+%
+%
+\section{Characteristics Of The User Study}
+In order to evaluate the NRDC interfaces, a user-study will be performed. In the study, participants will be placed at a typical workstation with access to both versions of the NRDC and given some information-finding tasks that utilize the NRDC; performance will be measured. After the tasks have been completed, participants will be asked to rate their experience qualitatively and give open-ended feedback on the design of the NRDC interface\cite{dontmakemethink}\cite{information-and-web-services}.
+
+The most prominent features of the user-study (i.e. the features required by the tasks given to participants) include:
+\begin{itemize}
+\item Comparative Exposure \\
+Participants will be exposed to both versions of the interface, some to the current version first and the in-development version second, and vice-versa for others. Participants will be given the same tasks for both interfaces to allow for comparison.
+
+\item Timed Tasks with Option to Quit \\
+Users will be given tasks with an example of what they are searching for in the form of a screen shot. Efforts will be timed, but the option to give up  will be present (and this time will be recorded) in order to evaluate search perseverance.
+
+\item Main Display Not Used For Evaluation \\
+To minimize interference to the use of the NRDC site, a smartphone running a custom application will be loaned to participants and used to present tasks and time their completion (or non-completion), as well as collect their qualitative feedback regarding the NRDC. Should issues arise, a paper version will be supplied to participants, and timings will be recorded by a facilitator.
+\end{itemize}
+
+%
+%
+\section{About the Authors}
+%
+\subsection{Terence Henriod}
+
+Terence is a graduate student in the Computer Science and Engineering(CSE) department at the University of Nevada, Reno (UNR). Terence previously graduated with a Bachelor's Degree in Community Health Sciences from UNR and continued his graduate studies in CSE, expecting to finish in May of 2016. Terence has worked in industry for an IoT startup (and maintains a continued interest in IoT), and is excited to begin working at GE Bently in May after graduation.
+
+%
+\subsection{Vinh Le}
+
+Vinh is a graduate student in the Computer Science and Engineering department at the University of Nevada, Reno and graduated previously with a Bachelor's Degree in CSE at the very same university. In regards to professional interests, Vinh favors development in software engineering, web technologies, and human-computer interaction.
+
+%
+%
+\printbibliography
+\end{document}

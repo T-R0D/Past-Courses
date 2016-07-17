@@ -1,0 +1,468 @@
+\hypertarget{class_game_state}{\section{\-Game\-State \-Class \-Reference}
+\label{class_game_state}\index{\-Game\-State@{\-Game\-State}}
+}
+
+
+{\ttfamily \#include $<$\-Game\-State.\-h$>$}
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_game_state_1_1car}{car}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_state_a4fa0a2bf50315c4a35a3890a0adcee5c}{\-Game\-State} ()
+\item 
+\hyperlink{class_game_state_a532c7e274301a8e46472c70c410e5e4e}{\-Game\-State} (const \hyperlink{class_game_state}{\-Game\-State} \&other)
+\item 
+\hyperlink{class_game_state}{\-Game\-State} \& \hyperlink{class_game_state_aca9a92a59a95beb5db0ebdcee1c78342}{operator=} (const \hyperlink{class_game_state}{\-Game\-State} \&other)
+\item 
+\hyperlink{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}{$\sim$\-Game\-State} ()
+\item 
+void \hyperlink{class_game_state_aa19f7b265ddcdf1c490b1c43556d07e1}{clear} ()
+\item 
+bool \hyperlink{class_game_state_a7c8aec517b5a00563ff2a029bffca619}{move} (const int which\-Car, const bool direction)
+\item 
+bool \hyperlink{class_game_state_aa9fe7bdbf5d5c142c9ad99f0a4a21ec1}{place\-Car} (const int which\-Car, int new\-X, int new\-Y)
+\item 
+void \hyperlink{class_game_state_adc41d9c1697bc98330c7d07d3f05f33d}{read\-In} ()
+\item 
+void \hyperlink{class_game_state_ab94405b61d638b5c402e9cbdb4cb8584}{set\-Num\-Cars} (const int new\-Num\-Cars)
+\item 
+bool \hyperlink{class_game_state_a13e26b6d32ebcf1473f91c6a3a13b8a1}{is\-Win} () const 
+\item 
+string \hyperlink{class_game_state_a21b3d9a3d7fdbdb34cedda150a410ed8}{stringify} () const 
+\item 
+void \hyperlink{class_game_state_af26e4775b0309c30714c1aca9e652911}{print\-Board} () const 
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{class_game_state_a976fdcb0a9fc1075c7ff2c4878cf327b}{board} \mbox{[}\hyperlink{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}{k\-Board\-Size}\mbox{]}\mbox{[}\hyperlink{_game_state_8h_a8e38a20d2ea3d74142e3e2af4bf938f4}{k\-Board\-Size}\mbox{]}
+\item 
+\hyperlink{struct_game_state_1_1car}{car} \hyperlink{class_game_state_ac4ada0f89105131dbb7ba05cf9c41d50}{car\-List} \mbox{[}\hyperlink{_game_state_8h_a86fc485a258631289bf2599fb89b25ed}{k\-Max\-Cars}\mbox{]}
+\item 
+int \hyperlink{class_game_state_ac72c2bdf594d29f3dcbb46d1544f392d}{num\-Cars}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Contains the full amount of data required to represent and manipulate a \-Rush \-Hour \-Game state. \-Includes a representation of a game board, the ability to move cars, and overloaded copy constructor and assignment operator for use with the \-S\-T\-L queue. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_game_state_a4fa0a2bf50315c4a35a3890a0adcee5c}{\index{\-Game\-State@{\-Game\-State}!\-Game\-State@{\-Game\-State}}
+\index{\-Game\-State@{\-Game\-State}!GameState@{\-Game\-State}}
+\subsubsection[{\-Game\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Game\-State\-::\-Game\-State} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_a4fa0a2bf50315c4a35a3890a0adcee5c}
+\hyperlink{class_game_state}{\-Game\-State}
+
+\-The default constructor for a game state. \-Constructs and initilizes an empty \hyperlink{class_game_state}{\-Game\-State}.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} object is given an appropriate identifier.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-A new, empty \hyperlink{class_game_state}{\-Game\-State} will be initialized.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_a532c7e274301a8e46472c70c410e5e4e}{\index{\-Game\-State@{\-Game\-State}!\-Game\-State@{\-Game\-State}}
+\index{\-Game\-State@{\-Game\-State}!GameState@{\-Game\-State}}
+\subsubsection[{\-Game\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Game\-State\-::\-Game\-State} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Game\-State} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_a532c7e274301a8e46472c70c410e5e4e}
+\hyperlink{class_game_state}{\-Game\-State}
+
+\-The copy constructor for a game state. \-Constructs and initilizes a \hyperlink{class_game_state}{\-Game\-State} equivalent to the given parameter \hyperlink{class_game_state}{\-Game\-State} other.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & \-A previously created \hyperlink{class_game_state}{\-Game\-State}. \-Will be cloned into $\ast$this.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \hyperlink{class_game_state}{\-Game\-State} other is a valid instantiation of a \hyperlink{class_game_state}{\-Game\-State}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} object is given an appropriate identifier.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will be an equivalent clone of other.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}{\index{\-Game\-State@{\-Game\-State}!$\sim$\-Game\-State@{$\sim$\-Game\-State}}
+\index{$\sim$\-Game\-State@{$\sim$\-Game\-State}!GameState@{\-Game\-State}}
+\subsubsection[{$\sim$\-Game\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Game\-State\-::$\sim$\-Game\-State} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_ae623df5042cd0c17daa3394fdcb397b3}
+$\sim$\-Game\-State
+
+\-The destructor for the \hyperlink{class_game_state}{\-Game\-State} class. \-Currently doesn't do anything.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} object is given an appropriate identifier.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will be completely destructed.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_game_state_aa19f7b265ddcdf1c490b1c43556d07e1}{\index{\-Game\-State@{\-Game\-State}!clear@{clear}}
+\index{clear@{clear}!GameState@{\-Game\-State}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Game\-State\-::clear} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_aa19f7b265ddcdf1c490b1c43556d07e1}
+clear
+
+\-Clears the \hyperlink{class_game_state}{\-Game\-State} so that it is an empty one with no car data.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid \hyperlink{class_game_state}{\-Game\-State} object.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will be a \hyperlink{class_game_state}{\-Game\-State} with no cars and a clean board
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_a13e26b6d32ebcf1473f91c6a3a13b8a1}{\index{\-Game\-State@{\-Game\-State}!is\-Win@{is\-Win}}
+\index{is\-Win@{is\-Win}!GameState@{\-Game\-State}}
+\subsubsection[{is\-Win}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Game\-State\-::is\-Win} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_game_state_a13e26b6d32ebcf1473f91c6a3a13b8a1}
+is\-Win
+
+\-Indicates if the \hyperlink{class_game_state}{\-Game\-State} pertains to a winning one.
+
+\begin{DoxyReturn}{\-Returns}
+is\-Win \-A boolean value indicating if the game has been won, true if it has, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_game_state}{\-Game\-State}.
+\item $\ast$this must actually contain a \hyperlink{class_game_state}{\-Game\-State} in order for this result to produce a meaningful result.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The status of whether or not the game has been won is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_a7c8aec517b5a00563ff2a029bffca619}{\index{\-Game\-State@{\-Game\-State}!move@{move}}
+\index{move@{move}!GameState@{\-Game\-State}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Game\-State\-::move} (
+\begin{DoxyParamCaption}
+\item[{const int}]{which\-Car, }
+\item[{const bool}]{direction}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_a7c8aec517b5a00563ff2a029bffca619}
+move
+
+\-Modifies the game state to simulate the movement of a vehicle.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em which\-Car} & \-Which car in the current list is to be moved. \\
+\hline
+{\em direction} & \-Which direction the car will attempt to move. \-Function should be called using the constants given in \hyperlink{_game_state_8h}{\-Game\-State.\-h}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+movement\-Success \-Indicates the success of the movement so that decisions can be made. \-True for a successful movement, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} is in a valid state with legally placed cars.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-Cars will be in a valid state on the game board and the success of the movement is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-Depending on the car and direction, the next array location the car will occupy is computed.
+\item \-This location is checked to see if it is in the bounds of the array.
+\item \-The location is then checked to see if it is occupied already.
+\item \-If the location is occupied, the car is placed on the new location and the space previously occupied is cleaned up. \-True is returned to indicate a successful movement.
+\item \-If for any reason the move cannot be legally made, the attempt is abandoned and false is returned.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_aca9a92a59a95beb5db0ebdcee1c78342}{\index{\-Game\-State@{\-Game\-State}!operator=@{operator=}}
+\index{operator=@{operator=}!GameState@{\-Game\-State}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Game\-State} \& \-Game\-State\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Game\-State} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_aca9a92a59a95beb5db0ebdcee1c78342}
+operator=
+
+\-The assignment operator for the \hyperlink{class_game_state}{\-Game\-State} class. \-Clones the given parameter \hyperlink{class_game_state}{\-Game\-State} other into $\ast$this.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & \-A valid \hyperlink{class_game_state}{\-Game\-State} to be cloned into $\ast$this.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+$\ast$this
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \hyperlink{class_game_state}{\-Game\-State} other is a valid instantiation of a \hyperlink{class_game_state}{\-Game\-State}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} object is a valid instantiation of a \hyperlink{class_game_state}{\-Game\-State}.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will be an equivalent clone of other.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_aa9fe7bdbf5d5c142c9ad99f0a4a21ec1}{\index{\-Game\-State@{\-Game\-State}!place\-Car@{place\-Car}}
+\index{place\-Car@{place\-Car}!GameState@{\-Game\-State}}
+\subsubsection[{place\-Car}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Game\-State\-::place\-Car} (
+\begin{DoxyParamCaption}
+\item[{const int}]{which\-Car, }
+\item[{int}]{new\-X, }
+\item[{int}]{new\-Y}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_aa9fe7bdbf5d5c142c9ad99f0a4a21ec1}
+place\-Car
+
+\-Updates a car to its new coordinates and marks the car's new location on the board. \-Currently, the boolean return is meaningless, but may become useful in the future.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em which\-Car} & \-Which car in the list is to be placed on the board. \\
+\hline
+{\em new\-X} & \-The new x coordinate of the car. \\
+\hline
+{\em new\-Y} & \-The new y coordinate of the car.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+successful \-Currently meaningless, in the future may be used to indicate a successful/legal placement.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item \-Parameters new\-X and new\-Y are legal locations for the new car to be placed.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The board will be marked with a car corresponding to the given car and the given coordinates.
+\item \-Does not perform any clean-\/up, only placement.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item \-Computes the first location to mark to represent the car. =\# \-Appropriatly computes and marks the remaining locations.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_af26e4775b0309c30714c1aca9e652911}{\index{\-Game\-State@{\-Game\-State}!print\-Board@{print\-Board}}
+\index{print\-Board@{print\-Board}!GameState@{\-Game\-State}}
+\subsubsection[{print\-Board}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Game\-State\-::print\-Board} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_game_state_af26e4775b0309c30714c1aca9e652911}
+print\-Board
+
+\-Displays the board on screen for debugging purposes.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_game_state}{\-Game\-State}.
+\item $\ast$this must actually contain a \hyperlink{class_game_state}{\-Game\-State} in order for this result to produce a meaningful result.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} will remain unchanged.
+\item \-A planar representation of the game board is displayed on screen.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_adc41d9c1697bc98330c7d07d3f05f33d}{\index{\-Game\-State@{\-Game\-State}!read\-In@{read\-In}}
+\index{read\-In@{read\-In}!GameState@{\-Game\-State}}
+\subsubsection[{read\-In}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Game\-State\-::read\-In} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_adc41d9c1697bc98330c7d07d3f05f33d}
+read\-In
+
+\-Reads in data from the standard in to initialize a game state using the given data.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a game state.
+\item $\ast$this is a cleared games state to prevent data corruption, or at least this function will perform the clearing operation.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will contain the data of a valid game state.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is cleared.
+\item \-The car data is read in sequentially.
+\item \-The cars are then placed in the array
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_ab94405b61d638b5c402e9cbdb4cb8584}{\index{\-Game\-State@{\-Game\-State}!set\-Num\-Cars@{set\-Num\-Cars}}
+\index{set\-Num\-Cars@{set\-Num\-Cars}!GameState@{\-Game\-State}}
+\subsubsection[{set\-Num\-Cars}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Game\-State\-::set\-Num\-Cars} (
+\begin{DoxyParamCaption}
+\item[{const int}]{new\-Num\-Cars}
+\end{DoxyParamCaption}
+)}}\label{class_game_state_ab94405b61d638b5c402e9cbdb4cb8584}
+set\-Num\-Cars
+
+\-Used to notify the \hyperlink{class_game_state}{\-Game\-State} how much car data is waiting to be read in.
+
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a game state.
+\item $\ast$this is a cleared games state to prevent data corruption, or at least this function will perform the clearing operation.
+\item \-Parameter new\-Num\-Cars corresponds precisely to a set of data waiting to be read into the \hyperlink{class_game_state}{\-Game\-State} via function read\-In.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this will contain a number pertaining to the number of cars in the next \-Rush \-Hour problem to be solved.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item num\-Cars is assigned the value of the given parameter new\-Num\-Cars.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ \hypertarget{class_game_state_a21b3d9a3d7fdbdb34cedda150a410ed8}{\index{\-Game\-State@{\-Game\-State}!stringify@{stringify}}
+\index{stringify@{stringify}!GameState@{\-Game\-State}}
+\subsubsection[{stringify}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf \-Game\-State\-::stringify} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_game_state_a21b3d9a3d7fdbdb34cedda150a410ed8}
+stringify
+
+\-Converts the current \hyperlink{class_game_state}{\-Game\-State}'s vehicle list to a string for \hyperlink{class_game_state}{\-Game\-State} sharing, searching, and comparison.
+
+\begin{DoxyReturn}{\-Returns}
+game\-String \-A string class object containing the data of the \hyperlink{class_game_state}{\-Game\-State}'s vehicle list inside it.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{\-Precondition}
+
+\begin{DoxyEnumerate}
+\item $\ast$this is a valid instantiation of a \hyperlink{class_game_state}{\-Game\-State}.
+\item $\ast$this must actually contain a \hyperlink{class_game_state}{\-Game\-State} in order for this result to produce a meaningful result.
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+
+\begin{DoxyEnumerate}
+\item \-The \hyperlink{class_game_state}{\-Game\-State} will remain unchanged.
+\item \-A string class object with the data pertaining to the car list is returned.
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_game_state_a976fdcb0a9fc1075c7ff2c4878cf327b}{\index{\-Game\-State@{\-Game\-State}!board@{board}}
+\index{board@{board}!GameState@{\-Game\-State}}
+\subsubsection[{board}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf \-Game\-State\-::board}\mbox{[}{\bf k\-Board\-Size}\mbox{]}\mbox{[}{\bf k\-Board\-Size}\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_game_state_a976fdcb0a9fc1075c7ff2c4878cf327b}
+\hypertarget{class_game_state_ac4ada0f89105131dbb7ba05cf9c41d50}{\index{\-Game\-State@{\-Game\-State}!car\-List@{car\-List}}
+\index{car\-List@{car\-List}!GameState@{\-Game\-State}}
+\subsubsection[{car\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf car} {\bf \-Game\-State\-::car\-List}\mbox{[}{\bf k\-Max\-Cars}\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_game_state_ac4ada0f89105131dbb7ba05cf9c41d50}
+\hypertarget{class_game_state_ac72c2bdf594d29f3dcbb46d1544f392d}{\index{\-Game\-State@{\-Game\-State}!num\-Cars@{num\-Cars}}
+\index{num\-Cars@{num\-Cars}!GameState@{\-Game\-State}}
+\subsubsection[{num\-Cars}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Game\-State\-::num\-Cars}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_game_state_ac72c2bdf594d29f3dcbb46d1544f392d}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_game_state_8h}{\-Game\-State.\-h}\item 
+\hyperlink{_game_state_8cpp}{\-Game\-State.\-cpp}\end{DoxyCompactItemize}

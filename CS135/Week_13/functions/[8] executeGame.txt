@@ -1,0 +1,58 @@
+int executeGame( bool xcMode, int &score, char name[] )
+   {
+   // variables
+   
+      // cursor positions
+          
+      // game board matrix/floor coordinates
+ 
+      // current floor and counters
+
+      // floor flag
+
+   // check for floor files
+      // function: isFileThere
+
+      // display error message and return user to menu if any files are missing
+         // operation: if 
+
+            // display the error message
+               // function: fileMissingMessage
+
+            // end gameplay by returning 0 
+
+   // initialize score board
+      // function: makeScoreBoard
+  
+   // place outer wall
+      // function: makeOutWall 
+
+   // initialize game board
+      // function: clearMatrix
+
+   // begin game loop
+      // operation: while
+      
+        // set/reset floor if necessary
+           // operation: if
+
+              // function: setFloor
+                                                // also resets player position
+
+        // manage the scoreboard
+           // function: keepScore              
+
+        // game object generation
+           // function: genObjects
+
+        // manage player movement 
+           // function: movePlayer
+
+        // loop breaks when condition to continue game becomes false
+
+   // display game over message
+      // function: gameOverMessage
+
+   // return zero
+   return 0;          
+   }

@@ -1,0 +1,121 @@
+#ifndef INFRARED_SENSING_NXC
+#define INFRARED_SENSING_NXC
+
+#define INFRARED_DEBUG 0
+#define INFRARED_MUXED 0
+
+#define INFRARED_SENSOR IN_1
+// if muxed, use pattern: msensor_S1_1
+//                       NXT port ^  ^
+//                          MUX port ^
+
+/**
+ * This struct bundles all data relevant to a infrared sensor reading.
+ */
+typedef struct {
+  byte direction;
+  byte intensity;
+} InfraredVal;
+
+
+typedef struct {
+  InfraredVal value;
+  mutex ownership;
+  bool readingIsValid;
+} InfraredReading;
+
+
+bool gUseInfraredSensing = false;
+InfraredReading gInfraredReading;
+
+task TASK_InfraredSensing();
+void debugOutputInfrared(const InfraredVal& pInfraredVal);
+
+/**
+ *  This method includes logic that must be tailored to the particular
+ *  sensor it is used with. This is to weed out garbage readings.
+ */
+bool infraredReadingIsValid(const InfraredVal& pInfraredVal);
+
+
+/**
+ *  Spawns the thread that publishes color sensor readings.
+ */
+task TASK_InfraredSensing() {
+  #if INFRARED_MUXED
+  #else
+    SetSensorLowspeed(INFRARED_SENSOR);
+  #endif
+  
+  byte zone_1;
+  byte zone_3;
+  byte zone_5;
+  byte zone_7;
+  byte zone_9;
+
+  while (true) {
+    until (gUseInfraredSensing);
+    while (gUseInfraredSensing) {
+      #if INFRARED_MUXED
+      #else
+        bool readSuccess = ReadSensorHTIRSeeker2AC(
+          INFRARED_SENSOR,
+          gInfraredReading.value.direction,
+          zone_1,
+          zone_3,
+          zone_5,
+          zone_7,
+          zone_9
+        );
+        Wait(MS_20);
+
+//        switch(gInfraredReading.value.direction) {
+//          case 1:
+//            gInfraredReading.value.intensity = zone_1;
+//            break;
+//          case 2:
+//            gInfraredReading.value.intensity = zone_1 + zone_3;
+//            break;
+//          case 3:
+//            gInfraredReading.value.intensity = zone_3;
+//            break;
+//          case 4:
+//            gInfraredReading.value.intensity = zone_3 + zone_5;
+//            break;
+//          case 5:
+//            gInfraredReading.value.intensity = zone_5;
+//            break;
+//          case 6:
+//            gInfraredReading.value.intensity = zone_5 + zone_7;
+//            break;
+//         case 7:
+//            gInfraredReading.value.intensity = zone_7;
+//            break;
+//          case 8:
+//            gInfraredReading.value.intensity = zone_7 + zone_9;
+//            break;
+//          case 9:
+//            gInfraredReading.value.intensity = zone_9;
+//            break;
+//          default:
+//            gInfraredReading.value.intensity = 0;
+//            break;
+//        }
+      #endif
+
+      #if INFRARED_DEBUG
+        debugOutputInfrared(gInfraredReading.value);
+      #endif //INFRARED_DEBUG
+    }
+  }
+}
+
+void debugOutputInfrared(const InfraredVal& pInfraredVal) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Infrared Reading:");
+  NumOut(2, LCD_LINE2, pInfraredVal.direction);
+  NumOut(3, LCD_LINE3, pInfraredVal.intensity);
+  Wait(MS_100);
+}
+
+#endif //INFRARED_SENSING_NXC

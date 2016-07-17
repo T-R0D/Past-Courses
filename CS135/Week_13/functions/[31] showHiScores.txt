@@ -1,0 +1,41 @@
+/*
+  Name: showHiScores
+  Process: When selected, the scores will be shone from the file
+  Function Input/Parameters: 
+  Function Output/Parameters: none
+  Function Output/Returned: 
+  Device Input: none
+  Device Output: Top ten hi scores in order
+  Dependencies: readScores, sortScores, writeScoreFile
+  Developer: Nicholas Smith
+*/
+void showHiScores ();
+
+void showHiScores (const string &scoreFile)
+   {
+    // Initilize Variables
+
+    // Open scoreFile
+       // Function .open
+
+    // Set Screen color and clear screen
+       // Funtion: setColor, clearScreen
+
+    // Print title
+       // Function: printStringAt
+   
+    // Print "Names" & "Scores" at certian locations
+       // Function: printStringAt
+
+    // Display the name and scores from the file
+
+    // Wait for player to press a button to move back to previous screen
+       // function: waitForImput
+
+    // Close File
+       // .close
+
+
+
+
+   }

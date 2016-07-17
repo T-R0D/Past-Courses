@@ -1,0 +1,12 @@
+void screenToMatrix( int screenX, int screenY, char object, char playMatrix[PLAY_AR_W][PLAY_AR_H] )
+   {
+   // variables
+
+   // convert screen x coordinate to matrix x coordinate
+
+   // convert screen y coordinate to matrix y coordinate
+
+   // store the object in the matrix
+
+   // no return - void
+   }

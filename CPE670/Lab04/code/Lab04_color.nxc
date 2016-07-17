@@ -1,0 +1,73 @@
+#ifndef __LAB04_COLOR_NXC__
+#define __LAB04_COLOR_NXC__
+
+#define COLOR_SENSOR IN_3
+
+#define HOME_BLACK 0
+#define FEILD_WHITE 13
+
+// we might be able to use RGB values to somehow compensate for poor
+// color number results
+typedef struct {
+  byte colorNum;
+  byte red;
+  byte green;
+  byte blue;
+} ColorVal;
+
+
+mutex gColorMutex;
+bool gUseColorSensor = true;
+ColorVal gColorReading;
+void debugOutputColor(const ColorVal& pColorReading);
+
+bool readingIsNotErroneous(const ColorVal& pNewReading);
+
+
+/**
+ *  This thread continually reads the color sensor value
+ */
+task TASK_colorSensor() {
+  SetSensorLowspeed(COLOR_SENSOR);
+
+  while (gUseColorSensor) {
+    bool readSuccess = ReadSensorHTColor(
+      COLOR_SENSOR,
+      gColorReading.colorNum,
+      gColorReading.red,
+      gColorReading.green,
+      gColorReading.blue
+    );
+    Wait(MS_20 + MS_5);
+
+//    debugOutputColor(gColorReading);
+  }
+}
+
+
+/**
+ *  This method includes logic that must be tailored to the particular
+ *  sensor it is used with. This is to weed out garbage readings.
+ */
+bool readingIsNotErroneous(const ColorVal& pNewReading) {
+  if (pNewReading.colorNum == 4) {
+     if (pNewReading.red >= 5) {
+         return false;
+     }
+  }
+  
+  return true;
+}
+
+
+void debugOutputColor(const ColorVal& pColorReading) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Color Reading:");
+  NumOut(2, LCD_LINE2, pColorReading.colorNum);
+  NumOut(4, LCD_LINE3, pColorReading.red);
+  NumOut(4, LCD_LINE4, pColorReading.green);
+  NumOut(4, LCD_LINE5, pColorReading.blue);
+  Wait(MS_100);
+}
+
+#endif //__LAB04_COLOR_NXC__

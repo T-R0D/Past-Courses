@@ -1,0 +1,80 @@
+int get_Random_Number(int low_Value, int high_Value)
+    {
+    // Initialize Variables
+
+    // Initialize Range Value to Inculde Both High & Low Values
+
+    // Generate Random Value Between Low and High; Start at Low Value
+       // Function: rand()    
+
+    }
+
+ 
+bool percent_Of_Hole( int percentHole )
+    {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Number
+
+
+    }
+
+bool percent_Of_Cloak( int percentCloak )
+    {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Number
+
+    // Return true if generated number is less or equal to than input number
+
+   
+    }
+ 
+bool percent_Of_Treasure( int percentTreasure )
+    {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Number
+
+    // Return true if generated number is less or equal to than input number
+
+    }
+ 
+bool percent_Of_Sword( int percentSword )
+    {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Number
+
+    // Return true if generated number is less or equal to than input number
+
+
+    }
+
+bool percent_Of_Monster( int percentMonster )
+    {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Number
+
+    // Return true if generated number is less or equal to than input number
+
+
+    }
+ 
+bool percent_Of_Spell( int percentSpell )
+    {
+    // Initialize Variables
+
+    // Get random number between 1 and 100
+       // Function get_Random_Numberp
+
+    // Return true if generated number is less or equal to than input number
+
+
+    }

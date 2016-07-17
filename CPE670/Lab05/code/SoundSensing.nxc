@@ -1,0 +1,58 @@
+#ifndef __SOUNDSENSING_NXC__
+#define __SOUNDSENSING_NXC__
+
+#define SOUND_SENSOR msensor_S1_1
+
+typedef struct {
+  int value;
+  mutex ownership;
+  bool readingIsValid;
+} SoundReading;
+
+
+bool gUseSoundSensing = false;
+SoundReading gSoundReading;
+
+task TASK_soundSensing();
+void debugOutputSound(const int pSoundVal);
+
+
+task TASK_soundSensing() {
+//  SetSensorSound(SOUND_SENSOR);
+  SetSensor(S1, SENSOR_LOWSPEED);
+  
+  // Tell the SMUX to start scanning its ports.
+  // this takes 500ms
+  bool success = HTSMUXscanPorts(S1);
+  if (!success) {
+    // Scan failed, handle the error
+    TextOut(0, LCD_LINE1, "Scan failed!");
+    Wait(MS_700);
+  }
+
+  while (true) {
+    gSoundReading.readingIsValid = false;
+
+    until (gUseSoundSensing);
+    while (gUseSoundSensing) {
+      //gSoundReading.value = Sensor(SOUND_SENSOR);
+       gSoundReading.value = smuxSensorLegoSoundNorm(msensor_S1_1);
+      Wait(MS_20);
+      gSoundReading.readingIsValid = true;
+    
+//      debugOutputSound(gSoundReading.value);
+    }
+  }
+}
+
+
+void debugOutputSound(const int pSoundVal) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Sound Reading:");
+  NumOut(4, LCD_LINE2, pSoundVal);
+  NumOut(6, LCD_LINE4, Random(777));
+  Wait(MS_100);
+}
+
+
+#endif //__SOUNDSENSING_NXC__

@@ -1,0 +1,17 @@
+\hypertarget{class_weighed_graph}{\section{\-Weighed\-Graph \-Class \-Reference}
+\label{class_weighed_graph}\index{\-Weighed\-Graph@{\-Weighed\-Graph}}
+}
+
+
+{\ttfamily \#include $<$\-Weighted\-Graph.\-h$>$}
+
+
+
+\subsection{\-Detailed \-Description}
+\-An implementation of a weighted graph that utilizes an adjacency matrix and a path matrix. \-Supports graph coloring, although it does not support any kind of graph coloring algorithms other than checking for a valid color. \-Contains an inner vertex class.
+
+max\-Size \-The current maximum size capacity of the graph (in terms of number of vertices).  size \-The current size (number of vertices) of the graph.  vertex\-List \-An array containing the vertices currently contained in the graph.  adjacency\-Matrix \-A 1-\/\-D array to be mapped as a 2-\/\-D array. \-In this implementation, the 1-\/\-D array is blocked out in terms of the maximum row size, and only the required portions of each block are used. \-The helper functions are designed to accomodate for this non-\/ contiguous array use. \-Each valid entry pertains to an edge weight between two vertices, based on how the particular index was mapped to.  path\-Matrix \-This array is mapped in a similar manner to the adjacency matrix, except it contains shortest path (least cost) data. 
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_weighted_graph_8h}{\-Weighted\-Graph.\-h}\end{DoxyCompactItemize}

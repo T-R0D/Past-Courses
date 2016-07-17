@@ -1,0 +1,7 @@
+xst -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -intstyle ise -ifn problem3_1.xst -ofn problem3_1.syr
+xst -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -intstyle ise -ifn problem3_1.xst -ofn problem3_1.syr
+ngdbuild -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -intstyle ise -dd _ngo -nt timestamp -uc "problem3_1.ucf" -p xc3s500e-fg320-5 "problem3_1.ngc" problem3_1.ngd
+map -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -intstyle ise -p xc3s500e-fg320-5 -cm area -pr b -k 4 -c 100 -o problem3_1_map.ncd problem3_1.ngd problem3_1.pcf
+par -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -w -intstyle ise -ol std -t 1 problem3_1_map.ncd problem3_1.ncd problem3_1.pcf
+trce -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -intstyle ise -e 3 -s 5 -xml problem3_1 problem3_1.ncd -o problem3_1.twr problem3_1.pcf -ucf problem3_1.ucf
+bitgen -ise "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(B)/Lab11(B).ise" -intstyle ise -f problem3_1.ut problem3_1.ncd

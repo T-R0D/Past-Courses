@@ -1,0 +1,44 @@
+T
+X void promptForPlayer
+
+N
+x bool isFileThere
+
+T
+\ void executeGame
+X void makeScoreBoard
+X void keepScore - updates scoreboard at beginning of each loop run
+
+N
+x void makeOutWall - places outside wall
+x void movePlayer
+/ bool spaceOccupied - checks for anything other than a space
+
+T
+\ void setFloor
+X void readFloorData
+
+N
+x void ShowHiScores
+/ void readScores( char names[ NAME_LEN ], int scores[] ) <- part of showHiScores
+x void sortScores( char names[ NAME_LEN ], int scores[], int candidate )
+x void writeScoreFile( char names[ NAME_LEN ], int scores[] ) <- occurs after game over
+
+
+
+X void matrixToScreen( int matrixX, int matrixY, char playMatrix[PLAY_AR_W][PLAY_AR_H] )
+X void screenToMatrix( int screenX, int screenY, char object, char playMatrix[PLAY_AR_W][PLAY_AR_H] )
+
+X void clearMatrix
+
+X void fileMissingMessage
+
+X void gameOverMessage
+
+
+========================================================================================
+
+
+\ void genObjects
+/ generat random x&y
+

@@ -1,0 +1,3 @@
+MO gate2_top_v NULL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/gate2_top.v" vlg3E/gate2__top__v.bin 1386540381
+MO gate2 NULL "C:/Documents and Settings/thenriod/Desktop/FPGA Programming/Lab11(A)/gate2.v" vlg53/gate2.bin 1386539222
+MO glbl NULL C:/Xilinx92i/verilog/src/glbl.v vlg2D/glbl.bin 1386538730

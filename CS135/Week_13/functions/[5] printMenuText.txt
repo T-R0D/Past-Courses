@@ -1,0 +1,45 @@
+void printMenuText()
+   {
+   // set cursor position
+        xLoc = MENU_CURSEX;
+        yLoc = MENU_CURSEY;
+
+   // menu title
+      // function: printStringAt
+      printStringAt( xLoc, yLoc, "MENU SELECTIONS", "LEFT" );
+      xLoc = MENU_CURSEX;
+      yLoc ++;
+      printStringAt( xLoc, yLoc, "---------------", "LEFT" );           
+
+   // option 1
+      // function: printStringAt
+      xLoc = MENU_CURSEX;
+      yLoc += 2;
+      printStringAt( xLoc, yLoc, "1. Set <D>ifficulty", "LEFT" );
+
+   // option 2
+      // function: printStringAt
+      xLoc = MENU_CURSEX;
+      yLoc ++;
+      printStringAt( xLoc, yLoc, "2. <P>lay Game", "LEFT" );
+
+   // option 3
+      // function: printStringAt
+      xLoc = MENU_CURSEX;
+      yLoc ++;
+      printStringAt( xLoc, yLoc, "3. <S>how Top Scores", "LEFT" );
+
+   // option 4
+      // function: printStringAt
+      xLoc = MENU_CURSEX;
+      yLoc ++;
+      printStringAt( xLoc, yLoc, "4. <Q>uit program", "LEFT" );
+
+   // prompt for user input
+      // function: promptForCharAt
+      xLoc = MENU_CURSEX;
+      yLoc += 2;
+      promptForCharAt( xLoc, yLoc, "Enter Selection: " );
+
+   // no return - void
+   }

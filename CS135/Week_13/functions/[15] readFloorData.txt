@@ -1,0 +1,17 @@
+int readFloorData( char fileName[], int Xcoordinates[], int Ycoordinates[] )
+   {
+   // variables
+
+   // clear fstream object, open the floor file
+
+   // use loop to read the floor pattern data into the coordinate arrays
+      // operation: for
+
+         // read an x coordinate, then a y coordinate
+
+   // when the loop breaks, the index will indicate the number of walls read in, store it
+
+   // close the file
+
+   // return the number of walls
+   }

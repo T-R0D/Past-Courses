@@ -1,0 +1,28 @@
+/opt/gridengine/default/spool/compute-3-4/active_jobs/14071.1/pe_hostfile
+compute-3-4
+compute-3-4
+
+Program run #1 (same box) results: 
+Average time to ping-pong a message was: 1.959700E-05 seconds
+Processor 0 says: I am running on host: compute-3-4.local
+Processor 1 says: I am running on host: compute-3-4.local
+
+Program run #2 (same box) results: 
+Average time to ping-pong a message was: 1.839900E-05 seconds
+Processor 0 says: I am running on host: compute-3-4.local
+Processor 1 says: I am running on host: compute-3-4.local
+
+Program run #3 (same box) results: 
+Average time to ping-pong a message was: 2.255200E-05 seconds
+Processor 0 says: I am running on host: compute-3-4.local
+Processor 1 says: I am running on host: compute-3-4.local
+
+Program run #4 (same box) results: 
+Average time to ping-pong a message was: 1.967300E-05 seconds
+Processor 0 says: I am running on host: compute-3-4.local
+Processor 1 says: I am running on host: compute-3-4.local
+
+Program run #5 (same box) results: 
+Average time to ping-pong a message was: 1.676700E-05 seconds
+Processor 0 says: I am running on host: compute-3-4.local
+Processor 1 says: I am running on host: compute-3-4.local

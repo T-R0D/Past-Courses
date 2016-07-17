@@ -1,0 +1,3 @@
+verilog work "gate2.v"
+verilog work "gate2_top.v"
+verilog work "C:/Xilinx92i/verilog/src/glbl.v"

@@ -1,0 +1,25 @@
+void soundOff(int pNumTones);
+
+task main() {
+     int playTime = 3000;
+
+        PlayTone(500, playTime);
+        Wait(playTime + 1000);
+        
+        PlayTone(100, playTime);
+        Wait(playTime + 1000);
+        
+        PlayTone(1000, playTime);
+        Wait(playTime + 1000);
+}
+
+void soundOff(int pNumTones) {
+     int tone = 500;
+     for (int i = 0; i < pNumTones; i++) {
+        PlayTone(tone, 3000);
+        Wait(1000);
+       // tone += 500;
+     }
+}
+
+

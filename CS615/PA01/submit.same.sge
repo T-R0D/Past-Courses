@@ -1,0 +1,17 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe SharedMem 2
+#$ -N PA01_pingpong_same
+#$ -q Common.q
+#$ -o PingPong_same.o
+#$ -e PingPong_same.e
+
+COUNTER=1
+while [ $COUNTER -lt 6 ]
+do
+    echo ""
+    echo "Program run #$COUNTER (same box) results: "
+    /usr/lib64/openmpi/bin/mpirun -np $NSLOTS ./PA01_pingpong
+    COUNTER=$(( $COUNTER + 1 ))
+done
+

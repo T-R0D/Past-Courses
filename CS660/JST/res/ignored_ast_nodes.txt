@@ -1,0 +1,31 @@
+
+// Not sure if we will end up needing these things. They're weird c99 stuff I think
+Compound
+CompoundLiteral
+   
+EllipsisParam
+
+Enum
+Enumerator
+EnumeratorList
+
+
+// we are doing an iteration node so we don't need nodes for each
+DoWhile
+For
+While
+
+// pretty sure this is for structs: struct Pixel p = {.r = 5, .g = 6, .b = 7};
+//
+// It's a c99 thing that allows you to partially initialize structs, arrays, etc. 
+// I don't think we will need this notation even when we add in structs. 
+NamedInitializer
+
+
+Struct
+StructReference
+Typename
+Union
+
+// no preprocessor stuff
+Pragma

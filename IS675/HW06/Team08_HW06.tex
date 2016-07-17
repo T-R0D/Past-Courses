@@ -1,0 +1,369 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+	\DeclareGraphicsExtensions{.png, .jpeg}
+\usepackage{caption}
+\usepackage{csvsimple}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\title{Database Design and Implementation \\ HW 06}
+\author{\underline{Team 08}\\Henriod, Terence\\Santoyo, Jorge\\Singh, Raja}
+\date{\today}
+
+\begin{document}
+
+\clearpage
+\maketitle
+\thispagestyle{empty} % removes the page number from the title page
+
+\begin{abstract}
+Using SQL with More Complex Queries.
+\end{abstract}
+
+\newpage
+\section{Assignment Background}
+The objectives for this assignment are to:
+\begin{enumerate}
+  \item Learn how to write simple, 1 table SQL queries;
+  \item Become more familiar with the CutGlass job costing database; and
+  \item Learn about each component of the SQL SELECT statement.
+\end{enumerate}
+Each of the questions in this assignment requires you to create one or more SELECT statements to satisfy the request. There are 10 questions for this assignment. Creating an accurate result table is your primary goal for the questions. An accurate result table includes conversion of fields to the appropriate data type (for example, converting a calculated or aggregated field to a MONEY data type when necessary) and sorting the result table.
+
+Division of Labor\\
+Raja: exercises where (i \% 3) == 1\\
+Jorge: exercises where (i \% 3) == 2\\
+Terence: exercises where (i \% 3) == 0\\
+
+\newpage
+\section{SQL Query Problems}
+\begin{enumerate}
+  %%%%%%%%%%%%%
+  % Exercise 01
+  %%%%%%%%%%%%%
+  \item Summarize the actual hours worked and labor cost (hours worked * hourly pay rate) by JobID and TaskID for all rows in the JobTask table. Remember that an employee's pay rate changes by date, so it is necessary to locate the correct pay rate by date as you did for question #15 for HW#5. If you were not able to get question #15 on HW#5 to work, I recommend doing that before starting on this question. Compare the actual labor hours to the estimated labor hours, and the actual labor costs to the estimated labor costs.\\
+
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 02
+  %%%%%%%%%%%%%
+  \newpage
+  \item Summarize the actual material costs by jobID and task ID and compare them to the estimated material cost for each row in the JobTask table. This is very similar to what you did for question #11 in HW#5, so this should be fairly easy if you got question #11 to work.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 03
+  %%%%%%%%%%%%%
+  \newpage
+  \item Now it’s time to put them together. Compare actual to estimated costs for each row in the JobTask table. The PercentVariance is the percentage variance between the TotalEstCost and the TotalActualCost. The general calculation is: $((TotalEstCost – TotalActualCost)/TotalEstCost) * 100$.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+  
+  %%%%%%%%%%%%%
+  % Exercise 04
+  %%%%%%%%%%%%%
+  \newpage
+  \item Summarize the information created in question #3 by job. The result table should have one row per job in the Job table. Add additional data from the Job and Client tables to provide more information about each job in the result table. Hint: \textbf{\underline{Calculate}} the PercentVariance – you cannot sum that field.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 05
+  %%%%%%%%%%%%%
+  \newpage
+  \item Which job that is \underline{finished had} actual total costs that were closest to the estimated total costs? (PercentVariance closest to zero) Make sure that the query could select the correct job from any data set – the query should not just work with our test data set.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 06
+  %%%%%%%%%%%%%
+  \newpage
+  \item Which job that is \underline{finished} had the largest percentage positive labor hours variance? In other words, which finished job was able to be completed with the least number of labor hours, when compared to the estimated labor hours? The percentage labor hours variance is calculated as the LaborHoursVariance/EstHours * 100. Add in the name of the employee who served as the manager for the job.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 07
+  %%%%%%%%%%%%%
+  \newpage
+  \item What is the average amount of time (labor hours) spent on a completed job task per square foot, as compared to the estimated amount of time that should be spent on a task per square foot?
+
+  Use the data in the JobTask table to calculate the average amount of EstHours/Squarefeet, but use the data in the TimeSheet table to calculate the average amount of time that was actually worked on a completed task. I recommend creating separate views for the estimated hours per square feet and the actual hours per square feet. The estimate view is a little easier to create because it doesn’t require a join. Include all rows in the JobTask table to get the average EstHours/Squarefeet for a task. To get the average \underline{actual} hours per square feet requires that you join the TimeSheet table and the JobTask table to be able to use the square feet in the JobTask table. Do not include data for incompleted tasks when calculating the ActualHours/SquareFeet. Remember that you have to SUM the HoursWorked in the TimeSheet table by JobID and TaskID to get the Actual HoursWorked from the TimeSheet table. I rounded the final results to 6 digits after the decimal point. The result table is at the top of the next page. There is one row in the result table for each row in the Task table. Sort the result table by TaskID.
+
+  The ComparisonMessage should be generated as shown on the result table above; if both the EstimatedHours and ActualHours are \texttt{NULL}, then put the message ``Null Estimate" in the ComparisonMessage column. Remember that a \texttt{CASE} statement in the \texttt{SELECT} list executes sequentially, so whatever \texttt{WHEN} statement is placed first will be executed first. The \texttt{CASE} statement stops executing as soon as a \texttt{WHEN} condition is true.
+
+  Potential problem: EstHours and Squarefeet are integers and must be converted to decimal data types before they can be used in a calculation that could generate a decimal result.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 08
+  %%%%%%%%%%%%%
+  \newpage
+  \item Use the result table generated for question #7 to help you answer this question. The goal of this query is to identify which task has the largest negative difference between the EstimatedHoursPerSqFt and ActualHoursPerSqFt (which estimate is the worst because the actual is larger).\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 09
+  %%%%%%%%%%%%%
+  \newpage
+  \item The objective of this query is similar to that for question #7, except this time we are going to look at labor costs rather than labor hours. What is the average estimated labor cost per square foot as compared to the actual labor cost per square foot for each task? I recommend looking back at question #1, where you probably created a view to help you calculate actual labor costs for a task on a job. That view will help you with this question. Do \textbf{\underline{not}} include data for incompleted tasks when calculating the actual labor cost/SquareFeet; do include data for incompleted tasks when calculating the estimated labor cost/squarefeet.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+
+  %%%%%%%%%%%%%
+  % Exercise 10
+  %%%%%%%%%%%%%
+  \newpage
+  \item Which clients did not have any jobs with a DateAccepted last year? Which materials were not assigned (DateAssigned) to any job tasks last year? Combine the clients and materials into a single result table (hint: Use the \texttt{UNION} statement). Make sure that you use the \texttt{GETDATE()} function to determine the correct year.\\
+  \textit{Solution}:
+  \begin{verbatim}
+
+  \end{verbatim}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01_query}
+  %   \caption{The solution to Exercise 1.}
+  %   \label{fig:HW06_Exercise01}
+  % \end{figure}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01a_query}
+  %     \caption{Part (a) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01a}
+  %   \end{minipage}%
+  %   \begin{minipage}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[width=.8\linewidth]{query_result_pics/HW06_Exercise01b_query}
+  %     \caption{Part (b) of the solution to Exercise 01}
+  %     \label{fig:HW06_Exercise01b}
+  %   \end{minipage}
+  % \end{figure}
+\end{enumerate}
+%
+\end{document}

@@ -1,0 +1,46 @@
+Terence Henriod
+CS 202
+asmt03 
+Psuedo-code outline
+
+1. Check and process command line arguments
+     - Check both number and format of arguments
+     - Store values in a way that is meaningful to the
+       program  
+     - Display help or exit program as necessary
+
+2. Check file dimensions, notify user through help screen
+   and exit if dimensions are invalid
+     - Open file
+     - No line may contain more than 256 characters
+     - File must be less than 1000 lines long
+     - Close file
+     - Save the file length for later dynamic memory
+       allocation and file reading parameters
+
+3. Get original counts of ASCII characters
+     - Open text/IO file
+     - Read through file, tracking counts in a dynamically
+       allocated array
+     - Close text/IO file
+     - Create original summary file
+         - Open summary file
+         - Output counts of interest
+         - Close summary file
+
+4. Perform character replacement
+     - Open text/IO file in I/O mode
+     - Iterate through the file storing the contents of 
+       the file to dynamically allocated memory buffers
+     - While reading in characters, make replacements as
+       necessary
+     - Track character counts, again with a dynamically
+       allocated array (not the same one as in step 3)
+     - Now that text/IO file has been completely read,
+       switch to output mode and append the new file
+       contents (with replacements) to the text/IO file
+     - Close the text/IO file
+     - Append new summary to the old one
+         - Open summary file in append mode
+         - Append counts of interest
+         - Close summary file

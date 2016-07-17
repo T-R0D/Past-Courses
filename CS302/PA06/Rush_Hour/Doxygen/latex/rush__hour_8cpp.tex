@@ -1,0 +1,343 @@
+\hypertarget{rush__hour_8cpp}{\section{C\-:/\-Users/\-Terence/\-Google Drive/\-C\-S 302/\-P\-A06/\-Rush\-\_\-\-Hour/rush\-\_\-hour.cpp File Reference}
+\label{rush__hour_8cpp}\index{C\-:/\-Users/\-Terence/\-Google Drive/\-C\-S 302/\-P\-A06/\-Rush\-\_\-\-Hour/rush\-\_\-hour.\-cpp@{C\-:/\-Users/\-Terence/\-Google Drive/\-C\-S 302/\-P\-A06/\-Rush\-\_\-\-Hour/rush\-\_\-hour.\-cpp}}
+}
+
+
+This program will solve a given rush hour puzzle using a bounded \char`\"{}try
+every possible strategy\char`\"{} method via recursion. The reult that is found is the least amount of necessary moves.  
+
+
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$cstring$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structvehicle}{vehicle}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{rush__hour_8cpp_ab5dc3ad9e612bd63cf7387af365bba97}{setup\-Board} (int board\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}, \hyperlink{structvehicle}{vehicle} $\ast$\&car\-List)
+\item 
+int \hyperlink{rush__hour_8cpp_ab85508ea5f8d62067caf7c78a081d369}{solve\-Jam} (int board\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}, \hyperlink{structvehicle}{vehicle} $\ast$\&car\-List, int num\-Cars, int \&current\-Bound, int moves\-Done)
+\item 
+bool \hyperlink{rush__hour_8cpp_ad9679c380365c5b9fd3a2d5a022fe3bc}{check\-For\-End} (int board\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}, int moves\-Done, int current\-Bound, \hyperlink{structvehicle}{vehicle} \&car)
+\item 
+bool \hyperlink{rush__hour_8cpp_a9d91cb9035b6157c2876ada10432b33d}{move\-Vehicle} (int board\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}, \hyperlink{structvehicle}{vehicle} \&car, bool direction)
+\item 
+bool \hyperlink{rush__hour_8cpp_af61008db6bf911f6aa3f12610df77ace}{place\-Car} (int board\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}\mbox{[}\hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}\mbox{]}, \hyperlink{structvehicle}{vehicle} \&car, int new\-X, int new\-Y)
+\item 
+int \hyperlink{rush__hour_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E} = 6
+\item 
+const int \hyperlink{rush__hour_8cpp_a76855d253210dcc17a3ae0afa8da4130}{C\-A\-R\-\_\-\-L\-E\-N} = 2
+\item 
+const int \hyperlink{rush__hour_8cpp_a83ddaaa8bdb7de4ff01d99981c8b9695}{T\-R\-U\-C\-K\-\_\-\-L\-E\-N} = 3
+\item 
+const char \hyperlink{rush__hour_8cpp_ac8d9641350517e681dd22fb741087405}{H\-O\-R\-I\-Z\-O\-N\-T\-A\-L} = 'H'
+\item 
+const char \hyperlink{rush__hour_8cpp_a31238ca1e5d6db6f91023277553d244f}{V\-E\-R\-T\-I\-C\-A\-L} = 'V'
+\item 
+const int \hyperlink{rush__hour_8cpp_a8912e8d678463ad11bd179e269440016}{M\-A\-X\-\_\-\-M\-O\-V\-E\-S} = 10
+\item 
+const bool \hyperlink{rush__hour_8cpp_ad57a56e3ed15b460e7af97dea8f38fe2}{F\-O\-R\-W\-A\-R\-D} = true
+\item 
+const bool \hyperlink{rush__hour_8cpp_ac0d8ed2ccd9c411fb1b32690ca09fb64}{B\-A\-C\-K\-W\-A\-R\-D} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This program will solve a given rush hour puzzle using a bounded \char`\"{}try
+every possible strategy\char`\"{} method via recursion. The reult that is found is the least amount of necessary moves. \begin{DoxyAuthor}{Author}
+Terence Henriod
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+Original Code 1.\-00 (10/8/2013) -\/ Terence Henriod 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{rush__hour_8cpp_ad9679c380365c5b9fd3a2d5a022fe3bc}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!check\-For\-End@{check\-For\-End}}
+\index{check\-For\-End@{check\-For\-End}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{check\-For\-End}]{\setlength{\rightskip}{0pt plus 5cm}bool check\-For\-End (
+\begin{DoxyParamCaption}
+\item[{int}]{board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}, }
+\item[{int}]{moves\-Done, }
+\item[{int}]{current\-Bound, }
+\item[{{\bf vehicle} \&}]{car}
+\end{DoxyParamCaption}
+)}}\label{rush__hour_8cpp_ad9679c380365c5b9fd3a2d5a022fe3bc}
+This function checks for the end of a strategy path either by comparing the number of moves done in the current strategy, or by checking to see if the 0 car has escaped the jam
+
+
+\begin{DoxyParams}{Parameters}
+{\em board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}} & a 2-\/\-D array that will represent the game states as the puzzle is solved \\
+\hline
+{\em car\-List} & a pointer used to allocate/reference memory for an array that will hold the vehicle structs that have the vehicle information for the puzzle \\
+\hline
+{\em current\-Bound} & the highest number of moves any strategy we will test may use. decreases as new, more efficient, but successful strategies are found. \\
+\hline
+{\em moves\-Done} & the count of moves currently executed for a given strategy path \\
+\hline
+{\em car} & the 0 car is passed so that the last space of the row car 0 occupies contains car 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+end\-Found indicates the success of finding the end of the strategy path
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} is initialized to an appropriate puzzle state
+\item int moves\-Done is $>$= 0
+\item int current\-Bound is $>$= moves\-Done
+\item vehicle car is a valid car
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item int current\-Bound will be $>$= moves\-Done. it will not be updated, this occurs outside this function if necessary
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+\begin{DoxyEnumerate}
+\item first compares moves\-Done to current\-Bound, if moves\-Done is $>$= current\-Bound the end has been found
+\item if car 0 made it to the rightmost column (it has escaped), the end has been found 
+\end{DoxyEnumerate}\hypertarget{rush__hour_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!main@{main}}
+\index{main@{main}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{rush__hour_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+\hypertarget{rush__hour_8cpp_a9d91cb9035b6157c2876ada10432b33d}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!move\-Vehicle@{move\-Vehicle}}
+\index{move\-Vehicle@{move\-Vehicle}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{move\-Vehicle}]{\setlength{\rightskip}{0pt plus 5cm}bool move\-Vehicle (
+\begin{DoxyParamCaption}
+\item[{int}]{board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}, }
+\item[{{\bf vehicle} \&}]{car, }
+\item[{bool}]{direction}
+\end{DoxyParamCaption}
+)}}\label{rush__hour_8cpp_a9d91cb9035b6157c2876ada10432b33d}
+This function moves a vehicle in the given direction (if possible) and updates the vehicle's position on the game board.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}} & a 2-\/\-D array that will represent the game states as the puzzle is solved \\
+\hline
+{\em car} & the car that is to be moved \\
+\hline
+{\em direction} & a flag to indicate which direction the car will be moved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+move\-Success indicates whether or not the attempted move was completed
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} is initialized to an appropriate puzzle state
+\item vehicle$\ast$ car is a valid car
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} will contain the placement data of all vehicles, with -\/1 representing unoccupied space (if there is a puzzle to be solved), including the just moved car
+\item if the vehicle was not successfully moved, the board and car's states remain unchanged  
+\item first it is decided which direction the car is being moved
+\item then it is determined if the space the vehicle would occupy will be valid
+\item next a check to see that the intended position is clear to be moved into
+\item if all of the above checks pass, the vehicle is then placed on the board in its new location, and any previous/no longer valid spaces are cleared 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\hypertarget{rush__hour_8cpp_af61008db6bf911f6aa3f12610df77ace}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!place\-Car@{place\-Car}}
+\index{place\-Car@{place\-Car}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{place\-Car}]{\setlength{\rightskip}{0pt plus 5cm}bool place\-Car (
+\begin{DoxyParamCaption}
+\item[{int}]{board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}, }
+\item[{{\bf vehicle} \&}]{car, }
+\item[{int}]{new\-X, }
+\item[{int}]{new\-Y}
+\end{DoxyParamCaption}
+)}}\label{rush__hour_8cpp_af61008db6bf911f6aa3f12610df77ace}
+Places a car on the given board, regardless of what may be occupying the spaces.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}} & a 2-\/\-D array that will represent the game states as the puzzle is solved \\
+\hline
+{\em car} & the car that is to be moved \\
+\hline
+{\em new\-X} & the new x coordinate for the \char`\"{}head\char`\"{} of the car \char`\"{}vector\char`\"{} \\
+\hline
+{\em new\-Y} & the new y coordinate for the \char`\"{}head\char`\"{} of the car \char`\"{}vector\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+move\-Success indicates whether or not the attempted placement was completed (in this version, placement is always successful)
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} is initialized to an appropriate puzzle state
+\item vehicle$\ast$ car is a valid/initialized car
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} will contain the placement data of all vehicles, with -\/1 representing unoccupied space (if there is a puzzle to be solved), including the recently placed car
+\item the vehicle will be placed wherever the function is told to place it (B\-E\-W\-A\-R\-E seg-\/faults!)  
+\item the car's \char`\"{}head\char`\"{} is updated to it's new coordinates
+\item placement on the board begins with the head coordinates
+\item then the tail is placed based on the length of the car into the following spaces on the board (to the right for horizontal, down for vertical) 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\hypertarget{rush__hour_8cpp_ab5dc3ad9e612bd63cf7387af365bba97}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!setup\-Board@{setup\-Board}}
+\index{setup\-Board@{setup\-Board}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{setup\-Board}]{\setlength{\rightskip}{0pt plus 5cm}int setup\-Board (
+\begin{DoxyParamCaption}
+\item[{int}]{board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}, }
+\item[{{\bf vehicle} $\ast$\&}]{car\-List}
+\end{DoxyParamCaption}
+)}}\label{rush__hour_8cpp_ab5dc3ad9e612bd63cf7387af365bba97}
+This function will either return the signal to stop processing rush hour puzzles or it wll set up the board in prepaation for the next puzzle and return the number of cars that will be in the puzzle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}} & a 2-\/\-D array that will represent the game states as the puzzle is solved \\
+\hline
+{\em car\-List} & a pointer used to allocate/reference memory for an array that will hold the vehicle structs that have the vehicle information for the puzzle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+num\-Cars the number of cars the puzzle will have
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item vehicle$\ast$ car\-List is a N\-U\-L\-L pointer to an empty list
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} may be in any state 
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item vehicle$\ast$ car\-List will be allocated and will contain all the cars necessary for soving the puzzle (if there is a puzzle to be soved)
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} will contain the placement data of all vehicles, with -\/1 representing unoccupied space (if there is a puzzle to be solved)  
+\item the number of cars for the next puzzle to be solved is read in
+\item if there are no cars (no puzzle), this number is returned
+\item if there are cars, the board is cleared (all spaces = -\/1) and car placement occurs
+\item each car's data is read in, stored in car\-List, an it is represented on the board 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+\hypertarget{rush__hour_8cpp_ab85508ea5f8d62067caf7c78a081d369}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!solve\-Jam@{solve\-Jam}}
+\index{solve\-Jam@{solve\-Jam}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{solve\-Jam}]{\setlength{\rightskip}{0pt plus 5cm}int solve\-Jam (
+\begin{DoxyParamCaption}
+\item[{int}]{board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}, }
+\item[{{\bf vehicle} $\ast$\&}]{car\-List, }
+\item[{int}]{num\-Cars, }
+\item[{int \&}]{current\-Bound, }
+\item[{int}]{moves\-Done}
+\end{DoxyParamCaption}
+)}}\label{rush__hour_8cpp_ab85508ea5f8d62067caf7c78a081d369}
+This function will solve a rush hour puzzle using a semi-\/exhaustive \char`\"{}try all
+possibilities\char`\"{} approach that is bounded by the lowest number of moves from a previously successful strategy or predetermined upper limit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em board\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}\-B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}} & a 2-\/\-D array that will represent the game states as the puzzle is solved \\
+\hline
+{\em car\-List} & a pointer used to allocate/reference memory for an array that will hold the vehicle structs that have the vehicle information for the puzzle \\
+\hline
+{\em num\-Cars} & the number of cars the puzzle will have \\
+\hline
+{\em current\-Bound} & the highest number of moves any strategy we will test may use. decreases as new, more efficient, but successful strategies are found. \\
+\hline
+{\em moves\-Done} & the count of moves currently executed for a given strategy path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+current\-Bound the highest number of moves any strategy we will test may use. decreases as new, more efficient, but successful strategies are found.
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+
+
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyEnumerate}
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} is initialized to an appropriate puzzle state
+\item vehicle$\ast$ car\-List is a N\-U\-L\-L pointer to a suitable list to fit the current puzzle
+\item int num\-Cars matches to the size of car\-List
+\item int moves\-Done is $>$= 0
+\end{DoxyEnumerate}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyEnumerate}
+\item int current\-Bound will represent at least the best number of moves required to solve the current strategy path and at most the
+\item int board\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]}\mbox{[}B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E\mbox{]} will contain the placement data of all vehicles, with -\/1 representing unoccupied space (if there is a puzzle to be solved)  
+\item first checks for an end of a strategy path either to see if the bound is reached or if the game has been won. if the game has been won, if the score is a new low score, the bound is updated
+\item if the end of the strategy path has not been reached, each car is moved
+\item first the car is moved forward and the function is called again to solve this new game state. after the reursive calls have resolved, the move is undone the..
+\item next the car is moved backward and the function is called again to solve this new game state. after the reursive calls have resolved, the move is undone.
+\item the lowest score is returned 
+\end{DoxyEnumerate}
+\end{DoxyPostcond}
+
+
+\subsection{Variable Documentation}
+\hypertarget{rush__hour_8cpp_ac0d8ed2ccd9c411fb1b32690ca09fb64}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!B\-A\-C\-K\-W\-A\-R\-D@{B\-A\-C\-K\-W\-A\-R\-D}}
+\index{B\-A\-C\-K\-W\-A\-R\-D@{B\-A\-C\-K\-W\-A\-R\-D}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{B\-A\-C\-K\-W\-A\-R\-D}]{\setlength{\rightskip}{0pt plus 5cm}const bool B\-A\-C\-K\-W\-A\-R\-D = false}}\label{rush__hour_8cpp_ac0d8ed2ccd9c411fb1b32690ca09fb64}
+\hypertarget{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E@{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}}
+\index{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E@{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const int B\-O\-A\-R\-D\-\_\-\-S\-I\-Z\-E = 6}}\label{rush__hour_8cpp_aa7a2b8ea2c784a4ad8b58a3262bb4f07}
+\hypertarget{rush__hour_8cpp_a76855d253210dcc17a3ae0afa8da4130}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!C\-A\-R\-\_\-\-L\-E\-N@{C\-A\-R\-\_\-\-L\-E\-N}}
+\index{C\-A\-R\-\_\-\-L\-E\-N@{C\-A\-R\-\_\-\-L\-E\-N}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{C\-A\-R\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}const int C\-A\-R\-\_\-\-L\-E\-N = 2}}\label{rush__hour_8cpp_a76855d253210dcc17a3ae0afa8da4130}
+\hypertarget{rush__hour_8cpp_ad57a56e3ed15b460e7af97dea8f38fe2}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!F\-O\-R\-W\-A\-R\-D@{F\-O\-R\-W\-A\-R\-D}}
+\index{F\-O\-R\-W\-A\-R\-D@{F\-O\-R\-W\-A\-R\-D}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{F\-O\-R\-W\-A\-R\-D}]{\setlength{\rightskip}{0pt plus 5cm}const bool F\-O\-R\-W\-A\-R\-D = true}}\label{rush__hour_8cpp_ad57a56e3ed15b460e7af97dea8f38fe2}
+\hypertarget{rush__hour_8cpp_ac8d9641350517e681dd22fb741087405}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!H\-O\-R\-I\-Z\-O\-N\-T\-A\-L@{H\-O\-R\-I\-Z\-O\-N\-T\-A\-L}}
+\index{H\-O\-R\-I\-Z\-O\-N\-T\-A\-L@{H\-O\-R\-I\-Z\-O\-N\-T\-A\-L}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{H\-O\-R\-I\-Z\-O\-N\-T\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}const char H\-O\-R\-I\-Z\-O\-N\-T\-A\-L = 'H'}}\label{rush__hour_8cpp_ac8d9641350517e681dd22fb741087405}
+\hypertarget{rush__hour_8cpp_a8912e8d678463ad11bd179e269440016}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!M\-A\-X\-\_\-\-M\-O\-V\-E\-S@{M\-A\-X\-\_\-\-M\-O\-V\-E\-S}}
+\index{M\-A\-X\-\_\-\-M\-O\-V\-E\-S@{M\-A\-X\-\_\-\-M\-O\-V\-E\-S}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{M\-A\-X\-\_\-\-M\-O\-V\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}const int M\-A\-X\-\_\-\-M\-O\-V\-E\-S = 10}}\label{rush__hour_8cpp_a8912e8d678463ad11bd179e269440016}
+\hypertarget{rush__hour_8cpp_a83ddaaa8bdb7de4ff01d99981c8b9695}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!T\-R\-U\-C\-K\-\_\-\-L\-E\-N@{T\-R\-U\-C\-K\-\_\-\-L\-E\-N}}
+\index{T\-R\-U\-C\-K\-\_\-\-L\-E\-N@{T\-R\-U\-C\-K\-\_\-\-L\-E\-N}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{T\-R\-U\-C\-K\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}const int T\-R\-U\-C\-K\-\_\-\-L\-E\-N = 3}}\label{rush__hour_8cpp_a83ddaaa8bdb7de4ff01d99981c8b9695}
+\hypertarget{rush__hour_8cpp_a31238ca1e5d6db6f91023277553d244f}{\index{rush\-\_\-hour.\-cpp@{rush\-\_\-hour.\-cpp}!V\-E\-R\-T\-I\-C\-A\-L@{V\-E\-R\-T\-I\-C\-A\-L}}
+\index{V\-E\-R\-T\-I\-C\-A\-L@{V\-E\-R\-T\-I\-C\-A\-L}!rush_hour.cpp@{rush\-\_\-hour.\-cpp}}
+\subsubsection[{V\-E\-R\-T\-I\-C\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}const char V\-E\-R\-T\-I\-C\-A\-L = 'V'}}\label{rush__hour_8cpp_a31238ca1e5d6db6f91023277553d244f}

@@ -1,0 +1,364 @@
+void printASCIIart( char letter, int &currX, int &currY)
+   {
+   // variables
+     
+
+   // decide which ASCII art character to display 
+    switch( letter )
+      {
+      // print art E
+       case 'E':
+       case 'e':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, " EEEEEEEE ", "LEFT" );
+             
+            // second line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " EE     E ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " EEEE     ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " EEEE     ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " EE     E ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " EEEEEEEE ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art G
+       case 'G':
+       case 'g':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, "  GGGGGGG  ", "LEFT" );             
+             
+            // second line of letter
+               // function:printStringAt
+               currX -= 11;
+               currY ++;
+               printStringAt( currX, currY, " GGG    GG ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 11;
+               currY ++;
+               printStringAt( currX, currY, " GG        ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 11;
+               currY ++;
+               printStringAt( currX, currY, " GG   GGGG ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -=11;
+               currY ++;
+               printStringAt( currX, currY, " GGG    GG ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 11;
+               currY ++;
+               printStringAt( currX, currY, "  GGGGGGG  ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art I
+       case 'I':
+       case 'i':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, " IIII ", "LEFT" ); 
+          
+             // second line of letter
+               // function:printStringAt
+               currX -= 6;
+               currY ++;
+               printStringAt( currX, currY, "  II  ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 6;
+               currY ++;
+               printStringAt( currX, currY, "  II  ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 6;
+               currY ++;
+               printStringAt( currX, currY, "  II  ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 6;
+               currY ++;
+               printStringAt( currX, currY, "  II  ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 6;
+               currY ++;
+               printStringAt( currX, currY, " IIII ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art K
+       case 'K':
+       case 'k':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, " KK  KK  ", "LEFT" );
+             
+            // second line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " KK KK   ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " KK K    ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " KKKKK   ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " KK  KK  ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " KK   KK ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art L
+       case 'L':
+       case 'l':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, " LL      ", "LEFT" );
+             
+            // second line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " LL      ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " LL      ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " LL      ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " LL      ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " LLLLLLL ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art O
+       case 'O':
+       case 'o':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, "  OOOOOO  ", "LEFT" );
+            
+            // second line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " OOO  OOO ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " OO    OO ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " OO    OO ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " OOO  OOO ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, "  OOOOOO  ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art R
+       case 'R':
+       case 'r':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, " RRRRRR  ", "LEFT" );
+             
+            // second line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " RR   RR ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " RR   RR ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " RRRRRR  ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " RR RR   ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 9;
+               currY ++;
+               printStringAt( currX, currY, " RR  RR  ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // print art U
+       case 'U':
+       case 'u':
+            {
+            // first line of letter
+               // function:printStringAt
+               printStringAt( currX, currY, " UU    UU ", "LEFT" ); 
+            
+            // second line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " UU    UU ", "LEFT" );
+
+            // third line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " UU    UU ", "LEFT" );
+
+            // fourth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " UU    UU ", "LEFT" );
+
+            // fifth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, " UUU  UUU ", "LEFT" );
+
+            // sixth line of letter
+               // function:printStringAt
+               currX -= 10;
+               currY ++;
+               printStringAt( currX, currY, "  UUUUUU  ", "LEFT" );
+
+            // position cursor for next letter
+               currY -= 5;
+            }
+            break;
+
+      // move to a new line
+       case NEW_LINE:
+            {
+            // increment the xy and y cursor positions accordingly 
+               currX =   5;
+               currY -= 40;
+            }
+            break;
+      }
+
+   // no return - void
+   }

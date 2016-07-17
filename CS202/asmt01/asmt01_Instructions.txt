@@ -1,0 +1,340 @@
+Assignment # 1
+
+----------
+Background
+----------
+
+The mathematical function
+
+    f(x) = 3x+1, if x is an odd integer
+         = x/2,  if x is an even integer
+
+produces a sequence of integers when f(x) is repeatedly applied.
+
+To repeatedly apply the function, start with a number and apply the function to
+it, then take the answer and apply the same function to it, and repeat the
+process until the stopping rule is invoked.
+
+The STOPPING RULE is:
+
+    Part 1:  IF WE REACH 1, STOP.
+    Part 2:  IF WE APPLY THE FUNCTION 1000 TIMES
+             WITHOUT REACHING 1, STOP.
+
+Part 2 is necessary to avoid long (perhaps infinite) loops.
+
+EXAMPLE 1:
+
+    Choose 8 as the number and apply the function to it.
+
+        f(8) = 4
+
+    Now, apply the same function to 4.
+
+        f(4) = 2
+
+    Now, apply the same function to 2.
+
+        f(2) = 1
+
+    Observe the stopping rule.
+
+    The full sequence, starting with 8, is:
+
+        8 ---> 4 ---> 2 ---> 1
+
+    This sequence has a starting number of 8.
+    This sequence a maximum number of 8.
+    This sequence has length 4.
+
+EXAMPLE 2:
+
+    Choose 13 as the number and apply the function to it.
+
+        f(13) = 40
+
+    Now, apply the same function to 40.
+
+        f(40) = 20
+
+    Now, apply the same function to 20.
+
+        f(20) = 10
+
+    Now, apply the same function to 10.
+
+        f(10) = 5
+
+    Now, apply the same function to 5.
+
+        f(5)  = 16
+
+    Now, apply the same function to 16.
+
+        f(16) = 8
+
+    Now, apply the same function to 8.
+
+        f(8)  = 4
+
+    Now, apply the same function to 4.
+
+        f(4) = 2
+
+    Now, apply the same function to 2.
+
+        f(2) = 1
+
+    Observe the stopping rule.
+
+    The full sequence, starting with 13, is:
+
+        13 ---> 40 ---> 20 ---> 10
+           --->  5 ---> 16 --->  8
+           --->  4 --->  2 --->  1
+
+    This sequence has a starting number of 13.
+    This sequence a maximum number of 40.
+    This sequence has length 10.
+
+--------
+Question
+--------
+
+Does the process always reach 1?
+
+--------------------
+Program Requirements
+--------------------
+
+The assignment is to write a program to perform the steps outlined above.
+
+The MS Visual Studio project must build without warnings and without errors to
+receive credit.
+
+Write a menu-driven program that computes the sequence for range of numbers and
+produces two output files.
+
+Here is what the main menu shall look like:
+
+    MAIN MENU
+
+    What would you like to do?
+
+    1.  Compute sequences
+    2.  Quit
+
+If selection (1) is chosen, ask questions of the user.
+
+First, ask:
+
+    Enter the starting number:
+
+Then, ask:
+
+    Enter the ending number:
+
+Implement error-checking in the program.
+
+Make sure both numbers entered are positive integers.  If not, exit the program
+with an appropriate error message and non-zero exit code.
+
+Make sure the first entered number is less than (not less than or equal to) the
+second.  If not, exit the program with an appropriate error message and non-zero
+exit code.
+
+With verified (i.e., good) inputs, compute the sequence for every number in the
+range, observing the stopping rule.
+
+For example, if the user enters the two numbers 11 and 15, the program will
+compute the sequences for 11, 12, 13, 14 and 15.
+
+For each sequence, the program needs to keep track of the following
+information.
+
+    (a)  the starting number for the sequence
+    (b)  the maximum number in the sequence
+    (c)  the length of the sequence
+
+In addition, because you will be computing sequences for many numbers, the
+program must keep track of
+
+    (d)  beginning of range
+    (e)  end of range
+    (f)  the starting number for the sequence with minimum length
+    (g)  the length for the sequence with minimum length
+    (h)  the starting number for the sequence with maximum length
+    (i)  the length for the sequence with maximum length
+
+As mentioned above, the program shall contain error-checking on the data
+entered.  The program shall not proceed with invalid data.
+
+------
+Output
+------
+
+As output, the program shall write two files.
+
+The first output file shall contain a table of all the results for the range of
+integers for which the sequences were computed:
+
+    (a)  the starting number for the sequence
+    (b)  the maximum number in the sequence
+    (c)  the length of the sequence
+
+Here is the format for the first ouput file.
+
+    LINE 1:  Starting Number,Maximum Number,Length
+    LINE 2:  #,#,#
+    LINE 3:  #,#,#
+    LINE 4:  #,#,#
+    and so on
+
+The second output file shall contain the summary information for the two
+sequences that represent the minimum and maximum sequence lengths for the range
+of numbers:
+
+    (d)  beginning of range
+    (e)  end of range
+    (f)  the starting number for the sequence with minimum length
+    (g)  the length for the sequence with minimum length
+    (h)  the starting number for the sequence with maximum length
+    (i)  the length for the sequence with maximum length
+
+It will also contain the complete sequences for both.
+
+Here is the format for the second ouput file.
+
+    Beginning of range:  #
+
+    End of range:  #
+
+    Starting number for the sequence with minimum length:  #
+    The minimum length:                                    #
+
+    Starting number for the sequence with maximum length:  #
+    The maximum length:                                    #
+
+    Sequence with minimum length:  #
+                                   #
+                                   #
+                                   and so on
+
+    Sequence with maximum length:  #
+                                   #
+                                   #
+                                   and so on
+
+As an example, suppose the range was 11 to 13.
+
+This would generate three sequences.
+
+    11:  11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1
+    12:  12, 6, 3, 10, 5, 16, 8, 4, 2, 1
+    13:  13, 40, 20, 10, 5, 16, 8, 4, 2, 1
+
+The two output files are included with this write-up for you to view.
+
+-------------------------------
+Example Output File:  .csv File
+-------------------------------
+
+The first output file, named asmt01.csv, would contain:
+
+    Starting Number,Maximum Number,Length
+    11,52,15
+    12,16,10
+    13,40,10
+
+The output file asmt01.csv can be opened by Microsoft Excel.  Notice that commas
+delimit the data in that file.  Notice also there are no spaces before or after
+the commas.  Here is a reference.
+
+    URL:  http://en.wikipedia.org/wiki/Comma-separated_values
+
+-------------------------------
+Example Output File:  .txt File
+-------------------------------
+
+The second output file, named asmt01.txt, would contain:
+
+    Beginning of range:  11
+
+    End of range:  13
+
+    Starting number for the sequence with minimum length:  12
+    The minimum length:                                    10
+
+    Starting number for the sequence with maximum length:  11
+    The maximum length:                                    15
+
+    Sequence with minimum length:  12
+                                   6
+                                   3
+                                   10
+                                   5
+                                   16
+                                   8
+                                   4
+                                   2
+                                   1
+
+    Sequence with maximum length:  11
+                                   34
+                                   17
+                                   52
+                                   26
+                                   13
+                                   40
+                                   20
+                                   10
+                                   5
+                                   16
+                                   8
+                                   4
+                                   2
+                                   1
+
+------
+Naming
+------
+
+Name the first output file asmt01.csv.
+
+Name the second output file asmt01.txt.
+
+Name the program asmt01.
+
+-------
+Turn In
+-------
+
+Submit to the drop box a .zip file that contains your MS Visual Studio project.
+
+Before zipping, you may shrink the size of the directory structure by deleting
+certain subdirectories.  You may delete the IPCH subdirectory.
+
+If you built in Debug mode, you may delete the Debug subdirectories (you will
+find two in the project).
+
+If you built in Release mode, you may delete the Release subdirectories (you
+will find two in the project).
+
+The MS Visual Studio project must build without warnings and without errors to
+receive credit.
+
+
+
+
+#ifndef
+#define
+
+
+
+
+#endif
+
+
+
+
+sizeof()

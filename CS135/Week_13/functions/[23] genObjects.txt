@@ -1,0 +1,19 @@
+void genObjects( bool xcMode, short gameBoard[ PLAY_AR_W ][ PLAY_AR_H ] )
+   {
+   // hole generation
+
+   // cloak generation
+
+   // treasure generation
+
+      // extra credit items if extra credit mode is enabled
+         // operation: if
+              
+         // sword generation
+
+         // monster generation
+
+         // spell generation
+
+   // no return - void
+   }

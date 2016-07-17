@@ -1,0 +1,19 @@
+void fileMissingMessage()
+   {
+   // variables
+
+   // screen does not need to be cleared, this
+   // was previously done by the name capturing function
+
+   // print the error message on the screen
+ 
+      // title line
+
+      // main message
+
+   // move the cursor to the position where system hold message will be displayed
+  
+   // hold the screen for the user
+
+   // no return - void
+   }

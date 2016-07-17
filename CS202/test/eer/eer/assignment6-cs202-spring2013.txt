@@ -1,0 +1,166 @@
+                             ---------------------
+                                    CS  202
+
+                                  ASSIGNMENT 6
+                             ---------------------
+
+-------
+Summary
+-------
+
+You and a partner of your choosing will participate in an in-class lab.
+
+The object of the lab will be to extend an existing class to make it more
+complete and usable.
+
+Compile, debug and run your code:  class and driver program.
+
+-------
+Details
+-------
+
+To help you with this project, two example .ZIP files have been provided.
+
+Each .ZIP file contains a version of the same class.
+
+The one labeled "before" shows the class before enhancement.
+
+The one labeled "after" shows the class after enhancing it.
+
+Notice that the driver program for the class has also changed.
+
+During the in-class lab, a simple (and mostly incomplete) class definition and
+driver program will be provided.
+
+You and your partner (your team) will then spend the entire period adding
+functionality of your choosing to the class and to the driver program.
+
+By the end of the period, you should have a working driver program that
+demonstrates the functionality of the newly evolved class.
+
+----------
+Assignment
+----------
+
+Company management has asked that a program for tracking employee travel
+expenses be written.
+
+The assignment was given to a junior programmer.
+
+The junior employee did the best job they could, but became confused and
+couldn't finish the project.
+
+Here is what the junior employee has produced so far:
+
+
+    driver.cpp   ----   a test program for the class
+    eer.cpp      ----   class implementation file
+    eer.hpp      ----   class definition file
+
+
+Your boss, the head of Software Engineering, has asked you to mentor the junior
+programmer and, at the same time, fix the program, which consists of a class and
+a driver program [containing main()].
+
+You have been empowered to do whatever is necessary to complete the project,
+including, if you feel it is needed, a complete redesign of the program (class
+and driver).
+
+During today's session, you and your partner will collectively play the roles of
+the junior employee and the senior programmer in carrying out the assignment
+given by the head of the SE Department.
+
+Since there are two of you, it makes sense to approach the problem as a team.
+
+To help you get started, here is set of steps to consider:
+
+
+    Step  1.  Analyze the class and driver as written by
+              the junior programmer.  Identify deficiencies.
+
+---------------
+
+    Step  2.  Decide on a new and improved application
+              programming interface (API) for the class.
+
+              The API for the class consists of the public
+              functions listed in the class's .HPP file.
+
+---------------
+
+    Step  3.  Decide on other (i.e., non-public) functions
+              to add to the class.
+
+              Maybe there will be some, maybe not.  It
+              depends on your design.
+
+---------------
+
+    Step  4.  Decide how to modify the driver file to
+              accomodate the the new class.
+
+---------------
+
+    Step  5.  Decide how to break the work up between you
+              and your partner.
+
+              Who will do what?
+
+---------------
+
+    Step  6.  Implement the class's .CPP and .HPP files.
+
+---------------
+
+    Step  7.  Implement the driver .CPP file.
+
+              The driver is used to test the class.  Decide
+              on test cases.  Make sure enough test cases
+              are included to thoroughly exercise the class.
+
+---------------
+
+    Step  8.  Integrate class and driver files, so they
+              build to an executable file.
+
+---------------
+
+    Step  9.  Test the class by runing the program, debug
+              as necessary.
+
+---------------
+
+    Step 10.  Create a .ZIP file for the entire project
+              (see below).
+
+---------------
+
+    Step 11.  Submit the .ZIP file to the drop box.
+
+              Both partners must submit the same .ZIP
+              file.  In the comment area for the drop
+              box, list both partners' (first and last)
+              names.
+
+
+-------
+Turn In
+-------
+
+Do not put your name or that of your partner in any file you turn in.
+
+All submitted projects will be identified anonomously, by team number:  Team 1,
+Team 2, Team 3, and so on.
+
+Submit to the drop box a .ZIP file that contains your MS Visual Studio project.
+
+Before zipping, you may shrink the size of the directory structure by deleting
+certain subdirectories.  You may delete the IPCH subdirectory.
+
+If you built in Debug mode, you may delete the Debug subdirectories (you will
+find two in the project).
+
+If you built in Release mode, you may delete the Release subdirectories (you
+will find two in the project).
+
+All submissions will be posted for everyone in the class to view and discuss.

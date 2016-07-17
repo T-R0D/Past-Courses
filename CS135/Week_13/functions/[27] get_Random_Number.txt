@@ -1,0 +1,10 @@
+int get_Random_Number(int low_Value, int high_Value)
+    {
+    // Initialize Variables
+
+    // Initialize Range Value to Inculde Both High & Low Values
+
+    // Generate Random Value Between Low and High; Start at Low Value
+       // Function: rand()    
+
+    }
